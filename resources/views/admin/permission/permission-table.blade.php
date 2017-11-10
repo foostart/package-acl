@@ -8,11 +8,11 @@
         <thead>
         <tr>
             <!-- ORDER -->
-            <th>{!! trans('tailieuweb.order') !!}</th>
+            <th>{!! trans('jacopo-admin.order') !!}</th>
 
             <!-- Permission description -->
             <?php $name = 'description' ?>
-            <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.permission-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -26,7 +26,7 @@
 
             <!-- Permission name -->
             <?php $name = 'permission' ?>
-            <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name.'-name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
 
             <!-- URL -->
             <?php $name = 'url' ?>
-            <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.permission-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -53,7 +53,7 @@
             </th>
 
             <!-- OPERATION -->
-            <th>{!! trans('tailieuweb.operations') !!}</th>
+            <th>{!! trans('jacopo-admin.operations') !!}</th>
         </tr>
         </thead>
         <tbody>

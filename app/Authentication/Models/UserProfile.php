@@ -27,7 +27,8 @@ class UserProfile extends BaseModel
         'sex',
         'category_id',
     ];
-
+    protected $context_key;
+    
     protected $guarded = ["id"];
 
     public function user()

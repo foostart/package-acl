@@ -22,7 +22,7 @@
         </div>
         <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
-        @include('laravel-authentication-acl::admin.user.partials.sorting')
+        @include('laravel-authentication-acl::admin.layouts.partials.sorting')
         {!! Form::close() !!}
     </div>
 </div>

@@ -9,14 +9,14 @@
         <tr>
 
             <!-- ORDER -->
-            <th>{!! trans('tailieuweb.order') !!}
+            <th>{!! trans('jacopo-admin.order') !!}
                 <a href='#' class='tb-order'>
                 </a>
             </th>
 
             <!-- Group name -->
             <?php $name = 'name' ?>
-            <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.group-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -30,7 +30,7 @@
 
             <!--Group permissions-->
             <?php $name = 'permissions' ?>
-            <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -43,7 +43,7 @@
             </th>
 
             <!-- OPERATION -->
-            <th>{!! trans('tailieuweb.operations') !!}</th>
+            <th>{!! trans('jacopo-admin.operations') !!}</th>
 
         </tr>
     </thead>

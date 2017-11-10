@@ -19,13 +19,25 @@ class AuthController extends Controller {
         $this->reminder_validator = $reminder_validator;
     }
 
+    /**
+     * User login
+     * @return login page
+     */
     public function getClientLogin()
     {
+        //User loged
+        if ($this->authenticator->check()) {
+            return Redirect::to(Config::get('acl_base.user_login_redirect_url'));
+        }
+
         return view('laravel-authentication-acl::client.auth.login');
     }
 
     public function getAdminLogin()
     {
+        if ($this->authenticator->check()) {
+            return Redirect::to(Config::get('acl_base.admin_login_redirect_url'));
+        }
         return view('laravel-authentication-acl::admin.auth.login');
     }
 
@@ -71,7 +83,7 @@ class AuthController extends Controller {
 
     /**
      * Logout utente
-     * 
+     *
      * @return string
      */
     public function getLogout()

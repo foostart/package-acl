@@ -17,12 +17,12 @@ View::composer(['laravel-authentication-acl::admin.user.list'], function ($view)
 
     //List of sorting
     $orders = [
-        '' => trans('tailieuweb.no_selected'),
-        'email' => trans('tailieuweb.email'),
-        'first_name' => trans('tailieuweb.first_name'),
-        'last_name' => trans('tailieuweb.last_name'),
-        'active' => trans('tailieuweb.active'),
-        'last_login' => trans('tailieuweb.last_login')
+        '' => trans('jacopo-admin.no-selected'),
+        'email' => trans('jacopo-admin.email'),
+        'first_name' => trans('jacopo-admin.first-name'),
+        'last_name' => trans('jacopo-admin.last-name'),
+        'active' => trans('jacopo-admin.active'),
+        'last_login' => trans('jacopo-admin.last-login')
     ];
     $sortTable = new SortTable($orders);
 
@@ -36,9 +36,9 @@ View::composer(['laravel-authentication-acl::admin.group.list'], function ($view
 
     //List of sorting
     $orders = [
-        '' => trans('tailieuweb.no_selected'),
-        'name' => trans('tailieuweb.group_name'),
-        'permissions' => trans('tailieuweb.group_permissions'),
+        '' => trans('jacopo-admin.no-selected'),
+        'name' => trans('jacopo-admin.group-name'),
+        'permissions' => trans('jacopo-admin.group-permissions'),
     ];
     $sortTable = new SortTable($orders);
 
@@ -52,10 +52,10 @@ View::composer(['laravel-authentication-acl::admin.permission.list'], function (
 
     //List of sorting
     $orders = [
-        '' => trans('tailieuweb.no_selected'),
-        'description' => trans('tailieuweb.permission_description'),
-        'permission' => trans('tailieuweb.permission_name'),
-        'url' => trans('tailieuweb.permission_url'),
+        '' => trans('jacopo-admin.no-selected'),
+        'description' => trans('jacopo-admin.permission-description'),
+        'permission' => trans('jacopo-admin.permission-name'),
+        'url' => trans('jacopo-admin.permission-url'),
     ];
     $sortTable = new SortTable($orders);
 

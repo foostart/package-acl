@@ -31,14 +31,14 @@
                         <thead>
                             <tr>
                                 <!-- ORDER -->
-                                <th>{!! trans('tailieuweb.order') !!}
+                                <th>{!! trans('jacopo-admin.order') !!}
                                     <a href='#' class='tb-order'>
                                     </a>
                                 </th>
 
                                 <!-- EMAIL -->
                                 <?php $name = 'email' ?>
-                                <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+                                <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
 
                                 <!-- FIRST NAME -->
                                 <?php $name = 'first_name' ?>
-                                <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+                                <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-first-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -66,7 +66,7 @@
 
                                 <!-- LAST NAME -->
                                 <?php $name = 'last_name' ?>
-                                <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+                                <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
 
                                 <!-- ACTIVE -->
                                 <?php $name = 'active' ?>
-                                <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+                                <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-active' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -94,7 +94,7 @@
 
                                 <!-- LAST LOGIN -->
                                 <?php $name = 'last_login' ?>
-                                <th class="hidden-xs">{!! trans('tailieuweb.'.$name) !!}
+                                <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-login' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                             <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
@@ -107,7 +107,7 @@
                                 </th>
 
                                 <!-- OPERATION -->
-                                <th>{!! trans('tailieuweb.operations') !!}</th>
+                                <th>{!! trans('jacopo-admin.operations') !!}</th>
                             </tr>
                         </thead>
 
@@ -141,7 +141,7 @@
                     {!! $users->appends($request->except(['page']) )->render() !!}
                 </div>
                 @else
-                <span class="text-warning"><h5>{!! trans('tailieuweb.empty_data') !!}</h5></span>
+                <span class="text-warning"><h5>{!! trans('jacopo-admin.empty_data') !!}</h5></span>
                 @endif
             </div>
         </div>

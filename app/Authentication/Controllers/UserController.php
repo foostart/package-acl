@@ -45,11 +45,13 @@ class UserController extends Controller {
     protected $register_service;
     protected $custom_profile_repository;
 
+    protected $authentication_helper;
+
     public function __construct(UserValidator $v, FormHelper $fh, UserProfileValidator $vp, AuthenticateInterface $auth)
     {
         $this->user_repository = App::make('user_repository');
         $this->user_validator = $v;
-        //@todo use IOC correctly with a factory and passing the correct parameters
+
         $this->f = new FormModel($this->user_validator, $this->user_repository);
         $this->form_helper = $fh;
         $this->profile_validator = $vp;
@@ -57,6 +59,7 @@ class UserController extends Controller {
         $this->auth = $auth;
         $this->register_service = App::make('register_service');
         $this->custom_profile_repository = App::make('custom_profile_repository');
+
     }
 
     /**
@@ -66,6 +69,7 @@ class UserController extends Controller {
      */
     public function getList(Request $request)
     {
+       $user_leader = $this->user_repository->isLeader();
         $users = $this->user_repository->all($request->except(['page']));
         return View::make('laravel-authentication-acl::admin.user.list')->with(["users" => $users, "request" => $request]);
     }
@@ -74,7 +78,14 @@ class UserController extends Controller {
     {
         try
         {
+            $user_leader = $this->user_repository->isLeader();
             $user = $this->user_repository->find($request->get('id'));
+
+            if (!$this->user_repository->canUpdate($user)) {
+
+                return Redirect::route("users.list")->withErrors('cant update');
+            }
+
         } catch(JacopoExceptionsInterface $e)
         {
             $user = new User;

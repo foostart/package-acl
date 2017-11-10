@@ -14,7 +14,7 @@
             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'group name']) !!}
         </div>
         <span class="text-danger">{!! $errors->first('name') !!}</span>
-        @include('laravel-authentication-acl::admin.user.partials.sorting')
+        @include('laravel-authentication-acl::admin.layouts.partials.sorting')
         {!! Form::close() !!}
     </div>
 </div>

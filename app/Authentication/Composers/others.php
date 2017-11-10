@@ -14,7 +14,10 @@ View::composer('laravel-authentication-acl::*', function ($view)
 
     //Load category
     $obj_category = new FooCategory();
-    $pluck_select_category = $obj_category->pluckSelect();
+    $params = Request::all();
+    $params['context'] = $obj_category->getContextKey('users');
+    $pluck_select_category = $obj_category->pluckSelect($params);
+
     $view->with('pluck_select_category', $pluck_select_category);
 });
 
@@ -37,8 +40,8 @@ View::composer('laravel-authentication-acl::*', function ($view)
 {
     //Order by
     $order_by = [
-        'asc' => trans('tailieuweb.order_by.asc'),
-        'desc' => trans('tailieuweb.order_by.desc'),
+        'asc' => trans('jacopo-admin.order-by-asc'),
+        'desc' => trans('jacopo-admin.order-by-desc'),
     ];
     $view->with('order_by', $order_by);
 });

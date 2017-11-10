@@ -1,6 +1,8 @@
 <?php
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
 
+use Foostart\Category\Helpers\FooCategory;
+
 /**
  * menu items available depending on permissions
  */
@@ -16,9 +18,9 @@ View::composer('laravel-authentication-acl::admin.layouts.*', function ($view)
 View::composer(['laravel-authentication-acl::admin.dashboard.*'], function ($view)
 {
     $view->with('sidebar_items', [
-            "Dashboard" => [
-                    "url"  => URL::route('dashboard.default'),
-                    "icon" => '<i class="fa fa-tachometer"></i>'
+            trans('jacopo-admin.dashboard') => [
+                    'url'  => URL::route('dashboard.default'),
+                    'icon' => '<i class="fa fa-tachometer"></i>'
             ]
     ]);
 });
@@ -33,19 +35,21 @@ View::composer([
                        'laravel-authentication-acl::admin.user.profile',
                ], function ($view)
 {
-    $context = \Config::get('app.context');
+
+    $fooCategory = new FooCategory();
+    $context = $fooCategory->getContextKey('users');
     $view->with('sidebar_items', [
             trans('jacopo-admin.users-list') => [
-                    "url"  => URL::route('users.list'),
-                    "icon" => '<i class="fa fa-user"></i>'
+                    'url'  => URL::route('users.list'),
+                    'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
             trans('jacopo-admin.add-user')   => [
                     'url'  => URL::route('users.edit'),
-                    "icon" => '<i class="fa fa-plus-circle"></i>'
+                    'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('jacopo-admin.category')   => [
-                    'url'  => URL::route('categories.list',['context='.$context['users']]),
-                    "icon" => '<i class="fa fa-plus-circle"></i>'
+            trans('jacopo-admin.user-department')   => [
+                    'url'  => URL::route('categories.list',['context='.$context]),
+                    'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
     ]);
 });
@@ -55,13 +59,13 @@ View::composer([
 View::composer(['laravel-authentication-acl::admin.group.*'], function ($view)
 {
     $view->with('sidebar_items', [
-            "Groups list" => [
+            trans('jacopo-admin.groups-list') => [
                     'url'  => URL::route('groups.list'),
-                    "icon" => '<i class="fa fa-users"></i>'
+                    'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            "Add group"   => [
+            trans('jacopo-admin.add-group')   => [
                     'url'  => URL::route('groups.edit'),
-                    "icon" => '<i class="fa fa-plus-circle"></i>'
+                    'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ]
     ]);
 });
@@ -70,19 +74,20 @@ View::composer(['laravel-authentication-acl::admin.group.*'], function ($view)
  */
 View::composer(['laravel-authentication-acl::admin.permission.*'], function ($view)
 {
-    $context = \Config::get('app.context');
+    $fooCategory = new FooCategory();
+    $context = $fooCategory->getContextKey('permissions');
     $view->with('sidebar_items', [
-            "Permissions list" => [
+            trans('jacopo-admin.permissions-list') => [
                     'url'  => URL::route('permissions.list'),
-                    "icon" => '<i class="fa fa-lock"></i>'
+                    'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            "Add permission"   => [
+            trans('jacopo-admin.add-permission')   => [
                     'url'  => URL::route('permissions.edit'),
-                    "icon" => '<i class="fa fa-plus-circle"></i>'
+                    'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
             trans('jacopo-admin.category')   => [
-                    'url'  => URL::route('categories.list',['context='.$context['permissions']]),
-                    "icon" => '<i class="fa fa-plus-circle"></i>'
+                    'url'  => URL::route('categories.list',['context='.$context]),
+                    'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
 
     ]);

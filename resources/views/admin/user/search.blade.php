@@ -89,7 +89,7 @@
                 {!! Form::select('group_id', $group_values, $request->get('group_id',''), ["class" => "form-control"]) !!}
             </div>
 
-            @include('laravel-authentication-acl::admin.user.partials.sorting')
+           @include('laravel-authentication-acl::admin.layouts.partials.sorting')
         </div>
         {!! Form::close() !!}
     </div>

@@ -21,11 +21,13 @@ class UserRepositorySearchFilter
     private $valid_ordering_fields = ["first_name", "last_name", "email", "last_login", "activated", "name"];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['email', 'full_name', 'first_name', 'last_name', 'sex', 'category_id', 'code', 'activated', 'banned', 'group_id', 'order_by', 'ordering'];
+    private $valid_fields_filter = ['email', 'full_name', 'first_name', 'last_name', 'sex', 'category_id', 'code', 'activated', 'banned', 'group_id', 'order_by', 'ordering', 'user_leader'];
 
-    public function __construct($per_page = 5)
+    protected $user_leader;
+    public function __construct($per_page = 5, $user_leader = null)
     {
         $this->per_page = $per_page;
+        $this->user_leader = $user_leader;
     }
 
     /**
@@ -42,24 +44,6 @@ class UserRepositorySearchFilter
 
         $q = $this->createAllSelect($q);
 
-        /**
-         * ORIGINAL VERSION
-         */
-        /*
-
-//        $users = $q->get()->all();
-//
-//        $user_emails = array_flip(array_map((function ($element)
-//        {
-//            return $element->email;
-//        }), $users));
-//
-//        $users_emails_unique = array_unique($user_emails);
-//
-//        $results = array_only($users, array_values($users_emails_unique));
-//
-//        return new Paginator($results, $this->per_page);
-*/
 
         return $q->paginate($this->per_page);
     }
@@ -154,9 +138,14 @@ class UserRepositorySearchFilter
                             break;
                     }
                 }
-            }
+            }//end for
         }
 
+        if ($this->user_leader) {
+            if ($this->user_leader->category_id_childs) {
+                $q = $q->whereIn($this->profile_table_name . '.category_id', $this->user_leader->category_id_childs);
+            }
+        }
         return $q;
     }
 

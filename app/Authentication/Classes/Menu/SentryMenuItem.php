@@ -59,7 +59,7 @@ class SentryMenuItem implements MenuInterface
      */
     public function getLink()
     {
-        return $this->link;
+       return url('/').$this->link;
     }
 
     /**
@@ -69,7 +69,7 @@ class SentryMenuItem implements MenuInterface
      */
     public function getName()
     {
-        return $this->name;
+        return trans($this->name);
     }
 
     /**
