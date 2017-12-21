@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/mail-base.css') !!}
-    {!! HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css') !!}
+    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/font-awesome-4.7.0.min.css') !!}
 </head>
 <body>
 <h2><i class="fa fa-pencil"></i> Registration request on: {!!Config::get('acl_base.app_name')!!}</h2>

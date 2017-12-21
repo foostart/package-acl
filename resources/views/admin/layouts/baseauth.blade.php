@@ -11,7 +11,7 @@
 
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/bootstrap.min.css') !!}
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/style.css') !!}
-    {!! HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css') !!}
+    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/font-awesome-4.7.0.min.css') !!}
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/fonts.css') !!}
 
     @yield('head_css')

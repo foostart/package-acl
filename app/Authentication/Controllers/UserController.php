@@ -242,19 +242,35 @@ class UserController extends Controller {
                           ]);
     }
 
-    public function signup(Request $request)
-    {
+    /**
+     * Signup page
+     * @param Request $request
+     * @return sign up page
+     */
+    public function signup(Request $request) {
+        $data_view = array(
+            'request' => $request,
+        );
+
         $enable_captcha = Config::get('acl_base.captcha_signup');
 
-        if($enable_captcha)
-        {
+        if ($enable_captcha) {
+
             $captcha = App::make('captcha_validator');
-            return View::make('laravel-authentication-acl::client.auth.signup')->with('captcha', $captcha);
+            $data_view = array_merge($data_view, array(
+                'captcha' => $captcha
+            ));
+            return View::make('laravel-authentication-acl::client.auth.signup')->with($data_view);
         }
 
         return View::make('laravel-authentication-acl::client.auth.signup');
     }
 
+    /**
+     *
+     * @param Request $request
+     * @return page sign up after submit
+     */
     public function postSignup(Request $request)
     {
         $service = App::make('register_service');

@@ -40,6 +40,23 @@ class UserSignupEmailValidator extends AbstractValidator
         return false;
     }
 
+    public function validateEmailRecover($attribute, $value, $parameters)
+    {
+        $repository = App::make('user_repository');
+        try
+        {
+            $user = $repository->findByLogin($value);
+        }
+        catch(UserNotFoundException $e)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+
+
     /**
      */
     protected function resendConfirmationEmail()
@@ -49,4 +66,4 @@ class UserSignupEmailValidator extends AbstractValidator
 
         App::make('register_service')->sendRegistrationMailToClient($data);
     }
-} 
+}

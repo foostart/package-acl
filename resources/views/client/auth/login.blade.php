@@ -22,24 +22,59 @@ User login
                 {!! Form::open(array('url' => URL::route("user.login"), 'method' => 'post') ) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                {!! Form::email('email', '', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email address', 'required', 'autocomplete' => 'off']) !!}
-                            </div>
-                        </div>
+                        <!--email-->
+                        @include('laravel-authentication-acl::client.partials.input_text', [
+                                    'name' => 'email',
+                                    'placeholder' => trans('jacopo-front.email'),
+                                    'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
+                                    'required' => true,
+                                    'errors' => $errors
+                                ])
+
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'required', 'autocomplete' => 'off']) !!}
-                            </div>
-                        </div>
+                        @include('laravel-authentication-acl::client.partials.input_text', [
+                                    'name' => 'password',
+                                    'placeholder' => trans('jacopo-front.password'),
+                                    'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
+                                    'required' => true,
+                                    'errors' => $errors,
+                                    'type' => 'password'
+                                ])
                     </div>
                 </div>
+
+                <div class="row">
+                    <!--captcha-->
+                    @if(isset($captcha) )
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            @include('laravel-authentication-acl::client.partials.input_text', [
+                                'name' => 'captcha_text',
+                                'placeholder' => trans('jacopo-front.captcha'),
+                                'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
+                                'required' => true,
+                                'errors' => $errors,
+                                'password' => true
+                            ])
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span id="captcha-img-container">
+                                        @include('laravel-authentication-acl::client.auth.captcha-image')
+                                    </span>
+                                    <a id="captcha-gen-button" href="#" class="btn btn-small btn-info margin-left-5">
+                                        <i class="fa fa-refresh"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endif
+                </div>
+
                 {!! Form::label('remember','Remember me') !!}
                 {!! Form::checkbox('remember')!!}
                 <input type="submit" value="Login" class="btn btn-info btn-block">

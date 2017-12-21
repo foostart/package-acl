@@ -7,7 +7,7 @@
 use Request;
 use Route;
 
-class Helper 
+class Helper
 {
     /**
      * Check if url is the same of the current url and return active state
@@ -17,6 +17,7 @@ class Helper
      */
     public static function get_active($url, $active = 'active')
     {
+        $url = preg_replace('/\?.*/', '', $url);
         return (Request::url() == $url) ? $active : '';
     }
 
@@ -40,4 +41,4 @@ class Helper
     {
         return array_values(explode(".", $route_name))[0];
     }
-} 
+}

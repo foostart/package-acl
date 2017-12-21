@@ -96,6 +96,5 @@
 </div>
 
 @section('footer_scripts')
-    @include('laravel-authentication-acl::admin.admin_message_script')
     @parent
 @stop

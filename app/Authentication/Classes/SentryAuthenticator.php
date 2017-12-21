@@ -49,19 +49,19 @@ class SentryAuthenticator implements AuthenticateInterface
             $user = $this->sentry->authenticate($credentials, $remember);
         } catch(\Cartalyst\Sentry\Users\LoginRequiredException $e)
         {
-            $this->errors->add('login', 'Login field is required.');
+            $this->errors->add('login', trans('jacopo-front.login-error-required-field'));
         } catch(\Cartalyst\Sentry\Users\UserNotFoundException $e)
         {
-            $this->errors->add('login', 'Login failed.');
+            $this->errors->add('login', trans('jacopo-front.login-error-failed'));
         } catch(\Cartalyst\Sentry\Users\UserNotActivatedException $e)
         {
-            $this->errors->add('login', 'Your user is not activated.');
+            $this->errors->add('login', trans('jacopo-front.login-error-not-active'));
         } catch(\Cartalyst\Sentry\Users\PasswordRequiredException $e)
         {
-            $this->errors->add('login', 'Password field is required.');
+            $this->errors->add('login', trans('jacopo-front.login-error-required-password'));
         } catch(\Cartalyst\Sentry\Throttling\UserSuspendedException $e)
         {
-            $this->errors->add('login', 'Too many login attempts, please try later.');
+            $this->errors->add('login', trans('jacopo-front.login-error-many-attempts'));
         }
         if($this->foundAnyErrors())
         {
@@ -185,4 +185,4 @@ class SentryAuthenticator implements AuthenticateInterface
     {
         return $this->errors->isEmpty();
     }
-}
+    }

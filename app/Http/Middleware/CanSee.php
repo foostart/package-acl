@@ -13,8 +13,11 @@ class CanSee {
     public function handle($request, Closure $next)
     {
         $route_helper = App::make('route_perm_helper');
-        if(!$route_helper->hasPermForRoute(Route::currentRouteName())) App::abort('401');
+        if(!$route_helper->hasPermForRoute(Route::currentRouteName())) {
 
+            App::abort('401');
+            
+        }
         return $next($request);
     }
 }

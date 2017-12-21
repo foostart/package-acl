@@ -1,10 +1,13 @@
 <?php namespace LaravelAcl\Authentication\Controllers;
 
 use Illuminate\Http\Request;
-use Sentry, Redirect, App, Config;
+use Sentry, View, Redirect, App, Config;
 use LaravelAcl\Authentication\Validators\ReminderValidator;
 use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
+use LaravelAcl\Library\Exceptions\ValidationException;
 use LaravelAcl\Authentication\Services\ReminderService;
+
+use LaravelAcl\Authentication\Validators\RecoverPasswordValidator;
 
 class AuthController extends Controller {
 
@@ -23,14 +26,28 @@ class AuthController extends Controller {
      * User login
      * @return login page
      */
-    public function getClientLogin()
+    public function getClientLogin(Request $request)
     {
         //User loged
         if ($this->authenticator->check()) {
             return Redirect::to(Config::get('acl_base.user_login_redirect_url'));
         }
 
-        return view('laravel-authentication-acl::client.auth.login');
+        $data_view = [
+            'request' => $request,
+        ];
+
+        //Show captcha
+        $enable_captcha = Config::get('acl_base.captcha_login');
+
+        if ($enable_captcha) {
+            $captcha = App::make('captcha_validator');
+            $data_view = array_merge($data_view, array(
+                'captcha' => $captcha
+            ));
+        }
+
+        return View::make('laravel-authentication-acl::client.auth.login')->with($data_view);
     }
 
     public function getAdminLogin()
@@ -63,10 +80,23 @@ class AuthController extends Controller {
 
     public function postClientLogin(Request $request)
     {
-        list($email, $password, $remember) = $this->getLoginInput($request);
+        list($email, $password, $remember, $captcha) = $this->getLoginInput($request);
 
         try
         {
+            //Show captcha
+            $enable_captcha = Config::get('acl_base.captcha_login');
+            if ($enable_captcha) {
+
+                $captchaValidator = App::make('captcha_validator');
+                $flag = $captchaValidator->validateCaptcha($request->all(), $captcha);
+
+                if (!$flag) {
+                    $errors = $captchaValidator->getErrorMessage();
+                    throw new ValidationException($errors);
+                }
+
+            }
             $this->authenticator->authenticate(array(
                                                     "email" => $email,
                                                     "password" => $password
@@ -74,7 +104,11 @@ class AuthController extends Controller {
         }
         catch(JacopoExceptionsInterface $e)
         {
-            $errors = $this->authenticator->getErrors();
+
+            if (!isset($errors)) {
+                $errors = $this->authenticator->getErrors();
+            }
+          
             return redirect()->route("user.login")->withInput()->withErrors($errors);
         }
 
@@ -96,9 +130,25 @@ class AuthController extends Controller {
     /**
      * Recupero password
      */
-    public function getReminder()
+    public function getReminder(Request $request)
     {
-        return view("laravel-authentication-acl::client.auth.reminder");
+        $data_view = [
+            'request' => $request
+        ];
+
+        $enable_captcha = Config::get('acl_base.captcha_signup');
+
+        if ($enable_captcha) {
+
+            $captcha = App::make('captcha_validator');
+            $data_view = array_merge($data_view, array(
+                'captcha' => $captcha
+            ));
+
+            return view('laravel-authentication-acl::client.auth.reminder', $data_view);
+        }
+
+        return view('laravel-authentication-acl::client.auth.reminder', $data_view);
     }
 
     /**
@@ -106,24 +156,35 @@ class AuthController extends Controller {
      *
      * @return mixed
      */
-    public function postReminder(Request $request)
-    {
-        $email = $request->get('email');
+    public function postReminder(Request $request) {
 
-        try
-        {
-            $this->reminder->send($email);
-            return redirect()->route("user.reminder-success");
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
-            $errors = $this->reminder->getErrors();
+        $validator_recovery = new RecoverPasswordValidator();
+        $params = $request->all();
+
+        if (!$validator_recovery->validate($params)) {
+            $errors = $validator_recovery->getErrors();
             return redirect()->route("user.recovery-password")->withErrors($errors);
+
+        } else {
+            $email = $request->get('email');
+
+            try {
+                $this->reminder->send($email);
+                return redirect()->route("user.reminder-success");
+            } catch (JacopoExceptionsInterface $e) {
+                $errors = $this->reminder->getErrors();
+                return redirect()->route("user.recovery-password")->withErrors($errors);
+            }
         }
     }
 
-    public function getChangePassword(Request $request)
-    {
+    /**
+     *
+     * @param Request $request
+     * @return type
+     */
+    public function getChangePassword(Request $request) {
+
         $email = $request->get('email');
         $token = $request->get('token');
 
@@ -163,7 +224,8 @@ class AuthController extends Controller {
         $email    = $request->get('email');
         $password = $request->get('password');
         $remember = $request->get('remember');
+        $captcha = $request->get('captcha_text');
 
-        return array($email, $password, $remember);
+        return array($email, $password, $remember, $captcha);
     }
 }

@@ -1,160 +1,162 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <title>User signup</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+<!--
+| @TITLE
+| Sign up page
+|
+|-------------------------------------------------------------------------------
+| @REQUIRED
+|
+|
+|÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷
+| @DESCRIPTION
+|
+|------------------------------------------------------------------------------>
 
-    {!!  HTML::style('packages/jacopo/laravel-authentication-acl/css/bootstrap.min.css')  !!}
-    {!!  HTML::style('packages/jacopo/laravel-authentication-acl/css/style.css')  !!}
+@extends('laravel-authentication-acl::client.layouts.base')
+
+@section ('title')
+   trans('jacopo-front.page-signup')
+@stop
+
+@section('head_css')
     {!!  HTML::style('packages/jacopo/laravel-authentication-acl/css/strength.css')  !!}
-    {!!  HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')  !!}
-    {!!  HTML::style('packages/jacopo/laravel-authentication-acl/css/fonts.css')  !!}
+@stop
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-<div class="container">
+@section('content')
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+
             <div class="panel panel-info">
+
                 <div class="panel-heading">
-                    <h3 class="panel-title bariol-thin">Please sign up for {!! Config::get('acl.config.app_name') !!}</h3>
+                    <h3 class="panel-title bariol-thin">{!! trans('jacopo-front.page_signup') !!}</h3>
                 </div>
+
                 <?php $message = Session::get('message'); ?>
                 @if( isset($message) )
-                <div class="alert alert-success">{!! $message !!}</div>
+                    <div class="alert alert-success">{!! $message !!}</div>
                 @endif
+
+                <!--panel-body-->
                 <div class="panel-body">
                     {!! Form::open(["route" => 'user.signup.process', "method" => "POST", "id" => "user_signup"]) !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                     {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
+
+                        <!--user name-->
                         <div class="row">
+
+                            <!--first name-->
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        {!! Form::text('first_name', '', ['id' => 'first_name', 'class' => 'form-control', 'placeholder' => 'First Name', 'required', 'autocomplete' => 'off']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('first_name') !!}</span>
-                                </div>
+                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                    'name' => 'first_name',
+                                    'placeholder' => trans('jacopo-front.first_name'),
+                                    'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
+                                    'required' => true,
+                                    'errors' => $errors
+                                ])
                             </div>
+
+                            <!--last name-->
+                            <?php $name = 'last_name' ?>
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        {!! Form::text('last_name', '', ['id' => 'last_name', 'class' => 'form-control', 'placeholder' => 'Last Name', 'required', 'autocomplete' => 'off']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('last_name') !!}</span>
-                                </div>
+                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                    'name' => 'last_name',
+                                    'placeholder' => trans('jacopo-front.last_name'),
+                                    'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
+                                    'required' => true,
+                                    'errors' => $errors
+                                ])
+                            </div>
+
+                        </div>
+
+                        <!--email-->
+                        @include('laravel-authentication-acl::client.partials.input_text', [
+                                    'name' => 'email',
+                                    'placeholder' => trans('jacopo-front.email'),
+                                    'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
+                                    'required' => true,
+                                    'errors' => $errors
+                                ])
+
+                        <!--password-->
+                        <div class="row">
+                            <!--password-->
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                    'name' => 'password',
+                                    'id' => 'password1',
+                                    'placeholder' => trans('jacopo-front.password'),
+                                    'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
+                                    'required' => true,
+                                    'errors' => $errors,
+                                    'type' => 'password'
+                                ])
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                    'name' => 'password_confirmation',
+                                    'id' => 'password2',
+                                    'placeholder' => trans('jacopo-front.password_confirm'),
+                                    'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
+                                    'required' => true,
+                                    'errors' => $errors,
+                                    'password' => true,
+                                    'type' => 'password'
+                                ])
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                {!! Form::email('email', '', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email address', 'required', 'autocomplete' => 'off']) !!}
-                            </div>
-                            <span class="text-danger">{!! $errors->first('email') !!}</span>
-                        </div>
-
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                        {!! Form::password('password', ['id' => 'password1', 'class' => 'form-control', 'placeholder' => 'Password', 'required', 'autocomplete' => 'off']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('password') !!}</span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                        {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' =>'password2', 'placeholder' => 'Confirm password', 'required']) !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                              <div class="form-group">
-                                <div id="pass-info"></div>
-                              </div>
-                            </div>
-
-                            {{-- Captcha validation --}}
+                            <!--captcha-->
                             @if(isset($captcha) )
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span id="captcha-img-container">
-                                            @include('laravel-authentication-acl::client.auth.captcha-image')
-                                        </span>
-                                        <a id="captcha-gen-button" href="#" class="btn btn-small btn-info margin-left-5"><i class="fa fa-refresh"></i></a>
+
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    @include('laravel-authentication-acl::client.partials.input_text', [
+                                        'name' => 'captcha_text',
+                                        'placeholder' => trans('jacopo-front.captcha'),
+                                        'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
+                                        'required' => true,
+                                        'errors' => $errors,
+                                        'password' => true
+                                    ])
+                                </div>
+                            
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span id="captcha-img-container">
+                                                @include('laravel-authentication-acl::client.auth.captcha-image')
+                                            </span>
+                                            <a id="captcha-gen-button" href="#" class="btn btn-small btn-info margin-left-5"><i class="fa fa-refresh"></i></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
-                                        {!! Form::text('captcha_text',null, ['class'=> 'form-control', 'placeholder' => 'Fill in with the text of the image', 'required', 'autocomplete' => 'off']) !!}
-                                    </div>
-                                </div>
-                                <span class="text-danger">{!! $errors->first('captcha_text') !!}</span>
-                            </div>
+
                             @endif
                         </div>
-                        <input type="submit" value="Register" class="btn btn-info btn-block">
-                    </form>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                        {!! link_to_route('user.login','Already have an account? Login here') !!}
+                        <input type="submit" value="{!! trans('jacopo-front.register') !!}" class="btn btn-info btn-block">
+                        {!! Form::close() !!}
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
+                            {!! link_to_route('user.login', trans('jacopo-front.already_account_login')) !!}
+                        </div>
                     </div>
+
                 </div>
-                </div>
+                <!--end panel body-->
+
             </div>
         </div>
     </div>
-</div>
-  {{-- Js files --}}
-  {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/jquery-1.10.2.min.js') !!}
-  {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/password_strength/strength.js') !!}
 
-  <script>
-    $(document).ready(function() {
-      //------------------------------------
-      // password checking
-      //------------------------------------
-      var password1 		= $('#password1'); //id of first password field
-      var password2		= $('#password2'); //id of second password field
-      var passwordsInfo 	= $('#pass-info'); //id of indicator element
+@stop
 
-      passwordStrengthCheck(password1,password2,passwordsInfo);
+@section('footer_scripts')
 
-      //------------------------------------
-      // captcha regeneration
-      //------------------------------------
+    {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/password_strength/strength.js') !!}
 
-      $("#captcha-gen-button").click(function(e){
-      		e.preventDefault();
+    @parent;
 
-      		$.ajax({
-              url: "/captcha-ajax",
-              method: "POST",
-              headers: { 'X-CSRF-Token' : '{!! csrf_token() !!}' }
-            }).done(function(image) {
-              $("#captcha-img-container").html(image);
-            });
-      	});
-    });
-  </script>
-</body>
-</html>
+@stop

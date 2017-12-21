@@ -149,4 +149,4 @@ class ReminderService {
         return $this->mailer;
     }
 
-} 
+}
