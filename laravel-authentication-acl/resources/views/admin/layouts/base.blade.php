@@ -42,7 +42,6 @@
         {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/jquery-2.2.4.min.js') !!}
         {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/bootstrap-3.3.7.min.js') !!}
 
-        @yield('admin_params')
         @yield('footer_scripts')
         {{-- End footer scripts --}}
     </body>

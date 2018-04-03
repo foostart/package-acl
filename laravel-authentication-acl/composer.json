@@ -11,9 +11,9 @@
   ],
   "authors": [
     {
-      "name": "jacopo",
-      "email": "jacopo@jacopobeschi.com",
-      "homepage": "http://www.jacopobeschi.com"
+      "name": "foostart",
+      "email": "foostart.com@gmail.com",
+      "homepage": "http://www.foostart.com"
     }
   ],
   "license": "MIT",
@@ -22,7 +22,7 @@
     "laravel/framework": "5.4.*",
     "laravelcollective/html" : "5.4.*",
     "intervention/image": "2.*",
-    "foostart/package-sentry": "3.0.7",
+    "foostart/package-sentry": "*",
     "gregwar/captcha": "1.1.1"
   },
   "require-dev": {

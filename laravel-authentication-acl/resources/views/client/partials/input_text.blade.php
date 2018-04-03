@@ -29,7 +29,7 @@
     //icon
     $icon = empty($icon) ? '' : $icon;
     //place hover
-    $placehover = empty($placehover) ? $label : $placehover;
+    $placeholder = empty($placeholder) ? $label : $placeholder;
     //required
     $required = empty($required) ? '' : 'required';
     //errors

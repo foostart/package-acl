@@ -23,7 +23,7 @@ class PermissionRepositorySearchFilter
     private $valid_ordering_fields = ['description', 'permission', 'url'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['description', 'permission', 'url'];
+    private $valid_fields_filter = ['description', 'permission', 'url', 'category_id'];
 
     public function __construct($per_page = 5)
     {
@@ -88,6 +88,11 @@ class PermissionRepositorySearchFilter
                         case 'description':
                             if (!empty($value)) {
                                 $q = $q->where($this->permissions_table_name . '.description', 'LIKE', "%{$value}%");
+                            }
+                            break;
+                        case 'category_id':
+                            if (!empty($value)) {
+                                $q = $q->where($this->permissions_table_name . '.category_id', '=', "$value");
                             }
                             break;
                         case 'permission':

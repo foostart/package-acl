@@ -16,7 +16,7 @@ class CanSee {
         if(!$route_helper->hasPermForRoute(Route::currentRouteName())) {
 
             App::abort('401');
-            
+
         }
         return $next($request);
     }

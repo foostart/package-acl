@@ -12,15 +12,31 @@ View::composer('laravel-authentication-acl::*', function ($view)
     //application name
     $view->with('app_name', \Config::get('app.name'));
 
+});
+
+View::composer('laravel-authentication-acl::admin.user.*', function ($view)
+{
     //Load category
     $obj_category = new FooCategory();
     $params = Request::all();
-    $params['context'] = $obj_category->getContextKey('users');
+    $params['_key'] = $obj_category->getContextKey('user/department');
     $pluck_select_category = $obj_category->pluckSelect($params);
 
     $view->with('pluck_select_category', $pluck_select_category);
+
 });
 
+View::composer('laravel-authentication-acl::admin.permission.*', function ($view)
+{
+    //Load category
+    $obj_category = new FooCategory();
+    $params = Request::all();
+    $params['_key'] = $obj_category->getContextKey('admin/permissions');
+    $pluck_select_category = $obj_category->pluckSelect($params);
+   
+    $view->with('pluck_select_category', $pluck_select_category);
+
+});
 /**
  * if the site uses gravatar for avatar handling
  */
