@@ -16,10 +16,8 @@
       "homepage": "http://www.foostart.com"
     }
   ],
-  "license": "MIT",
-  "type": "project",
+  "license": "MIT",  
   "require": {
-    "laravel/framework": "5.4.*",
     "laravelcollective/html" : "5.4.*",
     "intervention/image": "2.*",
     "foostart/package-sentry": "*",
