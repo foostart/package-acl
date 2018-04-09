@@ -19,7 +19,7 @@ View::composer('laravel-authentication-acl::admin.user.*', function ($view)
     //Load category
     $obj_category = new FooCategory();
     $params = Request::all();
-    $params['_key'] = $obj_category->getContextKey('user/department');
+    $params['_key'] = $obj_category->getContextKeyByRef('user/department');
     $pluck_select_category = $obj_category->pluckSelect($params);
 
     $view->with('pluck_select_category', $pluck_select_category);
@@ -31,9 +31,9 @@ View::composer('laravel-authentication-acl::admin.permission.*', function ($view
     //Load category
     $obj_category = new FooCategory();
     $params = Request::all();
-    $params['_key'] = $obj_category->getContextKey('admin/permissions');
+    $params['_key'] = $obj_category->getContextKeyByRef('admin/permissions');
     $pluck_select_category = $obj_category->pluckSelect($params);
-   
+
     $view->with('pluck_select_category', $pluck_select_category);
 
 });
