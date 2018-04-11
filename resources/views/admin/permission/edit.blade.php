@@ -23,10 +23,15 @@ Admin area: edit permission
                 <h3 class="panel-title bariol-thin">{!! isset($permission->id) ? '<i class="fa fa-pencil"></i> Edit' : '<i class="fa fa-lock"></i> Create' !!} permission</h3>
             </div>
             <div class="panel-body">
-                {!! Form::model($permission, [ 'url' => [URL::route('permissions.edit'), $permission->id], 'method' => 'post'] )  !!}
-
-                <!-- DESCRIPTION TEXT FIELD -->
-                <div class="form-group">
+               {!! Form::model($permission, [ 'url' => [URL::route('permissions.edit'), $permission->id], 'method' => 'post'] )  !!}
+               {!! Form::hidden('id') !!}
+               <a href="{!! URL::route('permissions.delete',['id' => $permission->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
+               {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
+               {!! Form::close() !!}
+               <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <!-- DESCRIPTION TEXT FIELD -->
+                  <div class="form-group">
                     {!! Form::label('description','Description: *') !!}
                     {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'permission description', 'id' => 'slugme']) !!}
                 </div>
@@ -45,7 +50,8 @@ Admin area: edit permission
                     {!! Form::text('url', null, ['class' => 'form-control', 'placeholder' => 'link url']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('url') !!}</span>
-
+            </div>
+            <div class="col-md-6 col-xs-12">
                 <!-- OVERVIEW TEXT FIELD -->
                 <div class="form-group">
                     {!! Form::label('overview','Overview: ') !!}
@@ -59,14 +65,12 @@ Admin area: edit permission
                     {!! Form::select('category_id', $pluck_select_category, null, ["class" => "form-control"]) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('category_id') !!}</span>
-
-                {!! Form::hidden('id') !!}
-                <a href="{!! URL::route('permissions.delete',['id' => $permission->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
-                {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
-                {!! Form::close() !!}
             </div>
         </div>
+        
     </div>
+</div>
+</div>
 </div>
 @stop
 
