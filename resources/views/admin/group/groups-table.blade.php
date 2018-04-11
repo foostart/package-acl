@@ -1,8 +1,3 @@
-<div class="row margin-bottom-12">
-    <div class="col-md-12">
-        <a href="{!! URL::route('groups.edit') !!}" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New</a>
-    </div>
-</div>
 
 @if( ! $groups->isEmpty() )
 <table class="table table-hover">

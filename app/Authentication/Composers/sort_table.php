@@ -55,6 +55,7 @@ View::composer(['laravel-authentication-acl::admin.permission.list'], function (
     //List of sorting
     $orders = [
         '' => trans('jacopo-admin.no-selected'),
+        'id' => trans('jacopo-admin.order'),
         'description' => trans('jacopo-admin.permission-description'),
         'permission' => trans('jacopo-admin.permission-name'),
         'url' => trans('jacopo-admin.permission-url'),
