@@ -27,7 +27,7 @@
                         <tr>
                             <!-- ORDER -->
                             <?php $name = 'id' ?>
-                            <th class="hidden-xs">#
+                            <th class="hidden-xs">Order
                                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                     @if($sorting['items'][$name] == 'asc')
                                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
