@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-lg-10 col-md-8 col-sm-8">
             </div>
-         
+
         </div>
 
         <!--TABLE-->
@@ -27,14 +27,14 @@
                         <tr>
                             <!-- ORDER -->
                             <?php $name = 'id' ?>
-                            <th class="hidden-xs">Order
+                            <th  class="hidden-xs">#
                                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                     @if($sorting['items'][$name] == 'asc')
-                                    <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
                                     @elseif($sorting['items'][$name] == 'desc')
-                                    <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                                    <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
                                     @else
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
                                     @endif
                                 </a>
                             </th>
