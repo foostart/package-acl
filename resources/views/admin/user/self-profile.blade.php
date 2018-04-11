@@ -34,8 +34,11 @@ Admin area: Edit user profile
                         @endif
                         <h4><i class="fa fa-cubes"></i> User data</h4>
                         {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
-                        <!-- password text field -->
-                        <div class="form-group">
+               
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                         <!-- password text field -->
+                                 <div class="form-group">
                             {!! Form::label('password','new password:') !!}
                             {!! Form::password('password', ['class' => 'form-control']) !!}
                         </div>
@@ -69,12 +72,15 @@ Admin area: Edit user profile
                             {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('phone') !!}</span>
-                        <!-- state text field -->
+                                   <!-- state text field -->
                         <div class="form-group">
                             {!! Form::label('state','State: ') !!}
                             {!! Form::text('state', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('state') !!}</span>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                         
                         <!-- var text field -->
                         <div class="form-group">
                             {!! Form::label('var','Vat: ') !!}
@@ -128,6 +134,8 @@ Admin area: Edit user profile
                         {!! Form::submit('Save',['class' =>'btn btn-info pull-right margin-bottom-30']) !!}
                         {!! Form::close() !!}
                     </div>
+                            </div>
+                        </div>
                     <div class="col-md-6 col-xs-12">
 
                         @if($can_add_fields)

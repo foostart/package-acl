@@ -48,8 +48,8 @@
             </div>
             <span class="text-danger">{!! $errors->first('last_name') !!}</span>
 
-            <!-- sex text field -->
-            <div class="form-group">
+          <!-- sex text field -->
+          <div class="form-group">
                 {!! Form::label('sex','Sex:') !!}
                 <?php $sex_values = trans('foo-admin.sex'); ?>
                 {!! Form::select('sex', $sex_values, $request->get('sex',''), ["class" => "form-control"]) !!}
@@ -63,11 +63,11 @@
             </div>
             <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
-            <!-- code text field -->
-            <div class="form-group">
+                <!-- code text field -->
+                <div class="form-group">
                 {!! Form::label('code','User code:') !!}
                     {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => 'user code']) !!}
-            </div>
+                 </div>
             <span class="text-danger">{!! $errors->first('code') !!}</span>
 
             <!--active select field-->

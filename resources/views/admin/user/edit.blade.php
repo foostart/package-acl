@@ -35,6 +35,11 @@ Admin area: edit user
                     {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                     {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
+                       {!! Form::hidden('id') !!}
+                    {!! Form::hidden('form_name','user') !!}
+                    <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete user</a>
+                    {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
+                    
                     <!-- email text field -->
                     <div class="form-group">
                         {!! Form::label('email','Email: *') !!}
@@ -61,11 +66,7 @@ Admin area: edit user
                         {!! Form::label("banned","Banned: ") !!}
                         {!! Form::select('banned', ["1" => "Yes", "0" => "No"], (isset($user->banned) && $user->banned) ? $user->banned : "0", ["class"=> "form-control"] ) !!}
                     </div>
-                    {!! Form::hidden('id') !!}
-                    {!! Form::hidden('form_name','user') !!}
-                    <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete user</a>
-                    {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
-                    {!! Form::close() !!}
+                 
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <h4><i class="fa fa-users"></i> Groups</h4>

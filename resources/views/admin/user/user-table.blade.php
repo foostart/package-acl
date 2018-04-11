@@ -118,7 +118,7 @@
                             ?>
                             @foreach($users as $user)
                             <tr>
-                                <td><?php echo $index; $index++; ?></td>
+                                <td>{!! $user->id !!}</td>
                                 <td>{!! $user->email !!}</td>
                                 <td class="hidden-xs">{!! $user->first_name !!}</td>
                                 <td class="hidden-xs">{!! $user->last_name !!}</td>
