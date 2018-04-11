@@ -37,6 +37,7 @@ View::composer(['laravel-authentication-acl::admin.group.list'], function ($view
     //List of sorting
     $orders = [
         '' => trans('jacopo-admin.no-selected'),
+        'id' => trans('jacopo-admin.order'),
         'name' => trans('jacopo-admin.group-name'),
         'permissions' => trans('jacopo-admin.group-permissions'),
     ];
