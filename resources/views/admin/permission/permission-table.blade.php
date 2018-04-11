@@ -1,8 +1,3 @@
-<div class="row">
-    <div class="col-md-12 margin-bottom-12">
-        <a href="{!! URL::route('permissions.edit') !!}" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New</a>
-    </div>
-</div>
 @if( ! $permissions->isEmpty() )
     <table class="table table-hover">
         <thead>
