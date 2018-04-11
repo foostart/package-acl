@@ -85,8 +85,11 @@
             <!--group select field-->
             <div class="form-group">
                 {!! Form::label('group_id', 'Group: ') !!}
-                <?php $group_values[""] = "Any"; ?>
-                {!! Form::select('group_id', $group_values, $request->get('group_id',''), ["class" => "form-control"]) !!}
+                <?php 
+                    $array[] = 'Any'; 
+                    $array_groups = $array + $group_values;
+                    ?>
+                {!! Form::select('group_id', $array_groups, $request->get('group_id',''), ["class" => "form-control"]) !!}
             </div>
 
            @include('laravel-authentication-acl::admin.layouts.partials.sorting')
