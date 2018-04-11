@@ -20,10 +20,10 @@ class GroupRepositorySearchFilter
     private $groups_table_name = "groups";
     private $profile_table_name = "user_profile";
 
-    private $valid_ordering_fields = ['name', 'permissions'];
+    private $valid_ordering_fields = ['name', 'permissions', 'id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['name', 'permissions'];
+    private $valid_fields_filter = ['name', 'permissions', 'id'];
 
     public function __construct($per_page = 5)
     {
