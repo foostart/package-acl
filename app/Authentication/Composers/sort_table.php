@@ -17,13 +17,13 @@ View::composer(['laravel-authentication-acl::admin.user.list'], function ($view)
 
     //List of sorting
     $orders = [
-        '' => trans('jacopo-admin.no-selected'),
-         'id' => trans('jacopo-admin.order'),
-        'email' => trans('jacopo-admin.email'),
-        'first_name' => trans('jacopo-admin.first-name'),
-        'last_name' => trans('jacopo-admin.last-name'),
-        'active' => trans('jacopo-admin.active'),
-        'last_login' => trans('jacopo-admin.last-login')
+        '' => trans('jacopo-admin.order.no-selected'),
+        'id' => trans('jacopo-admin.order.name'),
+        'email' => trans('jacopo-admin.labels.email'),
+        'first_name' => trans('jacopo-admin.labels.first-name'),
+        'last_name' => trans('jacopo-admin.labels.last-name'),
+        'active' => trans('jacopo-admin.labels.active'),
+        'last_login' => trans('jacopo-admin.labels.last-login')
     ];
     $sortTable = new SortTable($orders);
 
@@ -37,10 +37,10 @@ View::composer(['laravel-authentication-acl::admin.group.list'], function ($view
 
     //List of sorting
     $orders = [
-        '' => trans('jacopo-admin.no-selected'),
-        'id' => trans('jacopo-admin.order'),
-        'name' => trans('jacopo-admin.group-name'),
-        'permissions' => trans('jacopo-admin.group-permissions'),
+        '' => trans('jacopo-admin.order.no-selected'),
+        'id' => trans('jacopo-admin.order.name'),
+        'name' => trans('jacopo-admin.sortings.group-name'),
+        'permissions' => trans('jacopo-admin.sortings.group-permissions'),
     ];
     $sortTable = new SortTable($orders);
 
@@ -54,11 +54,11 @@ View::composer(['laravel-authentication-acl::admin.permission.list'], function (
 
     //List of sorting
     $orders = [
-        '' => trans('jacopo-admin.no-selected'),
-        'id' => trans('jacopo-admin.order'),
-        'description' => trans('jacopo-admin.permission-description'),
-        'permission' => trans('jacopo-admin.permission-name'),
-        'url' => trans('jacopo-admin.permission-url'),
+        '' => trans('jacopo-admin.order.no-selected'),
+        'id' => trans('jacopo-admin.order.name'),
+        'description' => trans('jacopo-admin.sortings.permission-description'),
+        'permission' => trans('jacopo-admin.sortings.permission-name'),
+        'url' => trans('jacopo-admin.sortings.permission-url'),
     ];
     $sortTable = new SortTable($orders);
 

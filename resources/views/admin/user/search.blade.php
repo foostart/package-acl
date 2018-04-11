@@ -2,15 +2,15 @@
     <!--Heading-->
     <div class="panel-heading">
         <h3 class="panel-title bariol-thin">
-            <i class="fa fa-search"></i>{!! trans('jacopo-admin.search-user') !!}
+            <i class="fa fa-search"></i>{!! trans('jacopo-admin.search.user') !!}
         </h3>
     </div>
 
     <div class="panel-body">
         {!! Form::open(['route' => 'users.list','method' => 'get']) !!}
         <div class="form-group">
-            <a href="{!! URL::route('users.list') !!}" class="btn btn-default search-reset">{!! trans('jacopo-admin.search-btn-reset') !!}</a>
-            {!! Form::submit(trans('jacopo-admin.search-btn-submit'), ["class" => "btn btn-info", "id" => "search-submit"]) !!}
+            <a href="{!! URL::route('users.list') !!}" class="btn btn-default search-reset">{!! trans('jacopo-admin.buttons.reset') !!}</a>
+            {!! Form::submit(trans('jacopo-admin.search.btn-submit'), ["class" => "btn btn-info", "id" => "search-submit"]) !!}
         </div>
 
         <!--MAIN FILTERS-->
@@ -30,7 +30,7 @@
 
         <!--/END MAIN FILTERS-->
 
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#more_filter">{!! trans('jacopo-admin.search-btn-advance') !!}</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#more_filter">{!! trans('jacopo-admin.search.btn-advance') !!}</button>
 
         <div id='more_filter' class='collapse'>
 

@@ -3,7 +3,7 @@
     <div class="panel-heading">
         <h3 class="panel-title bariol-thin">
             <i class="fa fa-user"></i>
-            {!! $request->all() ? trans('jacopo-admin.users-search') : trans('jacopo-admin.users-list') !!}
+            {!! $request->all() ? trans('jacopo-admin.users-search') : trans('jacopo-admin.sidebars.users-list') !!}
         </h3>
     </div>
 
@@ -43,7 +43,7 @@
 
                             <!-- EMAIL -->
                             <?php $name = 'email' ?>
-                            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
+                            <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                     @if($sorting['items'][$name] == 'asc')
                                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -57,7 +57,7 @@
 
                             <!-- FIRST NAME -->
                             <?php $name = 'first_name' ?>
-                            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
+                            <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                 <a href='{!! $sorting["url"][$name] !!}' class='tb-first-name' data-order='asc'>
                                     @if($sorting['items'][$name] == 'asc')
                                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -71,7 +71,7 @@
 
                             <!-- LAST NAME -->
                             <?php $name = 'last_name' ?>
-                            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
+                            <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                 <a href='{!! $sorting["url"][$name] !!}' class='tb-last-name' data-order='asc'>
                                     @if($sorting['items'][$name] == 'asc')
                                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -85,7 +85,7 @@
 
                             <!-- ACTIVE -->
                             <?php $name = 'active' ?>
-                            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
+                            <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                 <a href='{!! $sorting["url"][$name] !!}' class='tb-active' data-order='asc'>
                                     @if($sorting['items'][$name] == 'asc')
                                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -99,7 +99,7 @@
 
                             <!-- LAST LOGIN -->
                             <?php $name = 'last_login' ?>
-                            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
+                            <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                 <a href='{!! $sorting["url"][$name] !!}' class='tb-last-login' data-order='asc'>
                                     @if($sorting['items'][$name] == 'asc')
                                     <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
@@ -112,7 +112,7 @@
                             </th>
 
                             <!-- OPERATION -->
-                            <th>{!! trans('jacopo-admin.operations') !!}</th>
+                            <th>{!! trans('jacopo-admin.menu.operations') !!}</th>
                         </tr>
                     </thead>
 

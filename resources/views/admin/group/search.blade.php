@@ -5,8 +5,8 @@
     <div class="panel-body">
         {!! Form::open(['route' => 'groups.list','method' => 'get']) !!}
         <div class="form-group">
-            <a href="{!! URL::route('groups.list') !!}" class="btn btn-default search-reset">{!! trans('jacopo-admin.search-btn-reset') !!}</a>
-            {!! Form::submit(trans('jacopo-admin.search-btn-submit'), ["class" => "btn btn-info", "id" => "search-submit"]) !!}
+            <a href="{!! URL::route('groups.list') !!}" class="btn btn-default search-reset">{!! trans('jacopo-admin.buttons.reset') !!}</a>
+            {!! Form::submit(trans('jacopo-admin.buttons.submit'), ["class" => "btn btn-info", "id" => "search-submit"]) !!}
         </div>
         <!-- name text field -->
         <div class="form-group">

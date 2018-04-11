@@ -18,7 +18,7 @@ View::composer('laravel-authentication-acl::admin.layouts.*', function ($view)
 View::composer(['laravel-authentication-acl::admin.dashboard.*'], function ($view)
 {
     $view->with('sidebar_items', [
-            trans('jacopo-admin.dashboard') => [
+            trans('jacopo-admin.menu.dashboard') => [
                     'url'  => URL::route('dashboard.default'),
                     'icon' => '<i class="fa fa-tachometer"></i>'
             ]
@@ -40,15 +40,15 @@ View::composer([
     $key = $fooCategory->getContextKeyByRef('user/department');
 
     $view->with('sidebar_items', [
-            trans('jacopo-admin.users-list') => [
+            trans('jacopo-admin.sidebars.users-list') => [
                     'url'  => URL::route('users.list'),
                     'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            trans('jacopo-admin.add-user')   => [
+            trans('jacopo-admin.sidebars.add-user')   => [
                     'url'  => URL::route('users.edit'),
                     'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('jacopo-admin.user-department')   => [
+            trans('jacopo-admin.sidebars.user-department')   => [
                     'url'  => URL::route('categories.list',['_key='.$key]),
                     'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
@@ -60,11 +60,11 @@ View::composer([
 View::composer(['laravel-authentication-acl::admin.group.*'], function ($view)
 {
     $view->with('sidebar_items', [
-            trans('jacopo-admin.groups-list') => [
+            trans('jacopo-admin.sidebars.groups-list') => [
                     'url'  => URL::route('groups.list'),
                     'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            trans('jacopo-admin.add-group')   => [
+            trans('jacopo-admin.sidebars.add-group')   => [
                     'url'  => URL::route('groups.edit'),
                     'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ]
@@ -78,15 +78,15 @@ View::composer(['laravel-authentication-acl::admin.permission.*'], function ($vi
     $fooCategory = new FooCategory();
     $key = $fooCategory->getContextKeyByRef('admin/permissions');
     $view->with('sidebar_items', [
-            trans('jacopo-admin.permissions-list') => [
+            trans('jacopo-admin.sidebars.permissions-list') => [
                     'url'  => URL::route('permissions.list'),
                     'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            trans('jacopo-admin.add-permission')   => [
+            trans('jacopo-admin.sidebars.add-permission')   => [
                     'url'  => URL::route('permissions.edit'),
                     'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('jacopo-admin.category')   => [
+            trans('jacopo-admin.sidebars.category')   => [
                     'url'  => URL::route('categories.list',['_key='.$key]),
                     'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],

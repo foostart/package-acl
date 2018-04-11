@@ -56,8 +56,8 @@ View::composer('laravel-authentication-acl::*', function ($view)
 {
     //Order by
     $order_by = [
-        'asc' => trans('jacopo-admin.order-by-asc'),
-        'desc' => trans('jacopo-admin.order-by-desc'),
+        'asc' => trans('jacopo-admin.order.by-asc'),
+        'desc' => trans('jacopo-admin.order.by-desc'),
     ];
     $view->with('order_by', $order_by);
 });

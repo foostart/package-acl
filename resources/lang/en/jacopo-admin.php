@@ -14,6 +14,10 @@ return [
             'groups' => 'Groups',
             'permissions' => 'Permissions',
             'operations' => 'Operations',
+            'contexts'  => 'Contextes',
+            'samples'   => 'Samples',
+            'slideshow' => 'SlideShow',
+            'posts'     => 'Posts',
         ],
 
 
@@ -72,7 +76,6 @@ return [
             'user-edit' => 'Edit user page',
             'permission-list' => 'List of permissions',
             'permission-edit' => 'Edit permission page',
-            'group-list' => 'List of groups',
             'group-edit' => 'Edit group page',
         ],
 
@@ -93,9 +96,14 @@ return [
         'sidebars' => [
             'users-list' => 'Users list',
             'add-user'  => 'Add user',
+            'groups-list' => 'List of groups',
+            'add-group' => 'Add group',
             'users-search' => 'Users search',
             'user-add-new' => 'Add user',
             'user-department' => 'Department',
+            'permissions-list' => 'List of permissions',
+            'add-permission' => 'Add permission',
+            'category' => 'Category',
         ],
 
 
@@ -131,13 +139,16 @@ return [
         */
         'labels' => [
             'email' => 'Email',
-            'first-name' => 'First name',
+            'first_name' => 'First name',
             'last_name' => 'Last name',
             'full-name' => 'Full name',
             'active' => 'Active',
-            'last-login' => 'Last login',
+            'last_login' => 'Last login',
             'sorting' => 'Sorting',
         ],
+
+
+
 
 
         /***********************************************************************
@@ -171,5 +182,45 @@ return [
             'yes' => 'Yes',
             'no' => 'No',
             'any' => 'Any',
-        ]
+        ],
+        
+
+
+
+        
+        /***********************************************************************
+        |-----------------------------------------------------------------------
+        | SORTING
+        |-----------------------------------------------------------------------
+        |
+        */
+        'sortings' => [
+            'group-name' => 'Group name',
+            'group-permissions' => 'Permissions',
+            'permission-description' => 'Description',
+            'permission-code' => 'Permission code',
+            'permission-name' => 'Permission name',
+            'permission-url' => 'URL',
+        ],
+                
+
+
+
+        
+        /***********************************************************************
+        |-----------------------------------------------------------------------
+        | TABLE
+        |-----------------------------------------------------------------------
+        |User
+        |Group
+        |Pemission
+        */
+        'tables' => [
+            'permission-description' => 'Description',
+            'permission-code' => 'Permission code',
+            'permission-name' => 'Permission name',
+            'permission-url' => 'URL',
+            'group-name' => 'Group name',
+            'group-permissions' => 'Permissions',
+        ],
 ];
