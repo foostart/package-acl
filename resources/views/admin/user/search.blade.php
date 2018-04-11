@@ -78,18 +78,18 @@
 
             <!--banned select field-->
             <div class="form-group">
+                <?php $banned = ['' => trans('jacopo-admin.banned.any'), 1 => trans('jacopo-admin.banned.any'), 0 => trans('jacopo-admin.banned.any')]; ?>
                 {!! Form::label('banned', 'Banned: ') !!}
-                {!! Form::select('banned', ['' => 'Any', 1 => 'Yes', 0 => 'No'], $request->get('banned',''), ["class" => "form-control"]) !!}
+                {!! Form::select('banned', $banned, $request->get('banned',''), ["class" => "form-control"]) !!}
             </div>
 
             <!--group select field-->
             <div class="form-group">
                 {!! Form::label('group_id', 'Group: ') !!}
-                <?php 
-                    $array[] = 'Any'; 
-                    $array_groups = $array + $group_values;
+                <?php
+                    $group_values = [''=> trans('jacopo-admin.form.any')] + $group_values;
                     ?>
-                {!! Form::select('group_id', $array_groups, $request->get('group_id',''), ["class" => "form-control"]) !!}
+                {!! Form::select('group_id', $group_values, $request->get('group_id',''), ["class" => "form-control"]) !!}
             </div>
 
            @include('laravel-authentication-acl::admin.layouts.partials.sorting')
