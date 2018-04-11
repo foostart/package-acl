@@ -19,7 +19,9 @@
         <!--TABLE-->
         <div class="row">
             <div class="col-md-12">
+	    
                 @if(! $users->isEmpty() )
+		<div class="table-responsive"> 
                 <table class="table table-hover">
 
                     <!--TITLE-->
@@ -140,6 +142,7 @@
                     </tbody>
                     @endforeach
                 </table>
+  </div>
                 <div class="paginator">
                     {!! $users->appends($request->except(['page']) )->render() !!}
                 </div>
