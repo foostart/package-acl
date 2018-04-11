@@ -31,7 +31,7 @@
                         <thead>
                             <tr>
                                 <!-- ORDER -->
-                                <th>{!! trans('jacopo-admin.order') !!}
+                                <th>{!! trans('jacopo-admin.order.name') !!}
                                     <a href='#' class='tb-order'>
                                     </a>
                                 </th>
