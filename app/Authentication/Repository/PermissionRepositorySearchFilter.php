@@ -20,10 +20,10 @@ class PermissionRepositorySearchFilter
     private $groups_table_name = "groups";
     private $profile_table_name = "user_profile";
 
-    private $valid_ordering_fields = ['description', 'permission', 'url'];
+    private $valid_ordering_fields = ['description', 'permission', 'url','id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['description', 'permission', 'url', 'category_id'];
+    private $valid_fields_filter = ['description', 'permission', 'url', 'category_id','id'];
 
     public function __construct($per_page = 5)
     {
