@@ -1,175 +1,42 @@
 <?php
 
 return [
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | MAIN MENU ADMIN
-        |-----------------------------------------------------------------------
-        | Top menu
-        |
-        */
-        'menu' => [
-            'dashboard' => 'Dashboard',
-            'users' => 'Users',
-            'groups' => 'Groups',
-            'permissions' => 'Permissions',
-            'operations' => 'Operations',
-        ],
 
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | ORDERS
-        |-----------------------------------------------------------------------
-        |
-        */
-        'order' => [
-            'name' => 'Order',
-            'no-selected' => 'No selected',
-            'by-asc' => 'ASC',
-            'by-desc' => 'DESC',
-        ],
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | BUTTONS
-        |-----------------------------------------------------------------------
-        | List of buttons
-        |
-        */
-        'buttons' => [
-            'add' => 'Add',
-            'reset' => 'Reset',
-            'submit'=> 'Submit',
-            'delete' => 'Delete',
-        ],
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | PAGES
-        |-----------------------------------------------------------------------
-        | User
-        | Permission
-        | Group
-        |
-        |
-        */
-
-        'pages' => [
-            'user-list' => 'List of users',
-            'user-edit' => 'Edit user page',
-            'permission-list' => 'List of permissions',
-            'permission-edit' => 'Edit permission page',
-            'group-list' => 'List of groups',
-            'group-edit' => 'Edit group page',
-        ],
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | SIDEBARDS
-        |-----------------------------------------------------------------------
-        | User
-        | Permission
-        | Group
-        |
-        |
-        */
-        'sidebars' => [
-            'users-list' => 'Users list',
-            'add-user'  => 'Add user',
-            'users-search' => 'Users search',
-            'user-add-new' => 'Add user',
-            'user-department' => 'Department',
-        ],
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | SEARCH FORM
-        |-----------------------------------------------------------------------
-        | User search
-        | Group search
-        | Permission search
-        |
-        */
-        'search' => [
-            'user' => 'User search',
-            'permission' => 'Permission search',
-            'group' => 'Group search',
-            'btn-reset'     => 'Reset',
-            'btn-submit'     => 'Search',
-            'btn-advance' => 'Search advance',
-        ],
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | LABLES
-        |-----------------------------------------------------------------------
-        | Elements in form
-        | Columns in table
-        |
-        */
-        'labels' => [
-            'email' => 'Email',
-            'first-name' => 'First name',
-            'last_name' => 'Last name',
-            'full-name' => 'Full name',
-            'active' => 'Active',
-            'last-login' => 'Last login',
-            'sorting' => 'Sorting',
-        ],
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | MESSAGES
-        |-----------------------------------------------------------------------
-        |
-        */
-        'messages' => [
-            'message-last-login' => 'not logged yet.',
-            'user-delete' => 'Are you sure to delete this item?',
-        ],
-
-
-
-
-    
         /*
         |-----------------------------------------------------------------------
-        | FORM
+        | User page
         |-----------------------------------------------------------------------
-        | All the elements in form
-        |
-        |
+        | Menu item
+        | List of users
+        | Edit user
+        | Search user
         |
         */
-        'form' => [
-            'any' => 'Any',
-        ],
-        'banned' => [
-            'yes' => 'Yes',
-            'no' => 'No',
-            'any' => 'Any',
-        ]
+
+        /*
+        | Page title
+         */
+        'page-user' => 'List of users::Admin page',
+
+        /*
+        | Menu item
+        */
+        'users-list' => 'Users list',
+        'add-user'  => 'Add user',
+        'users-search' => 'Users search',
+        'user-add-new' => 'Add user',
+
+	/*
+	| Search form
+	*/
+	'search-user' => 'User search',
+	'search-btn-reset'     => 'Reset',
+	'search-btn-submit'     => 'Search',
+        'search-btn-advance' => 'Search advance',
+
+        /*
+        | Message
+         */
+        'message-last-login' => 'not logged yet.',
+        'user-delete' => 'Are you sure to delete this item?',
 ];

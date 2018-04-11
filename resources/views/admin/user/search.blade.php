@@ -51,17 +51,23 @@
           <!-- sex text field -->
           <div class="form-group">
                 {!! Form::label('sex','Sex:') !!}
-                <?php $sex_values = trans('foo-admin.sex'); ?>
+                <?php $sex_values = trans('foo-admin.sex');
+                ?>
                 {!! Form::select('sex', $sex_values, $request->get('sex',''), ["class" => "form-control"]) !!}
             </div>
             <span class="text-danger">{!! $errors->first('sex') !!}</span>
 
             <!-- category_id text field -->
             <div class="form-group">
-                {!! Form::label('category_id','Category:') !!}
-                {!! Form::select('category_id', $pluck_select_category, '', ["class" => "form-control"]) !!}
-            </div>
-            <span class="text-danger">{!! $errors->first('category_id') !!}</span>
+                            {!! Form::label('category_id','Category:') !!}
+                            {!! Form::select('category_id', $pluck_select_category, '', ["class" => "form-control"]) !!}
+                        </div>
+                        <span class="text-danger">{!! $errors->first('category_id') !!}</span>
+
+                    @include('laravel-authentication-acl::admin.layouts.partials.sorting')
+                    </div>
+                    {!! Form::close() !!}
+                </div>
 
                 <!-- code text field -->
                 <div class="form-group">
@@ -78,24 +84,18 @@
 
             <!--banned select field-->
             <div class="form-group">
-                <?php $banned = ['' => trans('jacopo-admin.banned.any'), 1 => trans('jacopo-admin.banned.any'), 0 => trans('jacopo-admin.banned.any')]; ?>
                 {!! Form::label('banned', 'Banned: ') !!}
-                {!! Form::select('banned', $banned, $request->get('banned',''), ["class" => "form-control"]) !!}
+                {!! Form::select('banned', ['' => 'Any', 1 => 'Yes', 0 => 'No'], $request->get('banned',''), ["class" => "form-control"]) !!}
             </div>
 
             <!--group select field-->
             <div class="form-group">
                 {!! Form::label('group_id', 'Group: ') !!}
-                <?php
-                    $group_values = [''=> trans('jacopo-admin.form.any')] + $group_values;
-                    ?>
-                {!! Form::select('group_id', $group_values, $request->get('group_id',''), ["class" => "form-control"]) !!}
+                <?php 
+                    $array[] = 'Any'; 
+                    $array_groups = array_merge($array, $group_values)?>
+                {!! Form::select('group_id',$array_groups, $request->get('group_id',''), ["class" => "form-control"]) !!}
             </div>
-
-           @include('laravel-authentication-acl::admin.layouts.partials.sorting')
-        </div>
-        {!! Form::close() !!}
-    </div>
 </div>
 
 @section('footer_scripts')

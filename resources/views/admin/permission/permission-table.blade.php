@@ -1,20 +1,15 @@
-@if( ! $permissions->isEmpty() )
+<div class="row">
+    <div class="col-md-12 margin-bottom-12">
+        <a href="{!! URL::route('permissions.edit') !!}" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New</a>
+    </div>
+</div>
+<!--if( ! $permissions->isEmpty() )-->
+@if(  count($permissions) > 0 )
     <table class="table table-hover">
         <thead>
         <tr>
             <!-- ORDER -->
-            <?php $name = 'id' ?>
-            <th width=10% class="hidden-xs">#
-                <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
-                @if($sorting['items'][$name] == 'asc')
-                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-                @elseif($sorting['items'][$name] == 'desc')
-                    <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
-                @else
-                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-                @endif
-                </a>
-            </th>
+            <th>{!! trans('jacopo-admin.order') !!}</th>
 
             <!-- Permission description -->
             <?php $name = 'description' ?>
@@ -30,33 +25,7 @@
                 </a>
             </th>
 
-            <!-- Permission name -->
-            <?php $name = 'permission' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name.'-name') !!}
-                <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
-                @if($sorting['items'][$name] == 'asc')
-                    <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-                @elseif($sorting['items'][$name] == 'desc')
-                    <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-                @else
-                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                @endif
-                </a>
-            </th>
-
-            <!-- URL -->
-            <?php $name = 'url' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.permission-'.$name) !!}
-                <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
-                @if($sorting['items'][$name] == 'asc')
-                    <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-                @elseif($sorting['items'][$name] == 'desc')
-                    <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-                @else
-                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                @endif
-                </a>
-            </th>
+           
 
             <!-- OPERATION -->
             <th>{!! trans('jacopo-admin.operations') !!}</th>
@@ -64,14 +33,14 @@
         </thead>
         <tbody>
             <?php
-                $index = $permissions->perPage() * ($permissions->currentPage() - 1) + 1;
+               // $index = $permissions->perPage() * ($permissions->currentPage() - 1) + 1;
             ?>
             @foreach($permissions as $permission)
             <tr>
-                <td><?php echo $permission->id ?></td>
+                <!-- <td><?php //echo $index; $index++; ?></td>-->
                 <td style="width:30%">{!! $permission->description !!}</td>
                 <td style="width:30%">{!! $permission->permission !!}</td>
-                <td style="width:30%">{!! $permission->url !!}</td>
+                
                 <td style="witdh:10%">
                     @if(! $permission->protected)
                         <a href="{!! URL::route('permissions.edit', ['id' => $permission->id]) !!}">
@@ -89,8 +58,8 @@
             @endforeach
         </tbody>
     </table>
-    <div class="paginator">
-    {!! $permissions->appends($request->except(['page']) )->render() !!}
+     <div class="paginator">
+    
     </div>
 @else
 <span class="text-warning"><h5>No permissions found.</h5></span>
