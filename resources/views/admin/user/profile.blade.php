@@ -90,9 +90,7 @@ Admin area: Edit user profile
                         <!-- sex text field -->
                         <div class="form-group">
                             {!! Form::label('sex','Sex: ') !!}
-                            <?php //$sex_values = trans('foo-admin.sex');
-                                $sex_values = ['Male','Female'];
-                            ?>
+                            <?php $sex_values = trans('foo-admin.sex'); ?>
                             {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('sex') !!}</span>

@@ -35,7 +35,7 @@ return [
   |
   */
 
-  "handle_errors" => false,
+  "handle_errors" => true,
 
   /*
   |--------------------------------------------------------------------------
@@ -79,6 +79,17 @@ return [
 
   "groups_per_page" => 15,
 
+  /*
+  |--------------------------------------------------------------------------
+  | Permissions per page
+  |--------------------------------------------------------------------------
+  |
+  | Set the number of permissions per page to show on admin groups list page
+  |
+  */
+
+  "permissions_per_page" => 15,
+
     /*
    |--------------------------------------------------------------------------
    | Captcha validation on signup
@@ -88,7 +99,8 @@ return [
    |
    */
 
-  "captcha_signup" => true,
+  "captcha_signup" => TRUE,
+  "captcha_login" => FALSE,
 
   /*
    |--------------------------------------------------------------------------

@@ -19,7 +19,6 @@
         <!--TABLE-->
         <div class="row">
             <div class="col-md-12">
-	    
                 @if(! $users->isEmpty() )
 		<div class="table-responsive"> 
                 <table class="table table-hover">
