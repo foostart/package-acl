@@ -22,7 +22,7 @@
 
             <!-- Group name -->
             <?php $name = 'name' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.group-'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.tables.group-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -36,7 +36,7 @@
 
             <!--Group permissions-->
             <?php $name = 'permissions' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.tables.group-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -49,7 +49,7 @@
             </th>
 
             <!-- OPERATION -->
-            <th>{!! trans('jacopo-admin.operations') !!}</th>
+            <th>{!! trans('jacopo-admin.menu.operations') !!}</th>
 
         </tr>
     </thead>

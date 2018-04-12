@@ -18,7 +18,7 @@
 
             <!-- Permission description -->
             <?php $name = 'description' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.permission-'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.tables.permission-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
 
             <!-- Permission name -->
             <?php $name = 'permission' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name.'-name') !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.tables.'.$name.'-name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
 
             <!-- URL -->
             <?php $name = 'url' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.permission-'.$name) !!}
+            <th class="hidden-xs">{!! trans('jacopo-admin.tables.permission-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -59,7 +59,7 @@
             </th>
 
             <!-- OPERATION -->
-            <th>{!! trans('jacopo-admin.operations') !!}</th>
+            <th>{!! trans('jacopo-admin.menu.operations') !!}</th>
         </tr>
         </thead>
         <tbody>
@@ -71,7 +71,7 @@
                 <td><?php echo $permission->id ?></td>
                 <td style="width:30%">{!! $permission->description !!}</td>
                 <td style="width:30%">{!! $permission->permission !!}</td>
-                <td style="width:30%">{!! $permission->url !!}</td>
+                <td style="width:30%">{!! $permission->protected !!}</td>
                 <td style="witdh:10%">
                     @if(! $permission->protected)
                         <a href="{!! URL::route('permissions.edit', ['id' => $permission->id]) !!}">

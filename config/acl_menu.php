@@ -74,6 +74,7 @@ return [
 
             //Contexts
             [
+
                 'name'        => 'category-admin.menus.top-menu-contexts',
                 "route"       => "contexts",
                 "link"        => '/admin/contexts/list',
@@ -89,21 +90,21 @@ return [
 
             //Samples
             [
-                "name"        => 'sample-admin.menus.top-menu',
+                "name"        => 'jacopo-admin.menu.samples',
                 "route"       => "samples",
                 "link"        => '/admin/samples/list',
                 "permissions" => [$admin]
             ],
             //Posts
             [
-                "name"        => 'post-admin.menus.top-menu',
+                "name"        => 'jacopo-admin.menu.posts',
                 "route"       => "posts",
                 "link"        => '/admin/posts',
                 "permissions" => [$admin]
             ],
             //Slideshow
             [
-                "name"        => 'slideshow-admin.menus.top-menu',
+                "name"        => 'jacopo-admin.menu.slideshow',
                 "route"       => "slideshows",
                 "link"        => '/admin/slideshows',
                 "permissions" => [$admin]
