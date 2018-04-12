@@ -20,10 +20,10 @@ View::composer(['laravel-authentication-acl::admin.user.list'], function ($view)
         '' => trans('jacopo-admin.order.no-selected'),
         'id' => trans('jacopo-admin.order.name'),
         'email' => trans('jacopo-admin.labels.email'),
-        'first_name' => trans('jacopo-admin.labels.first-name'),
-        'last_name' => trans('jacopo-admin.labels.last-name'),
+        'first-name' => trans('jacopo-admin.labels.first-name'),
+        'last-name' => trans('jacopo-admin.labels.last-name'),
         'active' => trans('jacopo-admin.labels.active'),
-        'last_login' => trans('jacopo-admin.labels.last-login')
+        'last-login' => trans('jacopo-admin.labels.last-login')
     ];
     $sortTable = new SortTable($orders);
 
