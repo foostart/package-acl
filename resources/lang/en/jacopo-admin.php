@@ -76,7 +76,6 @@ return [
             'user-edit' => 'Edit user page',
             'permission-list' => 'List of permissions',
             'permission-edit' => 'Edit permission page',
-            'group-list' => 'List of groups',
             'group-edit' => 'Edit group page',
         ],
 
@@ -102,6 +101,7 @@ return [
             'users-search' => 'Users search',
             'user-add-new' => 'Add user',
             'user-department' => 'Department',
+            'user-level' => 'Level',
             'permissions-list' => 'List of permissions',
             'add-permission' => 'Add permission',
             'category' => 'Category',
@@ -140,11 +140,11 @@ return [
         */
         'labels' => [
             'email' => 'Email',
-            'first-name' => 'First name',
+            'first_name' => 'First name',
             'last_name' => 'Last name',
             'full-name' => 'Full name',
             'active' => 'Active',
-            'last-login' => 'Last login',
+            'last_login' => 'Last login',
             'sorting' => 'Sorting',
         ],
 
