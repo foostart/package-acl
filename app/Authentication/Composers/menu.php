@@ -33,6 +33,7 @@ View::composer([
                        'laravel-authentication-acl::admin.user.groups',
                        'laravel-authentication-acl::admin.user.list',
                        'laravel-authentication-acl::admin.user.profile',
+                       'laravel-authentication-acl::admin.user.level',
                ], function ($view)
 {
 
@@ -50,6 +51,10 @@ View::composer([
             ],
             trans('jacopo-admin.sidebars.user-department')   => [
                     'url'  => URL::route('categories.list',['_key='.$key]),
+                    'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
+            ],
+            trans('jacopo-admin.sidebars.user-level')   => [
+                    'url'  => URL::route('categories.list',['_key='.$key = $fooCategory->getContextKeyByRef('user/level')]),
                     'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
     ]);
