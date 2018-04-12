@@ -18,7 +18,7 @@
 -->
 <div class="row form-group">
     <div class="col-md-12">
-        {!!Form::label(trans('jacopo-admin.sorting').': ') !!}
+        {!!Form::label(trans('jacopo-admin.labels.sorting').': ') !!}
     </div>
 
     <!-- SORTING BY -->
@@ -37,7 +37,7 @@
     <div class="col-md-12 margin-top-10">
         <a class="btn btn-default pull-right" id="add-ordering-filter">
             <i class="fa fa-plus"></i>
-            {!! trans('jacopo-admin.btn-add') !!}
+            {!! trans('jacopo-admin.buttons.add') !!}
         </a>
     </div>
     <!-- SORTED BY -->

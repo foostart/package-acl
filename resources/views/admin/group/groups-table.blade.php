@@ -1,24 +1,18 @@
-
+<div class="row margin-bottom-12">
+    <div class="col-md-12">
+        <a href="{!! URL::route('groups.edit') !!}" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New</a>
+    </div>
+</div>
 @if( ! $groups->isEmpty() )
 <table class="table table-hover">
     <thead>
         <tr>
 
             <!-- ORDER -->
-            <?php $name = 'id' ?>
-            <th width=10% class="hidden-xs">#
-                <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
-                @if($sorting['items'][$name] == 'asc')
-                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-                @elseif($sorting['items'][$name] == 'desc')
-                    <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
-                @else
-                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-                @endif
+            <th>{!! trans('jacopo-admin.order') !!}
+                <a href='#' class='tb-order'>
                 </a>
             </th>
-
-            
 
             <!-- Group name -->
             <?php $name = 'name' ?>
@@ -60,7 +54,7 @@
         @foreach($groups as $group)
 
         <tr>
-            <td><?php echo $group->id ?></td>
+            <td><?php echo $index; $index++; ?></td>
             <td style="width:40%">{!! $group->name !!}</td>
 
             <td style="width:50%">{!! $group->permissions !!}</td>
