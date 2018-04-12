@@ -72,7 +72,7 @@ Admin area: Edit user profile
                             {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('phone') !!}</span>
-                                   <!-- state text field -->
+                        <!-- state text field -->
                         <div class="form-group">
                             {!! Form::label('state','State: ') !!}
                             {!! Form::text('state', null, ['class' => 'form-control', 'placeholder' => '']) !!}
