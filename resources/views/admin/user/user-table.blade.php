@@ -127,7 +127,7 @@
                                 <td class="hidden-xs">{!! $user->first_name !!}</td>
                                 <td class="hidden-xs">{!! $user->last_name !!}</td>
                                 <td>{!! $user->activated ? '<i class="fa fa-circle green"></i>' : '<i class="fa fa-circle-o red"></i>' !!}</td>
-                                <td class="hidden-xs">{!! $user->last_login ? $user->last_login : trans('jacopo-admin.message-last-login') !!}</td>
+                                <td class="hidden-xs">{!! $user->last_login ? $user->last_login : trans('jacopo-admin.messages.message-last-login') !!}</td>
                                 <td>
                                     @if(! $user->protected)
                                     <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
