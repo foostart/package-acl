@@ -27,7 +27,7 @@ return [
 
             //Dashboard page
             [
-                "name"        => "jacopo-admin.dashboard",
+                "name"        => "jacopo-admin.menu.dashboard",
                 "route"       => "dashboard",
                 "link"        => '/admin/users/dashboard',
                 "permissions" => []
@@ -47,7 +47,7 @@ return [
 
             //Users page
             [
-                "name"        => "jacopo-admin.users",
+                "name"        => "jacopo-admin.menu.users",
                 "route"       => "users",
                 "link"        => '/admin/users/list',
                 "permissions" => [$admin, '_user-editor', '_user-leader'],
@@ -57,7 +57,7 @@ return [
 
             //Groups page
             [
-                "name"        => "jacopo-admin.groups",
+                "name"        => "jacopo-admin.menu.groups",
                 "route"       => "groups",
                 "link"        => '/admin/groups/list',
                 "permissions" => [$admin, "_group-editor"]
@@ -66,7 +66,7 @@ return [
 
             //Permissions page
             [
-                "name"        => "jacopo-admin.permissions",
+                "name"        => "jacopo-admin.menu.permissions",
                 "route"       => "permissions",
                 "link"        => '/admin/permissions/list',
                 "permissions" => [$admin, "_permission-editor"]
@@ -74,7 +74,7 @@ return [
 
             //Contexts
             [
-                'name'        => 'jacopo-admin.contexts',
+                'name'        => 'jacopo-admin.menu.contexts',
                 "route"       => "contexts",
                 "link"        => '/admin/contexts/list',
                 "permissions" => [$admin]
@@ -89,21 +89,21 @@ return [
 
             //Samples
             [
-                "name"        => 'sample-admin.menus.top-menu',
+                "name"        => 'jacopo-admin.menu.samples',
                 "route"       => "samples",
                 "link"        => '/admin/samples/list',
                 "permissions" => [$admin]
             ],
             //Posts
             [
-                "name"        => 'post-admin.menus.top-menu',
+                "name"        => 'jacopo-admin.menu.posts',
                 "route"       => "posts",
                 "link"        => '/admin/posts',
                 "permissions" => [$admin]
             ],
             //Slideshow
             [
-                "name"        => 'slideshow-admin.menus.top-menu',
+                "name"        => 'jacopo-admin.menu.slideshow',
                 "route"       => "slideshows",
                 "link"        => '/admin/slideshows',
                 "permissions" => [$admin]
