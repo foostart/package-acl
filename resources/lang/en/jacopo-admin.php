@@ -76,6 +76,7 @@ return [
             'user-edit' => 'Edit user page',
             'permission-list' => 'List of permissions',
             'permission-edit' => 'Edit permission page',
+            'group-list' => 'List of groups',
             'group-edit' => 'Edit group page',
         ],
 
@@ -140,11 +141,11 @@ return [
         */
         'labels' => [
             'email' => 'Email',
-            'first_name' => 'First name',
+            'first-name' => 'First name',
             'last_name' => 'Last name',
             'full-name' => 'Full name',
             'active' => 'Active',
-            'last_login' => 'Last login',
+            'last-login' => 'Last login',
             'sorting' => 'Sorting',
         ],
 
