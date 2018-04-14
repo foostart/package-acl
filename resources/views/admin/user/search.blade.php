@@ -48,8 +48,8 @@
             </div>
             <span class="text-danger">{!! $errors->first('last_name') !!}</span>
 
-          <!-- sex text field -->
-          <div class="form-group">
+            <!-- sex text field -->
+            <div class="form-group">
                 {!! Form::label('sex','Sex:') !!}
                 <?php $sex_values = trans('foo-admin.sex');
                 ?>

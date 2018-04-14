@@ -94,11 +94,16 @@ Admin area: Edit user profile
                             {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('sex') !!}</span>
-
+                        <!-- Level text field -->
+                        <div class="form-group">
+                            {!! Form::label('category_id','Level: ') !!}
+                            {!! Form::select('category_id', $pluck_select_category['level'], null, ["class" => "form-control"]) !!}
+                        </div>
+                        <span class="text-danger">{!! $errors->first('category_id') !!}</span>
                         <!-- category_id text field -->
                         <div class="form-group">
                             {!! Form::label('category_id','Category: ') !!}
-                            {!! Form::select('category_id', $pluck_select_category, null, ["class" => "form-control"]) !!}
+                            {!! Form::select('category_id', $pluck_select_category['department'], null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
