@@ -16,14 +16,14 @@
         <!--MAIN FILTERS-->
             <!-- email text field -->
             <div class="form-group">
-                {!! Form::label('email','Email: ') !!}
+                {!! Form::label('email',trans('jacopo-admin.labels.email')) !!}
                 {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'user email']) !!}
             </div>
             <span class="text-danger">{!! $errors->first('email') !!}</span>
 
             <!-- full name text field-->
             <div class="form-group">
-                {!! Form::label('full_name','Name: ') !!}
+                {!! Form::label('full_name',trans('jacopo-admin.labels.full_name')) !!}
                 {!! Form::text('full_name', null, ['class' => 'form-control', 'placeholder' => 'full name']) !!}
             </div>
             <span class="text-danger">{!! $errors->first('full_name') !!}</span>
@@ -36,43 +36,43 @@
 
             <!-- first_name text field -->
             <div class="form-group">
-                {!! Form::label('first_name','First name: ') !!}
+                {!! Form::label('first_name',trans('jacopo-admin.labels.first_name')) !!}
                 {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'first name']) !!}
             </div>
             <span class="text-danger">{!! $errors->first('first_name') !!}</span>
 
             <!-- last_name text field -->
             <div class="form-group">
-                {!! Form::label('last_name','Last name:') !!}
+                {!! Form::label('last_name',trans('jacopo-admin.labels.last_name')) !!}
                 {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'last name']) !!}
             </div>
             <span class="text-danger">{!! $errors->first('last_name') !!}</span>
 
             <!-- sex text field -->
             <div class="form-group">
-                {!! Form::label('sex','Sex:') !!}
-                <?php $sex_values = trans('foo-admin.sex'); ?>
+                {!! Form::label('sex',trans('jacopo-admin.labels.sex')) !!}
+                <?php $sex_values = trans('foo-admin.sex');?>
                 {!! Form::select('sex', $sex_values, $request->get('sex',''), ["class" => "form-control"]) !!}
             </div>
             <span class="text-danger">{!! $errors->first('sex') !!}</span>
 
             <!-- category_id text field -->
             <div class="form-group">
-                {!! Form::label('category_id','Category:') !!}
+                {!! Form::label('category_id',trans('jacopo-admin.labels.category')) !!}
                 {!! Form::select('category_id', $pluck_select_category, '', ["class" => "form-control"]) !!}
             </div>
             <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
             <!-- code text field -->
             <div class="form-group">
-                {!! Form::label('code','User code:') !!}
+                {!! Form::label('code',trans('jacopo-admin.labels.code')) !!}
                     {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => 'user code']) !!}
             </div>
             <span class="text-danger">{!! $errors->first('code') !!}</span>
 
             <!--active select field-->
             <div class="form-group">
-                {!! Form::label('activated', 'Active: ') !!}
+                {!! Form::label('activated', trans('jacopo-admin.labels.active')) !!}
                 {!! Form::select('activated', ['' => 'Any', 1 => 'Yes', 0 => 'No'], $request->get('activated',''), ["class" => "form-control"]) !!}
             </div>
 
@@ -85,7 +85,7 @@
 
             <!--group select field-->
             <div class="form-group">
-                {!! Form::label('group_id', 'Group: ') !!}
+                {!! Form::label('group_id', trans('jacopo-admin.labels.group')) !!}
                 <?php
                     $group_values = [''=> trans('jacopo-admin.form.any')] + $group_values;
                     ?>

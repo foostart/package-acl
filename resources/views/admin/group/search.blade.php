@@ -10,7 +10,7 @@
         </div>
         <!-- name text field -->
         <div class="form-group">
-            {!! Form::label('name','Name:') !!}
+            {!! Form::label('name',trans('jacopo-admin.labels.group')) !!}
             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'group name']) !!}
         </div>
         <span class="text-danger">{!! $errors->first('name') !!}</span>

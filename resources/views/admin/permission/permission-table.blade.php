@@ -71,7 +71,7 @@
                 <td><?php echo $permission->id ?></td>
                 <td style="width:30%">{!! $permission->description !!}</td>
                 <td style="width:30%">{!! $permission->permission !!}</td>
-                <td style="width:30%">{!! $permission->url !!}</td>
+                <td style="width:30%">{!! $permission->protected !!}</td>
                 <td style="witdh:10%">
                     @if(! $permission->protected)
                         <a href="{!! URL::route('permissions.edit', ['id' => $permission->id]) !!}">
