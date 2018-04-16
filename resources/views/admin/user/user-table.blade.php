@@ -55,7 +55,7 @@
                                 </th>
 
                                 <!-- FIRST NAME -->
-                                <?php $name = 'first_name' ?>
+                                <?php $name = 'first-name' ?>
                                 <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-first-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
@@ -69,7 +69,7 @@
                                 </th>
 
                                 <!-- LAST NAME -->
-                                <?php $name = 'last_name' ?>
+                                <?php $name = 'last-name' ?>
                                 <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
@@ -97,7 +97,7 @@
                                 </th>
 
                                 <!-- LAST LOGIN -->
-                                <?php $name = 'last_login' ?>
+                                <?php $name = 'last-login' ?>
                                 <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-login' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')

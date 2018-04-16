@@ -139,7 +139,7 @@ return [
         'labels' => [
             'email' => 'Email',
             'first-name' => 'First name',
-            'last_name' => 'Last name',
+            'last-name' => 'Last name',
             'full-name' => 'Full name',
             'active' => 'Active',
             'last-login' => 'Last login',
