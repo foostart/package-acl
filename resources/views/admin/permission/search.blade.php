@@ -10,14 +10,14 @@
         </div>
         <!-- name text field -->
         <div class="form-group">
-            {!! Form::label('description','Permission name:') !!}
+            {!! Form::label('description',trans('jacopo-admin.labels.Permission-name')) !!}
             {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'permission name']) !!}
         </div>
         <span class="text-danger">{!! $errors->first('description') !!}</span>
 
         <!-- category_id text field -->
         <div class="form-group">
-            {!! Form::label('category_id','Category: ') !!}
+            {!! Form::label('category_id',trans('jacopo-admin.labels.category')) !!}
             {!! Form::select('category_id', $pluck_select_category, null, ["class" => "form-control"]) !!}
         </div>
         <span class="text-danger">{!! $errors->first('category_id') !!}</span>

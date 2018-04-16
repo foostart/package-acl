@@ -15,9 +15,6 @@ return [
             'permissions' => 'Permissions',
             'operations' => 'Operations',
             'contexts'  => 'Contextes',
-            'samples'   => 'Samples',
-            'slideshow' => 'SlideShow',
-            'posts'     => 'Posts',
         ],
 
 
@@ -141,12 +138,17 @@ return [
         */
         'labels' => [
             'email' => 'Email',
-            'first-name' => 'First name',
-            'last-name' => 'Last name',
-            'full-name' => 'Full name',
+            'first_name' => 'First name',
+            'last_name' => 'Last name',
+            'full_name' => 'Full name',
             'active' => 'Active',
-            'last-login' => 'Last login',
+            'last_login' => 'Last login',
             'sorting' => 'Sorting',
+            'sex'       => 'Sex',
+            'category'  => 'Category',
+            'code'  => 'User code',
+            'group' => 'Group',
+            'Permission-name'    => 'Permission name',
         ],
 
 
