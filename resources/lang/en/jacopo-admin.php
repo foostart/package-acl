@@ -15,9 +15,6 @@ return [
             'permissions' => 'Permissions',
             'operations' => 'Operations',
             'contexts'  => 'Contextes',
-            'samples'   => 'Samples',
-            'slideshow' => 'SlideShow',
-            'posts'     => 'Posts',
         ],
 
 
@@ -148,9 +145,6 @@ return [
             'last-login' => 'Last login',
             'sorting' => 'Sorting',
         ],
-
-
-
 
 
         /***********************************************************************
