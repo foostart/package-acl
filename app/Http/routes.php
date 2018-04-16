@@ -166,6 +166,12 @@ Route::group(['middleware' => ['web']], function ()
                 'as'   => 'users.selfprofile.edit',
                 'uses' => 'LaravelAcl\Authentication\Controllers\UserController@editOwnProfile'
         ]);
+        Route::get('/admin/users/level', [
+                'as'   => 'users.level',
+                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@getList'
+        ]);
+    
+    
 
         /**
          * groups
@@ -209,6 +215,10 @@ Route::group(['middleware' => ['web']], function ()
         Route::get('/admin/permissions/delete', [
                 'as'   => 'permissions.delete',
                 'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@deletePermission'
+        ]);
+        Route::get('/admin/permissions/category', [
+                'as'   => 'permissions.category',
+                'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@getList'
         ]);
     });
 });

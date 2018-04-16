@@ -37,8 +37,20 @@ Admin area: Edit user profile
                         @else
                             @include('laravel-authentication-acl::admin.user.partials.show_gravatar')
                         @endif
-                        <h4><i class="fa fa-cubes"></i> User data</h4>
-                        {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
+                       
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                         <!-- password text field -->
+                                 <div class="form-group">
+                            {!! Form::label('password','new password:') !!}
+                            {!! Form::password('password', ['class' => 'form-control']) !!}
+                        </div>
+                        <span class="text-danger">{!! $errors->first('password') !!}</span>
+                        <!-- password_confirmation text field -->
+                        <div class="form-group">
+                            {!! Form::label('password_confirmation','confirm password:') !!}
+                            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+                        </div>
                         <!-- code text field -->
                         <div class="form-group">
                             {!! Form::label('code','User code:') !!}
@@ -69,6 +81,9 @@ Admin area: Edit user profile
                             {!! Form::text('state', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('state') !!}</span>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                         
                         <!-- var text field -->
                         <div class="form-group">
                             {!! Form::label('var','Vat: ') !!}
@@ -89,21 +104,16 @@ Admin area: Edit user profile
                         <span class="text-danger">{!! $errors->first('country') !!}</span>
                         <!-- sex text field -->
                         <div class="form-group">
-                            {!! Form::label('sex','Sex: ') !!}
+                            {!! Form::label('sex','Sex:') !!}
                             <?php $sex_values = trans('foo-admin.sex'); ?>
-                            {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
+                            {!! Form::select('sex', $sex_values, '', ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('sex') !!}</span>
-                        <!-- Level text field -->
-                        <div class="form-group">
-                            {!! Form::label('category_id','Level: ') !!}
-                            {!! Form::select('category_id', $pluck_select_category['level'], null, ["class" => "form-control"]) !!}
-                        </div>
-                        <span class="text-danger">{!! $errors->first('category_id') !!}</span>
+
                         <!-- category_id text field -->
                         <div class="form-group">
-                            {!! Form::label('category_id','Category: ') !!}
-                            {!! Form::select('category_id', $pluck_select_category['department'], null, ["class" => "form-control"]) !!}
+                            {!! Form::label('category_id','Category:') !!}
+                            {!! Form::select('category_id', $pluck_select_category, '', ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
@@ -127,6 +137,8 @@ Admin area: Edit user profile
                         {!! Form::submit('Save',['class' =>'btn btn-info pull-right margin-bottom-30']) !!}
                         {!! Form::close() !!}
                     </div>
+                            </div>
+                        </div>
                     <div class="col-md-6 col-xs-12">
                         @if($can_add_fields)
                         @include('laravel-authentication-acl::admin.user.custom-profile')

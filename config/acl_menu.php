@@ -49,8 +49,24 @@ return [
             [
                 "name"        => "jacopo-admin.menu.users",
                 "route"       => "users",
+                /*
+                 * the actual link associated to the menu item
+                */
                 "link"        => '/admin/users/list',
+                /*
+                 * the list of 'permission name' associated to the menu
+                 * item: if the logged user has one or more of the permission
+                 * in the list he can see the menu link and access the area
+                 * associated with that.
+                 * Every route that you create with the 'route' as a prefix
+                 * will check for the permissions and throw a 401 error if the
+                 * check fails (for example in this case every route named users.*)
+                 */
                 "permissions" => [$admin, '_user-editor', '_user-leader'],
+                /*
+                 * if there is any route that you want to skip for the permission check
+                 * put it in this array
+                 */
                 "skip_permissions" => ["users.selfprofile.edit", "users.profile.edit", "users.profile.addfield", "users.profile.deletefield"]
             ],
 
