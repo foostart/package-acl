@@ -1,4 +1,4 @@
-<h4><i class="fa fa-magic"></i> Custom fields:</h4>
+<h4><i class="fa fa-magic"></i>{!! trans('jacopo-admin.labels.custom-fields').':' !!}</h4>
 
 {{-- add fields --}}
 {!! Form::open(["route" => 'users.profile.addfield', 'class' => 'form-add-profile-field', 'role' => 'form']) !!}

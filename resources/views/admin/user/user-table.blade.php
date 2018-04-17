@@ -146,7 +146,7 @@
                     {!! $users->appends($request->except(['page']) )->render() !!}
                 </div>
                 @else
-                <span class="text-warning"><h5>{!! trans('jacopo-admin.empty_data') !!}</h5></span>
+                <span class="text-warning"><h5>{!! trans('jacopo-admin.messages.empty-data') !!}</h5></span>
                 @endif
             </div>
         </div>

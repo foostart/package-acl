@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {!! trans('jacopo-admin.page-user') !!}
+    {!! trans('jacopo-admin.pages.user-list') !!}
 @stop
 @section('content')
 <div class="row">
