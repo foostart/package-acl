@@ -26,6 +26,7 @@ class UserProfile extends BaseModel
         'avatar',
         'sex',
         'category_id',
+        'level_id',
     ];
     protected $context_key;
     

@@ -149,7 +149,7 @@ return [
             'category'  => 'Category',
             'code'  => 'User code',
             'group' => 'Group',
-            'Permission-name'    => 'Permission name',
+            'permission-name'    => 'Permission name',
         ],
 
 

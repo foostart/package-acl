@@ -33,14 +33,14 @@ View::composer([
                        'laravel-authentication-acl::admin.user.groups',
                        'laravel-authentication-acl::admin.user.list',
                        'laravel-authentication-acl::admin.user.profile',
-                       'laravel-authentication-acl::admin.user.level',
-                       'laravel-authentication-acl::admin.user.language',
+                       'laravel-authentication-acl::admin.acl-lang',
+                       'laravel-authentication-acl::admin.acl-lang-backup',
                ], function ($view)
 {
 
     $fooCategory = new FooCategory();
-    $key = $fooCategory->getContextKeyByRef('user/department');
-
+    $key_department = $fooCategory->getContextKeyByRef('user/department');
+    $key_level = $fooCategory->getContextKeyByRef('user/level');
     $view->with('sidebar_items', [
             trans('jacopo-admin.sidebars.users-list') => [
                     'url'  => URL::route('users.list'),
@@ -51,18 +51,18 @@ View::composer([
                     'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
             trans('jacopo-admin.sidebars.user-department')   => [
-                    'url'  => URL::route('categories.list',['_key='.$key]),
+                    'url'  => URL::route('categories.list',['_key='.$key_department]),
                     'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
             trans('jacopo-admin.sidebars.user-level')   => [
-                    'url'  => URL::route('categories.list',['_key='.$key = $fooCategory->getContextKeyByRef('user/level')]),
-                    'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
+                    'url'  => URL::route('categories.list',['_key='.$key_level]),
+                    'icon' => '<i class="fa fa-bars" aria-hidden="true"></i>'
             ],
-            trans('jacopo-admin.sidebars.user-language')   => [
-                'url'  => URL::route('contexts.config',['key='.$key]),
-                'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
-        ],
-    ]);
+            trans('jacopo-admin.sidebars.user-lang')   => [
+                    'url'  => URL::route('users.lang',[]),
+                    'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
+            ],
+     ]);
 });
 /**
  *  Group sidebar

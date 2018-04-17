@@ -379,4 +379,101 @@ class UserController extends Controller {
         return View::make('laravel-authentication-acl::client.auth.captcha-image')
                    ->with(['captcha' => App::make('captcha_validator')]);
     }
+
+    /**
+     * Check valid token
+     * @param Request $request
+     * @return boolean
+     */
+    public function isValidRequest(Request $request) {
+        $flag = TRUE;
+        $valid_token = csrf_token();
+
+        $token = $request->get('_token');
+
+        if (!strcmp($valid_token, $token) == 0) {
+
+            $flag = FALSE;
+
+        }
+        return $flag;
+    }
+
+    /**
+     *
+     * @return type
+     */
+    public function lang(Request $request) {
+
+        $is_valid_request = $this->isValidRequest($request);
+
+        // display view
+        $langs = config('package-acl.langs');
+        $lang_paths = [];
+
+        if (!empty($langs) && is_array($langs)) {
+            foreach ($langs as $key => $value) {
+                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/jacopo-admin.php'));
+            }
+        }
+
+
+        $package_path = realpath(base_path('vendor/jacopo/laravel-authentication-acl'));
+
+        $lang_backup = realpath($package_path.'/storage/backup/lang');
+        $lang = $request->get('lang')?$request->get('lang'):'en';
+        $lang_contents = [];
+
+        if ($version = $request->get('v')) {
+            //load backup lang
+            $group_backups = base64_decode($version);
+            $group_backups = empty($group_backups)?[]: explode(';', $group_backups);
+
+            foreach ($group_backups as $group_backup) {
+                $_backup = explode('=', $group_backup);
+                $lang_contents[$_backup[0]] = file_get_contents($_backup[1]);
+            }
+
+        } else {
+            //load current lang
+            foreach ($lang_paths as $key => $lang_path) {
+                $lang_contents[$key] = file_get_contents($lang_path);
+            }
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            foreach ($lang_paths as $key => $value) {
+                $content = file_get_contents($value);
+
+                //format file name sample-admin-YmdHis.php
+                file_put_contents($lang_backup.'/'.$key.'/jacopo-admin-'.date('YmdHis',time()).'.php', $content);
+            }
+
+
+            //update new lang
+            foreach ($langs as $key => $value) {
+                $content = $request->get($key);
+                file_put_contents($lang_paths[$key], $content);
+            }
+
+        }
+
+        //get list of backup langs
+        $backups = [];
+        foreach ($langs as $key => $value) {
+            $backups[$key] = array_reverse(glob($lang_backup.'/'.$key.'/*'));
+        }
+
+        $data_view = [
+            'request' => $request,
+            'backups' => $backups,
+            'langs'   => $langs,
+            'lang_contents' => $lang_contents,
+            'lang' => $lang,
+        ];
+
+        return View::make('laravel-authentication-acl::admin.acl-lang')->with($data_view);
+    }
 }

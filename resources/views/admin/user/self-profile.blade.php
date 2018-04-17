@@ -34,7 +34,7 @@ Admin area: Edit user profile
                         @endif
                         <h4><i class="fa fa-cubes"></i> User data</h4>
                         {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
-               
+
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                          <!-- password text field -->
@@ -80,7 +80,7 @@ Admin area: Edit user profile
                         <span class="text-danger">{!! $errors->first('state') !!}</span>
                             </div>
                             <div class="col-md-6 col-xs-12">
-                         
+
                         <!-- var text field -->
                         <div class="form-group">
                             {!! Form::label('var','Vat: ') !!}
@@ -110,7 +110,7 @@ Admin area: Edit user profile
                         <!-- category_id text field -->
                         <div class="form-group">
                             {!! Form::label('category_id','Category:') !!}
-                            {!! Form::select('category_id', $pluck_select_category, '', ["class" => "form-control"]) !!}
+                            {!! Form::select('category_id', $pluck_select_category_department, '', ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 

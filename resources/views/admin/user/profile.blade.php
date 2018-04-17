@@ -37,7 +37,6 @@ Admin area: Edit user profile
                         @else
                             @include('laravel-authentication-acl::admin.user.partials.show_gravatar')
                         @endif
-                       
                         <h4><i class="fa fa-cubes"></i> User data</h4>
                         {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
                
@@ -107,7 +106,7 @@ Admin area: Edit user profile
                         <span class="text-danger">{!! $errors->first('country') !!}</span>
                         <!-- sex text field -->
                         <div class="form-group">
-                            {!! Form::label('sex','Sex:') !!}
+                            {!! Form::label('sex','Sex: ') !!}
                             <?php $sex_values = trans('foo-admin.sex'); ?>
                             {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                         </div>
@@ -122,7 +121,7 @@ Admin area: Edit user profile
                         <!-- category_id text field -->
                         <div class="form-group">
                             {!! Form::label('category_id','Category: ') !!}
-                            {!! Form::select('category_id', $pluck_select_category, null, ["class" => "form-control"]) !!}
+                            {!! Form::select('category_id', $pluck_select_category_department, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
