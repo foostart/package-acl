@@ -100,6 +100,7 @@ return [
             'user-add-new' => 'Add user',
             'user-department' => 'Department',
             'user-level' => 'Level',
+            'user-language' => 'Language',
             'permissions-list' => 'List of permissions',
             'add-permission' => 'Add permission',
             'category' => 'Category',

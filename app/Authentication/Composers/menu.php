@@ -34,6 +34,7 @@ View::composer([
                        'laravel-authentication-acl::admin.user.list',
                        'laravel-authentication-acl::admin.user.profile',
                        'laravel-authentication-acl::admin.user.level',
+                       'laravel-authentication-acl::admin.user.language',
                ], function ($view)
 {
 
@@ -57,6 +58,10 @@ View::composer([
                     'url'  => URL::route('categories.list',['_key='.$key = $fooCategory->getContextKeyByRef('user/level')]),
                     'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
+            trans('jacopo-admin.sidebars.user-language')   => [
+                'url'  => URL::route('contexts.config',['key='.$key]),
+                'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
+        ],
     ]);
 });
 /**
