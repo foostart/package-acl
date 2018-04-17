@@ -18,13 +18,13 @@ View::composer('laravel-authentication-acl::admin.user.*', function ($view)
 {
     //Load category
     $obj_category = new FooCategory();
-    $params = Request::all();
+    $params = $params_level = Request::all();
     $params['_key'] = $obj_category->getContextKeyByRef('user/department');
     $params_level['_key'] = $obj_category->getContextKeyByRef('user/level');
-    $pluck_select_category = [
-                                'department' => $obj_category->pluckSelect($params),
-                                'level' =>$obj_category->pluckSelect($params_level),];
+    $pluck_select_category = $obj_category->pluckSelect($params);
+    $pluck_select_category_level = $obj_category->pluckSelect($params_level);
     $view->with('pluck_select_category', $pluck_select_category);
+    $view->with('pluck_select_category_level', $pluck_select_category_level);
 
 });
 

@@ -106,14 +106,20 @@ Admin area: Edit user profile
                         <div class="form-group">
                             {!! Form::label('sex','Sex:') !!}
                             <?php $sex_values = trans('foo-admin.sex'); ?>
-                            {!! Form::select('sex', $sex_values, '', ["class" => "form-control"]) !!}
+                            {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('sex') !!}</span>
-
+                        <!-- level text field -->
+                        <div class="form-group">
+                           
+                            {!! Form::label('level_id','Level: ') !!}
+                            {!! Form::select('level_id', $pluck_select_category_level, null, ["class" => "form-control"]) !!}
+                        </div>
+                        <span class="text-danger">{!! $errors->first('level_id') !!}</span>
                         <!-- category_id text field -->
                         <div class="form-group">
-                            {!! Form::label('category_id','Category:') !!}
-                            {!! Form::select('category_id', $pluck_select_category, '', ["class" => "form-control"]) !!}
+                            {!! Form::label('category_id','Category: ') !!}
+                            {!! Form::select('category_id', $pluck_select_category, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 

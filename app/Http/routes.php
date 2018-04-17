@@ -166,12 +166,6 @@ Route::group(['middleware' => ['web']], function ()
                 'as'   => 'users.selfprofile.edit',
                 'uses' => 'LaravelAcl\Authentication\Controllers\UserController@editOwnProfile'
         ]);
-        Route::get('/admin/users/level', [
-                'as'   => 'users.level',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@getList'
-        ]);
-    
-    
 
         /**
          * groups
