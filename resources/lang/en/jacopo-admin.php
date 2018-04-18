@@ -51,6 +51,7 @@ return [
             'reset' => 'Reset',
             'submit'=> 'Submit',
             'delete' => 'Delete',
+            'update-avatar' => 'Update avatar',
         ],
 
 
@@ -71,6 +72,7 @@ return [
         'pages' => [
             'user-list' => 'List of users',
             'user-edit' => 'Edit user page',
+            'user-edit-profile' => 'Edit user page',
             'permission-list' => 'List of permissions',
             'permission-edit' => 'Edit permission page',
             'group-list' => 'List of groups',
@@ -104,6 +106,7 @@ return [
             'permissions-list' => 'List of permissions',
             'add-permission' => 'Add permission',
             'category' => 'Category',
+            'user-lang' => 'Languages',
         ],
 
 
@@ -150,6 +153,32 @@ return [
             'code'  => 'User code',
             'group' => 'Group',
             'permission-name'    => 'Permission name',
+            'login-data'    => 'Login data',
+            'password'     => 'Password',
+            'change-password'     => 'Change password',
+            'confirm-password'     => 'Confirm password',
+            'confirm-change-password'   => 'Confirm change password',
+            'banned'    => 'Banned',
+            'user-profile'  => 'User profile',
+            'new-password'  => 'New password',
+            'user-data' => 'User data',
+            'edit-user' => 'Edit user',
+            'phone' => 'Phone',
+            'state' => 'State',
+            'vat'   => 'Vat',
+            'city'  => 'City',
+            'country'   => 'Country',
+            'level'     => 'Level',
+            'address'   => 'Address',
+            'custom-fields' => 'Custom fields',
+            'change-avt'   => 'Change avatar',
+            'update-avt'    => 'Update avatar',
+            'avatar'         => 'Avatar',
+            'description'   => 'Description',
+            'link-url'      => 'Link URL',
+            'overview'      => 'Overview',
+            'general-data'  => 'General data',
+            'group-name' => 'Group name',
         ],
 
 
@@ -165,6 +194,8 @@ return [
         'messages' => [
             'message-last-login' => 'not logged yet.',
             'user-delete' => 'Are you sure to delete this item?',
+            'permission-not-found'  => 'No permissions found.',
+            'empty-data'        => 'Empty data',
         ],
 
 

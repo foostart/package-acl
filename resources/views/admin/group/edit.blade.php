@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-Admin area: edit group
+{!! trans('jacopo-admin.pages.group-edit') !!}
 @stop
 
 @section('content')
@@ -25,11 +25,11 @@ Admin area: edit group
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         {{-- group base form --}}
-                        <h4>General data</h4>
+                        <h4>{!! trans('jacopo-admin.labels.general-data') !!}</h4>
                         {!! Form::model($group, [ 'url' => [URL::route('groups.edit'), $group->id], 'method' => 'post'] ) !!}
                         <!-- name text field -->
                         <div class="form-group">
-                            {!! Form::label('name','Name: *') !!}
+                            {!! Form::label('name',trans('jacopo-admin.labels.group-name').':*') !!}
                             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'group name']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('name') !!}</span>
@@ -40,7 +40,7 @@ Admin area: edit group
                     </div>
                     <div class="col-md-6 col-xs-12">
                     {{-- group permission form --}}
-                        <h4><i class="fa fa-lock"></i> Permissions</h4>
+                        <h4><i class="fa fa-lock"></i>{!! trans('jacopo-admin.labels.permission-name') !!}</h4>
                         {{-- permissions --}}
                         @include('laravel-authentication-acl::admin.group.perm')
                     </div>
