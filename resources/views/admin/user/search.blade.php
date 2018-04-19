@@ -59,7 +59,8 @@
             <!-- category_id text field -->
             <div class="form-group">
                 {!! Form::label('category_id',trans('jacopo-admin.labels.category')) !!}
-                {!! Form::select('category_id', $pluck_select_category, '', ["class" => "form-control"]) !!}            </div>
+                {!! Form::select('category_id', $pluck_select_category_department, '', ["class" => "form-control"]) !!}
+            </div>
             <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
             <!-- code text field -->
