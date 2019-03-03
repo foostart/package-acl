@@ -14,7 +14,7 @@
 @extends('laravel-authentication-acl::client.layouts.base')
 
 @section ('title')
-   trans('jacopo-front.page-signup')
+   {!! trans('jacopo-front.page-signup') !!}
 @stop
 
 @section('head_css')
@@ -28,7 +28,7 @@
             <div class="panel panel-info">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title bariol-thin">{!! trans('jacopo-front.page_signup') !!}</h3>
+                    <h3 class="panel-title bariol-thin">{!! trans('jacopo-front.page-signup') !!}</h3>
                 </div>
 
                 <?php $message = Session::get('message'); ?>
@@ -121,7 +121,7 @@
                                         'password' => true
                                     ])
                                 </div>
-                            
+
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -141,6 +141,10 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
                             {!! link_to_route('user.login', trans('jacopo-front.already_account_login')) !!}
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
+                            {!! link_to_route('user.login.google', trans('jacopo-front.login-by-google')) !!}
                         </div>
                     </div>
 

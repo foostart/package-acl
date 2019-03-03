@@ -31,7 +31,7 @@
 @section('footer_scripts')
     <script>
         $(".delete").click(function(){
-            return confirm({!! trans('jacopo-admin.messages.user-delete') !!});
+            return confirm("{!! trans('jacopo-admin.messages.user-delete') !!}");
         });
     </script>
 @stop

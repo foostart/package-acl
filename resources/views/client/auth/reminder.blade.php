@@ -13,7 +13,7 @@
 @extends('laravel-authentication-acl::client.layouts.base')
 
 @section ('title')
-    trans('jacopo-front.recovery-password')
+    {!! trans('jacopo-front.recovery-password') !!}
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
 
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    trans('jacopo-front.recovery-password')
+                    {!! trans('jacopo-front.recovery-password') !!}
                 </h3>
             </div>
 

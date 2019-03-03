@@ -185,4 +185,37 @@ class SentryAuthenticator implements AuthenticateInterface
     {
         return $this->errors->isEmpty();
     }
+
+    /**
+     * Customize function
+     * Authentication user account
+     * @param array $account
+     * @return \Cartalyst\Sentry\Users\UserInterface
+     * @date 14/07/2018
+     * @add S1TT
+     */
+    public function authUser(array $account, $is_set_token = true, $length = 55) {
+        return $this->sentry->findByCredentials($account, $is_set_token, $length);
     }
+
+
+
+    /**
+     * Finds a user by the given token api code.
+     *
+     * @param  string  $token_api
+     * @return \Cartalyst\Sentry\Users\UserInterface
+     * @throws \RuntimeException
+     * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+     * @date 14/07/2018
+     * @location S1TT
+     */
+    public function findUserByTokenApiCode($token_api)
+    {
+        return $this->sentry->findUserByTokenApiCode($token_api);
+    }
+
+    public function removeTokenByUser($user) {
+        return $this->sentry->removeTokenByUser($user);
+    }
+}

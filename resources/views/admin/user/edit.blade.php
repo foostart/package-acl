@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-{!! trans('jacopo-admin.pages.user-edit') !!} 
+{!! trans('jacopo-admin.pages.user-edit') !!}
 @stop
 
 @section('content')
@@ -39,7 +39,7 @@
                     {!! Form::hidden('form_name','user') !!}
                     <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete user</a>
                     {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
-                    
+
                     <!-- email text field -->
                     <div class="form-group">
                         {!! Form::label('email',trans('jacopo-admin.labels.email').':*') !!}
@@ -66,15 +66,15 @@
                         {!! Form::label("banned",trans('jacopo-admin.labels.banned').':') !!}
                         {!! Form::select('banned', ["1" => "Yes", "0" => "No"], (isset($user->banned) && $user->banned) ? $user->banned : "0", ["class"=> "form-control"] ) !!}
                     </div>
-                 
+                    {!! Form::close() !!}
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <h4><i class="fa fa-users"></i> {!! trans('jacopo-admin.labels.group').':' !!} </h4>
                         @include('laravel-authentication-acl::admin.user.groups')
 
-                        {{-- group permission form --}}
+
                         <h4><i class="fa fa-lock"></i> {!! trans('jacopo-admin.labels.permission-name').':' !!}</h4>
-                        {{-- permissions --}}
+
                         @include('laravel-authentication-acl::admin.user.perm')
                     </div>
                 </div>
@@ -86,7 +86,7 @@
 @section('footer_scripts')
 <script>
     $(".delete").click(function(){
-        return confirm({!! trans('jacopo-admin.messages.user-delete') !!});
+        return confirm("{!! trans('jacopo-admin.messages.user-delete') !!}");
     });
 </script>
 @stop

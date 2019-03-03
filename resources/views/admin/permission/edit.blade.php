@@ -27,27 +27,27 @@
                {!! Form::hidden('id') !!}
                <a href="{!! URL::route('permissions.delete',['id' => $permission->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
                {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
-               {!! Form::close() !!}
+
                <div class="row">
                 <div class="col-md-6 col-xs-12">
                   <!-- DESCRIPTION TEXT FIELD -->
                   <div class="form-group">
                     {!! Form::label('description',trans('jacopo-admin.labels.description').':*') !!}
-                    {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'permission description', 'id' => 'slugme']) !!}
+                    {!! Form::text('description', @$permission->description, ['class' => 'form-control', 'placeholder' => 'permission description', 'id' => 'slugme']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('description') !!}</span>
 
                 <!-- PERMISSION TEXT FIELD -->
                 <div class="form-group">
                     {!! Form::label('permission',trans('jacopo-admin.labels.permission-name').':*') !!}
-                    {!! Form::text('permission', null, ['class' => 'form-control', 'placeholder' => 'permission description', 'id' => 'slug']) !!}
+                    {!! Form::text('permission', @$permission->permission, ['class' => 'form-control', 'placeholder' => 'permission description', 'id' => 'slug']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('permission') !!}</span>
 
                 <!-- URL TEXT FIELD -->
                 <div class="form-group">
                     {!! Form::label('url',trans('jacopo-admin.labels.link-url').':*') !!}
-                    {!! Form::text('url', null, ['class' => 'form-control', 'placeholder' => 'link url']) !!}
+                    {!! Form::text('url', @$permission->url, ['class' => 'form-control', 'placeholder' => 'link url']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('url') !!}</span>
             </div>
@@ -55,19 +55,19 @@
                 <!-- OVERVIEW TEXT FIELD -->
                 <div class="form-group">
                     {!! Form::label('overview',trans('jacopo-admin.labels.overview').':') !!}
-                    {!! Form::text('overview', null, ['class' => 'form-control', 'placeholder' => 'overview']) !!}
+                    {!! Form::text('overview', @$permission->overview, ['class' => 'form-control', 'placeholder' => 'overview']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('overview') !!}</span>
 
                 <!-- category_id text field -->
                 <div class="form-group">
                     {!! Form::label('category_id',trans('jacopo-admin.labels.category').':') !!}
-                    {!! Form::select('category_id', $pluck_select_category_department, null, ["class" => "form-control"]) !!}
+                    {!! Form::select('category_id', $pluck_select_category, @$permission->category_id, ["class" => "form-control"]) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('category_id') !!}</span>
             </div>
         </div>
-        
+               {!! Form::close() !!}
     </div>
 </div>
 </div>
@@ -78,7 +78,7 @@
 {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/slugit.js') !!}
 <script>
     $(".delete").click(function(){
-        return confirm("Are you sure to delete this item?");
+        return confirm("{!! trans('jacopo-admin.messages.user-delete') !!}");
     });
     $(function(){
         $('#slugme').slugIt();
