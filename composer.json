@@ -30,7 +30,7 @@
     "fzaninotto/faker": "~1.4",
     "sebastian/exporter": "^2.0",
     "foostart/package-category": "*",
-	"foostart/package-sentry": "*",
+	"foostart/package-sentry": "*"
   },
   "autoload": {
     "classmap": [
