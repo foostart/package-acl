@@ -28,7 +28,8 @@
     "mockery/mockery": "0.9.*",
     "fzaninotto/faker": "~1.4",
     "sebastian/exporter": "^2.0",
-    "package-sentry": "*"
+    "package-sentry": "*",
+	"Foostart/Category": "*"
   },
   "autoload": {
     "classmap": [
