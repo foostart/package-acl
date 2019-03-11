@@ -417,9 +417,8 @@ class UserController extends Controller {
             }
         }
 
-
-        $package_path = realpath(base_path('vendor/jacopo/laravel-authentication-acl'));
-
+        $package_path = realpath(base_path('vendor/foostart/package-acl'));
+        
         $lang_backup = realpath($package_path.'/storage/backup/lang');
         $lang = $request->get('lang')?$request->get('lang'):'en';
         $lang_contents = [];
