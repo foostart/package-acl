@@ -207,6 +207,15 @@ class AuthenticationServiceProvider extends ServiceProvider {
         $this->publishConfig();
         $this->publishViews();
         $this->publishMigrations();
+        $this->publicLang();
+    }
+    
+    protected function publicLang()
+    {
+        $this->publishes([
+                    __DIR__ . '/../../resources/lang' => base_path('resources/lang'),
+        ]);
+
     }
 
     protected function publishAssets()

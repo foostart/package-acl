@@ -27,7 +27,8 @@
     "phpunit/phpunit": "~5.7",
     "mockery/mockery": "0.9.*",
     "fzaninotto/faker": "~1.4",
-    "sebastian/exporter": "^2.0"
+    "sebastian/exporter": "^2.0",
+    "package-sentry": "*"
   },
   "autoload": {
     "classmap": [
