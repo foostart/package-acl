@@ -17,6 +17,7 @@ class CreatePermissionTable extends Migration {
         {
             $table->increments('id');
             $table->string('description');
+            $table->string('url', 255);
             $table->string('permission');
             $table->boolean('protected')->default(0);
             $table->timestamps();
