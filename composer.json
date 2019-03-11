@@ -20,7 +20,8 @@
   "require": {
     "laravelcollective/html" : "5.4.*",
     "intervention/image": "2.*",
-    "foostart/package-sentry": "*",
+    "foostart/package-category": "*",
+	"foostart/package-sentry": "*",
     "gregwar/captcha": "1.1.1"
   },
   "require-dev": {
@@ -28,8 +29,8 @@
     "mockery/mockery": "0.9.*",
     "fzaninotto/faker": "~1.4",
     "sebastian/exporter": "^2.0",
-    "package-sentry": "*",
-	"Foostart/Category": "*"
+    "foostart/package-category": "*",
+	"foostart/package-sentry": "*",
   },
   "autoload": {
     "classmap": [
