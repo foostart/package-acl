@@ -88,13 +88,6 @@ return [
                 "permissions" => [$admin, '_user-editor']
             ],
 
-            //Samples
-            [
-                "name"        => 'sample-admin.menus.top-menu',
-                "route"       => "samples",
-                "link"        => '/admin/samples/list',
-                "permissions" => [$admin]
-            ],
             //Posts
             [
                 "name"        => 'post-admin.menus.top-menu',
