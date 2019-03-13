@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-{!! trans('jacopo-admin.pages.group-edit') !!}
+{!! trans($plang_admin.'.pages.group-edit') !!}
 @stop
 
 @section('content')
@@ -25,11 +25,11 @@
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         {{-- group base form --}}
-                        <h4>{!! trans('jacopo-admin.labels.general-data') !!}</h4>
+                        <h4>{!! trans($plang_admin.'.labels.general-data') !!}</h4>
                         {!! Form::model($group, [ 'url' => [URL::route('groups.edit'), $group->id], 'method' => 'post'] ) !!}
                         <!-- name text field -->
                         <div class="form-group">
-                            {!! Form::label('name',trans('jacopo-admin.labels.group-name').':*') !!}
+                            {!! Form::label('name',trans($plang_admin.'.labels.group-name').':*') !!}
                             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'group name']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('name') !!}</span>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-md-6 col-xs-12">
                     {{-- group permission form --}}
-                        <h4><i class="fa fa-lock"></i>{!! trans('jacopo-admin.labels.permission-name') !!}</h4>
+                        <h4><i class="fa fa-lock"></i>{!! trans($plang_admin.'.labels.permission-name') !!}</h4>
                         {{-- permissions --}}
                         @include('laravel-authentication-acl::admin.group.perm')
                     </div>
@@ -54,7 +54,7 @@
 @section('footer_scripts')
 <script>
     $(".delete").click(function(){
-        return confirm("{!! trans('jacopo-admin.messages.user-delete') !!}");
+        return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
     });
 </script>
 @stop

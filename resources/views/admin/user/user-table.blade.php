@@ -3,7 +3,7 @@
     <div class="panel-heading">
         <h3 class="panel-title bariol-thin">
             <i class="fa fa-user"></i>
-            {!! $request->all() ? trans('jacopo-admin.users-search') : trans('jacopo-admin.sidebars.users-list') !!}
+            {!! $request->all() ? trans($plang_admin.'.users-search') : trans($plang_admin.'.sidebars.users-list') !!}
         </h3>
     </div>
 
@@ -42,7 +42,7 @@
 
                                 <!-- EMAIL -->
                                 <?php $name = 'email' ?>
-                                <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
+                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
 
                                 <!-- FIRST NAME -->
                                 <?php $name = 'first_name' ?>
-                                <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
+                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-first-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -70,7 +70,7 @@
 
                                 <!-- LAST NAME -->
                                 <?php $name = 'last_name' ?>
-                                <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
+                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-name' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -84,7 +84,7 @@
 
                                 <!-- ACTIVE -->
                                 <?php $name = 'active' ?>
-                                <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
+                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-active' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                         <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -98,7 +98,7 @@
 
                                 <!-- LAST LOGIN -->
                                 <?php $name = 'last_login' ?>
-                                <th class="hidden-xs">{!! trans('jacopo-admin.labels.'.$name) !!}
+                                <th class="hidden-xs">{!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-login' data-order='asc'>
                                         @if($sorting['items'][$name] == 'asc')
                                         <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
@@ -111,7 +111,7 @@
                                 </th>
 
                                 <!-- OPERATION -->
-                                <th>{!! trans('jacopo-admin.menu.operations') !!}</th>
+                                <th>{!! trans($plang_admin.'.menu.operations') !!}</th>
                             </tr>
                         </thead>
 
@@ -127,7 +127,7 @@
                                 <td class="hidden-xs">{!! $user->first_name !!}</td>
                                 <td class="hidden-xs">{!! $user->last_name !!}</td>
                                 <td>{!! $user->activated ? '<i class="fa fa-circle green"></i>' : '<i class="fa fa-circle-o red"></i>' !!}</td>
-                                <td class="hidden-xs">{!! $user->last_login ? $user->last_login : trans('jacopo-admin.messages.message-last-login') !!}</td>
+                                <td class="hidden-xs">{!! $user->last_login ? $user->last_login : trans($plang_admin.'.messages.message-last-login') !!}</td>
                                 <td>
                                     @if(! $user->protected)
                                     <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
@@ -146,7 +146,7 @@
                     {!! $users->appends($request->except(['page']) )->render() !!}
                 </div>
                 @else
-                <span class="text-warning"><h5>{!! trans('jacopo-admin.messages.empty-data') !!}</h5></span>
+                <span class="text-warning"><h5>{!! trans($plang_admin.'.messages.empty-data') !!}</h5></span>
                 @endif
             </div>
         </div>

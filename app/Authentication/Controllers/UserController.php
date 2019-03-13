@@ -400,25 +400,32 @@ class UserController extends Controller {
     }
 
     /**
-     *
-     * @return type
+     * Create directory for backup language if not exits
+     * @date B102B-13/03/2019
+     * @author Kang
+     * @return view
      */
     public function lang(Request $request) {
 
         $is_valid_request = $this->isValidRequest($request);
 
-        // display view
+        // get list of languages
+        // create directory backup for each language
         $langs = config('package-acl.langs');
         $lang_paths = [];
+        $package_path = realpath(base_path('vendor/foostart/package-acl'));
 
         if (!empty($langs) && is_array($langs)) {
             foreach ($langs as $key => $value) {
-                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/jacopo-admin.php'));
+                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/acl-admin.php'));
+                $key_backup = $package_path.'/storage/backup/lang/'.$key;
+
+                if (!file_exists($key_backup)) {
+                    mkdir($key_backup, 0755    , true);
+                }
             }
         }
 
-        $package_path = realpath(base_path('vendor/foostart/package-acl'));
-        
         $lang_backup = realpath($package_path.'/storage/backup/lang');
         $lang = $request->get('lang')?$request->get('lang'):'en';
         $lang_contents = [];
@@ -447,7 +454,7 @@ class UserController extends Controller {
                 $content = file_get_contents($value);
 
                 //format file name sample-admin-YmdHis.php
-                file_put_contents($lang_backup.'/'.$key.'/jacopo-admin-'.date('YmdHis',time()).'.php', $content);
+                file_put_contents($lang_backup.'/'.$key.'/acl-admin-'.date('YmdHis',time()).'.php', $content);
             }
 
 

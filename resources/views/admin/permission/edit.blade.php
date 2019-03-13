@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-{!! trans('jacopo-admin.pages.permission-edit') !!}
+{!! trans($plang_admin.'.pages.permission-edit') !!}
 @stop
 
 @section('content')
@@ -32,21 +32,21 @@
                 <div class="col-md-6 col-xs-12">
                   <!-- DESCRIPTION TEXT FIELD -->
                   <div class="form-group">
-                    {!! Form::label('description',trans('jacopo-admin.labels.description').':*') !!}
+                    {!! Form::label('description',trans($plang_admin.'.labels.description').':*') !!}
                     {!! Form::text('description', @$permission->description, ['class' => 'form-control', 'placeholder' => 'permission description', 'id' => 'slugme']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('description') !!}</span>
 
                 <!-- PERMISSION TEXT FIELD -->
                 <div class="form-group">
-                    {!! Form::label('permission',trans('jacopo-admin.labels.permission-name').':*') !!}
+                    {!! Form::label('permission',trans($plang_admin.'.labels.permission-name').':*') !!}
                     {!! Form::text('permission', @$permission->permission, ['class' => 'form-control', 'placeholder' => 'permission description', 'id' => 'slug']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('permission') !!}</span>
 
                 <!-- URL TEXT FIELD -->
                 <div class="form-group">
-                    {!! Form::label('url',trans('jacopo-admin.labels.link-url').':*') !!}
+                    {!! Form::label('url',trans($plang_admin.'.labels.link-url').':*') !!}
                     {!! Form::text('url', @$permission->url, ['class' => 'form-control', 'placeholder' => 'link url']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('url') !!}</span>
@@ -54,14 +54,14 @@
             <div class="col-md-6 col-xs-12">
                 <!-- OVERVIEW TEXT FIELD -->
                 <div class="form-group">
-                    {!! Form::label('overview',trans('jacopo-admin.labels.overview').':') !!}
+                    {!! Form::label('overview',trans($plang_admin.'.labels.overview').':') !!}
                     {!! Form::text('overview', @$permission->overview, ['class' => 'form-control', 'placeholder' => 'overview']) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('overview') !!}</span>
 
                 <!-- category_id text field -->
                 <div class="form-group">
-                    {!! Form::label('category_id',trans('jacopo-admin.labels.category').':') !!}
+                    {!! Form::label('category_id',trans($plang_admin.'.labels.category').':') !!}
                     {!! Form::select('category_id', $pluck_select_category, @$permission->category_id, ["class" => "form-control"]) !!}
                 </div>
                 <span class="text-danger">{!! $errors->first('category_id') !!}</span>
@@ -78,7 +78,7 @@
 {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/slugit.js') !!}
 <script>
     $(".delete").click(function(){
-        return confirm("{!! trans('jacopo-admin.messages.user-delete') !!}");
+        return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
     });
     $(function(){
         $('#slugme').slugIt();

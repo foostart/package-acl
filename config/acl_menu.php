@@ -27,7 +27,7 @@ return [
 
             //Dashboard page
             [
-                "name"        => "jacopo-admin.menu.dashboard",
+                "name"        => "acl-admin.menu.dashboard",
                 "route"       => "dashboard",
                 "link"        => '/admin/users/dashboard',
                 "permissions" => []
@@ -47,7 +47,7 @@ return [
 
             //Users page
             [
-                "name"        => "jacopo-admin.menu.users",
+                "name"        => "acl-admin.menu.users",
                 "route"       => "users",
                 "link"        => '/admin/users/list',
                 "permissions" => [$admin, '_user-editor', '_user-leader'],
@@ -57,7 +57,7 @@ return [
 
             //Groups page
             [
-                "name"        => "jacopo-admin.menu.groups",
+                "name"        => "acl-admin.menu.groups",
                 "route"       => "groups",
                 "link"        => '/admin/groups/list',
                 "permissions" => [$admin, "_group-editor"]
@@ -66,7 +66,7 @@ return [
 
             //Permissions page
             [
-                "name"        => "jacopo-admin.menu.permissions",
+                "name"        => "acl-admin.menu.permissions",
                 "route"       => "permissions",
                 "link"        => '/admin/permissions/list',
                 "permissions" => [$admin, "_permission-editor"]

@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {!! trans('jacopo-admin.pages.user-edit-profile') !!}
+    {!! trans($plang_admin.'.pages.user-edit-profile') !!}
 @stop
 
 @section('content')
@@ -20,14 +20,14 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="panel-title bariol-thin"><i class="fa fa-user"></i> {!! trans('jacopo-admin.labels.user-profile') !!}</h3>
+                        <h3 class="panel-title bariol-thin"><i class="fa fa-user"></i> {!! trans($plang_admin.'.labels.user-profile') !!}</h3>
                     </div>
                 </div>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{!! URL::route('users.edit',['id' => $user_profile->user_id]) !!}" class="btn btn-info pull-right"><i class="fa fa-pencil-square-o"></i> {!! trans('jacopo-admin.labels.edit-user') !!}</a>
+                        <a href="{!! URL::route('users.edit',['id' => $user_profile->user_id]) !!}" class="btn btn-info pull-right"><i class="fa fa-pencil-square-o"></i> {!! trans($plang_admin.'.labels.edit-user') !!}</a>
                     </div>
                 </div>
                 <div class="row">
@@ -37,49 +37,49 @@
                         @else
                             @include('laravel-authentication-acl::admin.user.partials.show_gravatar')
                         @endif
-                        <h4><i class="fa fa-cubes"></i>{!! trans('jacopo-admin.labels.user-data').':' !!}</h4>
+                        <h4><i class="fa fa-cubes"></i>{!! trans($plang_admin.'.labels.user-data').':' !!}</h4>
                         {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
                
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                          <!-- password text field -->
                                  <div class="form-group">
-                            {!! Form::label('password',trans('jacopo-admin.labels.new-password').':') !!}
+                            {!! Form::label('password',trans($plang_admin.'.labels.new-password').':') !!}
                             {!! Form::password('password', ['class' => 'form-control']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('password') !!}</span>
                         <!-- password_confirmation text field -->
                         <div class="form-group">
-                            {!! Form::label('password_confirmation',trans('jacopo-admin.labels.confirm-password').':') !!}
+                            {!! Form::label('password_confirmation',trans($plang_admin.'.labels.confirm-password').':') !!}
                             {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                         </div>
                         <!-- code text field -->
                         <div class="form-group">
-                            {!! Form::label('code',trans('jacopo-admin.labels.code').':') !!}
+                            {!! Form::label('code',trans($plang_admin.'.labels.code').':') !!}
                             {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('code') !!}</span>
                         <!-- first_name text field -->
                         <div class="form-group">
-                            {!! Form::label('first_name',trans('jacopo-admin.labels.first_name').':') !!}
+                            {!! Form::label('first_name',trans($plang_admin.'.labels.first_name').':') !!}
                             {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('first_name') !!}</span>
                         <!-- last_name text field -->
                         <div class="form-group">
-                            {!! Form::label('last_name',trans('jacopo-admin.labels.last_name').':') !!}
+                            {!! Form::label('last_name',trans($plang_admin.'.labels.last_name').':') !!}
                             {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('last_name') !!}</span>
                         <!-- phone text field -->
                         <div class="form-group">
-                            {!! Form::label('phone',trans('jacopo-admin.labels.phone').':') !!}
+                            {!! Form::label('phone',trans($plang_admin.'.labels.phone').':') !!}
                             {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('phone') !!}</span>
                         <!-- state text field -->
                         <div class="form-group">
-                            {!! Form::label('state',trans('jacopo-admin.labels.state').':') !!}
+                            {!! Form::label('state',trans($plang_admin.'.labels.state').':') !!}
                             {!! Form::text('state', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('state') !!}</span>
@@ -88,25 +88,25 @@
                          
                         <!-- var text field -->
                         <div class="form-group">
-                            {!! Form::label('var',trans('jacopo-admin.labels.vat').':') !!}
+                            {!! Form::label('var',trans($plang_admin.'.labels.vat').':') !!}
                             {!! Form::text('var', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('vat') !!}</span>
                         <!-- city text field -->
                         <div class="form-group">
-                            {!! Form::label('city',trans('jacopo-admin.labels.city').':') !!}
+                            {!! Form::label('city',trans($plang_admin.'.labels.city').':') !!}
                             {!! Form::text('city', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('city') !!}</span>
                         <!-- country text field -->
                         <div class="form-group">
-                            {!! Form::label('country',trans('jacopo-admin.labels.country').':') !!}
+                            {!! Form::label('country',trans($plang_admin.'.labels.country').':') !!}
                             {!! Form::text('country', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('country') !!}</span>
                         <!-- sex text field -->
                         <div class="form-group">
-                            {!! Form::label('sex',trans('jacopo-admin.labels.sex').':') !!}
+                            {!! Form::label('sex',trans($plang_admin.'.labels.sex').':') !!}
                             <?php $sex_values = trans('foo-admin.sex'); ?>
                             {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                         </div>
@@ -114,20 +114,20 @@
                         <!-- level text field -->
                         <div class="form-group">
                            
-                            {!! Form::label('level_id',trans('jacopo-admin.labels.level').':') !!}
+                            {!! Form::label('level_id',trans($plang_admin.'.labels.level').':') !!}
                             {!! Form::select('level_id', $pluck_select_category_level, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('level_id') !!}</span>
                         <!-- category_id text field -->
                         <div class="form-group">
-                            {!! Form::label('category_id',trans('jacopo-admin.labels.category').':') !!}
+                            {!! Form::label('category_id',trans($plang_admin.'.labels.category').':') !!}
                             {!! Form::select('category_id', $pluck_select_category_department, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
                         <!-- address text field -->
                         <div class="form-group">
-                            {!! Form::label('address',trans('jacopo-admin.labels.address').':') !!}
+                            {!! Form::label('address',trans($plang_admin.'.labels.address').':') !!}
                             {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('address') !!}</span>

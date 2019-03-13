@@ -14,7 +14,7 @@ return [
             'groups' => 'Groups',
             'permissions' => 'Permissions',
             'operations' => 'Operations',
-            'contexts'  => 'Contextes',
+            'contexts'  => 'Contexts',
         ],
 
 
@@ -192,9 +192,6 @@ return [
             'general-data'  => 'General data',
             'group-name' => 'Group name',
         ],
-
-
-
 
 
         /***********************************************************************
