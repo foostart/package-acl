@@ -13,7 +13,7 @@
 @extends('laravel-authentication-acl::client.layouts.base')
 
 @section ('title')
-    {!! trans('jacopo-front.recovery-password') !!}
+    {!! trans($plang_front.'.recovery-password') !!}
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
 
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    {!! trans('jacopo-front.recovery-password') !!}
+                    {!! trans($plang_front.'.recovery-password') !!}
                 </h3>
             </div>
 
@@ -45,7 +45,7 @@
                          <!--email-->
                         @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'email',
-                                    'placeholder' => trans('jacopo-front.recovery-email'),
+                                    'placeholder' => trans($plang_front.'.recovery-email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                     'required' => true,
                                     'errors' => $errors
@@ -59,7 +59,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             @include('laravel-authentication-acl::client.partials.input_text', [
                                 'name' => 'captcha_text',
-                                'placeholder' => trans('jacopo-front.captcha'),
+                                'placeholder' => trans($plang_front.'.captcha'),
                                 'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
                                 'required' => true,
                                 'errors' => $errors,
@@ -81,14 +81,14 @@
                     @endif
                 </div>
 
-                <input type="submit" value="{!! trans('jacopo-front.btn-recover') !!}" class="btn btn-info btn-block">
+                <input type="submit" value="{!! trans($plang_front.'.btn-recover') !!}" class="btn btn-info btn-block">
 
                 {!! Form::close() !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
                         <a href="{!! URL::route('user.login') !!}">
                             <i class="fa fa-arrow-left"></i>
-                            {!! trans('jacopo-front.to-login') !!}
+                            {!! trans($plang_front.'.to-login') !!}
                         </a>
                     </div>
                 </div>

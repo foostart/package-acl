@@ -63,10 +63,7 @@ return [
             'reset' => 'Reset',
             'submit'=> 'Submit',
             'delete' => 'Delete',
-            'upload-avatar' => 'Update avatar',
             'update-avatar' => 'Update avatar',
-            'search' => 'Search',
-            'save' => 'Save',
         ],
 
 
@@ -356,6 +353,40 @@ return [
         'context-status' => 'Status',
         'key' => 'Key',
         'status' => 'Status',
+    ],
+
+
+
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Button
+    |-----------------------------------------------------------------------
+    | The list of buttons
+    |
+    */
+    'buttons' => [
+        'search' => 'Search',
+        'reset' => 'Resest',
+        'add' => 'Add',
+        'save' => 'Save',
+        'delete' => 'Delete',
+    ],
+
+
+
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Error message
+    |-----------------------------------------------------------------------
+    | The list of error message
+    |
+    */
+    'error' => [
+        'login-failed' => 'The username or password entered is incorrect. Please try again',
     ],
 
 ];

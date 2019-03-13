@@ -39,7 +39,7 @@
                         @endif
                         <h4><i class="fa fa-cubes"></i>{!! trans($plang_admin.'.labels.user-data').':' !!}</h4>
                         {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
-               
+
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                          <!-- password text field -->
@@ -85,7 +85,7 @@
                         <span class="text-danger">{!! $errors->first('state') !!}</span>
                             </div>
                             <div class="col-md-6 col-xs-12">
-                         
+
                         <!-- var text field -->
                         <div class="form-group">
                             {!! Form::label('var',trans($plang_admin.'.labels.vat').':') !!}
@@ -107,13 +107,13 @@
                         <!-- sex text field -->
                         <div class="form-group">
                             {!! Form::label('sex',trans($plang_admin.'.labels.sex').':') !!}
-                            <?php $sex_values = trans('foo-admin.sex'); ?>
+                            <?php $sex_values = trans($plang_admin.'.sex'); ?>
                             {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('sex') !!}</span>
                         <!-- level text field -->
                         <div class="form-group">
-                           
+
                             {!! Form::label('level_id',trans($plang_admin.'.labels.level').':') !!}
                             {!! Form::select('level_id', $pluck_select_category_level, null, ["class" => "form-control"]) !!}
                         </div>
