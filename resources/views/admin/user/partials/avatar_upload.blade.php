@@ -15,7 +15,7 @@
         {!! Form::hidden('user_id', $user_profile->user_id) !!}
         {!! Form::hidden('user_profile_id', $user_profile->id) !!}
         <div class="form-group">
-            {!! Form::submit(trans($plang_admin.'.labels.update-avt'), ['class' => 'btn btn-info']) !!}
+            {!! Form::submit(trans($plang_admin.'.buttons.update-avatar'), ['class' => 'btn btn-info']) !!}
         </div>
         {!! Form::close() !!}
     </div>
