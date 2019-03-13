@@ -25,7 +25,7 @@ User login
                         <!--email-->
                         @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'email',
-                                    'placeholder' => trans($plang_front.'.email'),
+                                    'placeholder' => trans($plang_front.'.labels.email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                     'required' => true,
                                     'errors' => $errors
@@ -35,7 +35,7 @@ User login
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'password',
-                                    'placeholder' => trans($plang_front.'.password'),
+                                    'placeholder' => trans($plang_front.'.labels.password'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
                                     'required' => true,
                                     'errors' => $errors,
