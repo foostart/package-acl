@@ -102,7 +102,7 @@
                         <!-- sex text field -->
                         <div class="form-group">
                             {!! Form::label('sex',trans($plang_admin.'.labels.sex').':') !!}
-                            <?php $sex_values = trans('foo-admin.sex'); ?>
+                            <?php $sex_values = trans('acl-admin.sex'); ?>
                             {!! Form::select('sex', $sex_values, '', ["class" => "form-control"]) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('sex') !!}</span>
