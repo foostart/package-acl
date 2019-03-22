@@ -25,7 +25,13 @@ Admin login
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    {!! Form::email('email', '', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email address', 'required', 'autocomplete' => 'off']) !!}
+                                    {!! Form::email('email', '', [
+                                        'id' => 'email',
+                                        'class' => 'form-control',
+                                        'placeholder' => trans($plang_front.'.labels.email'),
+                                        'required',
+                                        'autocomplete' => 'off'
+                                    ]) !!}
                                 </div>
                             </div>
                         </div>
@@ -35,7 +41,14 @@ Admin login
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'required', 'autocomplete' => 'off']) !!}
+                                    {!! Form::password('password', [
+                                        'id' => 'password',
+                                        'class' => 'form-control',
+                                        'placeholder' => trans($plang_front.'.labels.password'),
+                                        'required',
+                                        'autocomplete' => 'off'
+                                        ])
+                                    !!}
                                 </div>
                             </div>
                         </div>

@@ -14,12 +14,12 @@
 
                     <!--VERSION-->
                     <th style='width:10%'>
-                        {{ trans($plang_admin.'.columns.order') }}
+                        <?php echo trans($plang_admin.'.columns.order') ?>
                     </th>
 
                     <!--FILENAME-->
                     <th style='width:90%'>
-                        {{ trans($plang_admin.'.columns.filename') }}
+                        <?php echo trans($plang_admin.'.columns.filename') ?>
                     </th>
 
 

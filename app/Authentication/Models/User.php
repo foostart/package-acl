@@ -2,7 +2,7 @@
 /**
  * Class User
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author foostart foostart@gmail.com
  */
 use Cartalyst\Sentry\Users\Eloquent\User as CartaUser;
 use Cartalyst\Sentry\Users\UserExistsException;
@@ -45,4 +45,4 @@ class User extends CartaUser
     {
         return $this->hasMany('LaravelAcl\Authentication\Models\UserProfile');
     }
-} 
+}

@@ -1,5 +1,5 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
-<?php $plang_admin = 'jacopo-admin' ?>
+<?php $plang_admin = $plang_admin.'' ?>
 @section('title')
     {{ trans($plang_admin.'.pages.title-lang') }}
 @stop

@@ -72,6 +72,27 @@ class UserRegisterService
         return $user;
     }
 
+
+    /**
+     *
+     * @param array $input list of user info
+     * @loc T7 DT MD QN
+     * @date 10:10 27/01/2019
+     * @author Kang
+     * @return type
+     */
+    public function saveRegisterBySocial(array $input) {
+
+        //Get user by email
+        try {
+            $user = $this->user_repository->findByLogin($input['email']);
+        } catch(UserNotFoundException $e) {
+            $user = $this->saveDbData($input);
+        }
+
+        return $user;
+    }
+
     /**
      * @param array $input
      * @throws \LaravelAcl\Library\Exceptions\ValidationException
@@ -196,4 +217,4 @@ class UserRegisterService
         return array_merge(["user_id" => $user->id],
                            array_except($input, ["email", "password", "activated"]));
     }
-} 
+}

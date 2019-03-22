@@ -35,6 +35,18 @@ return [
             'by-desc' => 'DESC',
         ],
 
+        'sex' => [
+           0 => 'Any',
+           1 => 'Female',
+           2 => 'Male',
+           3 => 'Other',
+        ],
+        'banned' => [
+            0 => 'Any',
+            1 => 'Yes',
+            2 => 'No',
+        ],
+
 
 
 
@@ -51,7 +63,10 @@ return [
             'reset' => 'Reset',
             'submit'=> 'Submit',
             'delete' => 'Delete',
+            'upload-avatar' => 'Update avatar',
             'update-avatar' => 'Update avatar',
+            'search' => 'Search',
+            'save' => 'Save',
         ],
 
 
@@ -77,6 +92,9 @@ return [
             'permission-edit' => 'Edit permission page',
             'group-list' => 'List of groups',
             'group-edit' => 'Edit group page',
+
+            'title-config' => 'Current configurations',
+            'title-lang' => 'Manage languages',
         ],
 
 
@@ -179,6 +197,10 @@ return [
             'overview'      => 'Overview',
             'general-data'  => 'General data',
             'group-name' => 'Group name',
+            'title-backup' => 'Backups',
+            'config' => 'Configurations',
+            'filename' => 'File name',
+            'order' => '#',
         ],
 
 
@@ -201,7 +223,7 @@ return [
 
 
 
-    
+
         /*
         |-----------------------------------------------------------------------
         | FORM
@@ -219,11 +241,11 @@ return [
             'no' => 'No',
             'any' => 'Any',
         ],
-        
 
 
 
-        
+
+
         /***********************************************************************
         |-----------------------------------------------------------------------
         | SORTING
@@ -238,11 +260,11 @@ return [
             'permission-name' => 'Permission name',
             'permission-url' => 'URL',
         ],
-                
 
 
 
-        
+
+
         /***********************************************************************
         |-----------------------------------------------------------------------
         | TABLE
@@ -259,4 +281,81 @@ return [
             'group-name' => 'Group name',
             'group-permissions' => 'Permissions',
         ],
+
+
+
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Description
+    |-----------------------------------------------------------------------
+    | Description
+    |
+    */
+    'descriptions' => [
+        'category-form' => 'Category form',
+        'overview' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'description' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-form' => 'Context form',
+        'update' => 'Update category',
+        'category-name' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'category' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'list' => 'List of items',
+        'counters' => 'There are <b>:number</b> items',
+        'counter' => 'There is <b>:number</b> item',
+        'not-found' => 'Not found items',
+        'config' => 'List of configurations',
+        'lang' => 'List of languages',
+        'category-slug' =>'Category Slug',
+        'context-name' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-ref' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-key' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'context-status' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+        'status' => '<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </p>',
+    ],
+
+
+
+
+
+    /*
+    |-----------------------------------------------------------------------
+    | Table column
+    |-----------------------------------------------------------------------
+    | The list of columns in table
+    |
+    */
+    'columns' => [
+        'any'   => 'Any',
+        'order' => '#',
+        'id'    => 'ID',
+        'user-full-name' => 'User full name',
+        'operations' => 'Operations',
+        'updated_at' => 'Updated at',
+        'filename' => 'File name',
+        'context-ref' => 'Ref',
+        'context-status' => 'Status',
+        'key' => 'Key',
+        'status' => 'Status',
+    ],
+
 ];

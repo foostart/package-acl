@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-{!! trans('jacopo-admin.pages.user-edit') !!} 
+{!! trans($plang_admin.'.pages.user-edit') !!}
 @stop
 
 @section('content')
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-xs-12">
-                    <h4>{!! trans('jacopo-admin.labels.login-data') !!} </h4>
+                    <h4>{!! trans($plang_admin.'.labels.login-data') !!} </h4>
                     {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                     {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
@@ -39,42 +39,42 @@
                     {!! Form::hidden('form_name','user') !!}
                     <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}" class="btn btn-danger pull-right margin-left-5 delete">Delete user</a>
                     {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
-                    
+
                     <!-- email text field -->
                     <div class="form-group">
-                        {!! Form::label('email',trans('jacopo-admin.labels.email').':*') !!}
+                        {!! Form::label('email',trans($plang_admin.'.labels.email').':*') !!}
                         {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'user email', 'autocomplete' => 'off']) !!}
                     </div>
                     <span class="text-danger">{!! $errors->first('email') !!}</span>
                     <!-- password text field -->
                     <div class="form-group">
-                        {!! Form::label('password',isset($user->id) ? trans('jacopo-admin.labels.change-password').':' : trans('jacopo-admin.labels.password').':') !!}
+                        {!! Form::label('password',isset($user->id) ? trans($plang_admin.'.labels.change-password').':' : trans($plang_admin.'.labels.password').':') !!}
                         {!! Form::password('password', ['class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => '']) !!}
                     </div>
                     <span class="text-danger">{!! $errors->first('password') !!}</span>
                     <!-- password_confirmation text field -->
                     <div class="form-group">
-                        {!! Form::label('password_confirmation',isset($user->id) ? trans('jacopo-admin.labels.confirm-change-password').':' : trans('jacopo-admin.labels.confirm-password').':') !!}
+                        {!! Form::label('password_confirmation',isset($user->id) ? trans($plang_admin.'.labels.confirm-change-password').':' : trans($plang_admin.'.labels.confirm-password').':') !!}
                         {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => '','autocomplete' => 'off']) !!}
                     </div>
                     <span class="text-danger">{!! $errors->first('password_confirmation') !!}</span>
                     <div class="form-group">
-                        {!! Form::label("activated",trans('jacopo-admin.labels.active').':') !!}
+                        {!! Form::label("activated",trans($plang_admin.'.labels.active').':') !!}
                         {!! Form::select('activated', ["1" => "Yes", "0" => "No"], (isset($user->activated) && $user->activated) ? $user->activated : "0", ["class"=> "form-control"] ) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label("banned",trans('jacopo-admin.labels.banned').':') !!}
+                        {!! Form::label("banned",trans($plang_admin.'.labels.banned').':') !!}
                         {!! Form::select('banned', ["1" => "Yes", "0" => "No"], (isset($user->banned) && $user->banned) ? $user->banned : "0", ["class"=> "form-control"] ) !!}
                     </div>
-                 
+                    {!! Form::close() !!}
                     </div>
                     <div class="col-md-6 col-xs-12">
-                        <h4><i class="fa fa-users"></i> {!! trans('jacopo-admin.labels.group').':' !!} </h4>
+                        <h4><i class="fa fa-users"></i> {!! trans($plang_admin.'.labels.group').':' !!} </h4>
                         @include('laravel-authentication-acl::admin.user.groups')
 
-                        {{-- group permission form --}}
-                        <h4><i class="fa fa-lock"></i> {!! trans('jacopo-admin.labels.permission-name').':' !!}</h4>
-                        {{-- permissions --}}
+
+                        <h4><i class="fa fa-lock"></i> {!! trans($plang_admin.'.labels.permission-name').':' !!}</h4>
+
                         @include('laravel-authentication-acl::admin.user.perm')
                     </div>
                 </div>
@@ -86,7 +86,7 @@
 @section('footer_scripts')
 <script>
     $(".delete").click(function(){
-        return confirm({!! trans('jacopo-admin.messages.user-delete') !!});
+        return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
     });
 </script>
 @stop

@@ -86,7 +86,7 @@ class GroupRepositorySearchFilter
                     {
                         case 'name':
                             if (!empty($value)) {
-                                $q = $q->where($this->$groups_table_name . '.name', 'LIKE', "%{$value}%");
+                                $q = $q->where($this->groups_table_name . '.name', 'LIKE', "%{$value}%");
                             }
                             break;
                         case 'permissions':

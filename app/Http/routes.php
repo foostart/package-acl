@@ -12,6 +12,15 @@ use Illuminate\Session\TokenMismatchException;
  */
 Route::group(['middleware' => ['web']], function ()
 {
+    //Login by Facebook, Google
+    Route::get('login/google', [
+            'as' => 'user.login.google',
+            'uses' => 'LaravelAcl\Authentication\Controllers\LoginController@redirectToProvider',
+    ]);
+    Route::get('login/google/callback', [
+            'as' => 'user.login.google.callback',
+            'uses' => 'LaravelAcl\Authentication\Controllers\LoginController@handleProviderCallback',
+    ]);
 
     Route::get('/admin/login', [
             "as"   => "user.admin.login",
@@ -40,7 +49,8 @@ Route::group(['middleware' => ['web']], function ()
     Route::get('/user/change-password', [
             "as"   => "user.change-password",
             "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getChangePassword'
-    ]);
+    ])->middleware(['admin_logged', 'can_see']);
+
     Route::get('/user/recovery-password', [
             "as"   => "user.recovery-password",
             "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getReminder'

@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-{!! trans('jacopo-admin.pages.permission-list') !!}
+{!! trans($plang_admin.'.pages.permission-list') !!}
 @stop
 
 @section('content')
@@ -39,7 +39,7 @@
 @section('footer_scripts')
     <script>
         $(".delete").click(function(){
-            return confirm({!! trans('jacopo-admin.messages.user-delete') !!});
+            return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
         });
     </script>
 @stop
