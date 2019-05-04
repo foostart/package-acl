@@ -232,3 +232,27 @@ Route::group(['middleware' => ['web']], function ()
         ]);
     });
 });
+
+//////////////////// Automatic error handling //////////////////////////
+//if(Config::get('acl_base.handle_errors'))
+//{
+//    App::error(function (RuntimeException $exception, $code)
+//    {
+//        switch($code)
+//        {
+//            case '404':
+//                return view('laravel-authentication-acl::client.exceptions.404');
+//                break;
+//            case '401':
+//                return view('laravel-authentication-acl::client.exceptions.401');
+//                break;
+//            case '500':
+//                return view('laravel-authentication-acl::client.exceptions.500');
+//                break;
+//        }
+//    });
+//    App::error(function (TokenMismatchException $exception)
+//    {
+//        return view('laravel-authentication-acl::client.exceptions.500');
+//    });
+//}
