@@ -32,21 +32,44 @@ class GroupController extends Controller
 
     public function __construct(GroupValidator $v, FormHelper $fh)
     {
+        parent::__construct();
         $this->group_repository = App::make('group_repository');
         $this->group_validator = $v;
         $this->f = new FormModel($this->group_validator, $this->group_repository);
         $this->form_model = $fh;
+        
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_1['label'] = 'Admin';
+        $this->breadcrumb_2['label'] = 'Groups';
     }
 
     public function getList(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3 = NULL;
         $groups = $this->group_repository->all($request->all());
         
-        return View::make('laravel-authentication-acl::admin.group.list')->with(["groups" => $groups, "request" => $request]);
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "groups" => $groups, 
+            "request" => $request,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.group.list')->with($this->data_view);
     }
 
     public function editGroup(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3['label'] = 'Edit';
         try
         {
             $obj = $this->group_repository->find($request->get('id'));
@@ -56,8 +79,16 @@ class GroupController extends Controller
             $obj = new Group;
         }
         $presenter = new GroupPresenter($obj);
-
-        return View::make('laravel-authentication-acl::admin.group.edit')->with(["group" => $obj, "presenter" => $presenter]);
+        
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "group" => $obj, 
+            "presenter" => $presenter,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.group.edit')->with($this->data_view);
     }
 
     public function postEditGroup(Request $request)

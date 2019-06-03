@@ -24,20 +24,45 @@ class PermissionController extends Controller
 
     public function __construct(PermissionValidator $v)
     {
+        parent::__construct();
         $this->r = App::make('permission_repository');
         $this->v = $v;
         $this->f = new FormModel($this->v, $this->r);
+        
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_1['label'] = 'Admin';
+        $this->breadcrumb_2['label'] = 'Permissions';
     }
 
     public function getList(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3 = NULL;
+        
         $objs = $this->r->all($request->all());
 
-        return View::make('laravel-authentication-acl::admin.permission.list')->with(["permissions" => $objs, "request" => $request]);
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "permissions" => $objs, 
+            "request" => $request,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.permission.list')->with($this->data_view);
     }
 
     public function editPermission(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3['label'] = 'Edit';
+        
         try
         {
             $obj = $this->r->find($request->get('id'));
@@ -47,7 +72,14 @@ class PermissionController extends Controller
             $obj = new Permission;
         }
 
-        return View::make('laravel-authentication-acl::admin.permission.edit')->with(["permission" => $obj]);
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "permission" => $obj,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.permission.edit')->with($this->data_view);
     }
 
     public function postEditPermission(Request $request)

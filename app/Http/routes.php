@@ -120,11 +120,23 @@ Route::group(['middleware' => ['web']], function ()
                 'as'   => 'dashboard.default',
                 'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base'
         ]);
+        Route::get('/admin/users', [
+                'as'   => 'dashboard.default',
+                'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base'
+        ]);
+        Route::get('/admin', [
+                'as'   => 'admin.home',
+                'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base'
+        ]);
 
         /**
          * user
          */
         Route::get('/admin/users/list', [
+                'as'   => 'users.list',
+                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@getList'
+        ]);
+        Route::get('/admin/users', [
                 'as'   => 'users.list',
                 'uses' => 'LaravelAcl\Authentication\Controllers\UserController@getList'
         ]);
@@ -194,6 +206,10 @@ Route::group(['middleware' => ['web']], function ()
                 'as'   => 'groups.list',
                 'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@getList'
         ]);
+        Route::get('/admin/groups', [
+                'as'   => 'groups.list',
+                'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@getList'
+        ]);
         Route::get('/admin/groups/edit', [
                 'as'   => 'groups.edit',
                 'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@editGroup'
@@ -215,6 +231,10 @@ Route::group(['middleware' => ['web']], function ()
          * permissions
          */
         Route::get('/admin/permissions/list', [
+                'as'   => 'permissions.list',
+                'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@getList'
+        ]);
+        Route::get('/admin/permissions', [
                 'as'   => 'permissions.list',
                 'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@getList'
         ]);
