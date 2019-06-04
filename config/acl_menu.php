@@ -93,7 +93,7 @@ return [
                 "name"        => 'post-admin.menus.top-menu',
                 "route"       => "posts",
                 "link"        => '/admin/posts',
-                "permissions" => [$admin]
+                "permissions" => [$admin, "_rule"]
             ],
             //Slideshow
             [
@@ -101,6 +101,13 @@ return [
                 "route"       => "slideshows",
                 "link"        => '/admin/slideshows',
                 "permissions" => [$admin]
+            ],
+            //Checklist
+            [
+                "name"        => 'checklist-admin.menus.top-menu',
+                "route"       => "checklists",
+                "link"        => '/admin/checklists',
+                "permissions" => []
             ],
     ]
 ];

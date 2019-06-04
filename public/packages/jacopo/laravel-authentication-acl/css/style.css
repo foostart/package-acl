@@ -186,3 +186,7 @@ div.paginator
     top: 100px;
     right: 45px;
 }
+
+.my-acl-form .input-group-addon i {
+    width: 15px;
+}

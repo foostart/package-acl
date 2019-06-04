@@ -1,13 +1,15 @@
 @extends('laravel-authentication-acl::client.layouts.base')
 @section('title')
-User login
+    {!! trans($plang_front.'.pages.login') !!}
 @stop
 @section('content')
 <div class="row centered-form">
     <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title bariol-thin">Login to {!! Config::get('acl_base.app_name') !!}</h3>
+                <h3 class="panel-title bariol-thin">
+                    {!! trans($plang_front.'.pages.login') !!}
+                </h3>
             </div>
             <?php $message = Session::get('message'); ?>
             @if( isset($message) )
@@ -18,7 +20,7 @@ User login
             <div class="alert alert-danger">{!! $error !!}</div>
             @endforeach
             @endif
-            <div class="panel-body">
+            <div class="my-acl-form panel-body">
                 {!! Form::open(array('url' => URL::route("user.login"), 'method' => 'post') ) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">

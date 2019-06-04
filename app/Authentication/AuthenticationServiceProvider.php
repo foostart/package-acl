@@ -205,7 +205,7 @@ class AuthenticationServiceProvider extends ServiceProvider {
     {
         $this->publishAssets();
         $this->publishConfig();
-        $this->publishViews();
+        //$this->publishViews();
         $this->publishMigrations();
         $this->publicLang();
     }

@@ -92,6 +92,13 @@ return [
 
             'title-config' => 'Current configurations',
             'title-lang' => 'Manage languages',
+            'recovery-password' => 'Recovery password',
+            'login' => 'Login to WikiCase',
+            
+            'signup' => 'Signup',
+            'change-password' => 'Chanage password',
+            'change-password-success-title' => 'Change password success title',
+            'home-page' => 'Login page',
         ],
 
 
@@ -171,7 +178,7 @@ return [
             'login-data'    => 'Login data',
             'password'     => 'Password',
             'change-password'     => 'Change password',
-            'confirm-password'     => 'Confirm password',
+            'confirm_password'     => 'Confirm password',
             'confirm-change-password'   => 'Confirm change password',
             'banned'    => 'Banned',
             'user-profile'  => 'User profile',
@@ -198,6 +205,9 @@ return [
             'config' => 'Configurations',
             'filename' => 'File name',
             'order' => '#',
+            'recovery-email' => 'Recovery email',
+            'captcha' => 'Captcha',
+            'new_password' => 'New password',
         ],
 
 
@@ -215,6 +225,8 @@ return [
             'user-delete' => 'Are you sure to delete this item?',
             'permission-not-found'  => 'No permissions found.',
             'empty-data'        => 'Empty data',
+            'change-password-success' => "Your password has been reset successfully.",
+            'try-again' => 'Please try again',
         ],
 
 
@@ -372,6 +384,9 @@ return [
         'add' => 'Add',
         'save' => 'Save',
         'delete' => 'Delete',
+        'recover' => 'Recover',
+        'register' => 'Register',
+        'change_password' => 'Change password',
     ],
 
 

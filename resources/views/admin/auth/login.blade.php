@@ -18,7 +18,7 @@ Admin login
                 <div class="alert alert-danger">{{$error}}</div>
                 @endforeach
                 @endif
-                <div class="panel-body">
+                <div class="my-acl-form panel-body">
                     {!! Form::open(array('url' => URL::route("user.login.process"), 'method' => 'post') ) !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">

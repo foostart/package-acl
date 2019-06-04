@@ -20,7 +20,7 @@ class SwiftMailer implements MailerInterface
         try
         {
             App::make('mailer')->send($template, ["body" => $body], function($message) use($to, $subject){
-                $message->to($to)->subject($subject);
+                $message->to($to)->subject($subject)->from('admin@lampart-vn.com', 'WikiCase');
             });
         }
         catch( Swift_TransportException $e)
