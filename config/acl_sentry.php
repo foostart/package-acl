@@ -95,7 +95,7 @@ return array(
         |
         */
 
-        'model' => 'LaravelAcl\Authentication\Models\Group',
+        'model' => 'Foostart\Acl\Authentication\Models\Group',
 
     ),
 
@@ -120,7 +120,7 @@ return array(
         |
         */
 
-        'model' => 'LaravelAcl\Authentication\Models\User',
+        'model' => 'Foostart\Acl\Authentication\Models\User',
 
         /*
         |--------------------------------------------------------------------------

@@ -1,16 +1,16 @@
-<?php  namespace LaravelAcl\Authentication\Services;
+<?php  namespace Foostart\Acl\Authentication\Services;
 
 use Config;
 use DB;
 use Event;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Authentication\Exceptions\TokenMismatchException;
-use LaravelAcl\Authentication\Exceptions\UserExistsException;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Authentication\Helpers\DbHelper;
-use LaravelAcl\Authentication\Validators\UserSignupValidator;
-use LaravelAcl\Library\Exceptions\ValidationException;
+use Foostart\Acl\Authentication\Exceptions\TokenMismatchException;
+use Foostart\Acl\Authentication\Exceptions\UserExistsException;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Helpers\DbHelper;
+use Foostart\Acl\Authentication\Validators\UserSignupValidator;
+use Foostart\Acl\Library\Exceptions\ValidationException;
 
 /**
  * Class UserRegisterService
@@ -20,15 +20,15 @@ use LaravelAcl\Library\Exceptions\ValidationException;
 class UserRegisterService
 {
     /**
-     * @var \LaravelAcl\Authentication\Repository\Interfaces\UserRepositoryInterface
+     * @var \Foostart\Acl\Authentication\Repository\Interfaces\UserRepositoryInterface
      */
     protected $user_repository;
     /**
-     * @var \LaravelAcl\Authentication\Repository\Interfaces\UserProfileRepositoryInterface
+     * @var \Foostart\Acl\Authentication\Repository\Interfaces\UserProfileRepositoryInterface
      */
     protected $profile_repository;
     /**
-     * @var \LaravelAcl\Authentication\Validators\UserSignupValidator
+     * @var \Foostart\Acl\Authentication\Validators\UserSignupValidator
      */
     protected $user_signup_validator;
     /**
@@ -49,7 +49,7 @@ class UserRegisterService
         $this->user_signup_validator = $v ? $v : new UserSignupValidator;
         $this->activation_enabled = Config::get('acl_base.email_confirmation');
         Event::listen('service.activated',
-                      'LaravelAcl\Authentication\Services\UserRegisterService@sendActivationEmailToClient');
+                      'Foostart\Acl\Authentication\Services\UserRegisterService@sendActivationEmailToClient');
     }
 
 
@@ -95,7 +95,7 @@ class UserRegisterService
 
     /**
      * @param array $input
-     * @throws \LaravelAcl\Library\Exceptions\ValidationException
+     * @throws \Foostart\Acl\Library\Exceptions\ValidationException
      */
     protected function validateInput(array $input)
     {
@@ -172,8 +172,8 @@ class UserRegisterService
     /**
      * @param $email
      * @param $token
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
-     * @throws \LaravelAcl\Authentication\Exceptions\TokenMismatchException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\TokenMismatchException
      */
     public function checkUserActivationCode($email, $token)
     {

@@ -67,7 +67,7 @@ return [
     'providers' => [
             'users' => [
                     'driver' => 'eloquent',
-                    'model' => LaravelAcl\User::class,
+                    'model' => Foostart\Acl\User::class,
             ],
 
             // 'users' => [

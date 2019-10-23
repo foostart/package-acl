@@ -1,5 +1,5 @@
 <?php
-namespace LaravelAcl\Authentication\Classes\Captcha;
+namespace Foostart\Acl\Authentication\Classes\Captcha;
 
 /**
  * Class CaptchaValidator

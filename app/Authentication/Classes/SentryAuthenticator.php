@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Authentication\Classes;
+<?php namespace Foostart\Acl\Authentication\Classes;
 
 /**
  * Class SentryAuthenticator
@@ -7,9 +7,9 @@
  * @author jacopo beschi jacopo@jacopobeschi.com
  */
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Authentication\Exceptions\AuthenticationErrorException;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
+use Foostart\Acl\Authentication\Exceptions\AuthenticationErrorException;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
 use App;
 use Event;
 
@@ -173,7 +173,7 @@ class SentryAuthenticator implements AuthenticateInterface
 
     /**
      * {@inheritdoc}
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      */
     public function getToken($email)
     {

@@ -1,5 +1,5 @@
 <?php
-use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
+use Foostart\Acl\Authentication\Classes\Menu\SentryMenuFactory;
 
 use Foostart\Category\Helpers\FooCategory;
 

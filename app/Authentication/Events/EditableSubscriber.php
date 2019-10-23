@@ -1,11 +1,11 @@
-<?php  namespace LaravelAcl\Authentication\Events;
+<?php  namespace Foostart\Acl\Authentication\Events;
 /**
  * Class EbitableSubscriber
  *
  * @author jacopo beschi jacopo@jacopobeschi.com
  */
 
-use LaravelAcl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
 
 class EditableSubscriber
 {
@@ -26,8 +26,8 @@ class EditableSubscriber
      */
     public function subscribe($events)
     {
-        $events->listen('repository.deleting', 'LaravelAcl\Authentication\Events\EditableSubscriber@isEditable',10);
-        $events->listen('repository.updating', 'LaravelAcl\Authentication\Events\EditableSubscriber@isEditable',10);
+        $events->listen('repository.deleting', 'Foostart\Acl\Authentication\Events\EditableSubscriber@isEditable',10);
+        $events->listen('repository.updating', 'Foostart\Acl\Authentication\Events\EditableSubscriber@isEditable',10);
     }
 
 } 

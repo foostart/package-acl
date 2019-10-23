@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Authentication\Models;
+<?php namespace Foostart\Acl\Authentication\Models;
 /**
  * Class User
  *
@@ -43,6 +43,6 @@ class User extends CartaUser
 
     public function user_profile()
     {
-        return $this->hasMany('LaravelAcl\Authentication\Models\UserProfile');
+        return $this->hasMany('Foostart\Acl\Authentication\Models\UserProfile');
     }
 }

@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Database;
+<?php namespace Foostart\Acl\Database;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model as Eloquent;
@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         Eloquent::unguard();
 
-        $this->call('LaravelAcl\Database\PermissionSeeder');
-        $this->call('LaravelAcl\Database\GroupsSeeder');
-        $this->call('LaravelAcl\Database\UserSeeder');
+        $this->call('Foostart\Acl\Database\PermissionSeeder');
+        $this->call('Foostart\Acl\Database\GroupsSeeder');
+        $this->call('Foostart\Acl\Database\UserSeeder');
 
         Eloquent::reguard();
     }

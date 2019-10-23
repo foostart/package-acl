@@ -140,10 +140,10 @@ return [
 //            App\Providers\EventServiceProvider::class,
 //            App\Providers\RouteServiceProvider::class,
 
-            LaravelAcl\Providers\AppServiceProvider::class,
-            LaravelAcl\Providers\EventServiceProvider::class,
-            LaravelAcl\Providers\RouteServiceProvider::class,
-            LaravelAcl\Authentication\AuthenticationServiceProvider::class,
+            Foostart\Acl\Providers\AppServiceProvider::class,
+            Foostart\Acl\Providers\EventServiceProvider::class,
+            Foostart\Acl\Providers\RouteServiceProvider::class,
+            Foostart\Acl\Authentication\AuthenticationServiceProvider::class,
 
     ],
 

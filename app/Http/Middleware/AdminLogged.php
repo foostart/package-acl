@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Http\Middleware; 
+<?php  namespace Foostart\Acl\Http\Middleware; 
 
 use Closure;
 use Illuminate\Support\Facades\App;

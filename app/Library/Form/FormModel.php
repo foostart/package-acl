@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Form;
+<?php namespace Foostart\Acl\Library\Form;
 /**
  * Class FormModel
  *
@@ -6,19 +6,19 @@
  *
  * @author jacopo beschi jacopo@jacopobeschi.com
  */
-use LaravelAcl\Library\Validators\ValidatorInterface;
-use LaravelAcl\Library\Exceptions\ValidationException;
+use Foostart\Acl\Library\Validators\ValidatorInterface;
+use Foostart\Acl\Library\Exceptions\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Library\Exceptions\NotFoundException;
-use LaravelAcl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
 use Event;
 
 class FormModel implements FormInterface{
 
     /**
      * Validator
-     * @var \LaravelAcl\Library\Validators\ValidatorInterface
+     * @var \Foostart\Acl\Library\Validators\ValidatorInterface
      */
     protected $v;
     /**
@@ -46,7 +46,7 @@ class FormModel implements FormInterface{
     /**
      * Process the input and calls the repository
      * @param array $input
-     * @throws \LaravelAcl\Library\Exceptions\JacopoExceptionsInterface
+     * @throws \Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface
      */
     public function process(array $input)
     {
@@ -65,7 +65,7 @@ class FormModel implements FormInterface{
     /**
      * Calls create or update depending on giving or not the id
      * @param $input
-     * @throws \LaravelAcl\Library\Exceptions\NotFundException
+     * @throws \Foostart\Acl\Library\Exceptions\NotFundException
      */
     protected function callRepository($input)
     {
@@ -115,7 +115,7 @@ class FormModel implements FormInterface{
     /**
      * Run delete on the repository
      * @param $input
-     * @throws \LaravelAcl\Library\Exceptions\NotFoundException
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
      * @todo test with exceptions
      */
     public function delete(array $input)

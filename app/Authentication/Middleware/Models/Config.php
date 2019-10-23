@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Authentication\Middleware\Models;
+<?php namespace Foostart\Acl\Authentication\Middleware\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

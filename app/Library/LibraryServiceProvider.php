@@ -1,8 +1,8 @@
-<?php namespace LaravelAcl\Library;
+<?php namespace Foostart\Acl\Library;
 
 use Illuminate\Support\ServiceProvider;
-use LaravelAcl\Library\Email\SwiftMailer;
-use LaravelAcl\Library\Form\FormModel;
+use Foostart\Acl\Library\Email\SwiftMailer;
+use Foostart\Acl\Library\Form\FormModel;
 
 class LibraryServiceProvider extends ServiceProvider {
 

@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Authentication\Commands;
+<?php namespace Foostart\Acl\Authentication\Commands;
 
 class CallWrapper
 {

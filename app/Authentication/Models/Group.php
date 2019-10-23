@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Models;
+<?php  namespace Foostart\Acl\Authentication\Models;
 /**
  * Class Group
  *

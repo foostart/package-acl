@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelAcl\Providers;
+namespace Foostart\Acl\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

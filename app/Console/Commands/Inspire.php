@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Console\Commands;
+<?php namespace Foostart\Acl\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

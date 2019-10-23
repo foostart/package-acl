@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Classes\Menu;
+<?php  namespace Foostart\Acl\Authentication\Classes\Menu;
 /**
  * Class SentryFactory
  *

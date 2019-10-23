@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Http\Middleware;
+<?php namespace Foostart\Acl\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 

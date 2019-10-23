@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Classes\Statistics;
+<?php  namespace Foostart\Acl\Authentication\Classes\Statistics;
 /**
  * Class UserStatistics
  *

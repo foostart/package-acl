@@ -1,7 +1,7 @@
-<?php namespace LaravelAcl\Authentication\Validators;
+<?php namespace Foostart\Acl\Authentication\Validators;
 
 use Event;
-use LaravelAcl\Library\Validators\AbstractValidator;
+use Foostart\Acl\Library\Validators\AbstractValidator;
 
 class GroupValidator  extends AbstractValidator
 {

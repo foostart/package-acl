@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Controllers;
+<?php  namespace Foostart\Acl\Authentication\Controllers;
 
 /**
  * Class UserController
@@ -7,39 +7,39 @@
  */
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Authentication\Exceptions\PermissionException;
-use LaravelAcl\Authentication\Exceptions\ProfileNotFoundException;
-use LaravelAcl\Authentication\Helpers\DbHelper;
-use LaravelAcl\Authentication\Models\UserProfile;
-use LaravelAcl\Authentication\Presenters\UserPresenter;
-use LaravelAcl\Authentication\Services\UserProfileService;
-use LaravelAcl\Authentication\Validators\UserProfileAvatarValidator;
-use LaravelAcl\Library\Exceptions\NotFoundException;
-use LaravelAcl\Authentication\Models\User;
-use LaravelAcl\Authentication\Helpers\FormHelper;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Authentication\Validators\UserValidator;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
-use LaravelAcl\Authentication\Validators\UserProfileValidator;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Exceptions\ProfileNotFoundException;
+use Foostart\Acl\Authentication\Helpers\DbHelper;
+use Foostart\Acl\Authentication\Models\UserProfile;
+use Foostart\Acl\Authentication\Presenters\UserPresenter;
+use Foostart\Acl\Authentication\Services\UserProfileService;
+use Foostart\Acl\Authentication\Validators\UserProfileAvatarValidator;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
+use Foostart\Acl\Authentication\Models\User;
+use Foostart\Acl\Authentication\Helpers\FormHelper;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Validators\UserValidator;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Authentication\Validators\UserProfileValidator;
 use View, Redirect, App, Config;
-use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
+use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use LaravelAcl\Library\Form\FormModel;
+use Foostart\Acl\Library\Form\FormModel;
 
 class UserController extends Controller {
     /**
-     * @var \LaravelAcl\Authentication\Repository\SentryUserRepository
+     * @var \Foostart\Acl\Authentication\Repository\SentryUserRepository
      */
     protected $user_repository;
     protected $user_validator;
     /**
-     * @var \LaravelAcl\Authentication\Helpers\FormHelper
+     * @var \Foostart\Acl\Authentication\Helpers\FormHelper
      */
     protected $form_helper;
     protected $profile_repository;
     protected $profile_validator;
     /**
-     * @var use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
+     * @var use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
      */
     protected $auth;
     protected $register_service;

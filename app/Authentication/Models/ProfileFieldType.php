@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Models;
+<?php  namespace Foostart\Acl\Authentication\Models;
 
 /**
  * Class ProfileTypeField
@@ -13,6 +13,6 @@ class ProfileFieldType extends BaseModel
 
     public function profile_field()
     {
-        return $this->hasMany('LaravelAcl\Authentication\Models\ProfileField');
+        return $this->hasMany('Foostart\Acl\Authentication\Models\ProfileField');
     }
 } 

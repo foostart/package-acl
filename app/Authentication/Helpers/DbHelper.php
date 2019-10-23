@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Helpers;
+<?php  namespace Foostart\Acl\Authentication\Helpers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;

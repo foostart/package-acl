@@ -1,5 +1,5 @@
 <?php
-namespace LaravelAcl\Authentication\Repository;
+namespace Foostart\Acl\Authentication\Repository;
 
 /**
  * Class UserRepository
@@ -13,15 +13,15 @@ use DateTime;
 use Event;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Config;
-use LaravelAcl\Authentication\Exceptions\UserExistsException;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
-use LaravelAcl\Authentication\Models\Group;
-use LaravelAcl\Authentication\Models\User;
-use LaravelAcl\Authentication\Repository\Interfaces\UserRepositoryInterface;
-use LaravelAcl\Library\Repository\EloquentBaseRepository;
+use Foostart\Acl\Authentication\Exceptions\UserExistsException;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
+use Foostart\Acl\Authentication\Models\Group;
+use Foostart\Acl\Authentication\Models\User;
+use Foostart\Acl\Authentication\Repository\Interfaces\UserRepositoryInterface;
+use Foostart\Acl\Library\Repository\EloquentBaseRepository;
 
 use Foostart\Category\Models\Category;
-use LaravelAcl\Authentication\Repository\EloquentUserProfileRepository;
+use Foostart\Acl\Authentication\Repository\EloquentUserProfileRepository;
 
 class SentryUserRepository extends EloquentBaseRepository implements UserRepositoryInterface
 {
@@ -71,7 +71,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      *
      * @param       id
      * @param array $data
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      * @return mixed
      * @override
      */
@@ -109,7 +109,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      * Add a group to the user
      *
      * @param $id group id
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      */
     public function addGroup($user_id, $group_id)
     {
@@ -128,7 +128,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      * Remove a group to the user
      *
      * @param $id group id
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      */
     public function removeGroup($user_id, $group_id)
     {
@@ -148,7 +148,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      *
      * @param string login_name
      * @return mixed
-     * @throws \LaravelAcl\Library\Exceptions\NotFoundException
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
      */
     public function activate($login_name)
     {
@@ -162,7 +162,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
 
     /**
      * @param $login_name
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      */
     public function findByLogin($login_name)
     {
@@ -181,7 +181,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      * Obtain a list of user from a given group
      *
      * @param String $group_name
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      * @return mixed
      */
     public function findFromGroupName($group_name)

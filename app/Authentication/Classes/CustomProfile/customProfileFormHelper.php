@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Classes\CustomProfile;
+<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile;
 /**
  * Class customProfileFormHelper
  *

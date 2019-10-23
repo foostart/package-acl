@@ -1,6 +1,6 @@
-<?php  namespace LaravelAcl\Authentication\Models;
+<?php  namespace Foostart\Acl\Authentication\Models;
 
-use LaravelAcl\Authentication\Presenters\UserProfilePresenter;
+use Foostart\Acl\Authentication\Presenters\UserProfilePresenter;
 
 /**
  * Class UserProfile
@@ -34,12 +34,12 @@ class UserProfile extends BaseModel
 
     public function user()
     {
-        return $this->belongsTo('LaravelAcl\Authentication\Models\User', "user_id");
+        return $this->belongsTo('Foostart\Acl\Authentication\Models\User', "user_id");
     }
 
     public function profile_field()
     {
-        return $this->hasMany('LaravelAcl\Authentication\Models\ProfileField');
+        return $this->hasMany('Foostart\Acl\Authentication\Models\ProfileField');
     }
 
     public function getAvatarAttribute()

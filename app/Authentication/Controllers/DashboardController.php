@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Controllers;
+<?php  namespace Foostart\Acl\Authentication\Controllers;
 
 use View;
 

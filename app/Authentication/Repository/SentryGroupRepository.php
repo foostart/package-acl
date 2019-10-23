@@ -1,13 +1,13 @@
-<?php  namespace LaravelAcl\Authentication\Repository;
+<?php  namespace Foostart\Acl\Authentication\Repository;
 /**
  * Class GroupRepository
  *
  * @author jacopo beschi jacopo@jacopobeschi.com
  */
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use LaravelAcl\Library\Repository\Interfaces\BaseRepositoryInterface;
-use LaravelAcl\Authentication\Models\Group;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
+use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
+use Foostart\Acl\Authentication\Models\Group;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
 use App, Event;
 use Cartalyst\Sentry\Groups\GroupNotFoundException;
 
@@ -70,7 +70,7 @@ class SentryGroupRepository implements BaseRepositoryInterface
      *
      * @param $id
      * @return mixed
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      */
     public function find($id)
     {

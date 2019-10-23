@@ -1,24 +1,24 @@
-<?php  namespace LaravelAcl\Authentication\Controllers;
+<?php  namespace Foostart\Acl\Authentication\Controllers;
 /**
  * Class PermissionController
  *
  * @author jacopo beschi jacopo@jacopobeschi.com
  */
 use Illuminate\Http\Request;
-use LaravelAcl\Library\Form\FormModel;
-use LaravelAcl\Authentication\Models\Permission;
-use LaravelAcl\Authentication\Validators\PermissionValidator;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Library\Form\FormModel;
+use Foostart\Acl\Authentication\Models\Permission;
+use Foostart\Acl\Authentication\Validators\PermissionValidator;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 use View, Redirect, App, Config;
 
 class PermissionController extends Controller
 {
     /**
-     * @var \LaravelAcl\Authentication\Repository\PermissionGroupRepository
+     * @var \Foostart\Acl\Authentication\Repository\PermissionGroupRepository
      */
     protected $r;
     /**
-     * @var \LaravelAcl\Authentication\Validators\PermissionValidator
+     * @var \Foostart\Acl\Authentication\Validators\PermissionValidator
      */
     protected $v;
 

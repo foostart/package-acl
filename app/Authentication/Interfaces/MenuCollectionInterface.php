@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Interfaces;
+<?php  namespace Foostart\Acl\Authentication\Interfaces;
 /**
  * Interface MenuCollectionInterface
  *
@@ -8,7 +8,7 @@ interface MenuCollectionInterface
 {
     /**
      * Obtain all the menu items
-     * @return \LaravelAcl\Authentication\Classes\MenuItem
+     * @return \Foostart\Acl\Authentication\Classes\MenuItem
      */
     public function getItemList();
 

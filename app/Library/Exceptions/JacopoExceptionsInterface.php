@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Exceptions;
+<?php namespace Foostart\Acl\Library\Exceptions;
 /**
  * Interface JacopoExceptionsInterface
  *

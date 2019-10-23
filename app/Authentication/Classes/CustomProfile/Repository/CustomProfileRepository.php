@@ -1,10 +1,10 @@
-<?php  namespace LaravelAcl\Authentication\Classes\CustomProfile\Repository;
+<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile\Repository;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
-use LaravelAcl\Authentication\Models\ProfileField;
-use LaravelAcl\Authentication\Models\ProfileFieldType;
+use Foostart\Acl\Authentication\Models\ProfileField;
+use Foostart\Acl\Authentication\Models\ProfileFieldType;
 
 /**
  * Class CustomProfileRepository

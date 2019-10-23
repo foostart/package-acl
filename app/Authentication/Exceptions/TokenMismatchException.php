@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Authentication\Exceptions;
+<?php namespace Foostart\Acl\Authentication\Exceptions;
 /**
  * Class UseTokenMismatchExceptionrExistsException
  *
@@ -6,6 +6,6 @@
  */
 
 use Exception;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 
 class TokenMismatchException extends Exception implements JacopoExceptionsInterface {}

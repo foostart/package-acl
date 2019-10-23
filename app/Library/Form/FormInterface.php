@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Form;
+<?php namespace Foostart\Acl\Library\Form;
 
 interface formInterface
 {

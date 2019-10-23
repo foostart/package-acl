@@ -15,31 +15,31 @@ Route::group(['middleware' => ['web']], function ()
     //Login by Facebook, Google
     Route::get('login/google', [
             'as' => 'user.login.google',
-            'uses' => 'LaravelAcl\Authentication\Controllers\LoginController@redirectToProvider',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\LoginController@redirectToProvider',
     ]);
     Route::get('login/google/callback', [
             'as' => 'user.login.google.callback',
-            'uses' => 'LaravelAcl\Authentication\Controllers\LoginController@handleProviderCallback',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\LoginController@handleProviderCallback',
     ]);
 
     Route::get('/admin/login', [
             "as"   => "user.admin.login",
-            "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getAdminLogin'
+            "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getAdminLogin'
     ]);
     Route::get('/login', [
             "as"   => "user.login",
-            "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getClientLogin'
+            "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getClientLogin'
     ]);
     Route::get('/user/logout', [
             "as"   => "user.logout",
-            "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getLogout'
+            "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getLogout'
     ]);
     Route::post('/user/login', [
-            "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@postAdminLogin',
+            "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@postAdminLogin',
             "as"   => "user.login.process"
     ]);
     Route::post('/login', [
-            "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@postClientLogin',
+            "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@postClientLogin',
             "as"   => "user.login"
     ]);
 
@@ -48,15 +48,15 @@ Route::group(['middleware' => ['web']], function ()
      */
     Route::get('/user/change-password', [
             "as"   => "user.change-password",
-            "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getChangePassword'
+            "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getChangePassword'
     ])->middleware(['can_see']);
 
     Route::get('/user/recovery-password', [
             "as"   => "user.recovery-password",
-            "uses" => 'LaravelAcl\Authentication\Controllers\AuthController@getReminder'
+            "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getReminder'
     ]);
     Route::post('/user/change-password/', [
-            'uses' => 'LaravelAcl\Authentication\Controllers\AuthController@postChangePassword',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\AuthController@postChangePassword',
             "as"   => "user.reminder.process"
     ]);
 
@@ -69,7 +69,7 @@ Route::group(['middleware' => ['web']], function ()
             ]
     );
     Route::post('/user/reminder', [
-            'uses' => 'LaravelAcl\Authentication\Controllers\AuthController@postReminder',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\AuthController@postReminder',
             "as"   => "user.reminder"
     ]);
     Route::get('/user/reminder-success', [
@@ -84,24 +84,24 @@ Route::group(['middleware' => ['web']], function ()
      * User signup
      */
     Route::post('/user/signup', [
-            'uses' => 'LaravelAcl\Authentication\Controllers\UserController@postSignup',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@postSignup',
             "as"   => "user.signup.process"
     ]);
     Route::get('/user/signup', [
-            'uses' => 'LaravelAcl\Authentication\Controllers\UserController@signup',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@signup',
             "as"   => "user.signup"
     ]);
     Route::post('captcha-ajax', [
             "before" => "captcha-ajax",
-            'uses'   => 'LaravelAcl\Authentication\Controllers\UserController@refreshCaptcha',
+            'uses'   => 'Foostart\Acl\Authentication\Controllers\UserController@refreshCaptcha',
             "as"     => "user.captcha-ajax.process"
     ]);
     Route::get('/user/email-confirmation', [
-            'uses' => 'LaravelAcl\Authentication\Controllers\UserController@emailConfirmation',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@emailConfirmation',
             "as"   => "user.email-confirmation"
     ]);
     Route::get('/user/signup-success', [
-            "uses" => 'LaravelAcl\Authentication\Controllers\UserController@signupSuccess',
+            "uses" => 'Foostart\Acl\Authentication\Controllers\UserController@signupSuccess',
             "as"   => "user.signup-success"
     ]);
 
@@ -118,15 +118,15 @@ Route::group(['middleware' => ['web']], function ()
          */
         Route::get('/admin/users/dashboard', [
                 'as'   => 'dashboard.default',
-                'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\DashboardController@base'
         ]);
         Route::get('/admin/users', [
                 'as'   => 'dashboard.default',
-                'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\DashboardController@base'
         ]);
         Route::get('/admin', [
                 'as'   => 'admin.home',
-                'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\DashboardController@base'
         ]);
 
         /**
@@ -134,69 +134,69 @@ Route::group(['middleware' => ['web']], function ()
          */
         Route::get('/admin/users/list', [
                 'as'   => 'users.list',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@getList'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@getList'
         ]);
         Route::get('/admin/users', [
                 'as'   => 'users.list',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@getList'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@getList'
         ]);
         Route::get('/admin/users/edit', [
                 'as'   => 'users.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@editUser'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editUser'
         ]);
         Route::post('/admin/users/edit', [
                 'as'   => 'users.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@postEditUser'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@postEditUser'
         ]);
         Route::get('/admin/users/delete', [
                 'as'   => 'users.delete',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@deleteUser'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@deleteUser'
         ]);
         Route::post('/admin/users/groups/add', [
                 'as'   => 'users.groups.add',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@addGroup'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@addGroup'
         ]);
         Route::post('/admin/users/groups/delete', [
                 'as'   => 'users.groups.delete',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@deleteGroup'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@deleteGroup'
         ]);
         Route::post('/admin/users/editpermission', [
                 'as'   => 'users.edit.permission',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@editPermission'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editPermission'
         ]);
         Route::get('/admin/users/profile/edit', [
                 'as'   => 'users.profile.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@editProfile'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editProfile'
         ]);
         Route::post('/admin/users/profile/edit', [
                 'as'   => 'users.profile.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@postEditProfile'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@postEditProfile'
         ]);
         Route::post('/admin/users/profile/addField', [
                 'as'   => 'users.profile.addfield',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@addCustomFieldType'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@addCustomFieldType'
         ]);
         Route::post('/admin/users/profile/deleteField', [
                 'as'   => 'users.profile.deletefield',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@deleteCustomFieldType'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@deleteCustomFieldType'
         ]);
         Route::post('/admin/users/profile/avatar', [
                 'as'   => 'users.profile.changeavatar',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@changeAvatar'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@changeAvatar'
         ]);
         Route::get('/admin/users/profile/self', [
                 'as'   => 'users.selfprofile.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\UserController@editOwnProfile'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editOwnProfile'
         ]);
 
         Route::get('/admin/users/lang', [
             'as' => 'users.lang',
-            'uses' => 'LaravelAcl\Authentication\Controllers\UserController@lang'
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@lang'
         ]);
 
         Route::post('/admin/users/lang', [
             'as' => 'users.lang',
-            'uses' => 'LaravelAcl\Authentication\Controllers\UserController@lang'
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@lang'
         ]);
 
         /**
@@ -204,27 +204,27 @@ Route::group(['middleware' => ['web']], function ()
          */
         Route::get('/admin/groups/list', [
                 'as'   => 'groups.list',
-                'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@getList'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@getList'
         ]);
         Route::get('/admin/groups', [
                 'as'   => 'groups.list',
-                'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@getList'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@getList'
         ]);
         Route::get('/admin/groups/edit', [
                 'as'   => 'groups.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@editGroup'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@editGroup'
         ]);
         Route::post('/admin/groups/edit', [
                 'as'   => 'groups.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@postEditGroup'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@postEditGroup'
         ]);
         Route::get('/admin/groups/delete', [
                 'as'   => 'groups.delete',
-                'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@deleteGroup'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@deleteGroup'
         ]);
         Route::post('/admin/groups/editpermission', [
                 'as'   => 'groups.edit.permission',
-                'uses' => 'LaravelAcl\Authentication\Controllers\GroupController@editPermission'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@editPermission'
         ]);
 
         /**
@@ -232,23 +232,23 @@ Route::group(['middleware' => ['web']], function ()
          */
         Route::get('/admin/permissions/list', [
                 'as'   => 'permissions.list',
-                'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@getList'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@getList'
         ]);
         Route::get('/admin/permissions', [
                 'as'   => 'permissions.list',
-                'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@getList'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@getList'
         ]);
         Route::get('/admin/permissions/edit', [
                 'as'   => 'permissions.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@editPermission'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@editPermission'
         ]);
         Route::post('/admin/permissions/edit', [
                 'as'   => 'permissions.edit',
-                'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@postEditPermission'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@postEditPermission'
         ]);
         Route::get('/admin/permissions/delete', [
                 'as'   => 'permissions.delete',
-                'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@deletePermission'
+                'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@deletePermission'
         ]);
     });
 });

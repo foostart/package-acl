@@ -1,8 +1,8 @@
-<?php namespace LaravelAcl\Authentication\Middleware;
+<?php namespace Foostart\Acl\Authentication\Middleware;
 
 use App;
 use ArrayAccess;
-use LaravelAcl\Library\Exceptions\NotFoundException;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
 
 class Config implements ArrayAccess {
 

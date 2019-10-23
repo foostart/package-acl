@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Authentication\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Interfaces;
 /**
  * Interface MenuIterface
  *

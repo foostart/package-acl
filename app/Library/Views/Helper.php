@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Views;
+<?php namespace Foostart\Acl\Library\Views;
 /**
  * Class View Helper
  *

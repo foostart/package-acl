@@ -1,11 +1,11 @@
-<?php  namespace LaravelAcl\Authentication\Classes\Menu;
+<?php  namespace Foostart\Acl\Authentication\Classes\Menu;
 /**
  * Class MenuItem
  *
  * @author jacopo beschi jacopo@jacopobeschi.com
  */
-use LaravelAcl\Authentication\Helpers\SentryAuthenticationHelper;
-use LaravelAcl\Authentication\Interfaces\MenuInterface;
+use Foostart\Acl\Authentication\Helpers\SentryAuthenticationHelper;
+use Foostart\Acl\Authentication\Interfaces\MenuInterface;
 use App;
 
 class SentryMenuItem implements MenuInterface

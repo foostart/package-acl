@@ -1,14 +1,14 @@
-<?php  namespace LaravelAcl\Authentication\Repository;
+<?php  namespace Foostart\Acl\Authentication\Repository;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use LaravelAcl\Authentication\Classes\Images\ImageHelperTrait;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Authentication\Exceptions\ProfileNotFoundException;
-use LaravelAcl\Authentication\Models\User;
-use LaravelAcl\Authentication\Models\UserProfile;
-use LaravelAcl\Authentication\Repository\Interfaces\UserProfileRepositoryInterface;
-use LaravelAcl\Library\Repository\EloquentBaseRepository;
-use LaravelAcl\Library\Repository\Interfaces\BaseRepositoryInterface;
+use Foostart\Acl\Authentication\Classes\Images\ImageHelperTrait;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Exceptions\ProfileNotFoundException;
+use Foostart\Acl\Authentication\Models\User;
+use Foostart\Acl\Authentication\Models\UserProfile;
+use Foostart\Acl\Authentication\Repository\Interfaces\UserProfileRepositoryInterface;
+use Foostart\Acl\Library\Repository\EloquentBaseRepository;
+use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 
 /**
  * Class EloquentUserProfileRepository

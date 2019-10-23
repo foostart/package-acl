@@ -1,5 +1,5 @@
 <?php
-use LaravelAcl\Authentication\Helpers\FormHelper;
+use Foostart\Acl\Authentication\Helpers\FormHelper;
 
 use Foostart\Category\Helpers\SortTable;
 

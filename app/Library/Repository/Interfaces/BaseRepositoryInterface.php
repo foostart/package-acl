@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Repository\Interfaces;
+<?php namespace Foostart\Acl\Library\Repository\Interfaces;
 /**
  * Interface BaseRepositoryInterface
  *

@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Validators;
+<?php namespace Foostart\Acl\Library\Validators;
 
 interface ValidatorInterface
 {

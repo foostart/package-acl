@@ -1,6 +1,6 @@
-<?php  namespace LaravelAcl\Authentication\Presenters;
+<?php  namespace Foostart\Acl\Authentication\Presenters;
 
-use LaravelAcl\Library\Presenters\AbstractPresenter;
+use Foostart\Acl\Library\Presenters\AbstractPresenter;
 use Config;
 
 /**

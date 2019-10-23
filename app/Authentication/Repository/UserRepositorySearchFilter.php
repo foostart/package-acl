@@ -1,4 +1,4 @@
-<?php  namespace LaravelAcl\Authentication\Repository;
+<?php  namespace Foostart\Acl\Authentication\Repository;
 
 /**
  * Class UserRepositorySearchFilter
