@@ -37,7 +37,7 @@
       "database"
     ],
     "psr-4": {
-      "LaravelAcl\\": "app/"
+      "Foostart\\Acl\\": "app/"
     }
   },
   "autoload-dev": {
