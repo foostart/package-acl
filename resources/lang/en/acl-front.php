@@ -93,7 +93,7 @@ return [
             'title-config' => 'Current configurations',
             'title-lang' => 'Manage languages',
             'recovery-password' => 'Recovery password',
-            'login' => 'Login to WikiCase',
+            'login' => 'Login to Package Acl',
             
             'signup' => 'Signup',
             'change-password' => 'Chanage password',

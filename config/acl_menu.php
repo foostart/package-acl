@@ -102,12 +102,5 @@ return [
                 "link"        => '/admin/slideshows',
                 "permissions" => [$admin]
             ],
-            //Checklist
-            [
-                "name"        => 'checklist-admin.menus.top-menu',
-                "route"       => "checklists",
-                "link"        => '/admin/checklists',
-                "permissions" => []
-            ],
     ]
 ];
