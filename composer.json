@@ -1,6 +1,6 @@
 {
   "name": "foostart/package-acl",
-  "description": "Laravel authentication and ACL package with a cool admin panel",
+  "description": "Laravel authentication and ACL package with a cool admin panel. Laravel 7x",
   "keywords": [
     "acl",
     "authentication",
@@ -18,7 +18,7 @@
   ],
   "license": "MIT",  
   "require": {
-    "laravelcollective/html" : "5.4.*",
+    "laravelcollective/html" : "6.1.2",
     "intervention/image": "2.*",
     "foostart/package-category": "*",
 	"foostart/package-sentry": "*",
