@@ -46,7 +46,7 @@ class SentryAuthenticator implements AuthenticateInterface
      */
     public function authenticate(array $credentials, $remember = false)
     {
-        Event::fire('service.authenticating', [$credentials, $remember]);
+        Event::dispatch('service.authenticating', [$credentials, $remember]);
 
         try
         {
@@ -74,7 +74,7 @@ class SentryAuthenticator implements AuthenticateInterface
 
         if(!$this->errors->isEmpty()) throw new AuthenticationErrorException;
 
-        Event::fire('service.authenticated', [$credentials, $remember, $user]);
+        Event::dispatch('service.authenticated', [$credentials, $remember, $user]);
     }
 
     /**
@@ -119,9 +119,9 @@ class SentryAuthenticator implements AuthenticateInterface
      */
     public function logout()
     {
-        Event::fire('service.delogging');
+        Event::dispatch('service.delogging');
         $this->sentry->logout();
-        Event::fire('service.delogged');
+        Event::dispatch('service.delogged');
     }
 
     /**

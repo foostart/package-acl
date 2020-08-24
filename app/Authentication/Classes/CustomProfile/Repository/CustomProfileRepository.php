@@ -30,7 +30,7 @@ class CustomProfileRepository
     public static function addNewType($description)
     {
         // firing event for permission handling
-        Event::fire('customprofile.creating');
+        Event::dispatch('customprofile.creating');
         $profile_field_type = ProfileFieldType::create(["description" => $description]);
 
         return $profile_field_type;
@@ -39,7 +39,7 @@ class CustomProfileRepository
     public static function deleteType($id)
     {
         // firing event for permission handling
-        Event::fire('customprofile.deleting');
+        Event::dispatch('customprofile.deleting');
         $success = ProfileFieldType::findOrFail($id)->delete();
 
         return $success;

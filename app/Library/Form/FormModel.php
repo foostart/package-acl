@@ -52,7 +52,7 @@ class FormModel implements FormInterface{
     {
         if($this->v->validate($input))
         {
-            Event::fire("form.processing", array($input));
+            Event::dispatch("form.processing", array($input));
             return $this->callRepository($input);
         }
         else
