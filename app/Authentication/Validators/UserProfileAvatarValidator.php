@@ -5,7 +5,7 @@ use Foostart\Acl\Library\Validators\AbstractValidator;
 /**
  * Class UserProfileAvatarValidator
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class UserProfileAvatarValidator extends AbstractValidator
 {

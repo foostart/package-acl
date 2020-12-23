@@ -2,7 +2,7 @@
 /**
  * Interface MenuIterface
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 interface MenuInterface
 {

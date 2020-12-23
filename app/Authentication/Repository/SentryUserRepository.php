@@ -4,7 +4,7 @@ namespace Foostart\Acl\Authentication\Repository;
 /**
  * Class UserRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use App;
 use Cartalyst\Sentry\Users\UserExistsException as CartaUserExists;

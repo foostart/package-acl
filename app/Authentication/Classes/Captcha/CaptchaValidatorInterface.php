@@ -4,7 +4,7 @@ namespace Foostart\Acl\Authentication\Classes\Captcha;
 /**
  * Class CaptchaValidator
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 interface CaptchaValidatorInterface
 {

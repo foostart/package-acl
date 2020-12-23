@@ -2,7 +2,7 @@
 /**
  * Class SentryAuthenticationHelper
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Support\Facades\Config;
 use Foostart\Acl\Authentication\Interfaces\AuthenticationHelperInterface;

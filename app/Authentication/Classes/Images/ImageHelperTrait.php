@@ -7,7 +7,7 @@ use Foostart\Acl\Library\Exceptions\NotFoundException;
 /**
  * Trait ImageHelperTrait
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 trait ImageHelperTrait {
 

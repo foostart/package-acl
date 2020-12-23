@@ -4,7 +4,7 @@
  *
  * Class to save form data associated to a model
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Foostart\Acl\Library\Validators\ValidatorInterface;
 use Foostart\Acl\Library\Exceptions\ValidationException;

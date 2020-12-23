@@ -5,7 +5,7 @@ use Foostart\Acl\Authentication\Exceptions\PermissionException;
 /**
  * Class ProfilePermissionSubscriber
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class ProfilePermissionSubscriber
 {

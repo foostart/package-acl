@@ -2,7 +2,7 @@
 /**
  * Class MenuItemCollection
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 
 use Foostart\Acl\Authentication\Interfaces\MenuCollectionInterface;

@@ -2,7 +2,7 @@
 /**
  * Class Group
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroup;
 

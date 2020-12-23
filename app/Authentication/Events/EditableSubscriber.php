@@ -2,7 +2,7 @@
 /**
  * Class EbitableSubscriber
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 
 use Foostart\Acl\Authentication\Exceptions\PermissionException;

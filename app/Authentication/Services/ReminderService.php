@@ -15,7 +15,7 @@ use Foostart\Acl\Authentication\Interfaces\AuthenticatorInterface;
  * Service to send email and error handling
  *
  * @package Auth
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class ReminderService {
 

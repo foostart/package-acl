@@ -4,7 +4,7 @@
  * Class SentryAuthenticator
  * Sentry authenticate implementation
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Support\MessageBag;
 use Foostart\Acl\Authentication\Exceptions\AuthenticationErrorException;

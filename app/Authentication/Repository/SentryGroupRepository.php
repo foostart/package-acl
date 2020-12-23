@@ -2,7 +2,7 @@
 /**
  * Class GroupRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;

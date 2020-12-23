@@ -6,7 +6,7 @@ use Config;
 /**
  * Class UserProfilePresenter
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class UserProfilePresenter extends AbstractPresenter
 {

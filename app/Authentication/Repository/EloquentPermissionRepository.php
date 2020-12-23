@@ -2,7 +2,7 @@
 /**
  * Class EloquentPermissionRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
 use Foostart\Acl\Authentication\Models\Permission;

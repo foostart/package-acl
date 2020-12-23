@@ -15,7 +15,7 @@ use Foostart\Acl\Library\Exceptions\ValidationException;
 /**
  * Class UserRegisterService
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class UserRegisterService
 {

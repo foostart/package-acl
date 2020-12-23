@@ -4,7 +4,7 @@ use Foostart\Acl\Authentication\Models\Permission;
 /**
  * Trait PermissionTrait
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 trait PermissionTrait
 {

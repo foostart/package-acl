@@ -5,7 +5,7 @@ use Foostart\Acl\Authentication\Presenters\UserProfilePresenter;
 /**
  * Class UserProfile
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 
 class UserProfile extends BaseModel

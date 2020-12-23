@@ -13,7 +13,7 @@ use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 /**
  * Class EloquentUserProfileRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class EloquentUserProfileRepository extends EloquentBaseRepository implements UserProfileRepositoryInterface
 {

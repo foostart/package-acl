@@ -3,7 +3,7 @@
 /**
  * Class FormHelper
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Foostart\Acl\Authentication\Repository\EloquentPermissionRepository as PermissionRepository;
 use Foostart\Acl\Authentication\Repository\SentryGroupRepository;

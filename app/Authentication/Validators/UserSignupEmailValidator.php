@@ -2,7 +2,7 @@
 /**
  * Class UserSignupEmailValidator
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Support\Facades\Request;
 use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;

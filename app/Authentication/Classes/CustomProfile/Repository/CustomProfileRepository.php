@@ -9,7 +9,7 @@ use Foostart\Acl\Authentication\Models\ProfileFieldType;
 /**
  * Class CustomProfileRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class CustomProfileRepository
 {

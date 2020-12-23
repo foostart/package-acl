@@ -2,7 +2,7 @@
 /**
  * Class FileRouteHelper
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Config, Route, App;
 use Foostart\Acl\Authentication\Interfaces\AuthenticationRoutesInterface;

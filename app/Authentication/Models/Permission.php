@@ -2,7 +2,7 @@
 /**
  * Class Permission
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 
 class Permission extends BaseModel
