@@ -25,4 +25,5 @@ Now open the file app/Http/Kernel.php and add the following lines to your $route
 
 ##Step 4: Install
 >
-    php artisan authentication:install
+* php artisan authentication:install
+* php artisan vendor:publish --provider="Foostart\Acl\Authentication\AuthenticationServiceProvider" --force
