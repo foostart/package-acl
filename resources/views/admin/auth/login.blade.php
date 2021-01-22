@@ -18,14 +18,20 @@ Admin login
                 <div class="alert alert-danger">{{$error}}</div>
                 @endforeach
                 @endif
-                <div class="panel-body">
+                <div class="my-acl-form panel-body">
                     {!! Form::open(array('url' => URL::route("user.login.process"), 'method' => 'post') ) !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    {!! Form::email('email', '', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email address', 'required', 'autocomplete' => 'off']) !!}
+                                    {!! Form::email('email', '', [
+                                        'id' => 'email',
+                                        'class' => 'form-control',
+                                        'placeholder' => trans($plang_front.'.labels.email'),
+                                        'required',
+                                        'autocomplete' => 'off'
+                                    ]) !!}
                                 </div>
                             </div>
                         </div>
@@ -35,7 +41,14 @@ Admin login
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'required', 'autocomplete' => 'off']) !!}
+                                    {!! Form::password('password', [
+                                        'id' => 'password',
+                                        'class' => 'form-control',
+                                        'placeholder' => trans($plang_front.'.labels.password'),
+                                        'required',
+                                        'autocomplete' => 'off'
+                                        ])
+                                    !!}
                                 </div>
                             </div>
                         </div>

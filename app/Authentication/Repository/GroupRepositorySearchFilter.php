@@ -1,9 +1,9 @@
-<?php  namespace LaravelAcl\Authentication\Repository;
+<?php  namespace Foostart\Acl\Authentication\Repository;
 
 /**
  * Class GroupRepositorySearchFilter
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use App;
 use DB;
@@ -86,7 +86,7 @@ class GroupRepositorySearchFilter
                     {
                         case 'name':
                             if (!empty($value)) {
-                                $q = $q->where($this->$groups_table_name . '.name', 'LIKE', "%{$value}%");
+                                $q = $q->where($this->groups_table_name . '.name', 'LIKE', "%{$value}%");
                             }
                             break;
                         case 'permissions':

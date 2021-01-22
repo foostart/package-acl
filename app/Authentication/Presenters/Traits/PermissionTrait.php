@@ -1,10 +1,10 @@
-<?php  namespace LaravelAcl\Authentication\Presenters\Traits;
-use LaravelAcl\Authentication\Models\Permission;
+<?php  namespace Foostart\Acl\Authentication\Presenters\Traits;
+use Foostart\Acl\Authentication\Models\Permission;
 
 /**
  * Trait PermissionTrait
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 trait PermissionTrait
 {

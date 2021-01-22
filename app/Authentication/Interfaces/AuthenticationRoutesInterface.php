@@ -1,8 +1,8 @@
-<?php  namespace LaravelAcl\Authentication\Interfaces;
+<?php  namespace Foostart\Acl\Authentication\Interfaces;
 /**
  * Interface AuthenticationRoutesInterface
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 interface AuthenticationRoutesInterface
 {

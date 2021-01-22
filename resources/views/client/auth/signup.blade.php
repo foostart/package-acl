@@ -14,7 +14,7 @@
 @extends('laravel-authentication-acl::client.layouts.base')
 
 @section ('title')
-   trans('jacopo-front.page-signup')
+   {!! trans($plang_front.'.pages.signup') !!}
 @stop
 
 @section('head_css')
@@ -28,7 +28,7 @@
             <div class="panel panel-info">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title bariol-thin">{!! trans('jacopo-front.page_signup') !!}</h3>
+                    <h3 class="panel-title bariol-thin">{!! trans($plang_front.'.pages.signup') !!}</h3>
                 </div>
 
                 <?php $message = Session::get('message'); ?>
@@ -37,7 +37,7 @@
                 @endif
 
                 <!--panel-body-->
-                <div class="panel-body">
+                <div class="my-acl-form panel-body">
                     {!! Form::open(["route" => 'user.signup.process', "method" => "POST", "id" => "user_signup"]) !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                     {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
@@ -49,7 +49,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'first_name',
-                                    'placeholder' => trans('jacopo-front.first_name'),
+                                    'placeholder' => trans($plang_front.'.labels.first_name'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
                                     'required' => true,
                                     'errors' => $errors
@@ -61,7 +61,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'last_name',
-                                    'placeholder' => trans('jacopo-front.last_name'),
+                                    'placeholder' => trans($plang_front.'.labels.last_name'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
                                     'required' => true,
                                     'errors' => $errors
@@ -73,7 +73,7 @@
                         <!--email-->
                         @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'email',
-                                    'placeholder' => trans('jacopo-front.email'),
+                                    'placeholder' => trans($plang_front.'.labels.email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                     'required' => true,
                                     'errors' => $errors
@@ -86,7 +86,7 @@
                                 @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'password',
                                     'id' => 'password1',
-                                    'placeholder' => trans('jacopo-front.password'),
+                                    'placeholder' => trans($plang_front.'.labels.password'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
                                     'required' => true,
                                     'errors' => $errors,
@@ -97,7 +97,7 @@
                                 @include('laravel-authentication-acl::client.partials.input_text', [
                                     'name' => 'password_confirmation',
                                     'id' => 'password2',
-                                    'placeholder' => trans('jacopo-front.password_confirm'),
+                                    'placeholder' => trans($plang_front.'.labels.confirm_password'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
                                     'required' => true,
                                     'errors' => $errors,
@@ -114,14 +114,14 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     @include('laravel-authentication-acl::client.partials.input_text', [
                                         'name' => 'captcha_text',
-                                        'placeholder' => trans('jacopo-front.captcha'),
+                                        'placeholder' => trans($plang_front.'.labels.captcha'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
                                         'required' => true,
                                         'errors' => $errors,
                                         'password' => true
                                     ])
                                 </div>
-                            
+
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -135,13 +135,17 @@
 
                             @endif
                         </div>
-                        <input type="submit" value="{!! trans('jacopo-front.register') !!}" class="btn btn-info btn-block">
+                        <input type="submit" value="{!! trans($plang_front.'.buttons.register') !!}" class="btn btn-info btn-block">
                         {!! Form::close() !!}
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            {!! link_to_route('user.login', trans('jacopo-front.already_account_login')) !!}
+                            {!! link_to_route('user.login', trans($plang_front.'.pages.login')) !!}
                         </div>
+
+<!--                        <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
+                            {!! link_to_route('user.login.google', trans($plang_front.'.login-by-google')) !!}
+                        </div>-->
                     </div>
 
                 </div>

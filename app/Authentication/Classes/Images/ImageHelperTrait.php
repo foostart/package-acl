@@ -1,13 +1,13 @@
-<?php  namespace LaravelAcl\Authentication\Classes\Images;
+<?php  namespace Foostart\Acl\Authentication\Classes\Images;
 
 use Image;
 use Illuminate\Support\Facades\Input;
-use LaravelAcl\Library\Exceptions\NotFoundException;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
 
 /**
  * Trait ImageHelperTrait
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 trait ImageHelperTrait {
 

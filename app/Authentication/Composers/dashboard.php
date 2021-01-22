@@ -1,5 +1,5 @@
 <?php
-use LaravelAcl\Authentication\Classes\Statistics\UserStatistics;
+use Foostart\Acl\Authentication\Classes\Statistics\UserStatistics;
 /**
  * Dashboard information
  */

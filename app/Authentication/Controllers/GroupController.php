@@ -1,28 +1,28 @@
-<?php  namespace LaravelAcl\Authentication\Controllers;
+<?php  namespace Foostart\Acl\Authentication\Controllers;
 /**
  * Class GroupController
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Authentication\Presenters\GroupPresenter;
-use LaravelAcl\Library\Form\FormModel;
-use LaravelAcl\Authentication\Helpers\FormHelper;
-use LaravelAcl\Authentication\Models\Group;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Authentication\Validators\GroupValidator;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Authentication\Presenters\GroupPresenter;
+use Foostart\Acl\Library\Form\FormModel;
+use Foostart\Acl\Authentication\Helpers\FormHelper;
+use Foostart\Acl\Authentication\Models\Group;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Validators\GroupValidator;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 use View, Redirect, App, Config;
 
 class GroupController extends Controller
 {
     /**
-     * @var \LaravelAcl\Authentication\Repository\SentryGroupRepository
+     * @var \Foostart\Acl\Authentication\Repository\SentryGroupRepository
      */
     protected $group_repository;
     /**
-     * @var \LaravelAcl\Authentication\Validators\GroupValidator
+     * @var \Foostart\Acl\Authentication\Validators\GroupValidator
      */
     protected $group_validator;
     /**
@@ -32,21 +32,44 @@ class GroupController extends Controller
 
     public function __construct(GroupValidator $v, FormHelper $fh)
     {
+        parent::__construct();
         $this->group_repository = App::make('group_repository');
         $this->group_validator = $v;
         $this->f = new FormModel($this->group_validator, $this->group_repository);
         $this->form_model = $fh;
+        
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_1['label'] = 'Admin';
+        $this->breadcrumb_2['label'] = 'Groups';
     }
 
     public function getList(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3 = NULL;
         $groups = $this->group_repository->all($request->all());
         
-        return View::make('laravel-authentication-acl::admin.group.list')->with(["groups" => $groups, "request" => $request]);
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "groups" => $groups, 
+            "request" => $request,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.group.list')->with($this->data_view);
     }
 
     public function editGroup(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3['label'] = 'Edit';
         try
         {
             $obj = $this->group_repository->find($request->get('id'));
@@ -56,8 +79,16 @@ class GroupController extends Controller
             $obj = new Group;
         }
         $presenter = new GroupPresenter($obj);
-
-        return View::make('laravel-authentication-acl::admin.group.edit')->with(["group" => $obj, "presenter" => $presenter]);
+        
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "group" => $obj, 
+            "presenter" => $presenter,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.group.edit')->with($this->data_view);
     }
 
     public function postEditGroup(Request $request)

@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-    Admin area: Groups list
+{!! trans($plang_admin.'.pages.group-list') !!}
 @stop
 
 @section('content')
@@ -39,7 +39,7 @@
 @section('footer_scripts')
     <script>
         $(".delete").click(function(){
-            return confirm("Are you sure to delete this item?");
+            return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
         });
     </script>
 @stop

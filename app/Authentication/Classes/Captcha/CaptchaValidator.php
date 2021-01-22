@@ -1,8 +1,8 @@
-<?php  namespace LaravelAcl\Authentication\Classes\Captcha;
+<?php  namespace Foostart\Acl\Authentication\Classes\Captcha;
 /**
  * Class CaptchaValidator
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 abstract class CaptchaValidator implements CaptchaValidatorInterface
 {

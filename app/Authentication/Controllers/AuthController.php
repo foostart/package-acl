@@ -1,13 +1,13 @@
-<?php namespace LaravelAcl\Authentication\Controllers;
+<?php namespace Foostart\Acl\Authentication\Controllers;
 
 use Illuminate\Http\Request;
 use Sentry, View, Redirect, App, Config;
-use LaravelAcl\Authentication\Validators\ReminderValidator;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
-use LaravelAcl\Library\Exceptions\ValidationException;
-use LaravelAcl\Authentication\Services\ReminderService;
+use Foostart\Acl\Authentication\Validators\ReminderValidator;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Library\Exceptions\ValidationException;
+use Foostart\Acl\Authentication\Services\ReminderService;
 
-use LaravelAcl\Authentication\Validators\RecoverPasswordValidator;
+use Foostart\Acl\Authentication\Validators\RecoverPasswordValidator;
 
 class AuthController extends Controller {
 

@@ -1,21 +1,21 @@
-<?php  namespace LaravelAcl\Authentication\Helpers;
+<?php  namespace Foostart\Acl\Authentication\Helpers;
 
 /**
  * Class FormHelper
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
-use LaravelAcl\Authentication\Repository\EloquentPermissionRepository as PermissionRepository;
-use LaravelAcl\Authentication\Repository\SentryGroupRepository;
+use Foostart\Acl\Authentication\Repository\EloquentPermissionRepository as PermissionRepository;
+use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
 
 class FormHelper
 {
     /**
-     * @var \LaravelAcl\Authentication\Repository\EloquentPermissionRepository
+     * @var \Foostart\Acl\Authentication\Repository\EloquentPermissionRepository
      */
     protected $repository_permission;
     /**
-     * @var \LaravelAcl\Authentication\Repository\SentryGroupRepository
+     * @var \Foostart\Acl\Authentication\Repository\SentryGroupRepository
      */
     protected $repository_groups;
 

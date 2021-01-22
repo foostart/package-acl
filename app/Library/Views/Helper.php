@@ -1,8 +1,8 @@
-<?php namespace LaravelAcl\Library\Views;
+<?php namespace Foostart\Acl\Library\Views;
 /**
  * Class View Helper
  *
- * @author jacopo beschi j.beschi@jacopo.com
+ * @author Foostart j.beschi@jacopo.com
  */
 use Request;
 use Route;

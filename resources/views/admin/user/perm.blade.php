@@ -46,9 +46,9 @@
         <?php endif; ?>
     });
     $(".button-del-perm").click(function () {
-        // submit the form with the same name
-        name = $(this).attr('name');
-        $('form[name='+name+']').submit();
+        
+        var _name = $(this).attr('name');
+        $('form[name='+_name+']').submit();
     });
 </script>
 @stop

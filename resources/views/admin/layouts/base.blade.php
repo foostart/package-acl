@@ -15,7 +15,7 @@
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/baselayout.css') !!}
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/fonts.css') !!}
     {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/font-awesome-4.7.0.min.css') !!}
-    {!! HTML::style('css/package-category.css') !!}
+    {!! HTML::style('packages/foostart/css/package-category.css') !!}
 
     @yield('head_css')
     {{-- End head css --}}

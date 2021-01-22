@@ -1,10 +1,12 @@
 <?php
 use Foostart\Category\Helpers\FooCategory;
+$plang_admin = 'acl-admin';
+$plang_front = 'acl-front';
 
 /**
  * All the view of Laravel Authentication ACL
  */
-View::composer('laravel-authentication-acl::*', function ($view)
+View::composer('laravel-authentication-acl::*', function ($view) use ($plang_admin, $plang_front)
 {
     //Logged user
     $view->with('logged_user', App::make('authenticator')->getLoggedUser());
@@ -12,17 +14,30 @@ View::composer('laravel-authentication-acl::*', function ($view)
     //application name
     $view->with('app_name', \Config::get('app.name'));
 
+    /**
+     * $plang-admin
+     * $plang-front
+     */
+
+
+    $view->with('plang_admin', $plang_admin);
+    $view->with('plang_front', $plang_front);
 });
 
 View::composer('laravel-authentication-acl::admin.user.*', function ($view)
 {
     //Load category
     $obj_category = new FooCategory();
-    $params = Request::all();
-    $params['_key'] = $obj_category->getContextKeyByRef('user/department');
-    $pluck_select_category = $obj_category->pluckSelect($params);
+    $params_department = $params_level = Request::all();
 
-    $view->with('pluck_select_category', $pluck_select_category);
+    $params_department['_key'] = $obj_category->getContextKeyByRef('user/department');
+    $params_level['_key'] = $obj_category->getContextKeyByRef('user/level');
+
+    $pluck_select_category_department = $obj_category->pluckSelect($params_department);
+    $pluck_select_category_level = $obj_category->pluckSelect($params_level);
+
+    $view->with('pluck_select_category_department', $pluck_select_category_department);
+    $view->with('pluck_select_category_level', $pluck_select_category_level);
 
 });
 
@@ -52,12 +67,12 @@ View::composer(['laravel-authentication-acl::admin.user.profile', 'laravel-authe
 |
 |
 */
-View::composer('laravel-authentication-acl::*', function ($view)
+View::composer('laravel-authentication-acl::*', function ($view) use ($plang_admin, $plang_front)
 {
     //Order by
     $order_by = [
-        'asc' => trans('jacopo-admin.order-by-asc'),
-        'desc' => trans('jacopo-admin.order-by-desc'),
+        'asc' => trans($plang_admin.'.order.by-asc'),
+        'desc' => trans($plang_admin.'.order.by-desc'),
     ];
     $view->with('order_by', $order_by);
 });

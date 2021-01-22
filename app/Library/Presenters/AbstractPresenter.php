@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Presenters;
+<?php namespace Foostart\Acl\Library\Presenters;
 
 abstract class AbstractPresenter {
 

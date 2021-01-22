@@ -1,15 +1,15 @@
-<?php namespace LaravelAcl\Authentication\Classes;
+<?php namespace Foostart\Acl\Authentication\Classes;
 
 /**
  * Class SentryAuthenticator
  * Sentry authenticate implementation
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Authentication\Exceptions\AuthenticationErrorException;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
+use Foostart\Acl\Authentication\Exceptions\AuthenticationErrorException;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
 use App;
 use Event;
 
@@ -19,10 +19,14 @@ class SentryAuthenticator implements AuthenticateInterface
     protected $errors;
     protected $sentry;
 
+    protected  $plang_admin = 'acl-admin';
+    protected  $plang_front = 'acl-front';
+
     public function __construct()
     {
         $this->sentry = App::make('sentry');
         $this->errors = new MessageBag();
+
     }
 
     public function check()
@@ -42,26 +46,26 @@ class SentryAuthenticator implements AuthenticateInterface
      */
     public function authenticate(array $credentials, $remember = false)
     {
-        Event::fire('service.authenticating', [$credentials, $remember]);
+        Event::dispatch('service.authenticating', [$credentials, $remember]);
 
         try
         {
             $user = $this->sentry->authenticate($credentials, $remember);
         } catch(\Cartalyst\Sentry\Users\LoginRequiredException $e)
         {
-            $this->errors->add('login', trans('jacopo-front.login-error-required-field'));
+            $this->errors->add('login', trans($this->plang_front.'.error.login-error-required-field'));
         } catch(\Cartalyst\Sentry\Users\UserNotFoundException $e)
         {
-            $this->errors->add('login', trans('jacopo-front.login-error-failed'));
+            $this->errors->add('login', trans($this->plang_front.'.error.login-error-failed'));
         } catch(\Cartalyst\Sentry\Users\UserNotActivatedException $e)
         {
-            $this->errors->add('login', trans('jacopo-front.login-error-not-active'));
+            $this->errors->add('login', trans($this->plang_front.'.error.login-error-not-active'));
         } catch(\Cartalyst\Sentry\Users\PasswordRequiredException $e)
         {
-            $this->errors->add('login', trans('jacopo-front.login-error-required-password'));
+            $this->errors->add('login', trans($this->plang_front.'.error.login-error-required-password'));
         } catch(\Cartalyst\Sentry\Throttling\UserSuspendedException $e)
         {
-            $this->errors->add('login', trans('jacopo-front.login-error-many-attempts'));
+            $this->errors->add('login', trans($this->plang_front.'.error.login-error-many-attempts'));
         }
         if($this->foundAnyErrors())
         {
@@ -70,7 +74,7 @@ class SentryAuthenticator implements AuthenticateInterface
 
         if(!$this->errors->isEmpty()) throw new AuthenticationErrorException;
 
-        Event::fire('service.authenticated', [$credentials, $remember, $user]);
+        Event::dispatch('service.authenticated', [$credentials, $remember, $user]);
     }
 
     /**
@@ -115,9 +119,9 @@ class SentryAuthenticator implements AuthenticateInterface
      */
     public function logout()
     {
-        Event::fire('service.delogging');
+        Event::dispatch('service.delogging');
         $this->sentry->logout();
-        Event::fire('service.delogged');
+        Event::dispatch('service.delogged');
     }
 
     /**
@@ -169,7 +173,7 @@ class SentryAuthenticator implements AuthenticateInterface
 
     /**
      * {@inheritdoc}
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      */
     public function getToken($email)
     {
@@ -185,4 +189,37 @@ class SentryAuthenticator implements AuthenticateInterface
     {
         return $this->errors->isEmpty();
     }
+
+    /**
+     * Customize function
+     * Authentication user account
+     * @param array $account
+     * @return \Cartalyst\Sentry\Users\UserInterface
+     * @date 14/07/2018
+     * @add S1TT
+     */
+    public function authUser(array $account, $is_set_token = true, $length = 55) {
+        return $this->sentry->findByCredentials($account, $is_set_token, $length);
     }
+
+
+
+    /**
+     * Finds a user by the given token api code.
+     *
+     * @param  string  $token_api
+     * @return \Cartalyst\Sentry\Users\UserInterface
+     * @throws \RuntimeException
+     * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+     * @date 14/07/2018
+     * @location S1TT
+     */
+    public function findUserByTokenApiCode($token_api)
+    {
+        return $this->sentry->findUserByTokenApiCode($token_api);
+    }
+
+    public function removeTokenByUser($user) {
+        return $this->sentry->removeTokenByUser($user);
+    }
+}

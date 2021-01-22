@@ -1,15 +1,15 @@
-<?php  namespace LaravelAcl\Authentication\Classes\CustomProfile\Repository;
+<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile\Repository;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
-use LaravelAcl\Authentication\Models\ProfileField;
-use LaravelAcl\Authentication\Models\ProfileFieldType;
+use Foostart\Acl\Authentication\Models\ProfileField;
+use Foostart\Acl\Authentication\Models\ProfileFieldType;
 
 /**
  * Class CustomProfileRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class CustomProfileRepository
 {
@@ -30,7 +30,7 @@ class CustomProfileRepository
     public static function addNewType($description)
     {
         // firing event for permission handling
-        Event::fire('customprofile.creating');
+        Event::dispatch('customprofile.creating');
         $profile_field_type = ProfileFieldType::create(["description" => $description]);
 
         return $profile_field_type;
@@ -39,7 +39,7 @@ class CustomProfileRepository
     public static function deleteType($id)
     {
         // firing event for permission handling
-        Event::fire('customprofile.deleting');
+        Event::dispatch('customprofile.deleting');
         $success = ProfileFieldType::findOrFail($id)->delete();
 
         return $success;

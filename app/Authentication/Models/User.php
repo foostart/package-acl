@@ -1,8 +1,8 @@
-<?php namespace LaravelAcl\Authentication\Models;
+<?php namespace Foostart\Acl\Authentication\Models;
 /**
  * Class User
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author foostart foostart@gmail.com
  */
 use Cartalyst\Sentry\Users\Eloquent\User as CartaUser;
 use Cartalyst\Sentry\Users\UserExistsException;
@@ -43,6 +43,6 @@ class User extends CartaUser
 
     public function user_profile()
     {
-        return $this->hasMany('LaravelAcl\Authentication\Models\UserProfile');
+        return $this->hasMany('Foostart\Acl\Authentication\Models\UserProfile');
     }
-} 
+}

@@ -1,13 +1,13 @@
-<?php  namespace LaravelAcl\Authentication\Repository;
+<?php  namespace Foostart\Acl\Authentication\Repository;
 /**
  * Class GroupRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use LaravelAcl\Library\Repository\Interfaces\BaseRepositoryInterface;
-use LaravelAcl\Authentication\Models\Group;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
+use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
+use Foostart\Acl\Authentication\Models\Group;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
 use App, Event;
 use Cartalyst\Sentry\Groups\GroupNotFoundException;
 
@@ -47,7 +47,7 @@ class SentryGroupRepository implements BaseRepositoryInterface
     public function update($id, array $data)
     {
         $obj = $this->find($id);
-        Event::fire('repository.updating', [$obj]);
+        Event::dispatch('repository.updating', [$obj]);
         $obj->update($data);
         return $obj;
     }
@@ -61,7 +61,7 @@ class SentryGroupRepository implements BaseRepositoryInterface
     public function delete($id)
     {
         $obj = $this->find($id);
-        Event::fire('repository.deleting', [$obj]);
+        Event::dispatch('repository.deleting', [$obj]);
         return $obj->delete();
     }
 
@@ -70,7 +70,7 @@ class SentryGroupRepository implements BaseRepositoryInterface
      *
      * @param $id
      * @return mixed
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+     * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
      */
     public function find($id)
     {

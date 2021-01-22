@@ -1,5 +1,5 @@
 <?php
-namespace LaravelAcl\Authentication\Middleware\Interfaces;
+namespace Foostart\Acl\Authentication\Middleware\Interfaces;
 
 interface ConfigRepositoryInterface {
     public function setOption($key, $value);

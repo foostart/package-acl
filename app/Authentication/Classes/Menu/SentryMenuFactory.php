@@ -1,8 +1,8 @@
-<?php  namespace LaravelAcl\Authentication\Classes\Menu;
+<?php  namespace Foostart\Acl\Authentication\Classes\Menu;
 /**
  * Class SentryFactory
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 
 use Config;

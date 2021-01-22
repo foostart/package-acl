@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Email;
+<?php namespace Foostart\Acl\Library\Email;
 
 interface MailerInterface
 {

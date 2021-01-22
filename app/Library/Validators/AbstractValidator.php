@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Library\Validators;
+<?php namespace Foostart\Acl\Library\Validators;
 
 use Validator as V;
 use Event;
@@ -19,7 +19,7 @@ abstract class AbstractValidator implements ValidatorInterface
 
     public function validate($input)
     {
-        Event::fire('validating', [$input]);
+        Event::dispatch('validating', [$input]);
         static::$messages = static::$messages ? static::$messages : [];
         $validator = V::make($input, static::$rules, static::$messages);
 

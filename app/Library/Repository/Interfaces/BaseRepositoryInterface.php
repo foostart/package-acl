@@ -1,8 +1,8 @@
-<?php namespace LaravelAcl\Library\Repository\Interfaces;
+<?php namespace Foostart\Acl\Library\Repository\Interfaces;
 /**
  * Interface BaseRepositoryInterface
  *
- * @author jacopo beschi j.beschi@jacopo.com
+ * @author Foostart j.beschi@jacopo.com
  */
 interface BaseRepositoryInterface 
 {

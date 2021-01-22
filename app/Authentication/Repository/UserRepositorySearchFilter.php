@@ -1,9 +1,9 @@
-<?php  namespace LaravelAcl\Authentication\Repository;
+<?php  namespace Foostart\Acl\Authentication\Repository;
 
 /**
  * Class UserRepositorySearchFilter
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use App;
 use DB;
@@ -18,10 +18,10 @@ class UserRepositorySearchFilter
     private $user_groups_table_name = "users_groups";
     private $groups_table_name = "groups";
     private $profile_table_name = "user_profile";
-    private $valid_ordering_fields = ["first_name", "last_name", "email", "last_login", "activated", "name"];
+    private $valid_ordering_fields = ["first_name", "last_name", "email", "last_login", "activated", "name", 'id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['email', 'full_name', 'first_name', 'last_name', 'sex', 'category_id', 'code', 'activated', 'banned', 'group_id', 'order_by', 'ordering', 'user_leader'];
+    private $valid_fields_filter = ['email', 'full_name', 'first_name', 'last_name', 'sex', 'category_id', 'code', 'activated', 'banned', 'group_id', 'order_by', 'ordering', 'user_leader', 'id'];
 
     protected $user_leader;
     public function __construct($per_page = 5, $user_leader = null)

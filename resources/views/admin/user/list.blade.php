@@ -1,7 +1,7 @@
 @extends('laravel-authentication-acl::admin.layouts.base-2cols')
 
 @section('title')
-    {!! trans('jacopo-admin.page-user') !!}
+    {!! trans($plang_admin.'.pages.user-list') !!}
 @stop
 @section('content')
 <div class="row">
@@ -31,7 +31,7 @@
 @section('footer_scripts')
     <script>
         $(".delete").click(function(){
-            return confirm("Are you sure to delete this item?");
+            return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
         });
     </script>
 @stop

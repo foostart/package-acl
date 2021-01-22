@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelAcl\Providers;
+namespace Foostart\Acl\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

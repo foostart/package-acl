@@ -1,8 +1,8 @@
-<?php  namespace LaravelAcl\Authentication\Models;
+<?php  namespace Foostart\Acl\Authentication\Models;
 /**
  * Class Permission
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 
 class Permission extends BaseModel

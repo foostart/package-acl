@@ -1,7 +1,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid margin-right-15">
         <div class="navbar-header">
-            <a class="navbar-brand bariol-thin" href="#">{{$app_name}}</a>
+            <a class="navbar-brand bariol-thin" href="{!! url('/') !!}">{{$app_name}}</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-main-menu">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav">
                 @if(isset($menu_items))
                     @foreach($menu_items as $item)
-                        <li class="{!! LaravelAcl\Library\Views\Helper::get_active_route_name($item->getRoute()) !!}"> <a href="{!! $item->getLink() !!}">{!!$item->getName()!!}</a></li>
+                        <li class="{!! Foostart\Acl\Library\Views\Helper::get_active_route_name($item->getRoute()) !!}"> <a href="{!! $item->getLink() !!}">{!!$item->getName()!!}</a></li>
                     @endforeach
                 @endif
             </ul>

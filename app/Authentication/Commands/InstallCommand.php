@@ -1,7 +1,7 @@
-<?php namespace LaravelAcl\Authentication\Commands;
+<?php namespace Foostart\Acl\Authentication\Commands;
 
 use Illuminate\Console\Command;
-use LaravelAcl\Database\DatabaseSeeder;
+use Foostart\Acl\Database\DatabaseSeeder;
 
 class InstallCommand extends Command {
 
@@ -46,5 +46,10 @@ class InstallCommand extends Command {
         $this->db_seeder->run();
 
         $this->info('## Laravel Authentication ACL Installed successfully ##');
+    }
+    
+    public function handle()
+    {
+        $this->fire();
     }
 }

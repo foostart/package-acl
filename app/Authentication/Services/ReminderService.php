@@ -1,21 +1,21 @@
-<?php namespace LaravelAcl\Authentication\Services;
+<?php namespace Foostart\Acl\Authentication\Services;
 
 use Illuminate\Support\MessageBag;
 use App;
 use Config;
-use LaravelAcl\Library\Exceptions\MailException;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Library\Exceptions\InvalidException;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
-use LaravelAcl\Library\Email\MailerInterface;
-use LaravelAcl\Authentication\Interfaces\AuthenticatorInterface;
+use Foostart\Acl\Library\Exceptions\MailException;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Library\Exceptions\InvalidException;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Library\Email\MailerInterface;
+use Foostart\Acl\Authentication\Interfaces\AuthenticatorInterface;
 /**
  * Class ReminderService
  *
  * Service to send email and error handling
  *
  * @package Auth
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class ReminderService {
 
@@ -48,7 +48,7 @@ class ReminderService {
      */
     protected $errors ;
     /**
-     * @var \LaravelAcl\Authentication\Interfaces\AuthenticatorInterface
+     * @var \Foostart\Acl\Authentication\Interfaces\AuthenticatorInterface
      */
     protected $auth;
 

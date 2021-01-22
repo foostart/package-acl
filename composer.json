@@ -1,6 +1,6 @@
 {
   "name": "foostart/package-acl",
-  "description": "Laravel authentication and ACL package with a cool admin panel",
+  "description": "Laravel authentication and ACL package with a cool admin panel. Laravel 7x",
   "keywords": [
     "acl",
     "authentication",
@@ -18,8 +18,9 @@
   ],
   "license": "MIT",  
   "require": {
-    "laravelcollective/html" : "5.4.*",
+    "laravelcollective/html" : "6.2.1",
     "intervention/image": "2.*",
+    "foostart/package-category": "*",
     "foostart/package-sentry": "*",
     "gregwar/captcha": "1.1.1"
   },
@@ -27,14 +28,16 @@
     "phpunit/phpunit": "~5.7",
     "mockery/mockery": "0.9.*",
     "fzaninotto/faker": "~1.4",
-    "sebastian/exporter": "^2.0"
+    "sebastian/exporter": "^2.0",
+    "foostart/package-category": "*",
+	"foostart/package-sentry": "*"
   },
   "autoload": {
     "classmap": [
       "database"
     ],
     "psr-4": {
-      "LaravelAcl\\": "app/"
+      "Foostart\\Acl\\": "app/"
     }
   },
   "autoload-dev": {

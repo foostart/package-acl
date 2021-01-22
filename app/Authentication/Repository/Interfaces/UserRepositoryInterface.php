@@ -1,8 +1,8 @@
-<?php namespace LaravelAcl\Authentication\Repository\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Repository\Interfaces;
 /**
  * Interface UserRepositoryInterface
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 interface UserRepositoryInterface 
 {

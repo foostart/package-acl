@@ -72,7 +72,7 @@ To install authentication follow this steps:
   3. Now run `composer install` command.
 
   4. Now open the file _config/app.php_ and add to the 'providers' option the following line:
-  'LaravelAcl\Authentication\AuthenticationServiceProvider',
+  'Foostart\Acl\Authentication\AuthenticationServiceProvider',
 
   5. Then run the install command:
   `php artisan authentication:install`
@@ -80,10 +80,10 @@ To install authentication follow this steps:
   Now you can find various configuration files under _config/_ folder.
 
   6. Now open the file _app/Http/Kernel.php_ and add the following lines to your $routeMiddleware array: 
-             'admin_logged' => \LaravelAcl\Http\Middleware\AdminLogged::class,
-             'logged' => \LaravelAcl\Http\Middleware\Logged::class,
-             'can_see' => \LaravelAcl\Http\Middleware\CanSee::class,
-             'has_perm' => \LaravelAcl\Http\Middleware\HasPerm::class,
+             'admin_logged' => \Foostart\Acl\Http\Middleware\AdminLogged::class,
+             'logged' => \Foostart\Acl\Http\Middleware\Logged::class,
+             'can_see' => \Foostart\Acl\Http\Middleware\CanSee::class,
+             'has_perm' => \Foostart\Acl\Http\Middleware\HasPerm::class,
 
   7. Now you need to install the application, to do that run the command: `php artisan authentication:install`.
 

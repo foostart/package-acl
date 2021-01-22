@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelAcl\Providers;
+namespace Foostart\Acl\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

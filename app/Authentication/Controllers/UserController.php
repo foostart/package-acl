@@ -1,45 +1,45 @@
-<?php  namespace LaravelAcl\Authentication\Controllers;
+<?php  namespace Foostart\Acl\Authentication\Controllers;
 
 /**
  * Class UserController
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Authentication\Exceptions\PermissionException;
-use LaravelAcl\Authentication\Exceptions\ProfileNotFoundException;
-use LaravelAcl\Authentication\Helpers\DbHelper;
-use LaravelAcl\Authentication\Models\UserProfile;
-use LaravelAcl\Authentication\Presenters\UserPresenter;
-use LaravelAcl\Authentication\Services\UserProfileService;
-use LaravelAcl\Authentication\Validators\UserProfileAvatarValidator;
-use LaravelAcl\Library\Exceptions\NotFoundException;
-use LaravelAcl\Authentication\Models\User;
-use LaravelAcl\Authentication\Helpers\FormHelper;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Authentication\Validators\UserValidator;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
-use LaravelAcl\Authentication\Validators\UserProfileValidator;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Exceptions\ProfileNotFoundException;
+use Foostart\Acl\Authentication\Helpers\DbHelper;
+use Foostart\Acl\Authentication\Models\UserProfile;
+use Foostart\Acl\Authentication\Presenters\UserPresenter;
+use Foostart\Acl\Authentication\Services\UserProfileService;
+use Foostart\Acl\Authentication\Validators\UserProfileAvatarValidator;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
+use Foostart\Acl\Authentication\Models\User;
+use Foostart\Acl\Authentication\Helpers\FormHelper;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Validators\UserValidator;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Authentication\Validators\UserProfileValidator;
 use View, Redirect, App, Config;
-use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
+use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use LaravelAcl\Library\Form\FormModel;
+use Foostart\Acl\Library\Form\FormModel;
 
 class UserController extends Controller {
     /**
-     * @var \LaravelAcl\Authentication\Repository\SentryUserRepository
+     * @var \Foostart\Acl\Authentication\Repository\SentryUserRepository
      */
     protected $user_repository;
     protected $user_validator;
     /**
-     * @var \LaravelAcl\Authentication\Helpers\FormHelper
+     * @var \Foostart\Acl\Authentication\Helpers\FormHelper
      */
     protected $form_helper;
     protected $profile_repository;
     protected $profile_validator;
     /**
-     * @var use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
+     * @var use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
      */
     protected $auth;
     protected $register_service;
@@ -49,6 +49,7 @@ class UserController extends Controller {
 
     public function __construct(UserValidator $v, FormHelper $fh, UserProfileValidator $vp, AuthenticateInterface $auth)
     {
+        parent::__construct();
         $this->user_repository = App::make('user_repository');
         $this->user_validator = $v;
 
@@ -59,6 +60,12 @@ class UserController extends Controller {
         $this->auth = $auth;
         $this->register_service = App::make('register_service');
         $this->custom_profile_repository = App::make('custom_profile_repository');
+        
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_1['label'] = 'Admin';
+        $this->breadcrumb_2['label'] = 'Users';
 
     }
 
@@ -69,13 +76,30 @@ class UserController extends Controller {
      */
     public function getList(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3 = NULL;
        $user_leader = $this->user_repository->isLeader();
         $users = $this->user_repository->all($request->except(['page']));
-        return View::make('laravel-authentication-acl::admin.user.list')->with(["users" => $users, "request" => $request]);
+        
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "users" => $users, 
+            "request" => $request,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.user.list')->with($this->data_view);
     }
 
     public function editUser(Request $request)
     {
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3['label'] = 'Edit';
         try
         {
             $user_leader = $this->user_repository->isLeader();
@@ -91,8 +115,15 @@ class UserController extends Controller {
             $user = new User;
         }
         $presenter = new UserPresenter($user);
-
-        return View::make('laravel-authentication-acl::admin.user.edit')->with(["user" => $user, "presenter" => $presenter]);
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            "user" => $user, 
+            "presenter" => $presenter,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.user.edit')->with($this->data_view);
     }
 
     public function postEditUser(Request $request)
@@ -378,5 +409,116 @@ class UserController extends Controller {
     {
         return View::make('laravel-authentication-acl::client.auth.captcha-image')
                    ->with(['captcha' => App::make('captcha_validator')]);
+    }
+
+    /**
+     * Check valid token
+     * @param Request $request
+     * @return boolean
+     */
+    public function isValidRequest(Request $request) {
+        $flag = TRUE;
+        $valid_token = csrf_token();
+
+        $token = $request->get('_token');
+
+        if (!strcmp($valid_token, $token) == 0) {
+
+            $flag = FALSE;
+
+        }
+        return $flag;
+    }
+
+    /**
+     * Create directory for backup language if not exits
+     * @date B102B-13/03/2019
+     * @author Kang
+     * @return view
+     */
+    public function lang(Request $request) {
+        
+        /**
+         * Breadcrumb
+         */
+        $this->breadcrumb_3['label'] = 'Edit';
+
+        $is_valid_request = $this->isValidRequest($request);
+
+        // get list of languages
+        // create directory backup for each language
+        $langs = config('package-acl.langs');
+        $lang_paths = [];
+        $package_path = realpath(base_path('vendor/foostart/package-acl'));
+
+        if (!empty($langs) && is_array($langs)) {
+            foreach ($langs as $key => $value) {
+                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/acl-admin.php'));
+                $key_backup = $package_path.'/storage/backup/lang/'.$key;
+
+                if (!file_exists($key_backup)) {
+                    mkdir($key_backup, 0755    , true);
+                }
+            }
+        }
+
+        $lang_backup = realpath($package_path.'/storage/backup/lang');
+        $lang = $request->get('lang')?$request->get('lang'):'en';
+        $lang_contents = [];
+
+        if ($version = $request->get('v')) {
+            //load backup lang
+            $group_backups = base64_decode($version);
+            $group_backups = empty($group_backups)?[]: explode(';', $group_backups);
+
+            foreach ($group_backups as $group_backup) {
+                $_backup = explode('=', $group_backup);
+                $lang_contents[$_backup[0]] = file_get_contents($_backup[1]);
+            }
+
+        } else {
+            //load current lang
+            foreach ($lang_paths as $key => $lang_path) {
+                $lang_contents[$key] = file_get_contents($lang_path);
+            }
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            foreach ($lang_paths as $key => $value) {
+                $content = file_get_contents($value);
+
+                //format file name sample-admin-YmdHis.php
+                file_put_contents($lang_backup.'/'.$key.'/acl-admin-'.date('YmdHis',time()).'.php', $content);
+            }
+
+
+            //update new lang
+            foreach ($langs as $key => $value) {
+                $content = $request->get($key);
+                file_put_contents($lang_paths[$key], $content);
+            }
+
+        }
+
+        //get list of backup langs
+        $backups = [];
+        foreach ($langs as $key => $value) {
+            $backups[$key] = array_reverse(glob($lang_backup.'/'.$key.'/*'));
+        }
+
+        // display view
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'backups' => $backups,
+            'langs'   => $langs,
+            'lang_contents' => $lang_contents,
+            'lang' => $lang,
+            'breadcrumb_1' => $this->breadcrumb_1,
+            'breadcrumb_2' => $this->breadcrumb_2,
+            'breadcrumb_3' => $this->breadcrumb_3,
+        ));
+        return View::make('laravel-authentication-acl::admin.acl-lang')->with($this->data_view);
     }
 }

@@ -1,13 +1,13 @@
-<?php namespace LaravelAcl\Library\Repository;
+<?php namespace Foostart\Acl\Library\Repository;
 /**
  * Class EloquentBaseRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use LaravelAcl\Library\Exceptions\NotFoundException;
-use LaravelAcl\Library\Repository\Interfaces\BaseRepositoryInterface;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
+use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 use Event;
 
 class EloquentBaseRepository implements BaseRepositoryInterface
@@ -38,12 +38,12 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      * @param       id
      * @param array $data
      * @return mixed
-     * @throws \LaravelAcl\Library\Exceptions\NotFoundException
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
      */
     public function update($id, array $data)
     {
         $obj = $this->find($id);
-        Event::fire('repository.updating', [$obj]);
+        Event::dispatch('repository.updating', [$obj]);
         $obj->update($data);
         return $obj;
     }
@@ -52,12 +52,12 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      * Deletes a new object
      * @param $id
      * @return mixed
-     * @throws \LaravelAcl\Library\Exceptions\NotFoundException
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
      */
     public function delete($id)
     {
         $obj = $this->find($id);
-        Event::fire('repository.deleting', [$obj]);
+        Event::dispatch('repository.deleting', [$obj]);
         return $obj->delete();
     }
 
@@ -65,7 +65,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      * Find a model by his id
      * @param $id
      * @return mixed
-     * @throws \LaravelAcl\Library\Exceptions\NotFoundException
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
      */
     public function find($id)
     {

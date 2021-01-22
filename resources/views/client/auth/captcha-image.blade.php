@@ -10,7 +10,7 @@
             $("#captcha-gen-button").click(function (e) {
                 e.preventDefault();
                 $.ajax({
-                    url: "/captcha-ajax",
+                    url: "/foostart/public/captcha-ajax",
                     method: "POST",
                     headers: {'X-CSRF-Token': '{!! csrf_token() !!}'}
                 }).done(function (image) {

@@ -1,8 +1,8 @@
-<?php  namespace LaravelAcl\Authentication\Classes\CustomProfile;
+<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile;
 /**
  * Class customProfileFormHelper
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class customProfileFormHelper 
 {

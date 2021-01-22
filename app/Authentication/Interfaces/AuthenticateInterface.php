@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Authentication\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Interfaces;
 
 interface AuthenticateInterface
 {
@@ -35,7 +35,7 @@ interface AuthenticateInterface
    *
    * @param $email
    * @return mixed
-   * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
+   * @throws \Foostart\Acl\Authentication\Exceptions\UserNotFoundException
    * @return mixed
    */
   public function getUser($email);

@@ -1,5 +1,18 @@
 <?php
 
+$admin = '_superadmin';
+
+$permissions = [
+    'categories' => [
+        'all' => '_category-editor',
+        'list' => '_category-list',
+        'edit' => '_category-edit',
+        'delete' => '_category-delete',
+        'add' => '_category-add',
+        'external' => '_external',
+    ]
+];
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -10,66 +23,84 @@ return [
     |
     */
     "list" => [
+
+
+            //Dashboard page
             [
-                "name"        => "Dashboard",
+                "name"        => "acl-admin.menu.dashboard",
                 "route"       => "dashboard",
                 "link"        => '/admin/users/dashboard',
                 "permissions" => []
             ],
+
+            /*
+            |-----------------------------------------------------------------------
+            | Admin permissions
+            |-----------------------------------------------------------------------
+            | 1. Users page
+            | 2. Groups page
+            | 3. Permissions page
+            | 4. Categories
+            |
+            */
+
+
+            //Users page
             [
-                /*
-                 * the name of the link: you will see it in the admin menu panel.
-                 * Note: If you don't want to show this item in the menu
-                 * but still want to handle permission with the 'can_see' filter
-                 * just leave this field empty.
-                */
-                "name"        => "Users",
-                /* the route name associated to the link: used to set
-                 * the 'active' flag and to validate permissions of all
-                 * the subroutes associated(users.* will be validated for _superadmin and _group-editor permission)
-                */
+                "name"        => "acl-admin.menu.users",
                 "route"       => "users",
-                /*
-                 * the actual link associated to the menu item
-                */
                 "link"        => '/admin/users/list',
-                /*
-                 * the list of 'permission name' associated to the menu
-                 * item: if the logged user has one or more of the permission
-                 * in the list he can see the menu link and access the area
-                 * associated with that.
-                 * Every route that you create with the 'route' as a prefix
-                 * will check for the permissions and throw a 401 error if the
-                 * check fails (for example in this case every route named users.*)
-                 */
-                "permissions" => ["_superadmin", "_user-editor"],
-                /*
-                 * if there is any route that you want to skip for the permission check
-                 * put it in this array
-                 */
+                "permissions" => [$admin, '_user-editor', '_user-leader'],
                 "skip_permissions" => ["users.selfprofile.edit", "users.profile.edit", "users.profile.addfield", "users.profile.deletefield"]
             ],
+
+
+            //Groups page
             [
-                "name"        => "Groups",
+                "name"        => "acl-admin.menu.groups",
                 "route"       => "groups",
                 "link"        => '/admin/groups/list',
-                "permissions" => ["_superadmin", "_group-editor"]
-            ],
-            [
-                    "name"        => "Permission",
-                    "route"       => "permission",
-                    "link"        => '/admin/permissions/list',
-                    "permissions" => ["_superadmin", "_permission-editor"]
-            ],
-            [
-                /*
-                 * Route to edit the current user profile
-                 */
-                "name"        => "",
-                "route"       => "selfprofile",
-                "link"        => '/admin/users/profile/self',
-                "permissions" => []
+                "permissions" => [$admin, "_group-editor"]
             ],
 
+
+            //Permissions page
+            [
+                "name"        => "acl-admin.menu.permissions",
+                "route"       => "permissions",
+                "link"        => '/admin/permissions/list',
+                "permissions" => [$admin, "_permission-editor"]
+            ],
+
+            //Contexts
+            [
+
+                'name'        => 'category-admin.menus.top-menu-contexts',
+                "route"       => "contexts",
+                "link"        => '/admin/contexts/list',
+                "permissions" => [$admin]
+            ],
+
+            //Categories
+            [
+                "route"       => "category-admin.menus.top-menu",
+                "link"        => '/admin/categories/list',
+                "permissions" => [$admin, '_user-editor']
+            ],
+
+            //Posts
+            [
+                "name"        => 'post-admin.menus.top-menu',
+                "route"       => "posts",
+                "link"        => '/admin/posts',
+                "permissions" => [$admin, "_rule"]
+            ],
+            //Slideshow
+            [
+                "name"        => 'slideshow-admin.menus.top-menu',
+                "route"       => "slideshows",
+                "link"        => '/admin/slideshows',
+                "permissions" => [$admin]
+            ],
     ]
 ];

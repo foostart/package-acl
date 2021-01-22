@@ -43,8 +43,8 @@
         <?php endif; ?>
     });
     $(".button-del-group").click( function(){
-        name = $(this).attr('name');
-        $('form[name='+name+']').submit();
+        var _name = $(this).attr('name');
+        $('form[name='+_name+']').submit();
     });
 </script>
 @stop

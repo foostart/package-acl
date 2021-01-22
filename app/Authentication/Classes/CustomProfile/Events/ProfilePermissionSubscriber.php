@@ -1,11 +1,11 @@
-<?php  namespace LaravelAcl\Authentication\Classes\CustomProfile\Events;
+<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile\Events;
 use App;
-use LaravelAcl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
 
 /**
  * Class ProfilePermissionSubscriber
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class ProfilePermissionSubscriber
 {
@@ -28,8 +28,8 @@ class ProfilePermissionSubscriber
      */
     public function subscribe($events)
     {
-        $events->listen('customprofile.creating', 'LaravelAcl\Authentication\Classes\CustomProfile\Events\ProfilePermissionSubscriber@checkProfileTypePermission');
-        $events->listen('customprofile.deleting', 'LaravelAcl\Authentication\Classes\CustomProfile\Events\ProfilePermissionSubscriber@checkProfileTypePermission');
+        $events->listen('customprofile.creating', 'Foostart\Acl\Authentication\Classes\CustomProfile\Events\ProfilePermissionSubscriber@checkProfileTypePermission');
+        $events->listen('customprofile.deleting', 'Foostart\Acl\Authentication\Classes\CustomProfile\Events\ProfilePermissionSubscriber@checkProfileTypePermission');
     }
 
 }

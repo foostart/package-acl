@@ -1,21 +1,21 @@
-<?php namespace LaravelAcl\Authentication;
+<?php namespace Foostart\Acl\Authentication;
 
 use App;
-use LaravelAcl\Authentication\Classes\Captcha\GregWarCaptchaValidator;
-use LaravelAcl\Authentication\Classes\CustomProfile\Repository\CustomProfileRepository;
-use LaravelAcl\Authentication\Commands\InstallCommand;
+use Foostart\Acl\Authentication\Classes\Captcha\GregWarCaptchaValidator;
+use Foostart\Acl\Authentication\Classes\CustomProfile\Repository\CustomProfileRepository;
+use Foostart\Acl\Authentication\Commands\InstallCommand;
 use Config;
-use LaravelAcl\Authentication\Helpers\FileRouteHelper;
-use LaravelAcl\Authentication\Middleware\Config as ConfigMiddleware;
+use Foostart\Acl\Authentication\Helpers\FileRouteHelper;
+use Foostart\Acl\Authentication\Middleware\Config as ConfigMiddleware;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use LaravelAcl\Authentication\Classes\SentryAuthenticator;
-use LaravelAcl\Authentication\Helpers\SentryAuthenticationHelper;
-use LaravelAcl\Authentication\Repository\EloquentPermissionRepository;
-use LaravelAcl\Authentication\Repository\EloquentUserProfileRepository;
-use LaravelAcl\Authentication\Repository\SentryGroupRepository;
-use LaravelAcl\Authentication\Repository\SentryUserRepository;
-use LaravelAcl\Authentication\Services\UserRegisterService;
+use Foostart\Acl\Authentication\Classes\SentryAuthenticator;
+use Foostart\Acl\Authentication\Helpers\SentryAuthenticationHelper;
+use Foostart\Acl\Authentication\Repository\EloquentPermissionRepository;
+use Foostart\Acl\Authentication\Repository\EloquentUserProfileRepository;
+use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
+use Foostart\Acl\Authentication\Repository\SentryUserRepository;
+use Foostart\Acl\Authentication\Services\UserRegisterService;
 
 class AuthenticationServiceProvider extends ServiceProvider {
 
@@ -27,7 +27,7 @@ class AuthenticationServiceProvider extends ServiceProvider {
     protected $defer = false;
 
     protected $providers = [
-            \LaravelAcl\Library\LibraryServiceProvider::class,
+            \Foostart\Acl\Library\LibraryServiceProvider::class,
             \Cartalyst\Sentry\SentryServiceProvider::class,
             \Intervention\Image\ImageServiceProvider::class,
             \Collective\Html\HtmlServiceProvider::class
@@ -92,7 +92,7 @@ class AuthenticationServiceProvider extends ServiceProvider {
             return new SentryAuthenticator;
         });
 
-        $this->app->bind('LaravelAcl\Authentication\Interfaces\AuthenticateInterface', function ()
+        $this->app->bind('Foostart\Acl\Authentication\Interfaces\AuthenticateInterface', function ()
         {
             return $this->app['authenticator'];
         });
@@ -205,8 +205,17 @@ class AuthenticationServiceProvider extends ServiceProvider {
     {
         $this->publishAssets();
         $this->publishConfig();
-        $this->publishViews();
+        //$this->publishViews();
         $this->publishMigrations();
+        $this->publicLang();
+    }
+    
+    protected function publicLang()
+    {
+        $this->publishes([
+                    __DIR__ . '/../../resources/lang' => base_path('resources/lang'),
+        ]);
+
     }
 
     protected function publishAssets()
@@ -225,6 +234,7 @@ class AuthenticationServiceProvider extends ServiceProvider {
                                  __DIR__ . '/../../config/acl_permissions.php' => config_path('acl_permissions.php'),
                                  __DIR__ . '/../../config/acl_messages.php'    => config_path('acl_messages.php'),
                                  __DIR__ . '/../../config/acl_sentry.php'      => config_path('acl_sentry.php'),
+                                 __DIR__ . '/../../config/package-acl.php'      => config_path('package-acl.php'),
                          ]);
     }
 

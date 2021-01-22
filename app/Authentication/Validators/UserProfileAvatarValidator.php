@@ -1,11 +1,11 @@
-<?php  namespace LaravelAcl\Authentication\Validators;
+<?php  namespace Foostart\Acl\Authentication\Validators;
 
-use LaravelAcl\Library\Validators\AbstractValidator;
+use Foostart\Acl\Library\Validators\AbstractValidator;
 
 /**
  * Class UserProfileAvatarValidator
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class UserProfileAvatarValidator extends AbstractValidator
 {

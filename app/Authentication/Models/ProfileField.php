@@ -1,9 +1,9 @@
-<?php  namespace LaravelAcl\Authentication\Models;
+<?php  namespace Foostart\Acl\Authentication\Models;
 
 /**
  * Class ProfileType
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 class ProfileField extends BaseModel
 {
@@ -13,11 +13,11 @@ class ProfileField extends BaseModel
 
     public function profile_field_type()
     {
-        return $this->belongsTo('LaravelAcl\Authentication\Models\ProfileFieldType','profile_field_type_id');
+        return $this->belongsTo('Foostart\Acl\Authentication\Models\ProfileFieldType','profile_field_type_id');
     }
 
     public function user_profile()
     {
-        return $this->belongsTo('LaravelAcl\Authentication\Models\UserProfile','user_profile_id');
+        return $this->belongsTo('Foostart\Acl\Authentication\Models\UserProfile','user_profile_id');
     }
 } 

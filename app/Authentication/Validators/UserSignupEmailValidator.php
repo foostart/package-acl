@@ -1,12 +1,12 @@
-<?php  namespace LaravelAcl\Authentication\Validators;
+<?php  namespace Foostart\Acl\Authentication\Validators;
 /**
  * Class UserSignupEmailValidator
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Support\Facades\Request;
-use LaravelAcl\Authentication\Exceptions\UserNotFoundException;
-use LaravelAcl\Library\Validators\AbstractValidator;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Library\Validators\AbstractValidator;
 use App, Session, Config;
 
 class UserSignupEmailValidator extends AbstractValidator

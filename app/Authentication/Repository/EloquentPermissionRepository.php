@@ -1,12 +1,12 @@
-<?php namespace LaravelAcl\Authentication\Repository;
+<?php namespace Foostart\Acl\Authentication\Repository;
 /**
  * Class EloquentPermissionRepository
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
-use LaravelAcl\Authentication\Exceptions\PermissionException;
-use LaravelAcl\Authentication\Models\Permission;
-use LaravelAcl\Library\Repository\EloquentBaseRepository;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Models\Permission;
+use Foostart\Acl\Library\Repository\EloquentBaseRepository;
 use Event, App;
 
 class EloquentPermissionRepository extends EloquentBaseRepository
@@ -22,15 +22,15 @@ class EloquentPermissionRepository extends EloquentBaseRepository
         $this->user_repo = App::make('user_repository');
         $this->config_reader = $config_reader ? $config_reader : App::make('config');
 
-        Event::listen(['repository.deleting','repository.updating'], '\LaravelAcl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyUser');
-        Event::listen(['repository.deleting','repository.updating'], '\LaravelAcl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyGroup');
+        Event::listen(['repository.deleting','repository.updating'], '\Foostart\Acl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyUser');
+        Event::listen(['repository.deleting','repository.updating'], '\Foostart\Acl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyGroup');
 
         return parent::__construct(new Permission);
     }
 
     /**
      * @param $obj
-     * @throws \LaravelAcl\Authentication\Exceptions\PermissionException
+     * @throws \Foostart\Acl\Authentication\Exceptions\PermissionException
      */
     public function checkIsNotAssociatedToAnyGroup($permission_obj)
     {
@@ -40,7 +40,7 @@ class EloquentPermissionRepository extends EloquentBaseRepository
 
     /**
      * @param $permission_obj
-     * @throws \LaravelAcl\Authentication\Exceptions\PermissionException
+     * @throws \Foostart\Acl\Authentication\Exceptions\PermissionException
      */
     public function checkIsNotAssociatedToAnyUser($permission_obj)
     {
@@ -51,7 +51,7 @@ class EloquentPermissionRepository extends EloquentBaseRepository
     /**
      * @param $permission
      * @param $collection
-     * @throws \LaravelAcl\Authentication\Exceptions\PermissionException
+     * @throws \Foostart\Acl\Authentication\Exceptions\PermissionException
      */
     private function validateIfPermissionIsInCollection($permission, $collection)
     {

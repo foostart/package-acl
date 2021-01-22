@@ -1,18 +1,18 @@
-<?php  namespace LaravelAcl\Authentication\Services;
+<?php  namespace Foostart\Acl\Authentication\Services;
 
 /**
  * Class UserProfileService
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use App;
 use Illuminate\Support\MessageBag;
-use LaravelAcl\Authentication\Exceptions\PermissionException;
-use LaravelAcl\Authentication\Validators\UserProfileUserValidator;
-use LaravelAcl\Authentication\Validators\UserProfileValidator;
-use LaravelAcl\Library\Exceptions\InvalidException;
-use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
-use LaravelAcl\Library\Form\FormModel;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Validators\UserProfileUserValidator;
+use Foostart\Acl\Authentication\Validators\UserProfileValidator;
+use Foostart\Acl\Library\Exceptions\InvalidException;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Library\Form\FormModel;
 
 class UserProfileService
 {
@@ -21,7 +21,7 @@ class UserProfileService
      */
     protected $profile_repository;
     /**
-     * @var \LaravelAcl\Authentication\Validators\UserProfileValidator
+     * @var \Foostart\Acl\Authentication\Validators\UserProfileValidator
      */
     protected $validator_profile;
     /**
@@ -33,7 +33,7 @@ class UserProfileService
      */
     protected $user_repository;
     /**
-     * @var \LaravelAcl\Authentication\Validators\UserProfileUserValidator
+     * @var \Foostart\Acl\Authentication\Validators\UserProfileUserValidator
      */
     protected $validator_user;
     /**
@@ -75,7 +75,7 @@ class UserProfileService
     /**
      * @param $input
      * @return mixed
-     * @throws \LaravelAcl\Library\Exceptions\InvalidException
+     * @throws \Foostart\Acl\Library\Exceptions\InvalidException
      */
     protected function updateUserProfile($input)
     {
@@ -95,7 +95,7 @@ class UserProfileService
 
     /**
      * @param $input
-     * @throws \LaravelAcl\Authentication\Exceptions\PermissionException
+     * @throws \Foostart\Acl\Authentication\Exceptions\PermissionException
      */
     protected function checkProfileEditPermission($input)
     {
@@ -155,7 +155,7 @@ class UserProfileService
     /**
      * @param $input
      * @return mixed
-     * @throws \LaravelAcl\Library\Exceptions\InvalidException
+     * @throws \Foostart\Acl\Library\Exceptions\InvalidException
      */
     private function updateUserBaseData($input)
     {

@@ -1,9 +1,9 @@
-<?php namespace LaravelAcl\Library\Email;
+<?php namespace Foostart\Acl\Library\Email;
 
 /**
  * Swift mailer implementation of MailerInterface
  *
- * @author jacopo beschi jacopo@jacopobeschi.com
+ * @author Foostart foostart.com@gmail.com
  */
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
@@ -20,7 +20,7 @@ class SwiftMailer implements MailerInterface
         try
         {
             App::make('mailer')->send($template, ["body" => $body], function($message) use($to, $subject){
-                $message->to($to)->subject($subject);
+                $message->to($to)->subject($subject)->from('ptnhuan@gmail.com', 'Package Acl');
             });
         }
         catch( Swift_TransportException $e)

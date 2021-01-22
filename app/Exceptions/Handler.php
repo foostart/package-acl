@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Exceptions;
+<?php namespace Foostart\Acl\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

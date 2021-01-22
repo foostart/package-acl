@@ -1,8 +1,3 @@
-<div class="row margin-bottom-12">
-    <div class="col-md-12">
-        <a href="{!! URL::route('groups.edit') !!}" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New</a>
-    </div>
-</div>
 
 @if( ! $groups->isEmpty() )
 <table class="table table-hover">
@@ -27,7 +22,7 @@
 
             <!-- Group name -->
             <?php $name = 'name' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.group-'.$name) !!}
+            <th class="hidden-xs">{!! trans($plang_admin.'.tables.group-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -41,7 +36,7 @@
 
             <!--Group permissions-->
             <?php $name = 'permissions' ?>
-            <th class="hidden-xs">{!! trans('jacopo-admin.'.$name) !!}
+            <th class="hidden-xs">{!! trans($plang_admin.'.tables.group-'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                 @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -54,7 +49,7 @@
             </th>
 
             <!-- OPERATION -->
-            <th>{!! trans('jacopo-admin.operations') !!}</th>
+            <th>{!! trans($plang_admin.'.menu.operations') !!}</th>
 
         </tr>
     </thead>

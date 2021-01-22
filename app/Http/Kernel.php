@@ -1,4 +1,4 @@
-<?php namespace LaravelAcl\Http;
+<?php namespace Foostart\Acl\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -24,8 +24,8 @@ class Kernel extends HttpKernel {
                     'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
                     'Illuminate\Session\Middleware\StartSession',
                     'Illuminate\View\Middleware\ShareErrorsFromSession',
-                    'LaravelAcl\Http\Middleware\VerifyCsrfToken',
-                    'LaravelAcl\Http\Middleware\EncryptCookies',
+                    'Foostart\Acl\Http\Middleware\VerifyCsrfToken',
+                    'Foostart\Acl\Http\Middleware\EncryptCookies',
             ],
             'api' => [
                     'throttle:60,1',
@@ -43,8 +43,8 @@ class Kernel extends HttpKernel {
         //            'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         //            'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         //            'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin_logged' => \LaravelAcl\Http\Middleware\AdminLogged::class,
-        'can_see' => \LaravelAcl\Http\Middleware\CanSee::class,
-        'has_perm' => \LaravelAcl\Http\Middleware\HasPerm::class,
+        'admin_logged' => \Foostart\Acl\Http\Middleware\AdminLogged::class,
+        'can_see' => \Foostart\Acl\Http\Middleware\CanSee::class,
+        'has_perm' => \Foostart\Acl\Http\Middleware\HasPerm::class,
 	];
 }
