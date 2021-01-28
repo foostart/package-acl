@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::client.layouts.base')
+@extends('package-acl::client.layouts.base')
 @section('title')
     {!! trans($plang_front.'.pages.change-password') !!}
 @stop

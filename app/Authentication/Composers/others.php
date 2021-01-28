@@ -1,13 +1,14 @@
 <?php
+
 use Foostart\Category\Helpers\FooCategory;
+
 $plang_admin = 'acl-admin';
 $plang_front = 'acl-front';
 
 /**
  * All the view of Laravel Authentication ACL
  */
-View::composer('laravel-authentication-acl::*', function ($view) use ($plang_admin, $plang_front)
-{
+View::composer('package-acl::*', function ($view) use ($plang_admin, $plang_front) {
     //Logged user
     $view->with('logged_user', App::make('authenticator')->getLoggedUser());
 
@@ -18,14 +19,11 @@ View::composer('laravel-authentication-acl::*', function ($view) use ($plang_adm
      * $plang-admin
      * $plang-front
      */
-
-
     $view->with('plang_admin', $plang_admin);
     $view->with('plang_front', $plang_front);
 });
 
-View::composer('laravel-authentication-acl::admin.user.*', function ($view)
-{
+View::composer('package-acl::admin.user.*', function ($view) {
     //Load category
     $obj_category = new FooCategory();
     $params_department = $params_level = Request::all();
@@ -38,11 +36,9 @@ View::composer('laravel-authentication-acl::admin.user.*', function ($view)
 
     $view->with('pluck_select_category_department', $pluck_select_category_department);
     $view->with('pluck_select_category_level', $pluck_select_category_level);
-
 });
 
-View::composer('laravel-authentication-acl::admin.permission.*', function ($view)
-{
+View::composer('package-acl::admin.permission.*', function ($view) {
     //Load category
     $obj_category = new FooCategory();
     $params = Request::all();
@@ -50,29 +46,26 @@ View::composer('laravel-authentication-acl::admin.permission.*', function ($view
     $pluck_select_category = $obj_category->pluckSelect($params);
 
     $view->with('pluck_select_category', $pluck_select_category);
-
 });
 /**
  * if the site uses gravatar for avatar handling
  */
-View::composer(['laravel-authentication-acl::admin.user.profile', 'laravel-authentication-acl::admin.user.self-profile'], function ($view)
-{
+View::composer(['package-acl::admin.user.profile', 'package-acl::admin.user.self-profile'], function ($view) {
     $view->with('use_gravatar', \Config::get('acl_config.use_gravatar'));
 });
 
 /*
-|-----------------------------------------------------------------------
-| Other data
-|-----------------------------------------------------------------------
-|
-|
-*/
-View::composer('laravel-authentication-acl::*', function ($view) use ($plang_admin, $plang_front)
-{
+  |-----------------------------------------------------------------------
+  | Other data
+  |-----------------------------------------------------------------------
+  |
+  |
+ */
+View::composer('package-acl::*', function ($view) use ($plang_admin, $plang_front) {
     //Order by
     $order_by = [
-        'asc' => trans($plang_admin.'.order.by-asc'),
-        'desc' => trans($plang_admin.'.order.by-desc'),
+        'asc' => trans($plang_admin . '.order.by-asc'),
+        'desc' => trans($plang_admin . '.order.by-desc'),
     ];
     $view->with('order_by', $order_by);
 });

@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
 {!! trans($plang_admin.'.pages.user-edit') !!}
@@ -70,12 +70,12 @@
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <h4><i class="fa fa-users"></i> {!! trans($plang_admin.'.labels.group').':' !!} </h4>
-                        @include('laravel-authentication-acl::admin.user.groups')
+                        @include('package-acl::admin.user.groups')
 
 
                         <h4><i class="fa fa-lock"></i> {!! trans($plang_admin.'.labels.permission-name').':' !!}</h4>
 
-                        @include('laravel-authentication-acl::admin.user.perm')
+                        @include('package-acl::admin.user.perm')
                     </div>
                 </div>
             </div>

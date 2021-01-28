@@ -3,7 +3,7 @@ use Foostart\Acl\Authentication\Classes\Statistics\UserStatistics;
 /**
  * Dashboard information
  */
-View::composer(['laravel-authentication-acl::admin.dashboard.*'], function($view){
+View::composer(['package-acl::admin.dashboard.*'], function($view){
     $user_statistics = new UserStatistics();
     $registered = $user_statistics->getRegisteredUserNumber();
     $active = $user_statistics->getActiveUserNumber();

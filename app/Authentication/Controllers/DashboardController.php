@@ -27,7 +27,7 @@ class DashboardController extends Controller{
             'breadcrumb_2' => $this->breadcrumb_2,
             'breadcrumb_3' => $this->breadcrumb_3,
         ));
-        return View::make('laravel-authentication-acl::admin.dashboard.default')->with($this->data_view);
+        return View::make('package-acl::admin.dashboard.default')->with($this->data_view);
     }
     
 } 

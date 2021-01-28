@@ -10,7 +10,7 @@ class Config implements ArrayAccess {
     protected $repository;
     protected $overridden_data;
     public static $overridden = [
-            "laravel-authentication-acl::captcha_signup" => true
+            "package-acl::captcha_signup" => true
     ];
 
     public function __construct($repository = null)

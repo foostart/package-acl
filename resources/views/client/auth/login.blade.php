@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::client.layouts.base')
+@extends('package-acl::client.layouts.base')
 @section('title')
     {!! trans($plang_front.'.pages.login') !!}
 @stop
@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <!--email-->
-                        @include('laravel-authentication-acl::client.partials.input_text', [
+                        @include('package-acl::client.partials.input_text', [
                                     'name' => 'email',
                                     'placeholder' => trans($plang_front.'.labels.email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
@@ -35,7 +35,7 @@
 
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        @include('laravel-authentication-acl::client.partials.input_text', [
+                        @include('package-acl::client.partials.input_text', [
                                     'name' => 'password',
                                     'placeholder' => trans($plang_front.'.labels.password'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
@@ -51,7 +51,7 @@
                     @if(isset($captcha) )
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            @include('laravel-authentication-acl::client.partials.input_text', [
+                            @include('package-acl::client.partials.input_text', [
                                 'name' => 'captcha_text',
                                 'placeholder' => trans($plang_front.'.captcha'),
                                 'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
@@ -65,7 +65,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span id="captcha-img-container">
-                                        @include('laravel-authentication-acl::client.auth.captcha-image')
+                                        @include('package-acl::client.auth.captcha-image')
                                     </span>
                                     <a id="captcha-gen-button" href="#" class="btn btn-small btn-info margin-left-5">
                                         <i class="fa fa-refresh"></i>

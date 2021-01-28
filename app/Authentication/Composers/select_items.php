@@ -9,8 +9,8 @@ use Foostart\Category\Helpers\SortTable;
 |-----------------------------------------------------------------------
 |
 */
-View::composer(['laravel-authentication-acl::admin.user.edit',
-                'laravel-authentication-acl::admin.group.edit'], function ($view) {
+View::composer(['package-acl::admin.user.edit',
+                'package-acl::admin.group.edit'], function ($view) {
 
     $fh = new FormHelper();
     $values_permission = $fh->getSelectValuesPermission();
@@ -25,10 +25,10 @@ View::composer(['laravel-authentication-acl::admin.user.edit',
 |-----------------------------------------------------------------------
 |
 */
-View::composer(['laravel-authentication-acl::admin.user.list',
-                'laravel-authentication-acl::admin.group.edit',
-                'laravel-authentication-acl::admin.user.edit',
-                'laravel-authentication-acl::admin.user.search'], function ($view){
+View::composer(['package-acl::admin.user.list',
+                'package-acl::admin.group.edit',
+                'package-acl::admin.user.edit',
+                'package-acl::admin.user.search'], function ($view){
 
     //List of groups
     $fh = new FormHelper();

@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
     {!! trans($plang_admin.'.pages.user-list') !!}
@@ -19,10 +19,10 @@
                     @endforeach
                 @endif
                 {{-- user lists --}}
-                @include('laravel-authentication-acl::admin.user.user-table')
+                @include('package-acl::admin.user.user-table')
             </div>
             <div class="col-md-3">
-                @include('laravel-authentication-acl::admin.user.search')
+                @include('package-acl::admin.user.search')
             </div>
         </div>
 </div>

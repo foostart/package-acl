@@ -9,10 +9,10 @@
     <meta name="author" content="">
 
 
-    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/bootstrap-3.3.7.min.css') !!}
-    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/style.css') !!}
-    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/font-awesome-4.7.0.min.css') !!}
-    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/fonts.css') !!}
+    {!! HTML::style('package-acl/css/bootstrap-3.3.7.min.css') !!}
+    {!! HTML::style('package-acl/css/style.css') !!}
+    {!! HTML::style('package-acl/css/font-awesome-4.7.0.min.css') !!}
+    {!! HTML::style('package-acl/css/fonts.css') !!}
 
     @yield('head_css')
     {{-- End head css --}}
@@ -31,7 +31,7 @@
         </div>
 
         {{-- Start footer scripts --}}
-        {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/jquery-1.10.2.min.js') !!}
-        {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/bootstrap.min.js') !!}
+        {!! HTML::script('package-acl/js/vendor/jquery-1.10.2.min.js') !!}
+        {!! HTML::script('package-acl/js/vendor/bootstrap.min.js') !!}
     </body>
 </html>

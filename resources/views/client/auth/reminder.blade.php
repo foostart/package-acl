@@ -10,7 +10,7 @@
 | @DESCRIPTION
 |
 ------------------------------------------------------------------------------->
-@extends('laravel-authentication-acl::client.layouts.base')
+@extends('package-acl::client.layouts.base')
 
 @section ('title')
     {!! trans($plang_front.'.pages.recovery-password') !!}
@@ -43,7 +43,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
 
                          <!--email-->
-                        @include('laravel-authentication-acl::client.partials.input_text', [
+                        @include('package-acl::client.partials.input_text', [
                                     'name' => 'email',
                                     'placeholder' => trans($plang_front.'.labels.recovery-email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
@@ -57,7 +57,7 @@
                     <!--captcha-->
                     @if(isset($captcha) )
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            @include('laravel-authentication-acl::client.partials.input_text', [
+                            @include('package-acl::client.partials.input_text', [
                                 'name' => 'captcha_text',
                                 'placeholder' => trans($plang_front.'.labels.captcha'),
                                 'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
@@ -70,7 +70,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span id="captcha-img-container">
-                                        @include('laravel-authentication-acl::client.auth.captcha-image')
+                                        @include('package-acl::client.auth.captcha-image')
                                     </span>
                                     <a id="captcha-gen-button" href="#" class="btn btn-small btn-info margin-left-5">
                                         <i class="fa fa-refresh"></i>
@@ -101,7 +101,7 @@
 
 @section('footer_scripts')
 
-    @include('laravel-authentication-acl::assets.lib_js')
+    @include('package-acl::assets.lib_js')
 
     @parent;
 @stop

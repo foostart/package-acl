@@ -61,7 +61,7 @@ class GroupController extends Controller
             'breadcrumb_2' => $this->breadcrumb_2,
             'breadcrumb_3' => $this->breadcrumb_3,
         ));
-        return View::make('laravel-authentication-acl::admin.group.list')->with($this->data_view);
+        return View::make('package-acl::admin.group.list')->with($this->data_view);
     }
 
     public function editGroup(Request $request)
@@ -88,7 +88,7 @@ class GroupController extends Controller
             'breadcrumb_2' => $this->breadcrumb_2,
             'breadcrumb_3' => $this->breadcrumb_3,
         ));
-        return View::make('laravel-authentication-acl::admin.group.edit')->with($this->data_view);
+        return View::make('package-acl::admin.group.edit')->with($this->data_view);
     }
 
     public function postEditGroup(Request $request)

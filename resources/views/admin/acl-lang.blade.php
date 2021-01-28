@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 <?php $plang_admin = $plang_admin.'' ?>
 @section('title')
     {{ trans($plang_admin.'.pages.title-lang') }}
@@ -95,7 +95,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('laravel-authentication-acl::admin.acl-lang-backup')
+                @include('package-acl::admin.acl-lang-backup')
             </div>
             <!--/SEARCH-->
 

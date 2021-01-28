@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
 {!! trans($plang_admin.'.pages.permission-list') !!}
@@ -25,12 +25,12 @@
                 <h3 class="panel-title bariol-thin"><i class="fa fa-lock"></i> Permissions</h3>
             </div>
             <div class="panel-body">
-                @include('laravel-authentication-acl::admin.permission.permission-table')
+                @include('package-acl::admin.permission.permission-table')
             </div>
         </div>
     </div>
         <div class="col-md-4">
-            @include('laravel-authentication-acl::admin.permission.search')
+            @include('package-acl::admin.permission.search')
         </div>
     </div>
 </div>

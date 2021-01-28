@@ -11,14 +11,14 @@
 |
 |------------------------------------------------------------------------------>
 
-@extends('laravel-authentication-acl::client.layouts.base')
+@extends('package-acl::client.layouts.base')
 
 @section ('title')
    {!! trans($plang_front.'.pages.signup') !!}
 @stop
 
 @section('head_css')
-    {!!  HTML::style('packages/jacopo/laravel-authentication-acl/css/strength.css')  !!}
+    {!!  HTML::style('package-acl/css/strength.css')  !!}
 @stop
 
 @section('content')
@@ -47,7 +47,7 @@
 
                             <!--first name-->
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                @include('package-acl::client.partials.input_text', [
                                     'name' => 'first_name',
                                     'placeholder' => trans($plang_front.'.labels.first_name'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
@@ -59,7 +59,7 @@
                             <!--last name-->
                             <?php $name = 'last_name' ?>
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                @include('package-acl::client.partials.input_text', [
                                     'name' => 'last_name',
                                     'placeholder' => trans($plang_front.'.labels.last_name'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
@@ -71,7 +71,7 @@
                         </div>
 
                         <!--email-->
-                        @include('laravel-authentication-acl::client.partials.input_text', [
+                        @include('package-acl::client.partials.input_text', [
                                     'name' => 'email',
                                     'placeholder' => trans($plang_front.'.labels.email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
@@ -83,7 +83,7 @@
                         <div class="row">
                             <!--password-->
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                @include('package-acl::client.partials.input_text', [
                                     'name' => 'password',
                                     'id' => 'password1',
                                     'placeholder' => trans($plang_front.'.labels.password'),
@@ -94,7 +94,7 @@
                                 ])
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                @include('laravel-authentication-acl::client.partials.input_text', [
+                                @include('package-acl::client.partials.input_text', [
                                     'name' => 'password_confirmation',
                                     'id' => 'password2',
                                     'placeholder' => trans($plang_front.'.labels.confirm_password'),
@@ -112,7 +112,7 @@
                             @if(isset($captcha) )
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    @include('laravel-authentication-acl::client.partials.input_text', [
+                                    @include('package-acl::client.partials.input_text', [
                                         'name' => 'captcha_text',
                                         'placeholder' => trans($plang_front.'.labels.captcha'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
@@ -126,7 +126,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span id="captcha-img-container">
-                                                @include('laravel-authentication-acl::client.auth.captcha-image')
+                                                @include('package-acl::client.auth.captcha-image')
                                             </span>
                                             <a id="captcha-gen-button" href="#" class="btn btn-small btn-info margin-left-5"><i class="fa fa-refresh"></i></a>
                                         </div>
@@ -159,7 +159,7 @@
 
 @section('footer_scripts')
 
-    {!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/password_strength/strength.js') !!}
+    {!! HTML::script('package-acl/js/vendor/password_strength/strength.js') !!}
 
     @parent;
 

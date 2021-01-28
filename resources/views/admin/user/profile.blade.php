@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
     {!! trans($plang_admin.'.pages.user-edit-profile') !!}
@@ -33,9 +33,9 @@
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         @if(! $use_gravatar)
-                            @include('laravel-authentication-acl::admin.user.partials.avatar_upload')
+                            @include('package-acl::admin.user.partials.avatar_upload')
                         @else
-                            @include('laravel-authentication-acl::admin.user.partials.show_gravatar')
+                            @include('package-acl::admin.user.partials.show_gravatar')
                         @endif
                         <h4><i class="fa fa-cubes"></i>{!! trans($plang_admin.'.labels.user-data').':' !!}</h4>
                         {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
@@ -149,7 +149,7 @@
                         </div>
                     <div class="col-md-6 col-xs-12">
                         @if($can_add_fields)
-                        @include('laravel-authentication-acl::admin.user.custom-profile')
+                        @include('package-acl::admin.user.custom-profile')
                         @endif
                     </div>
                 </div>

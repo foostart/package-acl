@@ -53,7 +53,7 @@ class PermissionController extends Controller
             'breadcrumb_2' => $this->breadcrumb_2,
             'breadcrumb_3' => $this->breadcrumb_3,
         ));
-        return View::make('laravel-authentication-acl::admin.permission.list')->with($this->data_view);
+        return View::make('package-acl::admin.permission.list')->with($this->data_view);
     }
 
     public function editPermission(Request $request)
@@ -79,7 +79,7 @@ class PermissionController extends Controller
             'breadcrumb_2' => $this->breadcrumb_2,
             'breadcrumb_3' => $this->breadcrumb_3,
         ));
-        return View::make('laravel-authentication-acl::admin.permission.edit')->with($this->data_view);
+        return View::make('package-acl::admin.permission.edit')->with($this->data_view);
     }
 
     public function postEditPermission(Request $request)

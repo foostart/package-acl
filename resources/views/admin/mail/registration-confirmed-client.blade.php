@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/font-awesome-4.7.0.min.css') !!}
-    {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/mail-base.css') !!}
+    {!! HTML::style('package-acl/css/font-awesome-4.7.0.min.css') !!}
+    {!! HTML::style('package-acl/css/mail-base.css') !!}
 </head>
 <body>
 <h2>Welcome to: {!! Config::get('acl_base.app_name') !!}</h2>

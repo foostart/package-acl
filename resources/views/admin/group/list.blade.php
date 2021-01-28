@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
 {!! trans($plang_admin.'.pages.group-list') !!}
@@ -25,12 +25,12 @@
                     <h3 class="panel-title bariol-thin"><i class="fa fa-group"></i> {!! $request->all() ? 'Search results:' : 'Groups' !!}</h3>
                 </div>
                 <div class="panel-body">
-                    @include('laravel-authentication-acl::admin.group.groups-table')
+                    @include('package-acl::admin.group.groups-table')
                </div>
            </div>
         </div>
         <div class="col-md-4">
-            @include('laravel-authentication-acl::admin.group.search')
+            @include('package-acl::admin.group.search')
         </div>
     </div>
 </div>

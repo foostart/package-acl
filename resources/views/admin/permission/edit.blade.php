@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
 {!! trans($plang_admin.'.pages.permission-edit') !!}
@@ -75,7 +75,7 @@
 @stop
 
 @section('footer_scripts')
-{!! HTML::script('packages/jacopo/laravel-authentication-acl/js/vendor/slugit.js') !!}
+{!! HTML::script('package-acl/js/vendor/slugit.js') !!}
 <script>
     $(".delete").click(function(){
         return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");

@@ -47,7 +47,7 @@ class AuthController extends Controller {
             ));
         }
 
-        return View::make('laravel-authentication-acl::client.auth.login')->with($data_view);
+        return View::make('package-acl::client.auth.login')->with($data_view);
     }
 
     public function getAdminLogin()
@@ -55,7 +55,7 @@ class AuthController extends Controller {
         if ($this->authenticator->check()) {
             return Redirect::to(Config::get('acl_base.admin_login_redirect_url'));
         }
-        return view('laravel-authentication-acl::admin.auth.login');
+        return view('package-acl::admin.auth.login');
     }
 
     public function postAdminLogin(Request $request)
@@ -145,10 +145,10 @@ class AuthController extends Controller {
                 'captcha' => $captcha
             ));
 
-            return view('laravel-authentication-acl::client.auth.reminder', $data_view);
+            return view('package-acl::client.auth.reminder', $data_view);
         }
 
-        return view('laravel-authentication-acl::client.auth.reminder', $data_view);
+        return view('package-acl::client.auth.reminder', $data_view);
     }
 
     /**
@@ -188,7 +188,7 @@ class AuthController extends Controller {
         $email = $request->get('email');
         $token = $request->get('token');
 
-        return view("laravel-authentication-acl::client.auth.changepassword", array("email" => $email, "token" => $token) );
+        return view("package-acl::client.auth.changepassword", array("email" => $email, "token" => $token) );
     }
 
     public function postChangePassword(Request $request)

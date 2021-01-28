@@ -9,7 +9,7 @@
         <meta name="author" content="">
 
 
-        @include('laravel-authentication-acl::assets.lib_css')
+        @include('package-acl::assets.lib_css')
 
         @yield('head_css')
 
@@ -26,7 +26,7 @@
             @yield('content')
         </div>
 
-        @include('laravel-authentication-acl::assets.lib_js')
+        @include('package-acl::assets.lib_js')
         @yield('footer_scripts')
 
     </body>

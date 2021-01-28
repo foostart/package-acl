@@ -139,7 +139,7 @@ class UserRegisterService
      */
     public function sendRegistrationMailToClient($input)
     {
-        $view_file = $this->activation_enabled ? "laravel-authentication-acl::admin.mail.registration-waiting-client" : "laravel-authentication-acl::admin.mail.registration-confirmed-client";
+        $view_file = $this->activation_enabled ? "package-acl::admin.mail.registration-waiting-client" : "package-acl::admin.mail.registration-confirmed-client";
 
         $mailer = App::make('jmailer');
 
@@ -166,7 +166,7 @@ class UserRegisterService
         // if i activate a deactivated user
         $mailer->sendTo($user->email, ["email" => $user->email],
                         Config::get('acl_messages.email.user_registraction_activation_subject'),
-                        "laravel-authentication-acl::admin.mail.registration-activated-client");
+                        "package-acl::admin.mail.registration-activated-client");
     }
 
     /**

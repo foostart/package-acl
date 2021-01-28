@@ -4,6 +4,9 @@
 * Support: Laravel 8x
 * Contact _**foostart.com@gmail.com**_ to support other versions
 
+##Requirements
+* Config database with *.env* file
+
 ## Step 1: Regist package to Laravel
 Now open the file **config/app.php** and add to the '**providers**' option the following line:
 

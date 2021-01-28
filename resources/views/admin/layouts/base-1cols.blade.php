@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.base')
+@extends('package-acl::admin.base')
 
 @section('container')
     <div class="col-mg-12">

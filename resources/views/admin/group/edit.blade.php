@@ -1,4 +1,4 @@
-@extends('laravel-authentication-acl::admin.layouts.base-2cols')
+@extends('package-acl::admin.layouts.base-2cols')
 
 @section('title')
 {!! trans($plang_admin.'.pages.group-edit') !!}
@@ -42,7 +42,7 @@
                     {{-- group permission form --}}
                         <h4><i class="fa fa-lock"></i>{!! trans($plang_admin.'.labels.permission-name') !!}</h4>
                         {{-- permissions --}}
-                        @include('laravel-authentication-acl::admin.group.perm')
+                        @include('package-acl::admin.group.perm')
                     </div>
                 </div>
            </div>

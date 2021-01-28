@@ -40,7 +40,7 @@ class ReminderService {
      *
      * @var string
      */
-    protected $template = "laravel-authentication-acl::admin.mail.reminder";
+    protected $template = "package-acl::admin.mail.reminder";
     /**
      * Errors
      *
