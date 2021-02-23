@@ -8,13 +8,13 @@
 * Config database with *.env* file
 
 ## Step 1: Regist package to Laravel
-Now open the file **config/app.php** and add to the '**providers**' option the following line:
+Now open the file **config/app.php** and add to the **providers** option the following line:
 
 1. Foostart\Acl\Authentication\AuthenticationServiceProvider::class,
 1. Foostart\Category\CategoryServiceProvider::class,
 
 ## Step 2: Regist middleware to Laravel
-Now open the file app/Http/Kernel.php and add the following lines to your $routeMiddleware array: 
+Now open the file **app/Http/Kernel.php** and add the following lines to your **routeMiddleware** array: 
 
 
 1. 'admin_logged' => \Foostart\Acl\Http\Middleware\AdminLogged::class,
