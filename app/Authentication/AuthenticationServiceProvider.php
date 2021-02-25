@@ -29,6 +29,7 @@ class AuthenticationServiceProvider extends ServiceProvider {
     protected $defer = false;
     protected $providers = [
         \Foostart\Acl\Library\LibraryServiceProvider::class,
+        \Foostart\Category\CategoryServiceProvider::class,
         \Cartalyst\Sentry\SentryServiceProvider::class,
         \Intervention\Image\ImageServiceProvider::class,
         \Collective\Html\HtmlServiceProvider::class
@@ -199,7 +200,7 @@ class AuthenticationServiceProvider extends ServiceProvider {
      */
     protected function publishAssets() {
         $this->publishes([
-            __DIR__ . '/../../public/assets' => public_path('packages-acl'),
+            __DIR__ . '/../../public/assets' => public_path('packages/foostart'),
         ]);
     }
 

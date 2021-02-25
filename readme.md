@@ -26,8 +26,11 @@ Now open the file **app/Http/Kernel.php** and add the following lines to your **
 
 ## Step 3: Delete user and password migration file in database/migrations
 
-
 ## Step 4: Install
 
 1. php artisan authentication:install
+```
+Which provider or tag's files would you like to publish?:
+Select option [* ] Provider: Foostart\Acl\Authentication\AuthenticationServiceProvider
+```
 1. php artisan vendor:publish --provider="Foostart\Category\CategoryServiceProvider" --force

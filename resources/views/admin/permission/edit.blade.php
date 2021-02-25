@@ -75,7 +75,7 @@
 @stop
 
 @section('footer_scripts')
-{!! HTML::script('package-acl/js/vendor/slugit.js') !!}
+{!! HTML::script('packages/foostart/js/vendor/slugit.js') !!}
 <script>
     $(".delete").click(function(){
         return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");

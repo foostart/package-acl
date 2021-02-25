@@ -18,7 +18,7 @@
 @stop
 
 @section('head_css')
-    {!!  HTML::style('package-acl/css/strength.css')  !!}
+    {!!  HTML::style('packages/foostart/css/strength.css')  !!}
 @stop
 
 @section('content')
@@ -159,7 +159,7 @@
 
 @section('footer_scripts')
 
-    {!! HTML::script('package-acl/js/vendor/password_strength/strength.js') !!}
+    {!! HTML::script('packages/foostart/js/vendor/password_strength/strength.js') !!}
 
     @parent;
 

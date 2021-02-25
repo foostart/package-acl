@@ -87,20 +87,5 @@ return [
                 "link"        => '/admin/categories/list',
                 "permissions" => [$admin, '_user-editor']
             ],
-
-            //Posts
-            [
-                "name"        => 'post-admin.menus.top-menu',
-                "route"       => "posts",
-                "link"        => '/admin/posts',
-                "permissions" => [$admin, "_rule"]
-            ],
-            //Slideshow
-            [
-                "name"        => 'slideshow-admin.menus.top-menu',
-                "route"       => "slideshows",
-                "link"        => '/admin/slideshows',
-                "permissions" => [$admin]
-            ],
     ]
 ];

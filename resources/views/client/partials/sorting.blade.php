@@ -48,5 +48,5 @@
 
 @section('footer_scripts')
     @parent
-    {!! HTML::script('package-acl/js/custom-ordering.js')  !!}
+    {!! HTML::script('packages/foostart/js/custom-ordering.js')  !!}
 @stop
