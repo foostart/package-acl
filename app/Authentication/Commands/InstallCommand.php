@@ -41,14 +41,20 @@ class InstallCommand extends Command {
      */
     public function fire()
     {
+        // Vendor publish
         $this->call_wrapper->call('vendor:publish', ['--force' => true]);
         $this->call_wrapper->call('vendor:publish', ['--force' => true,
-                '--provider' => "Foostart\Category\CategoryServiceProvider"
-            ]);
+                '--provider' => 'Foostart\Category\CategoryServiceProvider'
+            ]);        
 
+        // Running migrate
         $this->call_wrapper->call('migrate');
+        
+        // Running seeder
         $this->db_seeder->run();
+        $this->call_wrapper->call('db:seed', ['--class' => 'ContextSeeder']);
 
+        // Show message complete
         $this->info($this->info);
     }
     

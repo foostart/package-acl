@@ -1,6 +1,6 @@
 <?php
 
-use Foostart\Category\Helpers\FooCategory;
+use Foostart\Category\Helpers\FoostartCategory;
 
 $plang_admin = 'acl-admin';
 $plang_front = 'acl-front';
@@ -25,7 +25,7 @@ View::composer('package-acl::*', function ($view) use ($plang_admin, $plang_fron
 
 View::composer('package-acl::admin.user.*', function ($view) {
     //Load category
-    $obj_category = new FooCategory();
+    $obj_category = new FoostartCategory();
     $params_department = $params_level = Request::all();
 
     $params_department['_key'] = $obj_category->getContextKeyByRef('user/department');
@@ -40,7 +40,7 @@ View::composer('package-acl::admin.user.*', function ($view) {
 
 View::composer('package-acl::admin.permission.*', function ($view) {
     //Load category
-    $obj_category = new FooCategory();
+    $obj_category = new FoostartCategory();
     $params = Request::all();
     $params['_key'] = $obj_category->getContextKeyByRef('admin/permissions');
     $pluck_select_category = $obj_category->pluckSelect($params);

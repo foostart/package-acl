@@ -1,7 +1,7 @@
 <?php
 
 use Foostart\Acl\Authentication\Classes\Menu\SentryMenuFactory;
-use Foostart\Category\Helpers\FooCategory;
+use Foostart\Category\Helpers\FoostartCategory;
 
 $plang_admin = 'acl-admin';
 $plang_front = 'acl-front';
@@ -38,7 +38,7 @@ View::composer([
     'package-acl::admin.acl-lang-backup',
         ], function ($view) use ($plang_admin, $plang_front) {
 
-    $fooCategory = new FooCategory();
+    $fooCategory = new FoostartCategory();
     $key_department = $fooCategory->getContextKeyByRef('user/department');
     $key_level = $fooCategory->getContextKeyByRef('user/level');
     $view->with('sidebar_items', [
@@ -83,7 +83,7 @@ View::composer(['package-acl::admin.group.*'], function ($view) use ($plang_admi
  *  Permission sidebar
  */
 View::composer(['package-acl::admin.permission.*'], function ($view) use ($plang_admin, $plang_front) {
-    $fooCategory = new FooCategory();
+    $fooCategory = new FoostartCategory();
     $key = $fooCategory->getContextKeyByRef('admin/permissions');
     $view->with('sidebar_items', [
         trans($plang_admin . '.sidebars.permissions-list') => [
