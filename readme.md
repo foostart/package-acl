@@ -7,6 +7,9 @@
 ## Requirements
 * Config database with *.env* file
 
+## Requirements
+* Install with composer: **composer require foostart/package-acl**
+
 ## Step 1: Regist package to Laravel
 Now open the file **config/app.php** and add to the **providers** option the following line:
 
