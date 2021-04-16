@@ -121,7 +121,6 @@ class UserController extends Controller {
             "presenter" => $presenter,
             'breadcrumb_1' => $this->breadcrumb_1,
             'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return View::make('package-acl::admin.user.edit')->with($this->data_view);
     }
@@ -240,10 +239,17 @@ class UserController extends Controller {
                                                                                   ]);
     }
 
+    /**
+     * Update user info
+     * @param  Request  $request
+     *
+     * @return mixed
+     */
     public function postEditProfile(Request $request)
     {
         $input = $request->all();
         $service = new UserProfileService($this->profile_validator);
+
         try
         {
             $service->processForm($input);

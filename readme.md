@@ -36,4 +36,5 @@ Now open the file **app/Http/Kernel.php** and add the following lines to your **
 Which provider or tag's files would you like to publish?:
 Select option [* ] Provider: Foostart\Acl\Authentication\AuthenticationServiceProvider
 ```
-1. php artisan vendor:publish --provider="Foostart\Category\CategoryServiceProvider" --force
+2. php artisan vendor:publish --provider="Foostart\Category\CategoryServiceProvider" --force
+3. Ref: https://packagist.org/packages/foostart/package-post

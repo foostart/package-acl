@@ -1,7 +1,7 @@
 <?php  namespace Foostart\Acl\Authentication\Classes\Images;
 
 use Image;
-use Illuminate\Support\Facades\Input;
+use Input;
 use Foostart\Acl\Library\Exceptions\NotFoundException;
 
 /**

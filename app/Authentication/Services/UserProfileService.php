@@ -13,6 +13,7 @@ use Foostart\Acl\Authentication\Validators\UserProfileValidator;
 use Foostart\Acl\Library\Exceptions\InvalidException;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 use Foostart\Acl\Library\Form\FormModel;
+use Illuminate\Support\Arr;
 
 class UserProfileService
 {
@@ -159,11 +160,11 @@ class UserProfileService
      */
     private function updateUserBaseData($input)
     {
-        try
-        {
-            $this->form_model_user->process(array_only($input, ['password', 'password_confirmation', 'user_id']));
-        } catch(JacopoExceptionsInterface $e)
-        {
+        try {
+            if (!empty($input['password']) || !empty($input['password_confirmation'])) {
+                $this->form_model_user->process(Arr::only($input, ['password', 'password_confirmation', 'user_id']));
+            }
+        } catch (JacopoExceptionsInterface $e) {
             $this->errors = $this->form_model_user->getErrors();
             throw new InvalidException;
         }
