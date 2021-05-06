@@ -43,7 +43,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
 
                          <!--email-->
-                        @include('package-acl::client.partials.input_text', [
+                        @include('package-category::front.partials.input_text', [
                                     'name' => 'email',
                                     'placeholder' => trans($plang_front.'.labels.recovery-email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
@@ -57,7 +57,7 @@
                     <!--captcha-->
                     @if(isset($captcha) )
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            @include('package-acl::client.partials.input_text', [
+                            @include('package-category::front.partials.input_text', [
                                 'name' => 'captcha_text',
                                 'placeholder' => trans($plang_front.'.labels.captcha'),
                                 'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',

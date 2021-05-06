@@ -8,13 +8,13 @@
  */
 
 var appender = function (spec, tb_orders) {
-    
+
     // manage action in ordering
     var that = {};
-    
+
     // contains the ordering filters
     var orderings = [];
-    
+
     // the separator used for the hidden ordering fields
     var separator = ",";
 
@@ -24,16 +24,16 @@ var appender = function (spec, tb_orders) {
     var ordering_fied = $("#" + spec.ordering_field);
     var order_by_field = $("#" + spec.order_by_field);
     var append_sorting_field = $("#" + spec.append_sorting);
-    
+
     /**
      * Initialize action ordering filter
      * @returns {void}
      */
     that.initialize = function () {
-        
+
         var order_by_tokens = order_by_field.val().split(separator);
         var ordering_tokens = ordering_fied.val().split(separator);
-        
+
         // validation
         if (order_by_tokens.length != order_by_tokens.length){
             return false;
@@ -55,11 +55,11 @@ var appender = function (spec, tb_orders) {
         for (i = 0; i < orderings.length; i++) {
             that.appendPlaceholder(i);
         }
-        
+
     }//end initialize
 
     /**
-     * 
+     *
      * @returns {undefined}
      */
     that.addOrdering = function () {
@@ -72,10 +72,10 @@ var appender = function (spec, tb_orders) {
      * @returns {undefined}
      */
     that.appendPlaceholder = function (index) {
-        var order_by_placeholder = '<div class="col-md-7">' +
+        var order_by_placeholder = '<div class="col-md-6">' +
                 '<input type="text" disabled="disabled" class="form-control" value="' + orderings[index].order_by + '">' +
                 '</div>';
-        var field_placeholder = '<div class="col-md-3" field="' + orderings[index].ordering + '">' +
+        var field_placeholder = '<div class="col-md-4" field="' + orderings[index].ordering + '">' +
                 '<input type="text" disabled="disabled" class="form-control" value="' + orderings[index].ordering + '" >' +
                 '</div>';
         var delete_ordering = '<div class="col-md-2">' +
@@ -97,7 +97,7 @@ var appender = function (spec, tb_orders) {
         that.clearErrorMessage();
         var ordering_fields = document.getElementById('ordering_' + number);
         ordering_fields.parentNode.removeChild(ordering_fields);
-        
+
         //remove out of object by index
         orderings.splice(number, 1);
         //clear field orders
@@ -121,11 +121,11 @@ var appender = function (spec, tb_orders) {
     }
 
     /**
-     * 
+     *
      * @returns {undefined}
      */
     that.fillOrderingInput = function () {
-        
+
         var order_by_str;
         var ordering_str;
 
@@ -172,7 +172,7 @@ var appender = function (spec, tb_orders) {
     that.getOrderings = function () {
         return orderings;
     };
-    
+
     that.isSelectedOrdering = function(order_by) {
         var selected_orders = that.getOrderings();
         if (selected_orders=== undefined) {
@@ -186,7 +186,7 @@ var appender = function (spec, tb_orders) {
         }
         return false;
     }
-    
+
     /**
      * Clear error message
      * @returns {void}
@@ -196,7 +196,7 @@ var appender = function (spec, tb_orders) {
         $(".form-error-required-order").addClass('hidden');
         $(".form-error-existing-order").addClass('hidden');
     }
-    
+
     /**
      * Set error message
      * @param {string} error_type
@@ -217,7 +217,7 @@ var appender = function (spec, tb_orders) {
                 break;
         }
     }
-    
+
     return that;
 };
 
@@ -235,7 +235,7 @@ var spec = {
 };
 
 /**
- * List of column names 
+ * List of column names
  */
 var tb_orders = {
     order: 'tb-order',

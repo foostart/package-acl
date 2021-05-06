@@ -92,7 +92,8 @@
                 {!! Form::select('group_id', $group_values, $request->get('group_id',''), ["class" => "form-control"]) !!}
             </div>
 
-           @include('package-acl::admin.layouts.partials.sorting')
+            <!--SORTING-->
+            @include('package-category::admin.partials.sorting')
         </div>
         {!! Form::close() !!}
     </div>

@@ -11,6 +11,7 @@ use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 use Foostart\Acl\Authentication\Helpers\DbHelper;
 use Foostart\Acl\Authentication\Validators\UserSignupValidator;
 use Foostart\Acl\Library\Exceptions\ValidationException;
+use Illuminate\Support\Arr;
 
 /**
  * Class UserRegisterService
@@ -215,6 +216,6 @@ class UserRegisterService
     private function createProfileInput(array $input, $user)
     {
         return array_merge(["user_id" => $user->id],
-                           array_except($input, ["email", "password", "activated"]));
+            Arr::except($input, ["email", "password", "activated"]));
     }
 }

@@ -6,7 +6,7 @@ use Foostart\Acl\Library\Validators\AbstractValidator;
 class RecoverPasswordValidator extends AbstractValidator {
 
     protected static $messages = [
-        "mail_recover" => "cant found email"
+        "mail_recover" => "Cant found email"
     ];
 
     protected static $rules = [

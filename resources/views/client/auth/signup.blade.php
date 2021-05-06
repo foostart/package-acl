@@ -47,7 +47,7 @@
 
                             <!--first name-->
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                @include('package-acl::client.partials.input_text', [
+                                @include('package-category::front.partials.input_text', [
                                     'name' => 'first_name',
                                     'placeholder' => trans($plang_front.'.labels.first_name'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
@@ -59,7 +59,7 @@
                             <!--last name-->
                             <?php $name = 'last_name' ?>
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                @include('package-acl::client.partials.input_text', [
+                                @include('package-category::front.partials.input_text', [
                                     'name' => 'last_name',
                                     'placeholder' => trans($plang_front.'.labels.last_name'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-user"></i></span>',
@@ -71,7 +71,7 @@
                         </div>
 
                         <!--email-->
-                        @include('package-acl::client.partials.input_text', [
+                        @include('package-category::front.partials.input_text', [
                                     'name' => 'email',
                                     'placeholder' => trans($plang_front.'.labels.email'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
@@ -83,7 +83,7 @@
                         <div class="row">
                             <!--password-->
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                @include('package-acl::client.partials.input_text', [
+                                @include('package-category::front.partials.input_text', [
                                     'name' => 'password',
                                     'id' => 'password1',
                                     'placeholder' => trans($plang_front.'.labels.password'),
@@ -94,7 +94,7 @@
                                 ])
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                @include('package-acl::client.partials.input_text', [
+                                @include('package-category::front.partials.input_text', [
                                     'name' => 'password_confirmation',
                                     'id' => 'password2',
                                     'placeholder' => trans($plang_front.'.labels.confirm_password'),
@@ -112,7 +112,7 @@
                             @if(isset($captcha) )
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    @include('package-acl::client.partials.input_text', [
+                                    @include('package-category::front.partials.input_text', [
                                         'name' => 'captcha_text',
                                         'placeholder' => trans($plang_front.'.labels.captcha'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
