@@ -14,7 +14,7 @@
             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'group name']) !!}
         </div>
         <span class="text-danger">{!! $errors->first('name') !!}</span>
-        @include('package-acl::admin.layouts.partials.sorting')
+        @include('package-category::admin.partials.sorting')
         {!! Form::close() !!}
     </div>
 </div>
