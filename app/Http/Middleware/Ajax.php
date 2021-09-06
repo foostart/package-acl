@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Http\Middleware; 
+<?php namespace Foostart\Acl\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
@@ -6,14 +6,16 @@ use Illuminate\Support\Facades\App;
 /*
  * Check that request type is ajax
  */
-class Ajax {
+
+class Ajax
+{
 
     public function handle($request, Closure $next)
     {
-        if(!Request::ajax()) {
+        if (!Request::ajax()) {
             return Response::error('404');
         }
 
         return $next($request);
     }
-} 
+}

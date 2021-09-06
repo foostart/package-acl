@@ -1,9 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\Menu;
+<?php namespace Foostart\Acl\Authentication\Classes\Menu;
 /**
  * Class MenuItem
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Foostart\Acl\Authentication\Helpers\SentryAuthenticationHelper;
 use Foostart\Acl\Authentication\Interfaces\MenuInterface;
 use App;
@@ -59,7 +60,7 @@ class SentryMenuItem implements MenuInterface
      */
     public function getLink()
     {
-       return url('/').$this->link;
+        return url('/') . $this->link;
     }
 
     /**

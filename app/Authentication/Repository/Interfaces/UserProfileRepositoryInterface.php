@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Repository\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Repository\Interfaces;
 /**
  * Interface UserProfileRepositoryInterface
  *

@@ -1,313 +1,282 @@
 <?php
 
 return [
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | MAIN MENU ADMIN
-        |-----------------------------------------------------------------------
-        | Top menu
-        |
-        */
-        'menu' => [
-            'dashboard' => 'Dashboard',
-            'users' => 'Users',
-            'groups' => 'Groups',
-            'permissions' => 'Permissions',
-            'operations' => 'Operations',
-            'contexts'  => 'Contextes',
-        ],
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | MAIN MENU ADMIN
+     * |-----------------------------------------------------------------------
+     * | Top menu
+     * |
+     */
+    'menu' => [
+        'dashboard' => 'Dashboard',
+        'users' => 'Users',
+        'groups' => 'Groups',
+        'permissions' => 'Permissions',
+        'operations' => 'Operations',
+        'contexts' => 'Contextes',
+    ],
 
 
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | ORDERS
+     * |-----------------------------------------------------------------------
+     * |
+     */
+    'order' => [
+        'name' => 'Order',
+        'no-selected' => 'No selected',
+        'by-asc' => 'ASC',
+        'by-desc' => 'DESC',
+    ],
+
+    'sex' => [
+        0 => 'Any',
+        1 => 'Female',
+        2 => 'Male',
+        3 => 'Other',
+    ],
+    'banned' => [
+        0 => 'Any',
+        1 => 'Yes',
+        2 => 'No',
+    ],
 
 
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | BUTTONS
+     * |-----------------------------------------------------------------------
+     * | List of buttons
+     * |
+     */
+    'buttons' => [
+        'add' => 'Add',
+        'reset' => 'Reset',
+        'submit' => 'Submit',
+        'delete' => 'Delete',
+        'update-avatar' => 'Update avatar',
+    ],
 
 
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | ORDERS
-        |-----------------------------------------------------------------------
-        |
-        */
-        'order' => [
-            'name' => 'Order',
-            'no-selected' => 'No selected',
-            'by-asc' => 'ASC',
-            'by-desc' => 'DESC',
-        ],
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | PAGES
+     * |-----------------------------------------------------------------------
+     * | User
+     * | Permission
+     * | Group
+     * |
+     * |
+     */
 
-        'sex' => [
-           0 => 'Any',
-           1 => 'Female',
-           2 => 'Male',
-           3 => 'Other',
-        ],
-        'banned' => [
-            0 => 'Any',
-            1 => 'Yes',
-            2 => 'No',
-        ],
+    'pages' => [
+        'user-list' => 'List of users',
+        'user-edit' => 'Edit user page',
+        'user-edit-profile' => 'Edit user page',
+        'permission-list' => 'List of permissions',
+        'permission-edit' => 'Edit permission page',
+        'group-list' => 'List of groups',
+        'group-edit' => 'Edit group page',
 
+        'title-config' => 'Current configurations',
+        'title-lang' => 'Manage languages',
+        'recovery-password' => 'Recovery password',
+        'login' => 'Login to Package Acl',
+        'title-register-complelete' => 'Registration completed',
+        'title-password-recovery' => 'Password recovery',
+        'title-signup-email' => 'Registration request received',
+        'title-signup-success' => 'Registration completed',
 
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | BUTTONS
-        |-----------------------------------------------------------------------
-        | List of buttons
-        |
-        */
-        'buttons' => [
-            'add' => 'Add',
-            'reset' => 'Reset',
-            'submit'=> 'Submit',
-            'delete' => 'Delete',
-            'update-avatar' => 'Update avatar',
-        ],
+        'signup' => 'Signup',
+        'change-password' => 'Chanage password',
+        'change-password-success-title' => 'Change password success title',
+        'home-page' => 'Login page',
+    ],
 
 
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | SIDEBARDS
+     * |-----------------------------------------------------------------------
+     * | User
+     * | Permission
+     * | Group
+     * |
+     * |
+     */
+    'sidebars' => [
+        'users-list' => 'Users list',
+        'add-user' => 'Add user',
+        'groups-list' => 'List of groups',
+        'add-group' => 'Add group',
+        'users-search' => 'Users search',
+        'user-add-new' => 'Add user',
+        'user-department' => 'Department',
+        'user-level' => 'Level',
+        'user-language' => 'Language',
+        'permissions-list' => 'List of permissions',
+        'add-permission' => 'Add permission',
+        'category' => 'Category',
+        'user-lang' => 'Languages',
+    ],
 
 
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | PAGES
-        |-----------------------------------------------------------------------
-        | User
-        | Permission
-        | Group
-        |
-        |
-        */
-
-        'pages' => [
-            'user-list' => 'List of users',
-            'user-edit' => 'Edit user page',
-            'user-edit-profile' => 'Edit user page',
-            'permission-list' => 'List of permissions',
-            'permission-edit' => 'Edit permission page',
-            'group-list' => 'List of groups',
-            'group-edit' => 'Edit group page',
-
-            'title-config' => 'Current configurations',
-            'title-lang' => 'Manage languages',
-            'recovery-password' => 'Recovery password',
-            'login' => 'Login to Package Acl',
-            'title-register-complelete' => 'Registration completed',
-            'title-password-recovery' => 'Password recovery',
-            'title-signup-email' => 'Registration request received',
-            'title-signup-success' => 'Registration completed',
-
-            'signup' => 'Signup',
-            'change-password' => 'Chanage password',
-            'change-password-success-title' => 'Change password success title',
-            'home-page' => 'Login page',
-        ],
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | SEARCH FORM
+     * |-----------------------------------------------------------------------
+     * | User search
+     * | Group search
+     * | Permission search
+     * |
+     */
+    'search' => [
+        'user' => 'User search',
+        'permission' => 'Permission search',
+        'group' => 'Group search',
+        'btn-reset' => 'Reset',
+        'btn-submit' => 'Search',
+        'btn-advance' => 'Search advance',
+    ],
 
 
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | LABLES
+     * |-----------------------------------------------------------------------
+     * | Elements in form
+     * | Columns in table
+     * |
+     */
+    'labels' => [
+        'email' => 'Email',
+        'first_name' => 'First name',
+        'last_name' => 'Last name',
+        'full_name' => 'Full name',
+        'active' => 'Active',
+        'last_login' => 'Last login',
+        'sorting' => 'Sorting',
+        'sex' => 'Sex',
+        'category' => 'Category',
+        'code' => 'User code',
+        'group' => 'Group',
+        'permission-name' => 'Permission name',
+        'login-data' => 'Login data',
+        'password' => 'Password',
+        'change-password' => 'Change password',
+        'confirm_password' => 'Confirm password',
+        'confirm-change-password' => 'Confirm change password',
+        'banned' => 'Banned',
+        'user-profile' => 'User profile',
+        'new-password' => 'New password',
+        'user-data' => 'User data',
+        'edit-user' => 'Edit user',
+        'phone' => 'Phone',
+        'state' => 'State',
+        'vat' => 'Vat',
+        'city' => 'City',
+        'country' => 'Country',
+        'level' => 'Level',
+        'address' => 'Address',
+        'custom-fields' => 'Custom fields',
+        'change-avt' => 'Change avatar',
+        'update-avt' => 'Update avatar',
+        'avatar' => 'Avatar',
+        'description' => 'Description',
+        'link-url' => 'Link URL',
+        'overview' => 'Overview',
+        'general-data' => 'General data',
+        'group-name' => 'Group name',
+        'title-backup' => 'Backups',
+        'config' => 'Configurations',
+        'filename' => 'File name',
+        'order' => '#',
+        'recovery-email' => 'Recovery email',
+        'captcha' => 'Captcha',
+        'new_password' => 'New password',
+    ],
 
 
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | SIDEBARDS
-        |-----------------------------------------------------------------------
-        | User
-        | Permission
-        | Group
-        |
-        |
-        */
-        'sidebars' => [
-            'users-list' => 'Users list',
-            'add-user'  => 'Add user',
-            'groups-list' => 'List of groups',
-            'add-group' => 'Add group',
-            'users-search' => 'Users search',
-            'user-add-new' => 'Add user',
-            'user-department' => 'Department',
-            'user-level' => 'Level',
-            'user-language' => 'Language',
-            'permissions-list' => 'List of permissions',
-            'add-permission' => 'Add permission',
-            'category' => 'Category',
-            'user-lang' => 'Languages',
-        ],
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | SEARCH FORM
-        |-----------------------------------------------------------------------
-        | User search
-        | Group search
-        | Permission search
-        |
-        */
-        'search' => [
-            'user' => 'User search',
-            'permission' => 'Permission search',
-            'group' => 'Group search',
-            'btn-reset'     => 'Reset',
-            'btn-submit'     => 'Search',
-            'btn-advance' => 'Search advance',
-        ],
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | LABLES
-        |-----------------------------------------------------------------------
-        | Elements in form
-        | Columns in table
-        |
-        */
-        'labels' => [
-            'email' => 'Email',
-            'first_name' => 'First name',
-            'last_name' => 'Last name',
-            'full_name' => 'Full name',
-            'active' => 'Active',
-            'last_login' => 'Last login',
-            'sorting' => 'Sorting',
-            'sex'       => 'Sex',
-            'category'  => 'Category',
-            'code'  => 'User code',
-            'group' => 'Group',
-            'permission-name'    => 'Permission name',
-            'login-data'    => 'Login data',
-            'password'     => 'Password',
-            'change-password'     => 'Change password',
-            'confirm_password'     => 'Confirm password',
-            'confirm-change-password'   => 'Confirm change password',
-            'banned'    => 'Banned',
-            'user-profile'  => 'User profile',
-            'new-password'  => 'New password',
-            'user-data' => 'User data',
-            'edit-user' => 'Edit user',
-            'phone' => 'Phone',
-            'state' => 'State',
-            'vat'   => 'Vat',
-            'city'  => 'City',
-            'country'   => 'Country',
-            'level'     => 'Level',
-            'address'   => 'Address',
-            'custom-fields' => 'Custom fields',
-            'change-avt'   => 'Change avatar',
-            'update-avt'    => 'Update avatar',
-            'avatar'         => 'Avatar',
-            'description'   => 'Description',
-            'link-url'      => 'Link URL',
-            'overview'      => 'Overview',
-            'general-data'  => 'General data',
-            'group-name' => 'Group name',
-            'title-backup' => 'Backups',
-            'config' => 'Configurations',
-            'filename' => 'File name',
-            'order' => '#',
-            'recovery-email' => 'Recovery email',
-            'captcha' => 'Captcha',
-            'new_password' => 'New password',
-        ],
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | MESSAGES
-        |-----------------------------------------------------------------------
-        |
-        */
-        'messages' => [
-            'message-last-login' => 'not logged yet.',
-            'user-delete' => 'Are you sure to delete this item?',
-            'permission-not-found'  => 'No permissions found.',
-            'empty-data'        => 'Empty data',
-            'change-password-success' => "Your password has been reset successfully.",
-            'try-again' => 'Please try again',
-            'token-valid' => 'Oops, something went wrong: the token is invalid',
-            'email-valid' => 'Oops, something went wrong: the email is invalid',
-            'register-success' => 'Congratulations, you successfully registered to',
-            'following-link' => ' Your email has been confirmed. Now you can login to the website using the',
-            'reminder-heading' => 'Request received',
-            'reminder-sent' => 'We sent you the information to recover your password. Please check your inbox.',
-            'signup-email-heading' => 'Request received',
-            'signup-email-info' => 'You account has been created. However, before you can use it you need to confirm your email address.<br/>
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | MESSAGES
+     * |-----------------------------------------------------------------------
+     * |
+     */
+    'messages' => [
+        'message-last-login' => 'not logged yet.',
+        'user-delete' => 'Are you sure to delete this item?',
+        'permission-not-found' => 'No permissions found.',
+        'empty-data' => 'Empty data',
+        'change-password-success' => "Your password has been reset successfully.",
+        'try-again' => 'Please try again',
+        'token-valid' => 'Oops, something went wrong: the token is invalid',
+        'email-valid' => 'Oops, something went wrong: the email is invalid',
+        'register-success' => 'Congratulations, you successfully registered to',
+        'following-link' => ' Your email has been confirmed. Now you can login to the website using the',
+        'reminder-heading' => 'Request received',
+        'reminder-sent' => 'We sent you the information to recover your password. Please check your inbox.',
+        'signup-email-heading' => 'Request received',
+        'signup-email-info' => 'You account has been created. However, before you can use it you need to confirm your email address.<br/>
             We sent you a confirmation email, please check your inbox.',
-            'signup-success-heading' => 'Congratulations, you successfully registered to',
-            'signup-success-info' => 'Your user has been registered succesfully. Now you can login to the website using the ',
-        ],
+        'signup-success-heading' => 'Congratulations, you successfully registered to',
+        'signup-success-info' => 'Your user has been registered succesfully. Now you can login to the website using the ',
+    ],
 
 
+    /*
+    |-----------------------------------------------------------------------
+    | FORM
+    |-----------------------------------------------------------------------
+    | All the elements in form
+    |
+    |
+    |
+    */
+    'form' => [
+        'any' => 'Any',
+    ],
+    'banned' => [
+        'yes' => 'Yes',
+        'no' => 'No',
+        'any' => 'Any',
+    ],
 
 
-
-        /*
-        |-----------------------------------------------------------------------
-        | FORM
-        |-----------------------------------------------------------------------
-        | All the elements in form
-        |
-        |
-        |
-        */
-        'form' => [
-            'any' => 'Any',
-        ],
-        'banned' => [
-            'yes' => 'Yes',
-            'no' => 'No',
-            'any' => 'Any',
-        ],
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | SORTING
+     * |-----------------------------------------------------------------------
+     * |
+     */
+    'sortings' => [
+        'group-name' => 'Group name',
+        'group-permissions' => 'Permissions',
+        'permission-description' => 'Description',
+        'permission-code' => 'Permission code',
+        'permission-name' => 'Permission name',
+        'permission-url' => 'URL',
+    ],
 
 
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | SORTING
-        |-----------------------------------------------------------------------
-        |
-        */
-        'sortings' => [
-            'group-name' => 'Group name',
-            'group-permissions' => 'Permissions',
-            'permission-description' => 'Description',
-            'permission-code' => 'Permission code',
-            'permission-name' => 'Permission name',
-            'permission-url' => 'URL',
-        ],
-
-
-
-
-
-        /***********************************************************************
-        |-----------------------------------------------------------------------
-        | TABLE
-        |-----------------------------------------------------------------------
-        |User
-        |Group
-        |Pemission
-        */
-        'tables' => [
-            'permission-description' => 'Description',
-            'permission-code' => 'Permission code',
-            'permission-name' => 'Permission name',
-            'permission-url' => 'URL',
-            'group-name' => 'Group name',
-            'group-permissions' => 'Permissions',
-        ],
-
-
-
+    /***********************************************************************
+     * |-----------------------------------------------------------------------
+     * | TABLE
+     * |-----------------------------------------------------------------------
+     * |User
+     * |Group
+     * |Pemission
+     */
+    'tables' => [
+        'permission-description' => 'Description',
+        'permission-code' => 'Permission code',
+        'permission-name' => 'Permission name',
+        'permission-url' => 'URL',
+        'group-name' => 'Group name',
+        'group-permissions' => 'Permissions',
+    ],
 
 
     /*
@@ -339,7 +308,7 @@ return [
         'not-found' => 'Not found items',
         'config' => 'List of configurations',
         'lang' => 'List of languages',
-        'category-slug' =>'Category Slug',
+        'category-slug' => 'Category Slug',
         'context-name' => '<p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               </p>',
@@ -358,9 +327,6 @@ return [
     ],
 
 
-
-
-
     /*
     |-----------------------------------------------------------------------
     | Table column
@@ -369,9 +335,9 @@ return [
     |
     */
     'columns' => [
-        'any'   => 'Any',
+        'any' => 'Any',
         'order' => '#',
-        'id'    => 'ID',
+        'id' => 'ID',
         'user-full-name' => 'User full name',
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
@@ -381,9 +347,6 @@ return [
         'key' => 'Key',
         'status' => 'Status',
     ],
-
-
-
 
 
     /*
@@ -403,9 +366,6 @@ return [
         'register' => 'Register',
         'change_password' => 'Change password',
     ],
-
-
-
 
 
     /*

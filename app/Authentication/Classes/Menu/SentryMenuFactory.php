@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\Menu;
+<?php namespace Foostart\Acl\Authentication\Classes\Menu;
 /**
  * Class SentryFactory
  *
@@ -18,11 +18,10 @@ class SentryMenuFactory
         $menu_items = Config::get($config_file);
 
         $items = [];
-        foreach ($menu_items as $menu_item)
-        {
-            if(! empty($menu_item["name"])) $items[] = new SentryMenuItem($menu_item["link"], $menu_item["name"], $menu_item["permissions"], $menu_item["route"]);
+        foreach ($menu_items as $menu_item) {
+            if (!empty($menu_item["name"])) $items[] = new SentryMenuItem($menu_item["link"], $menu_item["name"], $menu_item["permissions"], $menu_item["route"]);
         }
 
         return new MenuItemCollection($items);
     }
-} 
+}

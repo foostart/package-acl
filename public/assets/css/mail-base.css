@@ -1,12 +1,11 @@
-body
-{
+body {
     background-color: #EAEAEA;
 }
-a
-{
+
+a {
     color: #5bc0de;
 }
-a:hover
-{
+
+a:hover {
     color: #4597AF;
 }

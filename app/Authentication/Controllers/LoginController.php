@@ -37,25 +37,27 @@ class LoginController extends Controller
         return $this->registerBySocial($data);
     }
 
-    public function getData($vendor, $info) {
+    public function getData($vendor, $info)
+    {
         $data = [];
         foreach ($this->$vendor as $item) {
 
             $data[$item] = $info->$item;
         }
         //generate password
-        
+
         return $data;
     }
 
-    public function registerBySocial($data){
+    public function registerBySocial($data)
+    {
         $register_service = App::make('register_service');
 
         try {
 
             $user = $register_service->saveRegisterBySocial($data);
 
-        } catch(JacopoExceptionsInterface $e) {
+        } catch (JacopoExceptionsInterface $e) {
 
             return Redirect::route('user.signup')->withErrors($service->getErrors())->withInput();
 

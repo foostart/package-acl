@@ -9,7 +9,8 @@ use Foostart\Acl\Authentication\Services\ReminderService;
 
 use Foostart\Acl\Authentication\Validators\RecoverPasswordValidator;
 
-class AuthController extends Controller {
+class AuthController extends Controller
+{
 
     protected $authenticator;
     protected $reminder;
@@ -62,15 +63,12 @@ class AuthController extends Controller {
     {
         list($email, $password, $remember) = $this->getLoginInput($request);
 
-        try
-        {
+        try {
             $this->authenticator->authenticate(array(
-                                                "email" => $email,
-                                                "password" => $password
-                                             ), $remember);
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+                "email" => $email,
+                "password" => $password
+            ), $remember);
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $this->authenticator->getErrors();
             return redirect()->route("user.admin.login")->withInput()->withErrors($errors);
         }
@@ -82,8 +80,7 @@ class AuthController extends Controller {
     {
         list($email, $password, $remember, $captcha) = $this->getLoginInput($request);
 
-        try
-        {
+        try {
             //Show captcha
             $enable_captcha = Config::get('acl_base.captcha_login');
             if ($enable_captcha) {
@@ -98,17 +95,15 @@ class AuthController extends Controller {
 
             }
             $this->authenticator->authenticate(array(
-                                                    "email" => $email,
-                                                    "password" => $password
-                                               ), $remember);
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+                "email" => $email,
+                "password" => $password
+            ), $remember);
+        } catch (JacopoExceptionsInterface $e) {
 
             if (!isset($errors)) {
                 $errors = $this->authenticator->getErrors();
             }
-          
+
             return redirect()->route("user.login")->withInput()->withErrors($errors);
         }
 
@@ -156,7 +151,8 @@ class AuthController extends Controller {
      *
      * @return mixed
      */
-    public function postReminder(Request $request) {
+    public function postReminder(Request $request)
+    {
 
         $validator_recovery = new RecoverPasswordValidator();
         $params = $request->all();
@@ -183,12 +179,13 @@ class AuthController extends Controller {
      * @param Request $request
      * @return type
      */
-    public function getChangePassword(Request $request) {
+    public function getChangePassword(Request $request)
+    {
 
         $email = $request->get('email');
         $token = $request->get('token');
 
-        return view("package-acl::client.auth.changepassword", array("email" => $email, "token" => $token) );
+        return view("package-acl::client.auth.changepassword", array("email" => $email, "token" => $token));
     }
 
     public function postChangePassword(Request $request)
@@ -197,17 +194,13 @@ class AuthController extends Controller {
         $token = $request->get('token');
         $password = $request->get('password');
 
-        if (! $this->reminder_validator->validate($request->all()) )
-        {
-          return redirect()->route("user.change-password")->withErrors($this->reminder_validator->getErrors())->withInput();
+        if (!$this->reminder_validator->validate($request->all())) {
+            return redirect()->route("user.change-password")->withErrors($this->reminder_validator->getErrors())->withInput();
         }
 
-        try
-        {
+        try {
             $this->reminder->reset($email, $token, $password);
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $this->reminder->getErrors();
             return redirect()->route("user.change-password")->withErrors($errors);
         }
@@ -221,7 +214,7 @@ class AuthController extends Controller {
      */
     private function getLoginInput(Request $request)
     {
-        $email    = $request->get('email');
+        $email = $request->get('email');
         $password = $request->get('password');
         $remember = $request->get('remember');
         $captcha = $request->get('captcha_text');

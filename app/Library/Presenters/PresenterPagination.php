@@ -3,7 +3,8 @@
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 
-class PresenterPagination extends Collection {
+class PresenterPagination extends Collection
+{
 
     protected $paginator;
 
@@ -11,8 +12,7 @@ class PresenterPagination extends Collection {
     {
         $this->paginator = $paginator;
         $collection = new Collection();
-        foreach($this->paginator as $key => $resource)
-        {
+        foreach ($this->paginator as $key => $resource) {
             $collection->put($key, new $presenter($resource));
         }
 

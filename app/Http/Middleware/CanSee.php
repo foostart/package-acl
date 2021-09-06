@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Http\Middleware;
+<?php namespace Foostart\Acl\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Route;
  * Check that the current user is logged in and has a the permission corresponding
  * to the config menu file
  */
-class CanSee {
+
+class CanSee
+{
 
     public function handle($request, Closure $next)
     {
         $route_helper = App::make('route_perm_helper');
-        if(!$route_helper->hasPermForRoute(Route::currentRouteName())) {
+        if (!$route_helper->hasPermForRoute(Route::currentRouteName())) {
 
             App::abort('401');
 

@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Validators;
+<?php namespace Foostart\Acl\Authentication\Validators;
 
 use Foostart\Acl\Library\Validators\AbstractValidator;
 
@@ -10,6 +10,6 @@ use Foostart\Acl\Library\Validators\AbstractValidator;
 class UserProfileAvatarValidator extends AbstractValidator
 {
     protected static $rules = [
-        "avatar" => ['image','required', 'max:4000']
+        "avatar" => ['image', 'required', 'max:4000']
     ];
-} 
+}

@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile\Repository;
+<?php namespace Foostart\Acl\Authentication\Classes\CustomProfile\Repository;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +19,7 @@ class CustomProfileRepository
     {
 
         $this->profile_id = is_array($profile_id) ? array_shift($profile_id) : $profile_id;
-        
+
     }
 
     public static function getAllTypes()
@@ -47,12 +47,9 @@ class CustomProfileRepository
 
     public function setField($profile_type_field_id, $field_value)
     {
-        try
-        {
+        try {
             $profile = $this->findField($profile_type_field_id);
-        }
-        catch(ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             return $this->createNewField($profile_type_field_id, $field_value);
         }
 
@@ -67,10 +64,10 @@ class CustomProfileRepository
     protected function createNewField($profile_type_field_id, $field_value)
     {
         return ProfileField::create([
-                                    "profile_id"            => $this->profile_id,
-                                    "profile_field_type_id" => $profile_type_field_id,
-                                    "value"                 => $field_value
-                                    ]);
+            "profile_id" => $this->profile_id,
+            "profile_field_type_id" => $profile_type_field_id,
+            "value" => $field_value
+        ]);
     }
 
     public function getAllTypesWithValues()
@@ -78,8 +75,7 @@ class CustomProfileRepository
         $profile_fields_with_values = [];
 
         $all_profile_types = $this->getAllTypes();
-        foreach($all_profile_types as $profile_type)
-        {
+        foreach ($all_profile_types as $profile_type) {
             $profile_field_with_values = new \StdClass;
             $this->setValuesFromFieldType($profile_type, $profile_field_with_values);
             $this->setValuesFromFieldValue($profile_type, $profile_field_with_values);
@@ -92,8 +88,8 @@ class CustomProfileRepository
 
     public function getAllFields()
     {
-        return ProfileField::where('profile_id','=',$this->profile_id)
-                ->get();
+        return ProfileField::where('profile_id', '=', $this->profile_id)
+            ->get();
     }
 
     /**
@@ -104,8 +100,8 @@ class CustomProfileRepository
     public function findField($profile_type_field_id)
     {
         return ProfileField::where('profile_id', '=', $this->profile_id)
-                ->where('profile_field_type_id', '=', $profile_type_field_id)
-                ->firstOrFail();
+            ->where('profile_field_type_id', '=', $profile_type_field_id)
+            ->firstOrFail();
     }
 
     /**
@@ -114,7 +110,7 @@ class CustomProfileRepository
      */
     protected function setValuesFromFieldType($profile_type, $profile_field_with_values)
     {
-        $profile_field_with_values->id          = $profile_type->id;
+        $profile_field_with_values->id = $profile_type->id;
         $profile_field_with_values->description = $profile_type->description;
     }
 

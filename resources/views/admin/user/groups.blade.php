@@ -2,7 +2,8 @@
 {!! Form::open(["route" => "users.groups.add", 'class' => 'form-add-group', 'role' => 'form']) !!}
 <div class="form-group">
     <div class="input-group">
-        <span class="input-group-addon form-button button-add-group"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>
+        <span class="input-group-addon form-button button-add-group"><span
+                class="glyphicon glyphicon-plus-sign add-input"></span></span>
         {!! Form::select('group_id', $group_values, '', ["class"=>"form-control"]) !!}
         {!! Form::hidden('id', $user->id) !!}
     </div>
@@ -10,41 +11,42 @@
 </div>
 {!! Form::hidden('id', $user->id) !!}
 @if(! $user->exists)
-<div class="form-group">
-    <span class="text-danger"><h5>You need to create the user first.</h5></span>
-</div>
+    <div class="form-group">
+        <span class="text-danger"><h5>You need to create the user first.</h5></span>
+    </div>
 @endif
 {!! Form::close() !!}
 
 {{-- delete group --}}
 @if( ! $user->groups->isEmpty() )
-@foreach($user->groups as $group)
-    {!! Form::open(["route" => "users.groups.delete", "role"=>"form", 'name' => $group->id]) !!}
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon form-button button-del-group" name="{!! $group->id !!}"><span class="glyphicon glyphicon-minus-sign add-input"></span></span>
-            {!! Form::text('group_name', $group->name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
-            {!! Form::hidden('id', $user->id) !!}
-            {!! Form::hidden('group_id', $group->id) !!}
+    @foreach($user->groups as $group)
+        {!! Form::open(["route" => "users.groups.delete", "role"=>"form", 'name' => $group->id]) !!}
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon form-button button-del-group" name="{!! $group->id !!}"><span
+                        class="glyphicon glyphicon-minus-sign add-input"></span></span>
+                {!! Form::text('group_name', $group->name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+                {!! Form::hidden('id', $user->id) !!}
+                {!! Form::hidden('group_id', $group->id) !!}
+            </div>
         </div>
-    </div>
-    {!! Form::close() !!}
-@endforeach
+        {!! Form::close() !!}
+    @endforeach
 @elseif($user->exists)
     <span class="text-warning"><h5>There is no groups associated to the user.</h5></span>
 @endif
 
 @section('footer_scripts')
-@parent
-<script>
-    $(".button-add-group").click( function(){
-        <?php if($user->exists): ?>
-        $('.form-add-group').submit();
-        <?php endif; ?>
-    });
-    $(".button-del-group").click( function(){
-        var _name = $(this).attr('name');
-        $('form[name='+_name+']').submit();
-    });
-</script>
+    @parent
+    <script>
+        $(".button-add-group").click(function () {
+            <?php if($user->exists): ?>
+            $('.form-add-group').submit();
+            <?php endif; ?>
+        });
+        $(".button-del-group").click(function () {
+            var _name = $(this).attr('name');
+            $('form[name=' + _name + ']').submit();
+        });
+    </script>
 @stop

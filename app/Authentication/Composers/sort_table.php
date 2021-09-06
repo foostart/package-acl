@@ -21,7 +21,7 @@ View::composer(['package-acl::admin.user.list'], function ($view) use ($plang_ad
     //List of sorting
     $orders = [
         '' => trans($plang_admin . '.order.no-selected'),
-        'id' => trans($plang_admin . '.order.name'),
+        'id' => trans($plang_admin . '.labels.id'),
         'email' => trans($plang_admin . '.labels.email'),
         'first_name' => trans($plang_admin . '.labels.first_name'),
         'last_name' => trans($plang_admin . '.labels.last_name'),

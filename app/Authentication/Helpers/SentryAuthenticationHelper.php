@@ -1,9 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Helpers;
+<?php namespace Foostart\Acl\Authentication\Helpers;
 /**
  * Class SentryAuthenticationHelper
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Illuminate\Support\Facades\Config;
 use Foostart\Acl\Authentication\Interfaces\AuthenticationHelperInterface;
 use Foostart\Acl\Authentication\Interfaces\PermissionProfileHelperInterface;
@@ -21,8 +22,8 @@ class SentryAuthenticationHelper implements AuthenticationHelperInterface, Permi
     public function hasPermission(array $permissions)
     {
         $current_user = $this->currentUser();
-        if(! $current_user) return false;
-        if($permissions && (! $current_user->hasAnyAccess($permissions)) ) return false;
+        if (!$current_user) return false;
+        if ($permissions && (!$current_user->hasAnyAccess($permissions))) return false;
 
         return true;
     }
@@ -37,10 +38,10 @@ class SentryAuthenticationHelper implements AuthenticationHelperInterface, Permi
         $current_user_id = $this->currentUser()->id;
 
         // edit his profile
-        if($user_id == $current_user_id) return true;
+        if ($user_id == $current_user_id) return true;
         // has special permission to edit other user profiles
         $edit_perm = Config::get('acl_permissions.edit_profile');
-        if($this->hasPermission($edit_perm) ) return true;
+        if ($this->hasPermission($edit_perm)) return true;
 
         return false;
     }

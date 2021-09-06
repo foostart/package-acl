@@ -1,9 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Helpers;
+<?php namespace Foostart\Acl\Authentication\Helpers;
 /**
  * Class FileRouteHelper
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Config, Route, App;
 use Foostart\Acl\Authentication\Interfaces\AuthenticationRoutesInterface;
 use Foostart\Acl\Library\Views\Helper as ViewHelper;
@@ -45,12 +46,11 @@ class FileRouteHelper implements AuthenticationRoutesInterface
     {
         $menu_info = Config::get($this->config_path);
 
-        foreach ($menu_info as $menu)
-        {
-            if(isset($menu[$this->skip_permissions_variable_index]) && in_array($route_name, $menu[$this->skip_permissions_variable_index]))
+        foreach ($menu_info as $menu) {
+            if (isset($menu[$this->skip_permissions_variable_index]) && in_array($route_name, $menu[$this->skip_permissions_variable_index]))
                 return [];
 
-            if($menu[$this->route_variable_index] == ViewHelper::get_base_route_name($route_name))
+            if ($menu[$this->route_variable_index] == ViewHelper::get_base_route_name($route_name))
                 return $menu[$this->pemissions_variable_index];
         }
     }
@@ -62,7 +62,7 @@ class FileRouteHelper implements AuthenticationRoutesInterface
      */
     public function getPermFromCurrentRoute()
     {
-        $route_base = ViewHelper::get_base_route_name( Route::currentRouteName() );
+        $route_base = ViewHelper::get_base_route_name(Route::currentRouteName());
 
         return $this->getPermFromRoute($route_base);
     }
@@ -76,8 +76,8 @@ class FileRouteHelper implements AuthenticationRoutesInterface
     public function hasPermForRoute($route_name)
     {
         $permissions = $this->getPermFromRoute($route_name);
-        
-        if( empty($permissions)) return true;
+
+        if (empty($permissions)) return true;
 
         return $this->authentication_helper->hasPermission($permissions);
     }

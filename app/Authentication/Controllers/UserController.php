@@ -1,10 +1,11 @@
-<?php  namespace Foostart\Acl\Authentication\Controllers;
+<?php namespace Foostart\Acl\Authentication\Controllers;
 
 /**
  * Class UserController
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
@@ -26,7 +27,8 @@ use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Library\Form\FormModel;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
     /**
      * @var \Foostart\Acl\Authentication\Repository\SentryUserRepository
      */
@@ -60,13 +62,6 @@ class UserController extends Controller {
         $this->auth = $auth;
         $this->register_service = App::make('register_service');
         $this->custom_profile_repository = App::make('custom_profile_repository');
-        
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_1['label'] = 'Admin';
-        $this->breadcrumb_2['label'] = 'Users';
-
     }
 
     /**
@@ -76,66 +71,59 @@ class UserController extends Controller {
      */
     public function getList(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3 = NULL;
-       $user_leader = $this->user_repository->isLeader();
+        $user_leader = $this->user_repository->isLeader();
         $users = $this->user_repository->all($request->except(['page']));
-        
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            "users" => $users, 
+            "users" => $users,
             "request" => $request,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return View::make('package-acl::admin.user.list')->with($this->data_view);
     }
 
+    /**
+     * Show user info page for editing
+     * @param Request $request
+     * @return mixed
+     */
     public function editUser(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Edit';
-        try
-        {
+        try {
             $user_leader = $this->user_repository->isLeader();
             $user = $this->user_repository->find($request->get('id'));
 
             if (!$this->user_repository->canUpdate($user)) {
 
-                return Redirect::route("users.list")->withErrors('cant update');
+                return Redirect::route("users.list")->withErrors('User cant update');
             }
 
-        } catch(JacopoExceptionsInterface $e)
-        {
-            $user = new User;
+        } catch (JacopoExceptionsInterface $e) {
+            return Redirect::route("users.list")->withErrors('User not found');
         }
         $presenter = new UserPresenter($user);
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            "user" => $user, 
+            "user" => $user,
             "presenter" => $presenter,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
         ));
         return View::make('package-acl::admin.user.edit')->with($this->data_view);
     }
 
+    /**
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function postEditUser(Request $request)
     {
         $id = $request->get('id');
 
         DbHelper::startTransaction();
-        try
-        {
+        try {
             $user = $this->f->process($request->all());
             $this->profile_repository->attachEmptyProfile($user);
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             DbHelper::rollback();
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
@@ -145,21 +133,43 @@ class UserController extends Controller {
         DbHelper::commit();
 
         return Redirect::route('users.edit', ["id" => $user->id])
-                       ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
+            ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
+    /**
+     * Delete user
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteUser(Request $request)
     {
-        try
-        {
+        try {
             $this->f->delete($request->all());
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             return Redirect::route('users.list')->withErrors($errors);
         }
         return Redirect::route('users.list')
-                       ->withMessage(Config::get('acl_messages.flash.success.user_delete_success'));
+            ->withMessage(Config::get('acl_messages.flash.success.user_delete_success'));
+    }
+
+    /**
+     * Restore user
+     * @param Request $request
+     * @return mixed
+     */
+    public function restoreUser(Request $request)
+    {
+        try {
+            $user = $this->user_repository->find($request->get('id'));
+            $this->f->restore($request->all());
+
+        } catch (JacopoExceptionsInterface $e) {
+            $errors = $this->f->getErrors();
+            return Redirect::route('users.list')->withErrors($errors);
+        }
+        return Redirect::route('users.edit', ["id" => $user->id])
+            ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
     public function addGroup(Request $request)
@@ -167,33 +177,34 @@ class UserController extends Controller {
         $user_id = $request->get('id');
         $group_id = $request->get('group_id');
 
-        try
-        {
+        try {
             $this->user_repository->addGroup($user_id, $group_id);
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             return Redirect::route('users.edit', ["id" => $user_id])
-                           ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
+                ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
         }
         return Redirect::route('users.edit', ["id" => $user_id])
-                       ->withMessage(Config::get('acl_messages.flash.success.user_group_add_success'));
+            ->withMessage(Config::get('acl_messages.flash.success.user_group_add_success'));
     }
 
+    /**
+     * Delete group
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteGroup(Request $request)
     {
         $user_id = $request->get('id');
         $group_id = $request->get('group_id');
 
-        try
-        {
+        try {
             $this->user_repository->removeGroup($user_id, $group_id);
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             return Redirect::route('users.edit', ["id" => $user_id])
-                           ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
+                ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
         }
         return Redirect::route('users.edit', ["id" => $user_id])
-                       ->withMessage(Config::get('acl_messages.flash.success.user_group_delete_success'));
+            ->withMessage(Config::get('acl_messages.flash.success.user_group_delete_success'));
     }
 
     public function editPermission(Request $request)
@@ -204,44 +215,39 @@ class UserController extends Controller {
         $this->form_helper->prepareSentryPermissionInput($input, $operation);
         $id = $request->get('id');
 
-        try
-        {
+        try {
             $obj = $this->user_repository->update($id, $input);
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             return Redirect::route("users.edit")->withInput()
-                           ->withErrors(new MessageBag(["permissions" => Config::get('acl_messages.flash.error.user_permission_not_found')]));
+                ->withErrors(new MessageBag(["permissions" => Config::get('acl_messages.flash.error.user_permission_not_found')]));
         }
         return Redirect::route('users.edit', ["id" => $obj->id])
-                       ->withMessage(Config::get('acl_messages.flash.success.user_permission_add_success'));
+            ->withMessage(Config::get('acl_messages.flash.success.user_permission_add_success'));
     }
 
     public function editProfile(Request $request)
     {
         $user_id = $request->get('user_id');
 
-        try
-        {
+        try {
             $user_profile = $this->profile_repository->getFromUserId($user_id);
-        } catch(UserNotFoundException $e)
-        {
+        } catch (UserNotFoundException $e) {
             return Redirect::route('users.list')
-                           ->withErrors(new MessageBag(['model' => Config::get('acl_messages.flash.error.user_user_not_found')]));
-        } catch(ProfileNotFoundException $e)
-        {
+                ->withErrors(new MessageBag(['model' => Config::get('acl_messages.flash.error.user_user_not_found')]));
+        } catch (ProfileNotFoundException $e) {
             $user_profile = new UserProfile(["user_id" => $user_id]);
         }
         $custom_profile_repo = App::makeWith('custom_profile_repository', [$user_profile->id]);
 
         return View::make('package-acl::admin.user.profile')->with([
-                                                                                          'user_profile'   => $user_profile,
-                                                                                          "custom_profile" => $custom_profile_repo
-                                                                                  ]);
+            'user_profile' => $user_profile,
+            "custom_profile" => $custom_profile_repo
+        ]);
     }
 
     /**
      * Update user info
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return mixed
      */
@@ -250,19 +256,17 @@ class UserController extends Controller {
         $input = $request->all();
         $service = new UserProfileService($this->profile_validator);
 
-        try
-        {
+        try {
             $service->processForm($input);
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $service->getErrors();
             return Redirect::back()
-                           ->withInput()
-                           ->withErrors($errors);
+                ->withInput()
+                ->withErrors($errors);
         }
         return Redirect::back()
-                       ->withInput()
-                       ->withMessage(Config::get('acl_messages.flash.success.user_profile_edit_success'));
+            ->withInput()
+            ->withMessage(Config::get('acl_messages.flash.success.user_profile_edit_success'));
     }
 
     public function editOwnProfile(Request $request)
@@ -272,11 +276,11 @@ class UserController extends Controller {
         $custom_profile_repo = App::makeWith('custom_profile_repository', [$logged_user->user_profile()->first()->id]);
 
         return View::make('package-acl::admin.user.self-profile')
-                   ->with([
-                                  "user_profile"   => $logged_user->user_profile()
-                                                                  ->first(),
-                                  "custom_profile" => $custom_profile_repo
-                          ]);
+            ->with([
+                "user_profile" => $logged_user->user_profile()
+                    ->first(),
+                "custom_profile" => $custom_profile_repo
+            ]);
     }
 
     /**
@@ -284,7 +288,8 @@ class UserController extends Controller {
      * @param Request $request
      * @return sign up page
      */
-    public function signup(Request $request) {
+    public function signup(Request $request)
+    {
         $data_view = array(
             'request' => $request,
         );
@@ -312,11 +317,9 @@ class UserController extends Controller {
     {
         $service = App::make('register_service');
 
-        try
-        {
+        try {
             $service->register($request->all());
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             return Redirect::route('user.signup')->withErrors($service->getErrors())->withInput();
         }
 
@@ -334,11 +337,9 @@ class UserController extends Controller {
         $email = $request->get('email');
         $token = $request->get('token');
 
-        try
-        {
+        try {
             $this->register_service->checkUserActivationCode($email, $token);
-        } catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             return View::make('package-acl::client.auth.email-confirmation')->withErrors($this->register_service->getErrors());
         }
         return View::make('package-acl::client.auth.email-confirmation');
@@ -349,17 +350,15 @@ class UserController extends Controller {
         $description = $request->get('description');
         $user_id = $request->get('user_id');
 
-        try
-        {
+        try {
             $this->custom_profile_repository->addNewType($description);
-        } catch(PermissionException $e)
-        {
+        } catch (PermissionException $e) {
             return Redirect::route('users.profile.edit', ["user_id" => $user_id])
-                           ->withErrors(new MessageBag(["model" => $e->getMessage()]));
+                ->withErrors(new MessageBag(["model" => $e->getMessage()]));
         }
 
         return Redirect::route('users.profile.edit', ["user_id" => $user_id])
-                       ->with('message', Config::get('acl_messages.flash.success.custom_field_added'));
+            ->with('message', Config::get('acl_messages.flash.success.custom_field_added'));
     }
 
     public function deleteCustomFieldType(Request $request)
@@ -367,21 +366,18 @@ class UserController extends Controller {
         $id = $request->get('id');
         $user_id = $request->get('user_id');
 
-        try
-        {
+        try {
             $this->custom_profile_repository->deleteType($id);
-        } catch(ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             return Redirect::route('users.profile.edit', ["user_id" => $user_id])
-                           ->withErrors(new MessageBag(["model" => Config::get('acl_messages.flash.error.custom_field_not_found')]));
-        } catch(PermissionException $e)
-        {
+                ->withErrors(new MessageBag(["model" => Config::get('acl_messages.flash.error.custom_field_not_found')]));
+        } catch (PermissionException $e) {
             return Redirect::route('users.profile.edit', ["user_id" => $user_id])
-                           ->withErrors(new MessageBag(["model" => $e->getMessage()]));
+                ->withErrors(new MessageBag(["model" => $e->getMessage()]));
         }
 
         return Redirect::route('users.profile.edit', ["user_id" => $user_id])
-                       ->with('message', Config::get('acl_messages.flash.success.custom_field_removed'));
+            ->with('message', Config::get('acl_messages.flash.success.custom_field_removed'));
     }
 
     public function changeAvatar(Request $request)
@@ -391,30 +387,27 @@ class UserController extends Controller {
 
         // validate input
         $validator = new UserProfileAvatarValidator();
-        if(!$validator->validate($request->all()))
-        {
+        if (!$validator->validate($request->all())) {
             return Redirect::route('users.profile.edit', ['user_id' => $user_id])
-                           ->withInput()->withErrors($validator->getErrors());
+                ->withInput()->withErrors($validator->getErrors());
         }
 
         // change picture
-        try
-        {
+        try {
             $this->profile_repository->updateAvatar($profile_id);
-        } catch(NotFoundException $e)
-        {
+        } catch (NotFoundException $e) {
             return Redirect::route('users.profile.edit', ['user_id' => $user_id])->withInput()
-                           ->withErrors(new MessageBag(['avatar' => Config::get('acl_messages.flash.error.')]));
+                ->withErrors(new MessageBag(['avatar' => Config::get('acl_messages.flash.error.')]));
         }
 
         return Redirect::route('users.profile.edit', ['user_id' => $user_id])
-                       ->withMessage(Config::get('acl_messages.flash.success.avatar_edit_success'));
+            ->withMessage(Config::get('acl_messages.flash.success.avatar_edit_success'));
     }
 
     public function refreshCaptcha()
     {
         return View::make('package-acl::client.auth.captcha-image')
-                   ->with(['captcha' => App::make('captcha_validator')]);
+            ->with(['captcha' => App::make('captcha_validator')]);
     }
 
     /**
@@ -422,7 +415,8 @@ class UserController extends Controller {
      * @param Request $request
      * @return boolean
      */
-    public function isValidRequest(Request $request) {
+    public function isValidRequest(Request $request)
+    {
         $flag = TRUE;
         $valid_token = csrf_token();
 
@@ -439,16 +433,11 @@ class UserController extends Controller {
     /**
      * Create directory for backup language if not exits
      * @date B102B-13/03/2019
-     * @author Kang
      * @return view
+     * @author Kang
      */
-    public function lang(Request $request) {
-        
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Edit';
-
+    public function lang(Request $request)
+    {
         $is_valid_request = $this->isValidRequest($request);
 
         // get list of languages
@@ -459,23 +448,23 @@ class UserController extends Controller {
 
         if (!empty($langs) && is_array($langs)) {
             foreach ($langs as $key => $value) {
-                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/acl-admin.php'));
-                $key_backup = $package_path.'/storage/backup/lang/'.$key;
+                $lang_paths[$key] = realpath(base_path('resources/lang/' . $key . '/acl-admin.php'));
+                $key_backup = $package_path . '/storage/backup/lang/' . $key;
 
                 if (!file_exists($key_backup)) {
-                    mkdir($key_backup, 0755    , true);
+                    mkdir($key_backup, 0755, true);
                 }
             }
         }
 
-        $lang_backup = realpath($package_path.'/storage/backup/lang');
-        $lang = $request->get('lang')?$request->get('lang'):'en';
+        $lang_backup = realpath($package_path . '/storage/backup/lang');
+        $lang = $request->get('lang') ? $request->get('lang') : 'en';
         $lang_contents = [];
 
         if ($version = $request->get('v')) {
             //load backup lang
             $group_backups = base64_decode($version);
-            $group_backups = empty($group_backups)?[]: explode(';', $group_backups);
+            $group_backups = empty($group_backups) ? [] : explode(';', $group_backups);
 
             foreach ($group_backups as $group_backup) {
                 $_backup = explode('=', $group_backup);
@@ -496,7 +485,7 @@ class UserController extends Controller {
                 $content = file_get_contents($value);
 
                 //format file name sample-admin-YmdHis.php
-                file_put_contents($lang_backup.'/'.$key.'/acl-admin-'.date('YmdHis',time()).'.php', $content);
+                file_put_contents($lang_backup . '/' . $key . '/acl-admin-' . date('YmdHis', time()) . '.php', $content);
             }
 
 
@@ -511,19 +500,16 @@ class UserController extends Controller {
         //get list of backup langs
         $backups = [];
         foreach ($langs as $key => $value) {
-            $backups[$key] = array_reverse(glob($lang_backup.'/'.$key.'/*'));
+            $backups[$key] = array_reverse(glob($lang_backup . '/' . $key . '/*'));
         }
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'request' => $request,
             'backups' => $backups,
-            'langs'   => $langs,
+            'langs' => $langs,
             'lang_contents' => $lang_contents,
             'lang' => $lang,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return View::make('package-acl::admin.acl-lang')->with($this->data_view);
     }

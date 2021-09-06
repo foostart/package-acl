@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\Menu;
+<?php namespace Foostart\Acl\Authentication\Classes\Menu;
 /**
  * Class MenuItemCollection
  *
@@ -30,7 +30,7 @@ class MenuItemCollection implements MenuCollectionInterface
     {
         $valid_items = [];
         foreach ($this->items as $item)
-            if($item->havePermission())
+            if ($item->havePermission())
                 $valid_items[] = $item;
 
         return $valid_items;

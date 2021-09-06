@@ -1,10 +1,11 @@
-<?php  namespace Foostart\Acl\Authentication\Validators;
+<?php namespace Foostart\Acl\Authentication\Validators;
 
 use Foostart\Acl\Library\Validators\AbstractValidator;
 
-class UserProfileUserValidator extends AbstractValidator{
+class UserProfileUserValidator extends AbstractValidator
+{
 
     protected static $rules = array(
-            "password" => ["confirmed", "min:6"],
+        "password" => ["confirmed", "min:6"],
     );
-} 
+}

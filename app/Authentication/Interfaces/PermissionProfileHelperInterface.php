@@ -1,10 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Interfaces;
 /**
  * Interface PermissionProfileHelperInterface
  *
  * @author Foostart foostart.com@gmail.com
  */
-interface PermissionProfileHelperInterface 
+interface PermissionProfileHelperInterface
 {
     /**
      * Check if the current user has permission to edit the profile

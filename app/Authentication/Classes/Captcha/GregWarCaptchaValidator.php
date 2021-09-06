@@ -1,7 +1,8 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\Captcha;
+<?php namespace Foostart\Acl\Authentication\Classes\Captcha;
 
 use Gregwar\Captcha\CaptchaBuilder;
 use Session;
+
 /**
  * Class GregWarCaptchaValidator
  *
@@ -15,11 +16,14 @@ class GregWarCaptchaValidator extends CaptchaValidator
 
     protected $captcha_field;
 
-    public function __construct() { $this->captcha_field = 'authentication_captcha_value'; }
+    public function __construct()
+    {
+        $this->captcha_field = 'authentication_captcha_value';
+    }
 
     public static function getInstance()
     {
-        if(static::$captcha_builder) return static::$captcha_builder;
+        if (static::$captcha_builder) return static::$captcha_builder;
 
         return static::newInstance();
     }
@@ -70,4 +74,4 @@ class GregWarCaptchaValidator extends CaptchaValidator
     {
         Session::put($this->captcha_field, $captcha_builder->getPhrase());
     }
-} 
+}

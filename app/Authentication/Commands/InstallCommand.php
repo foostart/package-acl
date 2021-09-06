@@ -3,7 +3,8 @@
 use Illuminate\Console\Command;
 use Foostart\Acl\Database\DatabaseSeeder;
 
-class InstallCommand extends Command {
+class InstallCommand extends Command
+{
 
     /**
      * The console command name.
@@ -21,7 +22,7 @@ class InstallCommand extends Command {
     protected $info = '> The package-acl was installed successfully';
 
     protected $call_wrapper;
-
+    protected $db_seeder;
     /**
      * Create a new command instance.
      *
@@ -44,12 +45,12 @@ class InstallCommand extends Command {
         // Vendor publish
         $this->call_wrapper->call('vendor:publish', ['--force' => true]);
         $this->call_wrapper->call('vendor:publish', ['--force' => true,
-                '--provider' => 'Foostart\Category\CategoryServiceProvider'
-            ]);        
+            '--provider' => 'Foostart\Category\CategoryServiceProvider'
+        ]);
 
         // Running migrate
         $this->call_wrapper->call('migrate');
-        
+
         // Running seeder
         $this->db_seeder->run();
         $this->call_wrapper->call('db:seed', ['--class' => 'ContextSeeder']);
@@ -57,7 +58,7 @@ class InstallCommand extends Command {
         // Show message complete
         $this->info($this->info);
     }
-    
+
     public function handle()
     {
         $this->fire();

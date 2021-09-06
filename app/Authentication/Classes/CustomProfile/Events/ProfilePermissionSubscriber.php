@@ -1,4 +1,5 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile\Events;
+<?php namespace Foostart\Acl\Authentication\Classes\CustomProfile\Events;
+
 use App;
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
 
@@ -17,13 +18,13 @@ class ProfilePermissionSubscriber
     public function checkProfileTypePermission()
     {
         $auth_helper = App::make('authentication_helper');
-        if (! $auth_helper->checkCustomProfileEditPermission() ) throw new PermissionException($this->permission_error_message);
+        if (!$auth_helper->checkCustomProfileEditPermission()) throw new PermissionException($this->permission_error_message);
     }
 
     /**
      * Register the various event to the subscriber
      *
-     * @param  \Illuminate\Events\Dispatcher  $events
+     * @param \Illuminate\Events\Dispatcher $events
      * @return array
      */
     public function subscribe($events)

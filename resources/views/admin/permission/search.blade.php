@@ -5,7 +5,8 @@
     <div class="panel-body">
         {!! Form::open(['route' => 'permissions.list','method' => 'get']) !!}
         <div class="form-group">
-            <a href="{!! URL::route('permissions.list') !!}" class="btn btn-default search-reset">{!! trans($plang_admin.'.buttons.reset') !!}</a>
+            <a href="{!! URL::route('permissions.list') !!}"
+               class="btn btn-default search-reset">{!! trans($plang_admin.'.buttons.reset') !!}</a>
             {!! Form::submit(trans($plang_admin.'.buttons.submit'), ["class" => "btn btn-info", "id" => "search-submit"]) !!}
         </div>
         <!-- name text field -->

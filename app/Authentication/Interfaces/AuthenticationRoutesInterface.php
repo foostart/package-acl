@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Interfaces;
 /**
  * Interface AuthenticationRoutesInterface
  *
@@ -9,14 +9,15 @@ interface AuthenticationRoutesInterface
     /**
      * Obtain the permissions from a given url
      *
-*@param $route_name
+     * @param $route_name
      * @return mixed
      */
     public function getPermFromRoute($route_name);
+
     /**
      * Obtain the permissions from the current url
      * @return mixed
      */
     public function getPermFromCurrentRoute();
 
-} 
+}

@@ -4,7 +4,7 @@
  *
  * @author Foostart j.beschi@jacopo.com
  */
-interface BaseRepositoryInterface 
+interface BaseRepositoryInterface
 {
     /**
      * Create a new object
@@ -39,4 +39,4 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function all();
-} 
+}

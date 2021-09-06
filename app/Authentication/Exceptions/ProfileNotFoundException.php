@@ -8,4 +8,6 @@
 use Exception;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 
-class ProfileNotFoundException extends Exception implements JacopoExceptionsInterface {}
+class ProfileNotFoundException extends Exception implements JacopoExceptionsInterface
+{
+}

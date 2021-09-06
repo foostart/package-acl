@@ -1,9 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Controllers;
+<?php namespace Foostart\Acl\Authentication\Controllers;
 /**
  * Class GroupController
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Foostart\Acl\Authentication\Presenters\GroupPresenter;
@@ -37,56 +38,40 @@ class GroupController extends Controller
         $this->group_validator = $v;
         $this->f = new FormModel($this->group_validator, $this->group_repository);
         $this->form_model = $fh;
-        
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_1['label'] = 'Admin';
-        $this->breadcrumb_2['label'] = 'Groups';
+
     }
 
     public function getList(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3 = NULL;
         $groups = $this->group_repository->all($request->all());
-        
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            "groups" => $groups, 
+            "groups" => $groups,
             "request" => $request,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return View::make('package-acl::admin.group.list')->with($this->data_view);
     }
 
+    /**
+     * Edit group page
+     * @param Request $request
+     * @return mixed
+     */
     public function editGroup(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3['label'] = 'Edit';
-        try
-        {
+        try {
             $obj = $this->group_repository->find($request->get('id'));
-        }
-        catch(UserNotFoundException $e)
-        {
+
+        } catch (UserNotFoundException $e) {
             $obj = new Group;
         }
         $presenter = new GroupPresenter($obj);
-        
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            "group" => $obj, 
-            "presenter" => $presenter,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
+            "group" => $obj,
+            "presenter" => $presenter
         ));
         return View::make('package-acl::admin.group.edit')->with($this->data_view);
     }
@@ -95,31 +80,47 @@ class GroupController extends Controller
     {
         $id = $request->get('id');
 
-        try
-        {
+        try {
             $obj = $this->f->process($request->all());
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
-            return Redirect::route("groups.edit", $id ? ["id" => $id]: [])->withInput()->withErrors($errors);
+            return Redirect::route("groups.edit", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
         }
-        return Redirect::route('groups.edit',["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
+        return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
     }
 
+    /**
+     * Delete group
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteGroup(Request $request)
     {
-        try
-        {
+        try {
             $this->f->delete($request->all());
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             return Redirect::route('groups.list')->withErrors($errors);
         }
         return Redirect::route('groups.list')->withMessage(Config::get('acl_messages.flash.success.group_delete_success'));
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function restoreGroup(Request $request)
+    {
+        try {
+            $obj = $this->group_repository->find($request->get('id'));
+            $this->f->restore($request->all());
+        } catch (JacopoExceptionsInterface $e) {
+            $errors = $this->f->getErrors();
+            return Redirect::route('groups.list')->withErrors($errors);
+        }
+        return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
     }
 
     public function editPermission(Request $request)
@@ -130,14 +131,11 @@ class GroupController extends Controller
         $this->form_model->prepareSentryPermissionInput($input, $operation);
         $id = $request->get('id');
 
-        try
-        {
+        try {
             $obj = $this->group_repository->update($id, $input);
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             return Redirect::route("users.groups.edit")->withInput()->withErrors(new MessageBag(["permissions" => Config::get('acl_messages.flash.error.group_permission_not_found')]));
         }
-        return Redirect::route('groups.edit',["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_permission_edit_success'));
+        return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_permission_edit_success'));
     }
 }

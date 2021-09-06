@@ -1,10 +1,11 @@
-<?php  namespace Foostart\Acl\Authentication\Repository;
+<?php namespace Foostart\Acl\Authentication\Repository;
 
 /**
  * Class UserRepositorySearchFilter
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use App;
 use DB;
 use Illuminate\Pagination\Paginator;
@@ -21,9 +22,25 @@ class UserRepositorySearchFilter
     private $valid_ordering_fields = ["first_name", "last_name", "email", "last_login", "activated", "name", 'id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['email', 'full_name', 'first_name', 'last_name', 'sex', 'category_id', 'code', 'activated', 'banned', 'group_id', 'order_by', 'ordering', 'user_leader', 'id'];
+    private $valid_fields_filter = [
+        'keyword',
+        'email',
+        'full_name',
+        'first_name',
+        'last_name',
+        'sex',
+        'category_id',
+        'code',
+        'activated',
+        'banned',
+        'group_id',
+        'order_by',
+        'ordering',
+        'user_leader',
+        'id'];
 
     protected $user_leader;
+
     public function __construct($per_page = 5, $user_leader = null)
     {
         $this->per_page = $per_page;
@@ -44,7 +61,7 @@ class UserRepositorySearchFilter
 
         $q = $this->createAllSelect($q);
 
-
+        $sql = $q->toSql();//Debug: removed
         return $q->paginate($this->per_page);
     }
 
@@ -55,9 +72,9 @@ class UserRepositorySearchFilter
     {
         $q = DB::connection();
         $q = $q->table($this->user_table_name)
-               ->leftJoin($this->profile_table_name, $this->user_table_name . '.id', '=', $this->profile_table_name . '.user_id')
-               ->leftJoin($this->user_groups_table_name, $this->user_table_name . '.id', '=', $this->user_groups_table_name . '.user_id')
-               ->leftJoin($this->groups_table_name, $this->user_groups_table_name . '.group_id', '=', $this->groups_table_name . '.id');
+            ->leftJoin($this->profile_table_name, $this->user_table_name . '.id', '=', $this->profile_table_name . '.user_id')
+            ->leftJoin($this->user_groups_table_name, $this->user_table_name . '.id', '=', $this->user_groups_table_name . '.user_id')
+            ->leftJoin($this->groups_table_name, $this->user_groups_table_name . '.group_id', '=', $this->groups_table_name . '.id');
 
         return $q;
     }
@@ -72,15 +89,20 @@ class UserRepositorySearchFilter
      */
     private function applySearchFilters(array $input_filter = null, $q)
     {
-        if($this->isSettedInputFilter($input_filter))
-        {
-            foreach($input_filter as $column => $value)
-            {
-                if($this->isValidFilterValue($value))
-                {
-                    $column = $column.'';
-                    switch($column)
-                    {
+        if ($this->isSettedInputFilter($input_filter)) {
+            foreach ($input_filter as $column => $value) {
+                if ($this->isValidFilterValue($value)) {
+                    $column = $column . '';
+                    switch ($column) {
+                        case 'keyword':
+                            if (!empty($value)) {
+                                $q = $q->where(function ($q) use ($value) {
+                                    $q->where($this->user_table_name . '.email', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->profile_table_name . '.first_name', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->profile_table_name . '.last_name', 'LIKE', "%{$value}%");
+                                });
+                            }
+                            break;
                         case 'activated':
                             if (!empty($value)) {
                                 $q = $q->where($this->user_table_name . '.activated', '=', $value);
@@ -93,7 +115,7 @@ class UserRepositorySearchFilter
                             break;
                         case 'email':
                             if (!empty($value)) {
-                               $q = $q->where($this->user_table_name . '.email', 'LIKE', "%{$value}%");
+                                $q = $q->where($this->user_table_name . '.email', 'LIKE', "%{$value}%");
                             }
                             break;
                         case 'first_name':
@@ -128,9 +150,9 @@ class UserRepositorySearchFilter
                             break;
                         case 'full_name':
                             if (!empty($value)) {
-                                $q = $q->where(function($q) use ($value) {
+                                $q = $q->where(function ($q) use ($value) {
                                     $q->where($this->profile_table_name . '.first_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->profile_table_name . '.last_name','LIKE', "%{$value}%");
+                                        ->orWhere($this->profile_table_name . '.last_name', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -183,10 +205,10 @@ class UserRepositorySearchFilter
      */
     private function applyOrderingFilter(array $input_filter, $q)
     {
-        if($this->isNotGivenAnOrderingFilter($input_filter)) return $q;
+        if ($this->isNotGivenAnOrderingFilter($input_filter)) return $q;
 
-        foreach($this->makeOrderingFilterArray($input_filter) as $field => $ordering)
-           if($this->isValidOrderingField($field)) $q = $this->orderByField($field, $this->guessOrderingType($ordering), $q);
+        foreach ($this->makeOrderingFilterArray($input_filter) as $field => $ordering)
+            if ($this->isValidOrderingField($field)) $q = $this->orderByField($field, $this->guessOrderingType($ordering), $q);
 
         return $q;
     }
@@ -202,7 +224,7 @@ class UserRepositorySearchFilter
      */
     private function isNotGivenAnOrderingFilter(array $input_filter)
     {
-        return empty($input_filter['order_by'])||empty($input_filter['ordering']);
+        return empty($input_filter['order_by']) || empty($input_filter['ordering']);
     }
 
     /**
@@ -242,11 +264,11 @@ class UserRepositorySearchFilter
     private function createAllSelect($q)
     {
         $q = $q->select(
-               $this->user_table_name . '.*',
-               $this->profile_table_name . '.first_name',
-               $this->profile_table_name . '.last_name',
-               $this->profile_table_name . '.code',
-               $this->groups_table_name . '.name'
+            $this->user_table_name . '.*',
+            $this->profile_table_name . '.first_name',
+            $this->profile_table_name . '.last_name',
+            $this->profile_table_name . '.code',
+            $this->groups_table_name . '.name'
         );
 
         return $q;

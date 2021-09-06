@@ -19,7 +19,8 @@ use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
 use Foostart\Acl\Authentication\Repository\SentryUserRepository;
 use Foostart\Acl\Authentication\Services\UserRegisterService;
 
-class AuthenticationServiceProvider extends ServiceProvider {
+class AuthenticationServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -48,7 +49,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
      * @override
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $this->loadProvidersDependency();
         $this->registerAliases();
     }
@@ -56,7 +58,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
     /**
      * @override
      */
-    public function boot() {
+    public function boot()
+    {
         $this->bindClasses();
 
         // setup views path
@@ -79,11 +82,13 @@ class AuthenticationServiceProvider extends ServiceProvider {
         $this->overwriteSentryConfig();
     }
 
-    protected function overwriteSentryConfig() {
+    protected function overwriteSentryConfig()
+    {
         Config::set('cartalyst.sentry', Config::get('acl_sentry'));
     }
 
-    protected function bindClasses() {
+    protected function bindClasses()
+    {
         $this->app->bind('authenticator', function () {
             return new SentryAuthenticator;
         });
@@ -129,13 +134,15 @@ class AuthenticationServiceProvider extends ServiceProvider {
         });
     }
 
-    protected function loadProvidersDependency() {
+    protected function loadProvidersDependency()
+    {
         foreach ($this->providers as $provider) {
             $this->app->register($provider);
         }
     }
 
-    protected function registerAliases() {
+    protected function registerAliases()
+    {
         foreach ($this->aliases as $alias => $original) {
             AliasLoader::getInstance()->alias($alias, $original);
         }
@@ -147,11 +154,13 @@ class AuthenticationServiceProvider extends ServiceProvider {
      * @return array
      * @override
      */
-    public function provides() {
+    public function provides()
+    {
         return $this->providers;
     }
 
-    private function registerInstallCommand() {
+    private function registerInstallCommand()
+    {
         $this->app->singleton('authentication.install', function ($app) {
             return new InstallCommand;
         });
@@ -159,17 +168,20 @@ class AuthenticationServiceProvider extends ServiceProvider {
         $this->commands('authentication.install');
     }
 
-    private function registerCommands() {
+    private function registerCommands()
+    {
         $this->registerInstallCommand();
     }
 
-    protected function setupAcceptanceTestingParams() {
+    protected function setupAcceptanceTestingParams()
+    {
         if (App::environment() == 'testing-acceptance') {
             $this->useMiddlewareCustomConfig();
         }
     }
 
-    protected function useMiddlewareCustomConfig() {
+    protected function useMiddlewareCustomConfig()
+    {
         App::instance('config', new ConfigMiddleware());
 
         Config::swap(new ConfigMiddleware());
@@ -178,7 +190,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
     /**
      * Setup publish
      */
-    protected function setupPublishDataCommand() {
+    protected function setupPublishDataCommand()
+    {
         $this->publishAssets();
         $this->publishConfig();
         //$this->publishViews();
@@ -189,7 +202,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
     /**
      * Public lang
      */
-    protected function publicLang() {
+    protected function publicLang()
+    {
         $this->publishes([
             __DIR__ . '/../../resources/lang' => base_path('resources/lang'),
         ]);
@@ -198,7 +212,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
     /**
      * Publish assets
      */
-    protected function publishAssets() {
+    protected function publishAssets()
+    {
         $this->publishes([
             __DIR__ . '/../../public/assets' => public_path('packages/foostart'),
         ]);
@@ -207,7 +222,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
     /**
      * Publish config
      */
-    protected function publishConfig() {
+    protected function publishConfig()
+    {
         $this->publishes([
             __DIR__ . '/../../config/acl_base.php' => config_path('acl_base.php'),
             __DIR__ . '/../../config/acl_menu.php' => config_path('acl_menu.php'),
@@ -221,7 +237,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
     /**
      * Publish view
      */
-    protected function publishViews() {
+    protected function publishViews()
+    {
 
         $this->publishes([
             __DIR__ . '/../../resources/views' => base_path('resources/views/vendor/package-acl'),
@@ -231,8 +248,8 @@ class AuthenticationServiceProvider extends ServiceProvider {
     /**
      * Publish migrations
      */
-    protected function publishMigrations() {
-
+    protected function publishMigrations()
+    {
         $this->publishes([
             __DIR__ . '/../../database/migrations' => $this->app->databasePath() . '/migrations',
         ]);

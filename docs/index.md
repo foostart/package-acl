@@ -2,37 +2,41 @@
 
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SZKN8MCQACLSC" target="_blank"><img src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_donate_LG.gif"></a>
 
-Laravel Authentication ACL is a Laravel 5 package, based on <a href="https://github.com/cartalyst/sentry" target="_blank">sentry2</a>. <br/>
-This package is made with the purpose to help developer setting up
-a simple admin panel with an ACL using Laravel framework.
+Laravel Authentication ACL is a Laravel 5 package, based
+on <a href="https://github.com/cartalyst/sentry" target="_blank">sentry2</a>. <br/>
+This package is made with the purpose to help developer setting up a simple admin panel with an ACL using Laravel
+framework.
 
 ### Table of Contents ###
- 1. [Requirements](#requirements)
- 2. [Setup](#setup)
- 3. [Configuration](#configuration)
- 4. [How To](#howto)
- 5. [Usage](#usage)
- 6. [Advanced Configuration and API](#advanced)
- 7. [Event hooks](#events)
+
+1. [Requirements](#requirements)
+2. [Setup](#setup)
+3. [Configuration](#configuration)
+4. [How To](#howto)
+5. [Usage](#usage)
+6. [Advanced Configuration and API](#advanced)
+7. [Event hooks](#events)
 
 ## <a name="requirements">Requirements</a> ##
 
 To install this software you need:
 
-  * Laravel framework 5.3+
-  * Php>=5.5.9
-  * GD Library or Imagick
-  * Enable Fileinfo extension(may be needed for windows users) <a href="http://php.net/manual/en/fileinfo.installation.php">how to enable it</a>
+* Laravel framework 5.3+
+* Php>=5.5.9
+* GD Library or Imagick
+* Enable Fileinfo extension(may be needed for windows
+  users) <a href="http://php.net/manual/en/fileinfo.installation.php">how to enable it</a>
 
 ## <a name="setup">Setup</a> ##
 
 To install authentication follow this steps:
 
-  1. Create an empty <a href="http://laravel.com/docs/quick" target="_blank">Laravel 5</a> installation if you don't have any.
+1. Create an empty <a href="http://laravel.com/docs/quick" target="_blank">Laravel 5</a> installation if you don't have
+   any.
 
-  2. Add to your _composer.json_ require field the following lines:
-  
-      __For Laravel version 5.4:__
+2. Add to your _composer.json_ require field the following lines:
+
+   __For Laravel version 5.4:__
 
 ```
       "require": {
@@ -167,11 +171,11 @@ After installing the package you can find all his configuration files under lara
    the filter as following:
 
    ```
-   Route::get('check_custom', [
-   'middleware' => "logged:/custom_url",
-    'uses' => function(){
-         // put your code here
-    }]);
+
+Route::get('check_custom', [
+'middleware' => "logged:/custom_url",
+'uses' => function(){ // put your code here }]);
+
    ```
    In this case anonymous users will be redirected to _custum_url_ page.
     <br/>

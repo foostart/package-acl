@@ -27,22 +27,15 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12">
-                            <a href="{!! URL::route('users.profile.edit',['user_id' => $user->id]) !!}"
-                               class="btn btn-info pull-right" {!! ! isset($user->id) ? 'disabled="disabled"' : '' !!}><i
-                                        class="fa fa-user"></i> Edit profile</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                        <h4>{!! trans($plang_admin.'.labels.login-data') !!} </h4>
+                    <div class="col-md-4 col-xs-6">
+                        <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
                     {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
-                        {{-- Field hidden to fix chrome and safari autocomplete bug --}}
-                        {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
-                        {!! Form::hidden('id') !!}
-                        {!! Form::hidden('form_name','user') !!}
+                    {{-- Field hidden to fix chrome and safari autocomplete bug --}}
+                    {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
+                    {!! Form::hidden('id') !!}
+                    {!! Form::hidden('form_name','user') !!}
 
-                        <!-- email text field -->
+                    <!-- email text field -->
                         <div class="form-group">
                             {!! Form::label('email',trans($plang_admin.'.labels.email').':*') !!}
                             {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'user email', 'autocomplete' => 'off']) !!}
@@ -89,13 +82,28 @@
 
                         <!--BUTTONS-->
                         <div class='btn-form'>
-                            <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}"
-                               class="btn btn-danger pull-right margin-left-5 delete">Delete user</a>
-                            {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
+                            <a href="{!! URL::route('users.profile.edit',['user_id' => $user->id]) !!}"
+                               class="btn btn-primary pull-right margin-left-5" {!! ! isset($user->id) ? 'disabled="disabled"' : '' !!}>
+                                <i class="fa fa-user"></i> Edit profile</a>
+
+                            @if($user->deleted_at)
+                                <a href="{!! URL::route('users.restore',['id' => $user->id, '_token' => csrf_token()]) !!}"
+                                   class="btn btn-success pull-right margin-left-5 restore">
+                                    {!! trans($plang_admin.'.buttons.restore') !!}
+                                </a>
+                            @else
+                                <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}"
+                                   class="btn btn-warning pull-right margin-left-5 delete">
+                                    {!! trans($plang_admin.'.buttons.delete') !!}
+                                </a>
+                            @endif
+                            {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
                         </div>
                         {!! Form::close() !!}
                     </div>
-                    <div class="col-md-6 col-xs-12">
+                    <div class="col-md-4 col-xs-6">
+                    </div>
+                    <div class="col-md-4 col-xs-6">
                         <h4><i class="fa fa-users"></i> {!! trans($plang_admin.'.labels.group').':' !!} </h4>
                         @include('package-acl::admin.user.groups')
 
@@ -114,6 +122,9 @@
     <script>
         $(".delete").click(function () {
             return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
+        });
+        $(".restore").click(function () {
+            return confirm("{!! trans($plang_admin.'.messages.user-restore') !!}");
         });
     </script>
 @stop

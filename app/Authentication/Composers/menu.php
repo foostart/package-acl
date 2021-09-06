@@ -36,11 +36,13 @@ View::composer([
     'package-acl::admin.user.profile',
     'package-acl::admin.acl-lang',
     'package-acl::admin.acl-lang-backup',
-        ], function ($view) use ($plang_admin, $plang_front) {
+], function ($view) use ($plang_admin, $plang_front) {
 
     $fooCategory = new FoostartCategory();
     $key_department = $fooCategory->getContextKeyByRef('user/department');
     $key_level = $fooCategory->getContextKeyByRef('user/level');
+
+    // Sidebar items
     $view->with('sidebar_items', [
         trans($plang_admin . '.sidebars.users-list') => [
             'url' => URL::route('users.list'),
@@ -51,11 +53,11 @@ View::composer([
             'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.user-department') => [
-            'url' => URL::route('categories.list', ['_key=' . $key_department]),
+            'url' => URL::route('categories.list', ['_key=' . $key_department, '_callback='. base64_encode(URL::route('users.list'))]),
             'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.user-level') => [
-            'url' => URL::route('categories.list', ['_key=' . $key_level]),
+            'url' => URL::route('categories.list', ['_key=' . $key_level, '_callback='. base64_encode(URL::route('users.list'))]),
             'icon' => '<i class="fa fa-bars" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.user-lang') => [

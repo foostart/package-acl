@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Library\Exceptions\NotFoundException;
 use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 use Event;
+use Illuminate\Support\Facades\Schema;
 
 class EloquentBaseRepository implements BaseRepositoryInterface
 {
@@ -35,7 +36,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
 
     /**
      * Update a new object
-     * @param       id
+     * @param id
      * @param array $data
      * @return mixed
      * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
@@ -62,6 +63,32 @@ class EloquentBaseRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Force deletes list of new object
+     * @param $id
+     * @return mixed
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     */
+    public function deleteForce($id)
+    {
+        $obj = $this->find($id);
+        Event::dispatch('repository.deleting', [$obj]);
+        return $obj->forceDelete();
+    }
+
+    /**
+     * Restore object
+     * @param $id
+     * @return mixed
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     */
+    public function restore($id)
+    {
+        $obj = $this->find($id);
+        Event::dispatch('repository.restore', [$obj]);
+        return $obj->restore();
+    }
+
+    /**
      * Find a model by his id
      * @param $id
      * @return mixed
@@ -69,12 +96,9 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      */
     public function find($id)
     {
-        try
-        {
-            $model = $this->model->findOrFail($id);
-        }
-        catch(ModelNotFoundException $e)
-        {
+        try {
+            $model = $this->model->withTrashed()->findOrFail($id);
+        } catch (ModelNotFoundException $e) {
             throw new NotFoundException;
         }
 
@@ -106,4 +130,12 @@ class EloquentBaseRepository implements BaseRepositoryInterface
         $this->model = $model;
     }
 
+    /**
+     * Truncate table
+     */
+    public function truncate() {
+        Schema::disableForeignKeyConstraints();
+        $this->model->truncate();
+        Schema::enableForeignKeyConstraints();
+    }
 }

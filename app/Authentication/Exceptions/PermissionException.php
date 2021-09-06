@@ -8,4 +8,6 @@
 use Exception;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 
-class PermissionException extends Exception implements JacopoExceptionsInterface {}
+class PermissionException extends Exception implements JacopoExceptionsInterface
+{
+}

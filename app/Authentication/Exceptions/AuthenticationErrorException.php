@@ -8,4 +8,6 @@
 use Exception;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 
-class AuthenticationErrorException extends Exception implements JacopoExceptionsInterface {}
+class AuthenticationErrorException extends Exception implements JacopoExceptionsInterface
+{
+}

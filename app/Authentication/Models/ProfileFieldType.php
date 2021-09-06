@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Models;
+<?php namespace Foostart\Acl\Authentication\Models;
 
 /**
  * Class ProfileTypeField
@@ -15,4 +15,4 @@ class ProfileFieldType extends BaseModel
     {
         return $this->hasMany('Foostart\Acl\Authentication\Models\ProfileField');
     }
-} 
+}

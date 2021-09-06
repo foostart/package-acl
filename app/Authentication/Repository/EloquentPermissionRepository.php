@@ -4,6 +4,7 @@
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
 use Foostart\Acl\Authentication\Models\Permission;
 use Foostart\Acl\Library\Repository\EloquentBaseRepository;
@@ -22,8 +23,8 @@ class EloquentPermissionRepository extends EloquentBaseRepository
         $this->user_repo = App::make('user_repository');
         $this->config_reader = $config_reader ? $config_reader : App::make('config');
 
-        Event::listen(['repository.deleting','repository.updating'], '\Foostart\Acl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyUser');
-        Event::listen(['repository.deleting','repository.updating'], '\Foostart\Acl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyGroup');
+        Event::listen(['repository.deleting', 'repository.updating'], '\Foostart\Acl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyUser');
+        Event::listen(['repository.deleting', 'repository.updating'], '\Foostart\Acl\Authentication\Repository\EloquentPermissionRepository@checkIsNotAssociatedToAnyGroup');
 
         return parent::__construct(new Permission);
     }
@@ -55,34 +56,30 @@ class EloquentPermissionRepository extends EloquentBaseRepository
      */
     private function validateIfPermissionIsInCollection($permission, $collection)
     {
-        foreach ($collection as $collection_item)
-        {
+        foreach ($collection as $collection_item) {
             $perm = $this->permissionsToArray($collection_item->permissions);
-            if (! empty($perm) && is_array($perm) && array_key_exists($permission->permission, $perm)) throw new PermissionException;
+            if (!empty($perm) && is_array($perm) && array_key_exists($permission->permission, $perm)) throw new PermissionException;
         }
     }
 
     private function permissionsToArray($permissions)
     {
-        if ( ! $permissions)
-        {
+        if (!$permissions) {
             return array();
         }
 
-        if (is_array($permissions))
-        {
+        if (is_array($permissions)) {
             return $permissions;
         }
 
-        if ( ! $_permissions = json_decode($permissions, true))
-        {
+        if (!$_permissions = json_decode($permissions, true)) {
             throw new \InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
         }
 
         return $_permissions;
     }
 
-        /**
+    /**
      * Obtains all models
      *
      * @override
@@ -117,13 +114,22 @@ class EloquentPermissionRepository extends EloquentBaseRepository
     protected function applySearchFilters(array $search_filters, $q)
     {
         //description
-        if(isset($search_filters['description']) && $search_filters['description'] !== '') {
+        if (isset($search_filters['description']) && $search_filters['description'] !== '') {
             $q = $q->where('description', 'LIKE', "%{$search_filters['description']}%");
         }
         //category
-        if(isset($search_filters['category_id']) && $search_filters['category_id'] !== '') {
+        if (isset($search_filters['category_id']) && $search_filters['category_id'] !== '') {
             $q = $q->where('category_id', $search_filters['category_id']);
         }
         return $q;
+    }
+
+    /**
+     * Truncate table
+     * @return mixed
+     */
+    public function truncate(){
+        $permission = new Permission();
+        return $permission->truncate();
     }
 }

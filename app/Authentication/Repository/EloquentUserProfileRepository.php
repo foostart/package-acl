@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Repository;
+<?php namespace Foostart\Acl\Authentication\Repository;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Authentication\Classes\Images\ImageHelperTrait;
@@ -55,7 +55,7 @@ class EloquentUserProfileRepository extends EloquentBaseRepository implements Us
 
     public function attachEmptyProfile($user)
     {
-        if($this->hasAlreadyAnUserProfile($user)) return;
+        if ($this->hasAlreadyAnUserProfile($user)) return;
 
         return $this->create(["user_id" => $user->id]);
     }
@@ -64,7 +64,8 @@ class EloquentUserProfileRepository extends EloquentBaseRepository implements Us
      * @param $user
      * @return mixed
      */
-    protected function hasAlreadyAnUserProfile($user) {
+    protected function hasAlreadyAnUserProfile($user)
+    {
         return $user->user_profile()->count();
     }
 }

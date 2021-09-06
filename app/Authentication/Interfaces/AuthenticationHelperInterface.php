@@ -1,10 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Interfaces;
 /**
  * Interface AuthenticationHelperInterface
  *
  * @author Foostart foostart.com@gmail.com
  */
-interface AuthenticationHelperInterface 
+interface AuthenticationHelperInterface
 {
     /**
      * Check if the current user is logged in and has any of the
@@ -14,4 +14,4 @@ interface AuthenticationHelperInterface
      */
     public function hasPermission(array $permissions);
 
-} 
+}

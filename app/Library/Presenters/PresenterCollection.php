@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Collection;
 
-class PresenterCollection extends Collection {
+class PresenterCollection extends Collection
+{
 
     public function __construct($presenter, Collection $collection)
     {
-        foreach($collection as $key => $resource)
-        {
+        foreach ($collection as $key => $resource) {
             $collection->put($key, new $presenter($resource));
         }
 

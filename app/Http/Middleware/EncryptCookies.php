@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Http\Middleware;
+<?php namespace Foostart\Acl\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 
@@ -12,4 +12,4 @@ class EncryptCookies extends BaseEncrypter
     protected $except = [
         //
     ];
-} 
+}

@@ -1,26 +1,26 @@
 @font-face {
-  font-family: bariolThin;
-  src: url('/packages/foostart/fonts/Bariol_Thin.otf');
+    font-family: bariolThin;
+    src: url('/packages/foostart/fonts/Bariol_Thin.otf');
 }
 
 @font-face {
-  font-family: bariolLight;
-  src: url('/packages/foostart/fonts/Bariol_Light.otf');
+    font-family: bariolLight;
+    src: url('/packages/foostart/fonts/Bariol_Light.otf');
 }
 
 @font-face {
-  font-family: bariolBold;
-  src: url('/packages/foostart/fonts/Bariol_Bold.otf');
+    font-family: bariolBold;
+    src: url('/packages/foostart/fonts/Bariol_Bold.otf');
 }
 
 .bariol-thin {
-  font-family: bariolThin
+    font-family: bariolThin
 }
 
 .bariol-bold {
-  font-family: bariolBold
+    font-family: bariolBold
 }
 
 .bariol-light {
-  font-family: bariolLight
+    font-family: bariolLight
 }

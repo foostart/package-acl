@@ -1,9 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Repository;
+<?php namespace Foostart\Acl\Authentication\Repository;
 /**
  * Class GroupRepository
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 use Foostart\Acl\Authentication\Models\Group;
@@ -13,6 +14,13 @@ use Cartalyst\Sentry\Groups\GroupNotFoundException;
 
 class SentryGroupRepository implements BaseRepositoryInterface
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'groups';
+
     /**
      * Sentry instance
      * @var
@@ -40,7 +48,7 @@ class SentryGroupRepository implements BaseRepositoryInterface
     /**
      * Update a new object
      *
-     * @param       id
+     * @param id
      * @param array $data
      * @return mixed
      */
@@ -66,6 +74,32 @@ class SentryGroupRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Force deletes list of new object
+     * @param $id
+     * @return mixed
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     */
+    public function deleteForce($id)
+    {
+        $obj = $this->find($id);
+        Event::dispatch('repository.deleting', [$obj]);
+        return $obj->forceDelete();
+    }
+
+    /**
+     * Restore object
+     * @param $id
+     * @return mixed
+     * @throws \Foostart\Acl\Library\Exceptions\NotFoundException
+     */
+    public function restore($id)
+    {
+        $obj = $this->find($id);
+        Event::dispatch('repository.restore', [$obj]);
+        return $obj->restore();
+    }
+
+    /**
      * Find a model by his id
      *
      * @param $id
@@ -74,12 +108,9 @@ class SentryGroupRepository implements BaseRepositoryInterface
      */
     public function find($id)
     {
-        try
-        {
+        try {
             $group = $this->sentry->findGroupById($id);
-        }
-        catch(GroupNotFoundException $e)
-        {
+        } catch (GroupNotFoundException $e) {
             throw new NotFoundException;
         }
 
@@ -99,5 +130,12 @@ class SentryGroupRepository implements BaseRepositoryInterface
         $group_repository_search = $group_repository_search ? $group_repository_search : new GroupRepositorySearchFilter($per_page);
         return $group_repository_search->all($search_filters);
 
+    }
+
+    /**
+     * Truncate table data
+     */
+    public function truncate() {
+        $this->sentry->truncate($this->table);
     }
 }

@@ -23,8 +23,7 @@ abstract class AbstractValidator implements ValidatorInterface
         static::$messages = static::$messages ? static::$messages : [];
         $validator = V::make($input, static::$rules, static::$messages);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $this->errors = $validator->messages();
 
             return false;

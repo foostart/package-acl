@@ -1,9 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Controllers;
+<?php namespace Foostart\Acl\Authentication\Controllers;
 /**
  * Class PermissionController
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Illuminate\Http\Request;
 use Foostart\Acl\Library\Form\FormModel;
 use Foostart\Acl\Authentication\Models\Permission;
@@ -28,7 +29,7 @@ class PermissionController extends Controller
         $this->r = App::make('permission_repository');
         $this->v = $v;
         $this->f = new FormModel($this->v, $this->r);
-        
+
         /**
          * Breadcrumb
          */
@@ -42,12 +43,12 @@ class PermissionController extends Controller
          * Breadcrumb
          */
         $this->breadcrumb_3 = NULL;
-        
+
         $objs = $this->r->all($request->all());
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
-            "permissions" => $objs, 
+            "permissions" => $objs,
             "request" => $request,
             'breadcrumb_1' => $this->breadcrumb_1,
             'breadcrumb_2' => $this->breadcrumb_2,
@@ -62,13 +63,10 @@ class PermissionController extends Controller
          * Breadcrumb
          */
         $this->breadcrumb_3['label'] = 'Edit';
-        
-        try
-        {
+
+        try {
             $obj = $this->r->find($request->get('id'));
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $obj = new Permission;
         }
 
@@ -86,28 +84,28 @@ class PermissionController extends Controller
     {
         $id = $request->get('id');
 
-        try
-        {
+        try {
             $obj = $this->f->process($request->all());
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
-            return Redirect::route("permissions.edit", $id ? ["id" => $id]: [])->withInput()->withErrors($errors);
+            return Redirect::route("permissions.edit", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
         }
 
-        return Redirect::route("permissions.edit",["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.permission_permission_edit_success'));
+        return Redirect::route("permissions.edit", ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.permission_permission_edit_success'));
     }
 
+    /**
+     * Delete permission
+     * @param Request $request
+     * @return mixed
+     */
     public function deletePermission(Request $request)
     {
-        try
-        {
+        try {
             $this->f->delete($request->all());
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+
+        } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             return Redirect::route('permissions.list')->withErrors($errors);
         }

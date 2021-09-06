@@ -4,13 +4,14 @@ use App;
 use ArrayAccess;
 use Foostart\Acl\Library\Exceptions\NotFoundException;
 
-class Config implements ArrayAccess {
+class Config implements ArrayAccess
+{
 
     protected $config_repository;
     protected $repository;
     protected $overridden_data;
     public static $overridden = [
-            "package-acl::captcha_signup" => true
+        "package-acl::captcha_signup" => true
     ];
 
     public function __construct($repository = null)
@@ -45,16 +46,13 @@ class Config implements ArrayAccess {
     public function getOverridden($key)
     {
         // check for overridden keys
-        if(!isset(static::$overridden[$key]))
-        {
+        if (!isset(static::$overridden[$key])) {
             return null;
         }
 
-        try
-        {
+        try {
             return $this->repository->getOption($key);
-        } catch(NotFoundException $e)
-        {
+        } catch (NotFoundException $e) {
             return null;
         }
     }

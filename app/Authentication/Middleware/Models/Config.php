@@ -2,10 +2,11 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Config extends Model{
+class Config extends Model
+{
     protected $table = 'test_config';
 
-    protected $fillable = ['key','value'];
+    protected $fillable = ['key', 'value'];
 
     public $timestamps = false;
-} 
+}

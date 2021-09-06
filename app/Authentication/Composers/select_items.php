@@ -1,4 +1,5 @@
 <?php
+
 use Foostart\Acl\Authentication\Helpers\FormHelper;
 
 use Foostart\Category\Helpers\SortTable;
@@ -10,7 +11,7 @@ use Foostart\Category\Helpers\SortTable;
 |
 */
 View::composer(['package-acl::admin.user.edit',
-                'package-acl::admin.group.edit'], function ($view) {
+    'package-acl::admin.group.edit'], function ($view) {
 
     $fh = new FormHelper();
     $values_permission = $fh->getSelectValuesPermission();
@@ -26,9 +27,9 @@ View::composer(['package-acl::admin.user.edit',
 |
 */
 View::composer(['package-acl::admin.user.list',
-                'package-acl::admin.group.edit',
-                'package-acl::admin.user.edit',
-                'package-acl::admin.user.search'], function ($view){
+    'package-acl::admin.group.edit',
+    'package-acl::admin.user.edit',
+    'package-acl::admin.user.search'], function ($view) {
 
     //List of groups
     $fh = new FormHelper();

@@ -1,6 +1,6 @@
 @extends('package-acl::admin.layouts.baseauth')
 @section('title')
-Admin login
+    Admin login
 @stop
 @section('container')
     <div class="row centered-form">
@@ -11,12 +11,12 @@ Admin login
                 </div>
                 <?php $message = Session::get('message'); ?>
                 @if( isset($message) )
-                <div class="alert alert-success">{{$message}}</div>
+                    <div class="alert alert-success">{{$message}}</div>
                 @endif
                 @if($errors && ! $errors->isEmpty() )
-                @foreach($errors->all() as $error)
-                <div class="alert alert-danger">{{$error}}</div>
-                @endforeach
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">{{$error}}</div>
+                    @endforeach
                 @endif
                 <div class="my-acl-form panel-body">
                     {!! Form::open(array('url' => URL::route("user.login.process"), 'method' => 'post') ) !!}
@@ -60,8 +60,8 @@ Admin login
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
                             {!! link_to_route('user.reminder.process','Forgot password?') !!}
-                       </div>
-                   </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

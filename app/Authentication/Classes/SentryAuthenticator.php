@@ -6,6 +6,7 @@
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Illuminate\Support\MessageBag;
 use Foostart\Acl\Authentication\Exceptions\AuthenticationErrorException;
 use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
@@ -19,8 +20,8 @@ class SentryAuthenticator implements AuthenticateInterface
     protected $errors;
     protected $sentry;
 
-    protected  $plang_admin = 'acl-admin';
-    protected  $plang_front = 'acl-front';
+    protected $plang_admin = 'acl-admin';
+    protected $plang_front = 'acl-front';
 
     public function __construct()
     {
@@ -31,10 +32,9 @@ class SentryAuthenticator implements AuthenticateInterface
 
     public function check()
     {
-        if( ! $this->sentry->check()) return false;
+        if (!$this->sentry->check()) return false;
 
-        if($this->sentry->getUser()->banned)
-        {
+        if ($this->sentry->getUser()->banned) {
             $this->logout();
             return false;
         }
@@ -48,31 +48,24 @@ class SentryAuthenticator implements AuthenticateInterface
     {
         Event::dispatch('service.authenticating', [$credentials, $remember]);
 
-        try
-        {
+        try {
             $user = $this->sentry->authenticate($credentials, $remember);
-        } catch(\Cartalyst\Sentry\Users\LoginRequiredException $e)
-        {
-            $this->errors->add('login', trans($this->plang_front.'.error.login-error-required-field'));
-        } catch(\Cartalyst\Sentry\Users\UserNotFoundException $e)
-        {
-            $this->errors->add('login', trans($this->plang_front.'.error.login-error-failed'));
-        } catch(\Cartalyst\Sentry\Users\UserNotActivatedException $e)
-        {
-            $this->errors->add('login', trans($this->plang_front.'.error.login-error-not-active'));
-        } catch(\Cartalyst\Sentry\Users\PasswordRequiredException $e)
-        {
-            $this->errors->add('login', trans($this->plang_front.'.error.login-error-required-password'));
-        } catch(\Cartalyst\Sentry\Throttling\UserSuspendedException $e)
-        {
-            $this->errors->add('login', trans($this->plang_front.'.error.login-error-many-attempts'));
+        } catch (\Cartalyst\Sentry\Users\LoginRequiredException $e) {
+            $this->errors->add('login', trans($this->plang_front . '.error.login-error-required-field'));
+        } catch (\Cartalyst\Sentry\Users\UserNotFoundException $e) {
+            $this->errors->add('login', trans($this->plang_front . '.error.login-error-failed'));
+        } catch (\Cartalyst\Sentry\Users\UserNotActivatedException $e) {
+            $this->errors->add('login', trans($this->plang_front . '.error.login-error-not-active'));
+        } catch (\Cartalyst\Sentry\Users\PasswordRequiredException $e) {
+            $this->errors->add('login', trans($this->plang_front . '.error.login-error-required-password'));
+        } catch (\Cartalyst\Sentry\Throttling\UserSuspendedException $e) {
+            $this->errors->add('login', trans($this->plang_front . '.error.login-error-many-attempts'));
         }
-        if($this->foundAnyErrors())
-        {
+        if ($this->foundAnyErrors()) {
             $this->checkForBannedUser($user);
         }
 
-        if(!$this->errors->isEmpty()) throw new AuthenticationErrorException;
+        if (!$this->errors->isEmpty()) throw new AuthenticationErrorException;
 
         Event::dispatch('service.authenticated', [$credentials, $remember, $user]);
     }
@@ -90,21 +83,16 @@ class SentryAuthenticator implements AuthenticateInterface
      */
     public function loginById($id, $remember = false)
     {
-        try
-        {
+        try {
             $user = $this->sentry->findUserById($id);
-        } catch(\Cartalyst\Sentry\Users\UserNotFoundException $e)
-        {
+        } catch (\Cartalyst\Sentry\Users\UserNotFoundException $e) {
             $this->errors->add('login', 'Utente non trovato.');
         }
 
-        if($this->foundAnyErrors())
-        {
-            try
-            {
+        if ($this->foundAnyErrors()) {
+            try {
                 $this->sentry->login($user, $remember);
-            } catch(\Cartalyst\Sentry\Users\UserNotActivatedException $e)
-            {
+            } catch (\Cartalyst\Sentry\Users\UserNotActivatedException $e) {
                 $this->errors->add('login', 'Utente non attivo.');
             }
 
@@ -129,11 +117,9 @@ class SentryAuthenticator implements AuthenticateInterface
      */
     public function getUser($email)
     {
-        try
-        {
+        try {
             $user = $this->sentry->findUserByLogin($email);
-        } catch(\Cartalyst\Sentry\Users\UserNotFoundException $e)
-        {
+        } catch (\Cartalyst\Sentry\Users\UserNotFoundException $e) {
             throw new UserNotFoundException($e->getMessage());
         }
         return $user;
@@ -164,8 +150,7 @@ class SentryAuthenticator implements AuthenticateInterface
      */
     private function checkForBannedUser($user)
     {
-        if($user->banned)
-        {
+        if ($user->banned) {
             $this->errors->add('login', 'This user is banned.');
             $this->sentry->logout();
         }
@@ -198,16 +183,16 @@ class SentryAuthenticator implements AuthenticateInterface
      * @date 14/07/2018
      * @add S1TT
      */
-    public function authUser(array $account, $is_set_token = true, $length = 55) {
+    public function authUser(array $account, $is_set_token = true, $length = 55)
+    {
         return $this->sentry->findByCredentials($account, $is_set_token, $length);
     }
-
 
 
     /**
      * Finds a user by the given token api code.
      *
-     * @param  string  $token_api
+     * @param string $token_api
      * @return \Cartalyst\Sentry\Users\UserInterface
      * @throws \RuntimeException
      * @throws \Cartalyst\Sentry\Users\UserNotFoundException
@@ -219,7 +204,8 @@ class SentryAuthenticator implements AuthenticateInterface
         return $this->sentry->findUserByTokenApiCode($token_api);
     }
 
-    public function removeTokenByUser($user) {
+    public function removeTokenByUser($user)
+    {
         return $this->sentry->removeTokenByUser($user);
     }
 }

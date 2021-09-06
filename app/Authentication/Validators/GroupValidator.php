@@ -3,7 +3,7 @@
 use Event;
 use Foostart\Acl\Library\Validators\AbstractValidator;
 
-class GroupValidator  extends AbstractValidator
+class GroupValidator extends AbstractValidator
 {
     protected static $rules = array(
         "name" => ["required"],
@@ -11,8 +11,7 @@ class GroupValidator  extends AbstractValidator
 
     public function __construct()
     {
-        Event::listen('validating', function($input)
-        {
+        Event::listen('validating', function ($input) {
             static::$rules["name"][] = "unique:groups,name,{$input['id']}";
         });
     }

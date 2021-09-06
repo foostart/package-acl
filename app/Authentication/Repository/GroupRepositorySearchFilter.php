@@ -1,10 +1,11 @@
-<?php  namespace Foostart\Acl\Authentication\Repository;
+<?php namespace Foostart\Acl\Authentication\Repository;
 
 /**
  * Class GroupRepositorySearchFilter
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use App;
 use DB;
 use Illuminate\Pagination\Paginator;
@@ -23,7 +24,12 @@ class GroupRepositorySearchFilter
     private $valid_ordering_fields = ['name', 'permissions', 'id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['name', 'permissions', 'id'];
+    private $valid_fields_filter = [
+        'keyword',
+        'name',
+        'permissions',
+        'id'
+    ];
 
     public function __construct($per_page = 5)
     {
@@ -75,15 +81,11 @@ class GroupRepositorySearchFilter
      */
     private function applySearchFilters(array $input_filter = null, $q)
     {
-        if($this->isSettedInputFilter($input_filter))
-        {
-            foreach($input_filter as $column => $value)
-            {
-                if($this->isValidFilterValue($value))
-                {
-                    $column = $column.'';
-                    switch($column)
-                    {
+        if ($this->isSettedInputFilter($input_filter)) {
+            foreach ($input_filter as $column => $value) {
+                if ($this->isValidFilterValue($value)) {
+                    $column = $column . '';
+                    switch ($column) {
                         case 'name':
                             if (!empty($value)) {
                                 $q = $q->where($this->groups_table_name . '.name', 'LIKE', "%{$value}%");
@@ -91,14 +93,14 @@ class GroupRepositorySearchFilter
                             break;
                         case 'permissions':
                             if (!empty($value)) {
-                                $q = $q->where($this->$groups_table_name . '.permissions', 'LIKE', "%{$value}%");
+                                $q = $q->where($this->groups_table_name . '.permissions', 'LIKE', "%{$value}%");
                             }
                             break;
                         case 'keyword':
                             if (!empty($value)) {
-                                $q = $q->where(function($q) use ($value) {
-                                    $q->where($this->$groups_table_name . '.name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->$groups_table_name . '.permissions','LIKE', "%{$value}%");
+                                $q = $q->where(function ($q) use ($value) {
+                                    $q->where($this->groups_table_name . '.name', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->groups_table_name . '.permissions', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -146,10 +148,10 @@ class GroupRepositorySearchFilter
      */
     private function applyOrderingFilter(array $input_filter, $q)
     {
-        if($this->isNotGivenAnOrderingFilter($input_filter)) return $q;
+        if ($this->isNotGivenAnOrderingFilter($input_filter)) return $q;
 
-        foreach($this->makeOrderingFilterArray($input_filter) as $field => $ordering)
-           if($this->isValidOrderingField($field)) $q = $this->orderByField($field, $this->guessOrderingType($ordering), $q);
+        foreach ($this->makeOrderingFilterArray($input_filter) as $field => $ordering)
+            if ($this->isValidOrderingField($field)) $q = $this->orderByField($field, $this->guessOrderingType($ordering), $q);
 
         return $q;
     }
@@ -165,7 +167,7 @@ class GroupRepositorySearchFilter
      */
     private function isNotGivenAnOrderingFilter(array $input_filter)
     {
-        return empty($input_filter['order_by'])||empty($input_filter['ordering']);
+        return empty($input_filter['order_by']) || empty($input_filter['ordering']);
     }
 
     /**
@@ -205,7 +207,7 @@ class GroupRepositorySearchFilter
     private function createAllSelect($q)
     {
         $q = $q->select(
-               $this->groups_table_name . '.*'
+            $this->groups_table_name . '.*'
         );
 
         return $q;

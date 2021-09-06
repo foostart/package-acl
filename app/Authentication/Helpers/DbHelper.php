@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Helpers;
+<?php namespace Foostart\Acl\Authentication\Helpers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +33,7 @@ class DbHelper
             static::getConnection()->getPdo()->exec('SET FOREIGN_KEY_CHECKS=1;');
         }
     }
-    
+
     public static function commit()
     {
         static::getConnection()->getPdo()->commit();
@@ -66,7 +66,7 @@ class DbHelper
      */
     protected static function supportForeignKeysCheck($current_driver)
     {
-        return ! in_array($current_driver, static::$no_foreign_keys_drivers);
+        return !in_array($current_driver, static::$no_foreign_keys_drivers);
     }
 
 }

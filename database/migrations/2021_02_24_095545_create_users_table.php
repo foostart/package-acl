@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateUsersTable extends Migration {
+class CreateUsersTable extends FoostartMigration
+{
+    public function __construct()
+    {
+        $this->table = 'users';
+        $this->prefix_column = 'user_';
+    }
 
     /**
      * Run the migrations.
@@ -12,9 +18,8 @@ class CreateUsersTable extends Migration {
      */
     public function up()
     {
-        Schema::dropIfExists('users');
-        Schema::create('users', function(Blueprint $table)
-        {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->string('email', 100);
             $table->string('password');
@@ -27,8 +32,11 @@ class CreateUsersTable extends Migration {
             $table->string('persist_code')->nullable();
             $table->string('reset_password_code', 100)->nullable();
             $table->boolean('protected')->default(0);
-            $table->timestamps();
-            // setup index
+
+            // Set common columns
+            $this->setCommonColumns($table);
+
+            // Setup other attributes
             $table->unique('email');
             $table->index('activation_code');
             $table->index('reset_password_code');
@@ -42,7 +50,6 @@ class CreateUsersTable extends Migration {
      */
     public function down()
     {
-
+        Schema::dropIfExists($this->table);
     }
-
 }

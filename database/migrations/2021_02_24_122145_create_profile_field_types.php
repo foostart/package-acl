@@ -1,34 +1,40 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateProfileFieldTypes extends Migration {
-
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-        Schema::dropIfExists('profile_field_type');
-        Schema::create('profile_field_type', function(Blueprint $table)
-        {
+class CreateProfileFieldTypes extends FoostartMigration
+{
+    public function __construct()
+    {
+        $this->table = 'profile_field_type';
+        $this->prefix_column = 'profile_field_type_';
+    }
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
-            $table->timestamps();
-        });
-	}
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('profile_field_type');
-	}
+            // Set common columns
+            $this->setCommonColumns($table);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop($this->table);
+    }
 
 }

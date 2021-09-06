@@ -35,7 +35,7 @@ var appender = function (spec, tb_orders) {
         var ordering_tokens = ordering_fied.val().split(separator);
 
         // validation
-        if (order_by_tokens.length != order_by_tokens.length){
+        if (order_by_tokens.length != order_by_tokens.length) {
             return false;
         }
 
@@ -73,19 +73,19 @@ var appender = function (spec, tb_orders) {
      */
     that.appendPlaceholder = function (index) {
         var order_by_placeholder = '<div class="col-md-6">' +
-                '<input type="text" disabled="disabled" class="form-control" value="' + orderings[index].order_by + '">' +
-                '</div>';
+            '<input type="text" disabled="disabled" class="form-control" value="' + orderings[index].order_by + '">' +
+            '</div>';
         var field_placeholder = '<div class="col-md-4" field="' + orderings[index].ordering + '">' +
-                '<input type="text" disabled="disabled" class="form-control" value="' + orderings[index].ordering + '" >' +
-                '</div>';
+            '<input type="text" disabled="disabled" class="form-control" value="' + orderings[index].ordering + '" >' +
+            '</div>';
         var delete_ordering = '<div class="col-md-2">' +
-                '<a onclick="myAppender.removeOrdering(' + index + ');" class="btn btn-default pull-right ' + spec.remove_ordering_button + '">\n\
+            '<a onclick="myAppender.removeOrdering(' + index + ');" class="btn btn-default pull-right ' + spec.remove_ordering_button + '">\n\
                 <i class="fa fa-minus"></i></a>' +
-                '</div>';
+            '</div>';
 
         append_sorting_field.append('<div class="margin-top-10" id="ordering_' + index + '" ><div class="row">' +
-                order_by_placeholder + field_placeholder + delete_ordering +
-                '</div></div>');
+            order_by_placeholder + field_placeholder + delete_ordering +
+            '</div></div>');
     }
 
     /**
@@ -173,9 +173,9 @@ var appender = function (spec, tb_orders) {
         return orderings;
     };
 
-    that.isSelectedOrdering = function(order_by) {
+    that.isSelectedOrdering = function (order_by) {
         var selected_orders = that.getOrderings();
-        if (selected_orders=== undefined) {
+        if (selected_orders === undefined) {
             return false;
         } else {
             for (var i = 0; i < selected_orders.length; i++) {

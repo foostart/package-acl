@@ -9,6 +9,7 @@ use Foostart\Acl\Library\Exceptions\InvalidException;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 use Foostart\Acl\Library\Email\MailerInterface;
 use Foostart\Acl\Authentication\Interfaces\AuthenticatorInterface;
+
 /**
  * Class ReminderService
  *
@@ -17,7 +18,8 @@ use Foostart\Acl\Authentication\Interfaces\AuthenticatorInterface;
  * @package Auth
  * @author Foostart foostart.com@gmail.com
  */
-class ReminderService {
+class ReminderService
+{
 
     /**
      * Class to send email
@@ -46,7 +48,7 @@ class ReminderService {
      *
      * @var \Illuminate\Support\\MessageBag
      */
-    protected $errors ;
+    protected $errors;
     /**
      * @var \Foostart\Acl\Authentication\Interfaces\AuthenticatorInterface
      */
@@ -65,12 +67,9 @@ class ReminderService {
     public function send($to)
     {
         // gets reset pwd code
-        try
-        {
+        try {
             $token = $this->auth->getToken($to);
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $this->errors->add('mail', static::$INVALID_USER_MAIL);
             throw new UserNotFoundException;
         }
@@ -80,8 +79,7 @@ class ReminderService {
         // send email with change password link
         $success = $this->mailer->sendTo($to, $this->body->toHtml(), $this->subject, $this->template);
 
-        if(! $success)
-        {
+        if (!$success) {
             $this->errors->add('mail', 'There was an error sending the email');
             throw new MailException;
         }
@@ -90,35 +88,28 @@ class ReminderService {
     private function prepareResetPasswordLink($token, $to)
     {
         $this->body = link_to_route("user.change-password",
-                 Config::get('acl_messages.links.change_password'),
-                ["email"=> $to, "token"=> $token] );
+            Config::get('acl_messages.links.change_password'),
+            ["email" => $to, "token" => $token]);
     }
 
     public function reset($email, $token, $password)
     {
-        try
-        {
+        try {
             $user = $this->auth->getUser($email);
-        }
-        catch(JacopoExceptionsInterface $e)
-        {
+        } catch (JacopoExceptionsInterface $e) {
             $this->errors->add('user', static::$INVALID_USER_MAIL);
             throw new UserNotFoundException;
         }
 
         // Check if the reset password code is valid
-        if ($user->checkResetPasswordCode($token))
-        {
+        if ($user->checkResetPasswordCode($token)) {
             // Attempt to reset the user password
-            if (! $user->attemptResetPassword($token, $password))
-            {
-                $this->errors->add('user', Config::get('acl_messages.flash.error.reset_password_error') );
+            if (!$user->attemptResetPassword($token, $password)) {
+                $this->errors->add('user', Config::get('acl_messages.flash.error.reset_password_error'));
                 throw new InvalidException();
             }
-        }
-        else
-        {
-            $this->errors->add('user', Config::get('acl_messages.flash.error.captcha_error') );
+        } else {
+            $this->errors->add('user', Config::get('acl_messages.flash.error.captcha_error'));
             throw new InvalidException();
         }
     }

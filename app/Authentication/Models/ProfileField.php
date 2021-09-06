@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Models;
+<?php namespace Foostart\Acl\Authentication\Models;
 
 /**
  * Class ProfileType
@@ -13,11 +13,11 @@ class ProfileField extends BaseModel
 
     public function profile_field_type()
     {
-        return $this->belongsTo('Foostart\Acl\Authentication\Models\ProfileFieldType','profile_field_type_id');
+        return $this->belongsTo('Foostart\Acl\Authentication\Models\ProfileFieldType', 'profile_field_type_id');
     }
 
     public function user_profile()
     {
-        return $this->belongsTo('Foostart\Acl\Authentication\Models\UserProfile','user_profile_id');
+        return $this->belongsTo('Foostart\Acl\Authentication\Models\UserProfile', 'user_profile_id');
     }
-} 
+}

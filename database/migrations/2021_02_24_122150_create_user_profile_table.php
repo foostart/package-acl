@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateUserProfileTable extends Migration
+class CreateUserProfileTable extends FoostartMigration
 {
-
+    public function __construct()
+    {
+        $this->table = 'user_profile';
+        $this->prefix_column = 'user_profile_';
+    }
     /**
      * Run the migrations.
      *
@@ -13,10 +17,10 @@ class CreateUserProfileTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('user_profile');
-        Schema::create('user_profile', function (Blueprint $table) {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
             $table->string('phone', 20)->nullable();
@@ -28,9 +32,12 @@ class CreateUserProfileTable extends Migration
             $table->string('state', 20)->nullable();
             $table->string('city', 50)->nullable();
             $table->string('country', 50)->nullable();
-            $table->string('sex', 1)->nullable();
+            $table->smallInteger('sex')->default(0);
             $table->string('address', 100)->nullable();
-            $table->timestamps();
+
+            // Set common columns
+            $this->setCommonColumns($table);
+
             // foreign keys
             $table->foreign('user_id')
                 ->references('id')->on('users')
@@ -46,6 +53,6 @@ class CreateUserProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_profile');
+        Schema::dropIfExists($this->table);
     }
 }

@@ -1,10 +1,12 @@
-<?php  namespace Foostart\Acl\Authentication\Controllers;
+<?php namespace Foostart\Acl\Authentication\Controllers;
 
 use View;
 
-class DashboardController extends Controller{
+class DashboardController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         /**
          * Breadcrumb
@@ -19,8 +21,8 @@ class DashboardController extends Controller{
          * Breadcrumb
          */
         $this->breadcrumb_3 = NULL;
-        
-                
+
+
         // display view
         $this->data_view = array_merge($this->data_view, array(
             'breadcrumb_1' => $this->breadcrumb_1,
@@ -29,5 +31,5 @@ class DashboardController extends Controller{
         ));
         return View::make('package-acl::admin.dashboard.default')->with($this->data_view);
     }
-    
-} 
+
+}

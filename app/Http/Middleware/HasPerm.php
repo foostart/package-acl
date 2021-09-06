@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Http\Middleware; 
+<?php namespace Foostart\Acl\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
@@ -6,14 +6,16 @@ use Illuminate\Support\Facades\App;
 /*
  * Check that the user has one of the permission given
  */
-class HasPerm {
+
+class HasPerm
+{
 
     public function handle($request, Closure $next)
     {
         $permissions = array_slice(func_get_args(), 2);
         $authentication_helper = App::make('authentication_helper');
-        if(!$authentication_helper->hasPermission($permissions)) App::abort('401');
+        if (!$authentication_helper->hasPermission($permissions)) App::abort('401');
 
         return $next($request);
     }
-} 
+}

@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Presenters;
+<?php namespace Foostart\Acl\Authentication\Presenters;
 
 use Foostart\Acl\Library\Presenters\AbstractPresenter;
 use Config;
@@ -21,9 +21,9 @@ class UserProfilePresenter extends AbstractPresenter
 
     public function custom_avatar()
     {
-        if(! $this->resource->avatar) return $this->default_avatar;
+        if (!$this->resource->avatar) return $this->default_avatar;
 
-        return $this->getBase64ImageSrcHeader() .$this->resource->avatar;
+        return $this->getBase64ImageSrcHeader() . $this->resource->avatar;
     }
 
     /**
@@ -36,7 +36,7 @@ class UserProfilePresenter extends AbstractPresenter
 
     public function gravatar($size = 30)
     {
-        return "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->resource->user()->first()->email ) ) ) .  "?s=" . $size;
+        return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->resource->user()->first()->email))) . "?s=" . $size;
 
     }
 
@@ -46,7 +46,4 @@ class UserProfilePresenter extends AbstractPresenter
 
         return $use_gravatar ? $this->gravatar($size) : $this->custom_avatar();
     }
-
-
-
-} 
+}

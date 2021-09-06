@@ -1,9 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Validators;
+<?php namespace Foostart\Acl\Authentication\Validators;
 /**
  * Class UserSignupEmailValidator
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Illuminate\Support\Facades\Request;
 use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 use Foostart\Acl\Library\Validators\AbstractValidator;
@@ -14,23 +15,19 @@ class UserSignupEmailValidator extends AbstractValidator
     public function validateEmailUnique($attribute, $value, $parameters)
     {
         $repository = App::make('user_repository');
-        try
-        {
+        try {
             $user = $repository->findByLogin($value);
-        }
-        catch(UserNotFoundException $e)
-        {
+        } catch (UserNotFoundException $e) {
             return true;
         }
 
 
-        if($user->activated)
-        {
+        if ($user->activated) {
             return false;
         }
 
         // if email confirmation is disabled we dont send email again
-        if(! Config::get('acl_base.email_confirmation') ) return false;
+        if (!Config::get('acl_base.email_confirmation')) return false;
 
         // send email
 
@@ -43,18 +40,14 @@ class UserSignupEmailValidator extends AbstractValidator
     public function validateEmailRecover($attribute, $value, $parameters)
     {
         $repository = App::make('user_repository');
-        try
-        {
+        try {
             $user = $repository->findByLogin($value);
-        }
-        catch(UserNotFoundException $e)
-        {
+        } catch (UserNotFoundException $e) {
             return false;
         }
 
         return true;
     }
-
 
 
     /**

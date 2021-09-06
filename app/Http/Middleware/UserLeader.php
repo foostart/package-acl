@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Http\Middleware;
+<?php namespace Foostart\Acl\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\App;
 /*
  * Check that the user has one of the permission given
  */
-class UserLeader {
+
+class UserLeader
+{
 
     public function handle($request, Closure $next)
     {

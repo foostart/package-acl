@@ -1,10 +1,11 @@
-<?php  namespace Foostart\Acl\Authentication\Repository;
+<?php namespace Foostart\Acl\Authentication\Repository;
 
 /**
  * Class PermissionRepositorySearchFilter
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use App;
 use DB;
 use Illuminate\Pagination\Paginator;
@@ -20,10 +21,10 @@ class PermissionRepositorySearchFilter
     private $groups_table_name = "groups";
     private $profile_table_name = "user_profile";
 
-    private $valid_ordering_fields = ['description', 'permission', 'url','id'];
+    private $valid_ordering_fields = ['description', 'permission', 'url', 'id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['description', 'permission', 'url', 'category_id','id'];
+    private $valid_fields_filter = ['description', 'permission', 'url', 'category_id', 'id'];
 
     public function __construct($per_page = 5)
     {
@@ -75,16 +76,12 @@ class PermissionRepositorySearchFilter
     private function applySearchFilters(array $input_filter = null, $q)
     {
 
-        if($this->isSettedInputFilter($input_filter))
-        {
+        if ($this->isSettedInputFilter($input_filter)) {
 
-            foreach($input_filter as $column => $value)
-            {
-                if($this->isValidFilterValue($value))
-                {
-                    $column = $column.'';
-                    switch($column)
-                    {
+            foreach ($input_filter as $column => $value) {
+                if ($this->isValidFilterValue($value)) {
+                    $column = $column . '';
+                    switch ($column) {
                         case 'description':
                             if (!empty($value)) {
                                 $q = $q->where($this->permissions_table_name . '.description', 'LIKE', "%{$value}%");
@@ -107,10 +104,10 @@ class PermissionRepositorySearchFilter
                             break;
                         case 'keyword':
                             if (!empty($value)) {
-                                $q = $q->where(function($q) use ($value) {
+                                $q = $q->where(function ($q) use ($value) {
                                     $q->where($this->permissions_table_name . '.description', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->permissions_table_name . '.permission','LIKE', "%{$value}%")
-                                    ->orWhere($this->permissions_table_name . '.url','LIKE', "%{$value}%");
+                                        ->orWhere($this->permissions_table_name . '.permission', 'LIKE', "%{$value}%")
+                                        ->orWhere($this->permissions_table_name . '.url', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -158,13 +155,13 @@ class PermissionRepositorySearchFilter
      */
     private function applyOrderingFilter(array $input_filter, $q)
     {
-        if($this->isNotGivenAnOrderingFilter($input_filter)) return $q;
+        if ($this->isNotGivenAnOrderingFilter($input_filter)) return $q;
 
-        foreach($this->makeOrderingFilterArray($input_filter) as $field => $ordering)
-           if($this->isValidOrderingField($field)) {
+        foreach ($this->makeOrderingFilterArray($input_filter) as $field => $ordering)
+            if ($this->isValidOrderingField($field)) {
 
-               $q = $this->orderByField($field, $this->guessOrderingType($ordering), $q);
-           }
+                $q = $this->orderByField($field, $this->guessOrderingType($ordering), $q);
+            }
 
         return $q;
     }
@@ -180,7 +177,7 @@ class PermissionRepositorySearchFilter
      */
     private function isNotGivenAnOrderingFilter(array $input_filter)
     {
-        return empty($input_filter['order_by'])||empty($input_filter['ordering']);
+        return empty($input_filter['order_by']) || empty($input_filter['ordering']);
     }
 
     /**
@@ -220,7 +217,7 @@ class PermissionRepositorySearchFilter
     private function createAllSelect($q)
     {
         $q = $q->select(
-               $this->permissions_table_name . '.*'
+            $this->permissions_table_name . '.*'
         );
 
         return $q;

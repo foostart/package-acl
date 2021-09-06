@@ -7,8 +7,11 @@
 | Check if the current record is editable
 |
 */
+
 use Foostart\Acl\Authentication\Events\EditableSubscriber;
+
 Event::subscribe(new EditableSubscriber());
+
 /*
 |--------------------------------------------------------------------------
 | Profile type permissions subscriber
@@ -17,5 +20,7 @@ Event::subscribe(new EditableSubscriber());
 | Check if the current use can edit the Profile permission types
 |
 */
+
 use Foostart\Acl\Authentication\Classes\CustomProfile\Events\ProfilePermissionSubscriber;
+
 Event::subscribe(new ProfilePermissionSubscriber());

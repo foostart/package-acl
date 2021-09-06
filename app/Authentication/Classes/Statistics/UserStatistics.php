@@ -1,10 +1,12 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\Statistics;
+<?php namespace Foostart\Acl\Authentication\Classes\Statistics;
 /**
  * Class UserStatistics
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use App;
+
 class UserStatistics
 {
     protected $user_repository;

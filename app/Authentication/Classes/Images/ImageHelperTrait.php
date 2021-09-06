@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\Images;
+<?php namespace Foostart\Acl\Authentication\Classes\Images;
 
 use Image;
 use Input;
@@ -9,16 +9,14 @@ use Foostart\Acl\Library\Exceptions\NotFoundException;
  *
  * @author Foostart foostart.com@gmail.com
  */
-trait ImageHelperTrait {
+trait ImageHelperTrait
+{
 
     public static function getPathFromInput($input_name)
     {
-        if (Input::hasFile($input_name))
-        {
+        if (Input::hasFile($input_name)) {
             return $path = Input::file($input_name)->getRealPath();
-        }
-        else
-        {
+        } else {
             throw new NotFoundException('File non found.');
         }
     }
@@ -26,9 +24,12 @@ trait ImageHelperTrait {
     /**
      * Fetch an image given a path
      */
-    public static function getBinaryData($size = 170, $input_name)
+    public static function getBinaryData($size, $input_name)
     {
+        if (!isset($size)) {
+            $size = 170;
+        }
         return Image::make(static::getPathFromInput($input_name))->fit($size)->encode();
     }
 
-} 
+}

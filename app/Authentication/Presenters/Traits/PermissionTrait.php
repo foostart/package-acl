@@ -1,4 +1,5 @@
-<?php  namespace Foostart\Acl\Authentication\Presenters\Traits;
+<?php namespace Foostart\Acl\Authentication\Presenters\Traits;
+
 use Foostart\Acl\Authentication\Models\Permission;
 
 /**
@@ -18,10 +19,9 @@ trait PermissionTrait
         $model = $model ? $model : new Permission;
         $objs = [];
         $permissions = $this->resource->permissions;
-        if(! empty($permissions) ) foreach ($permissions as $permission => $status)
-        {
-            $objs[] = (! $model::wherePermission($permission)->get()->isEmpty()) ? $model::wherePermission($permission)->first() : null;
+        if (!empty($permissions)) foreach ($permissions as $permission => $status) {
+            $objs[] = (!$model::wherePermission($permission)->get()->isEmpty()) ? $model::wherePermission($permission)->first() : null;
         }
         return $objs;
     }
-} 
+}

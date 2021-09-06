@@ -1,6 +1,7 @@
 <?php namespace Foostart\Acl\Library\Presenters;
 
-abstract class AbstractPresenter {
+abstract class AbstractPresenter
+{
 
     protected $resource;
 
@@ -11,8 +12,7 @@ abstract class AbstractPresenter {
 
     public function __get($name)
     {
-        if (method_exists($this, $name))
-        {
+        if (method_exists($this, $name)) {
             return $this->{$name}();
         }
 

@@ -6,4 +6,6 @@
  *
  * @package Exceptions
  */
-interface JacopoExceptionsInterface {}
+interface JacopoExceptionsInterface
+{
+}

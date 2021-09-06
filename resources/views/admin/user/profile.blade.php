@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h3 class="panel-title bariol-thin"><i
-                                        class="fa fa-user"></i> {!! trans($plang_admin.'.labels.user-profile') !!}</h3>
+                                    class="fa fa-user"></i> {!! trans($plang_admin.'.labels.user-profile') !!}</h3>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <div class="col-md-12">
                             <a href="{!! URL::route('users.edit',['id' => $user_profile->user_id]) !!}"
                                class="btn btn-info pull-right"><i
-                                        class="fa fa-pencil-square-o"></i> {!! trans($plang_admin.'.labels.edit-user') !!}
+                                    class="fa fa-pencil-square-o"></i> {!! trans($plang_admin.'.labels.edit-user') !!}
                             </a>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                     <!-- sex text field -->
                                     <div class="form-group">
                                         {!! Form::label('sex',trans($plang_admin.'.labels.sex').':') !!}
-                                        <?php $sex_values = trans($plang_admin.'.sex'); ?>
+                                        <?php $sex_values = trans($plang_admin . '.sex'); ?>
                                         {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                                     </div>
                                     <span class="text-danger">{!! $errors->first('sex') !!}</span>

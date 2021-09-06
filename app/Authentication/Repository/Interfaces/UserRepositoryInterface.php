@@ -4,7 +4,7 @@
  *
  * @author Foostart foostart.com@gmail.com
  */
-interface UserRepositoryInterface 
+interface UserRepositoryInterface
 {
 
     /**

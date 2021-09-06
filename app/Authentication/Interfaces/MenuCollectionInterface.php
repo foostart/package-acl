@@ -1,4 +1,4 @@
-<?php  namespace Foostart\Acl\Authentication\Interfaces;
+<?php namespace Foostart\Acl\Authentication\Interfaces;
 /**
  * Interface MenuCollectionInterface
  *
@@ -18,4 +18,4 @@ interface MenuCollectionInterface
      */
     public function getItemListAvailable();
 
-} 
+}

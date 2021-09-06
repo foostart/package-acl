@@ -5,5 +5,6 @@ Validator::extend('mail_recover', 'Foostart\Acl\Authentication\Validators\UserSi
 
 // captcha validator
 use Foostart\Acl\Authentication\Classes\Captcha\GregWarCaptchaValidator;
+
 $captcha_validator = App::make('captcha_validator');
-Validator::extend('captcha', 'Foostart\Acl\Authentication\Classes\Captcha\GregWarCaptchaValidator@validateCaptcha', $captcha_validator->getErrorMessage() );
+Validator::extend('captcha', 'Foostart\Acl\Authentication\Classes\Captcha\GregWarCaptchaValidator@validateCaptcha', $captcha_validator->getErrorMessage());

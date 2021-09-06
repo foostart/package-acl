@@ -1,10 +1,11 @@
-<?php  namespace Foostart\Acl\Authentication\Helpers;
+<?php namespace Foostart\Acl\Authentication\Helpers;
 
 /**
  * Class FormHelper
  *
  * @author Foostart foostart.com@gmail.com
  */
+
 use Foostart\Acl\Authentication\Repository\EloquentPermissionRepository as PermissionRepository;
 use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
 
@@ -29,9 +30,9 @@ class FormHelper
     {
         $all_objects = $this->{$repo_name}->all();
 
-        if($all_objects->isEmpty()) return [];
+        if ($all_objects->isEmpty()) return [];
 
-        foreach($all_objects as $object) $array_values[$object->{$key_value}] = $object->{$value_value};
+        foreach ($all_objects as $object) $array_values[$object->{$key_value}] = $object->{$value_value};
 
         return $array_values;
     }
@@ -58,4 +59,4 @@ class FormHelper
     {
         $input[$field_name] = isset($input[$field_name]) ? [$input[$field_name] => $operation] : '';
     }
-} 
+}

@@ -1,10 +1,10 @@
-<?php  namespace Foostart\Acl\Authentication\Classes\CustomProfile;
+<?php namespace Foostart\Acl\Authentication\Classes\CustomProfile;
 /**
  * Class customProfileFormHelper
  *
  * @author Foostart foostart.com@gmail.com
  */
-class customProfileFormHelper 
+class customProfileFormHelper
 {
     protected $custom_profile_repository;
 
@@ -12,5 +12,5 @@ class customProfileFormHelper
     {
         $this->custom_profile_repository = $custom_profile ? $custom_profile : new CustomProfileRepository();
     }
-    
-} 
+
+}

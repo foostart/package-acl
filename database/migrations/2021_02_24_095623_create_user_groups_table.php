@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Foostart\Category\Helpers\FoostartMigration;
 
-class CreateUserGroupsTable extends Migration {
+class CreateUserGroupsTable extends FoostartMigration
+{
+    public function __construct()
+    {
+        $this->table = 'users_groups';
+        $this->prefix_column = 'users_groups_';
+    }
 
     /**
      * Run the migrations.
@@ -12,12 +18,15 @@ class CreateUserGroupsTable extends Migration {
      */
     public function up()
     {
-        Schema::dropIfExists('users_groups');
-        Schema::create('users_groups', function(Blueprint $table)
-        {
+        Schema::dropIfExists($this->table);
+        Schema::create($this->table, function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('group_id')->unsigned();
-            // setup index
+
+            // Set common columns
+            $this->setCommonColumns($table);
+
+            // Setup other attributes
             $table->primary(array('user_id', 'group_id'));
         });
     }
@@ -29,7 +38,7 @@ class CreateUserGroupsTable extends Migration {
      */
     public function down()
     {
-
+        Schema::drop($this->table);
     }
 
 }

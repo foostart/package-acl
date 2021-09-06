@@ -1,4 +1,5 @@
 <?php
+
 namespace Foostart\Acl\Authentication\Classes\Captcha;
 
 /**
