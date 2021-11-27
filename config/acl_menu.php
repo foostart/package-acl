@@ -30,7 +30,7 @@ return [
             "name" => "acl-admin.menu.dashboard",
             "route" => "dashboard",
             "link" => '/admin/users/dashboard',
-            "permissions" => []
+            "permissions" => [$admin]
         ],
 
         /*
@@ -51,7 +51,12 @@ return [
             "route" => "users",
             "link" => '/admin/users',
             "permissions" => [$admin, '_user-editor', '_user-leader'],
-            "skip_permissions" => ["users.selfprofile.edit", "users.profile.edit", "users.profile.addfield", "users.profile.deletefield"]
+            "skip_permissions" => ["users.selfprofile.edit",
+                    "users.profile.edit",
+                    "users.profile.addfield",
+                    "users.profile.deletefield",
+                    "users.profile.changeselfavatar",
+            ]
         ],
 
 
@@ -85,6 +90,66 @@ return [
             "route" => "category-admin.menus.top-menu",
             "link" => '/admin/categories',
             "permissions" => [$admin, '_user-editor']
+        ],
+
+        //Posts
+        [
+            "name" => "acl-admin.menu.posts",
+            "route" => "posts",
+            "link" => '/admin/posts',
+            "permissions" => [$admin, "_permission-editor"]
+        ],
+
+        //Crawler site
+        [
+            "name" => "acl-admin.menu.sites",
+            "route" => "crawler.site",
+            "link" => '/admin/crawler/site',
+            "permissions" => [$admin, "_permission-editor"]
+        ],
+
+        //Crawler work
+        [
+            "name" => "acl-admin.menu.crawler_works_jobs",
+            "route" => "crawler.work.job",
+            "link" => '/admin/crawler/work/job',
+            "permissions" => [$admin, "_permission-editor"]
+        ],
+
+        //Pexcel
+        [
+            "name" => "acl-admin.menu.pexcel",
+            "route" => "pexcel",
+            "link" => '/admin/pexcel',
+            "permissions" => [$admin, "_permission-editor"]
+        ],
+        // Company
+        [
+            "name" => "acl-admin.menu.company",
+            "route" => "company",
+            "link" => '/admin/company',
+            "permissions" => [$admin]
+        ],
+        // Course
+        [
+            "name" => "acl-admin.menu.course",
+            "route" => "course",
+            "link" => '/admin/courses',
+            "permissions" => [$admin]
+        ],
+        // Courses by teacher
+        [
+            "name" => "acl-admin.menu.course",
+            "route" => "teacher.course",
+            "link" => '/admin/courses/list',
+            "permissions" => [$admin, "_teacher"]
+        ],
+        // Internship
+        [
+            "name" => "acl-admin.menu.internship",
+            "route" => "internship",
+            "link" => '/admin/internship',
+            "permissions" => []
         ],
     ]
 ];

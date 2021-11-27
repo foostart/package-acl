@@ -56,6 +56,9 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
             "activated" => $input["activated"],
             "banned" => isset($input["banned"]) ? $input["banned"] : 0
         );
+        if (!empty($input['user_name'])) {
+            $data['user_name'] = $input['user_name'];
+        }
 
         try {
             $user = $this->sentry->createUser($data);
@@ -93,6 +96,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
     {
         $per_page = Config::get('acl_base.users_per_page');
         $user_repository_search = $user_repository_search ? $user_repository_search : new UserRepositorySearchFilter($per_page, $this->user_leader);
+
         return $user_repository_search->all($input_filter);
     }
 

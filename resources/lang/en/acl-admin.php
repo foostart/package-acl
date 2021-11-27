@@ -10,11 +10,28 @@ return [
      */
     'breadcrumbs' => [
         'admin' => 'Admin',
+        'diary' => 'Diary',
+        'edit_company' => 'Edit company',
+        'internship' => 'Internship',
+        'courses' => 'Courses',
+        'course' => 'Course',
         'groups' => 'Groups',
         'edit' => 'Edit',
         'list' => 'List',
         'users' => 'Users',
+        'sites' => 'Sites',
+        'site' => 'Site',
         'permissions' => 'Permissions',
+        'crawler' => 'Crawlers',
+        'works' => 'Works',
+        'work' => 'Work',
+        'jobs' => 'Jobs',
+        'job' => 'Job',
+        'categories' => 'Categories',
+        'category' => 'Category',
+        'pattern' => 'Pattern',
+        'pexcel' => 'Pexcel',
+        'company' => 'Company',
     ],
 
     /***********************************************************************
@@ -26,11 +43,19 @@ return [
      */
     'menu' => [
         'dashboard' => 'Dashboard',
+        'internship' => 'Internship',
+        'course' => 'Course',
         'users' => 'Users',
         'groups' => 'Groups',
+        'posts' => 'Posts',
+        'sites' => 'Sites',
+        'crawler_works' => 'Crawler works',
+        'crawler_works_jobs' => 'Crawler Jobs',
         'permissions' => 'Permissions',
         'operations' => 'Operations',
-        'contexts' => 'Contextes',
+        'contexts' => 'Contexts',
+        'pexcel' => 'Pexcels',
+        'company' => 'Company',
     ],
 
 
@@ -139,6 +164,7 @@ return [
      */
     'sidebars' => [
         'users-list' => 'Users list',
+        'upload-user' => 'Upload',
         'add-user' => 'Add user',
         'groups-list' => 'List of groups',
         'add-group' => 'Add group',
@@ -169,7 +195,7 @@ return [
         'group' => 'Group search',
         'btn-reset' => 'Reset',
         'btn-submit' => 'Search',
-        'btn-advance' => 'Search advance',
+        'btn-advance' => 'Advanced search',
     ],
 
 
@@ -183,6 +209,8 @@ return [
      */
     'labels' => [
         'email' => 'Email',
+        'start_date' => 'Start date',
+        'end_date' => 'End date',
         'first_name' => 'First name',
         'last_name' => 'Last name',
         'full_name' => 'Full name',
@@ -197,7 +225,7 @@ return [
         'login-data' => 'Login data',
         'password' => 'Password',
         'change-password' => 'Change password',
-        'confirm-password' => 'Confirm password',
+        'confirm-password' => 'Xác nhận lại mật khẩu',
         'confirm-change-password' => 'Confirm change password',
         'banned' => 'Banned',
         'user-profile' => 'User profile',

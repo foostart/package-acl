@@ -9,12 +9,11 @@ class Permission extends BaseModel
     protected $table = "permission";
 
     protected $fillable = [
-        "description",
+        'category_id',
+        'name',
         "permission",
         "protected",
-        'url',
-        'overview',
-        'category_id'
+        'description',
     ];
 
     protected $guarded = ["id"];

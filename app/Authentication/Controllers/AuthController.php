@@ -76,8 +76,14 @@ class AuthController extends Controller
         return Redirect::to(Config::get('acl_base.admin_login_redirect_url'));
     }
 
+    /**
+     * Post client login
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postClientLogin(Request $request)
     {
+
         list($email, $password, $remember, $captcha) = $this->getLoginInput($request);
 
         try {

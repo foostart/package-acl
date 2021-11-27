@@ -24,7 +24,9 @@ class UserRepositorySearchFilter
     //Check filter name is valid
     private $valid_fields_filter = [
         'keyword',
+        'level_id',
         'email',
+        'user_name',
         'full_name',
         'first_name',
         'last_name',
@@ -61,8 +63,13 @@ class UserRepositorySearchFilter
 
         $q = $this->createAllSelect($q);
 
-        $sql = $q->toSql();//Debug: removed
-        return $q->paginate($this->per_page);
+        $users = null;
+        if ($this->per_page == 0) {
+            $users = $q->get();
+        } else {
+            $users = $q->paginate($this->per_page);
+        }
+        return $users;
     }
 
     /**
@@ -118,6 +125,16 @@ class UserRepositorySearchFilter
                                 $q = $q->where($this->user_table_name . '.email', 'LIKE', "%{$value}%");
                             }
                             break;
+                        case 'id':
+                            if (!empty($value)) {
+                                $q = $q->where($this->user_table_name . '.id',  '=', $value);
+                            }
+                            break;
+                        case 'user_name':
+                            if (!empty($value)) {
+                                $q = $q->where($this->user_table_name . '.user_name', '=', $value);
+                            }
+                            break;
                         case 'first_name':
                             if (!empty($value)) {
                                 $q = $q->where($this->profile_table_name . '.first_name', 'LIKE', "%{$value}%");
@@ -126,6 +143,11 @@ class UserRepositorySearchFilter
                         case 'last_name':
                             if (!empty($value)) {
                                 $q = $q->where($this->profile_table_name . '.last_name', 'LIKE', "%{$value}%");
+                            }
+                            break;
+                        case 'level_id':
+                            if (!empty($value)) {
+                                $q = $q->where($this->profile_table_name . '.level_id', $input_filter['level_id']);
                             }
                             break;
                         case 'sex':
@@ -267,6 +289,7 @@ class UserRepositorySearchFilter
             $this->user_table_name . '.*',
             $this->profile_table_name . '.first_name',
             $this->profile_table_name . '.last_name',
+            $this->profile_table_name . '.phone',
             $this->profile_table_name . '.code',
             $this->groups_table_name . '.name'
         );

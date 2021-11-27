@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-4 col-xs-6">
+                    <div class="col-md-6 col-xs-6">
                         <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
                     {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
@@ -101,9 +101,8 @@
                         </div>
                         {!! Form::close() !!}
                     </div>
-                    <div class="col-md-4 col-xs-6">
-                    </div>
-                    <div class="col-md-4 col-xs-6">
+
+                    <div class="col-md-6 col-xs-6">
                         <h4><i class="fa fa-users"></i> {!! trans($plang_admin.'.labels.group').':' !!} </h4>
                         @include('package-acl::admin.user.groups')
 

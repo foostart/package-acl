@@ -92,14 +92,14 @@ class UserController extends Controller
         try {
             $user_leader = $this->user_repository->isLeader();
             $user = $this->user_repository->find($request->get('id'));
-
             if (!$this->user_repository->canUpdate($user)) {
 
                 return Redirect::route("users.list")->withErrors('User cant update');
             }
 
         } catch (JacopoExceptionsInterface $e) {
-            return Redirect::route("users.list")->withErrors('User not found');
+            $user = new User();
+//            return Redirect::route("users.list")->withErrors('User not found');
         }
         $presenter = new UserPresenter($user);
         // display view
@@ -225,6 +225,11 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.user_permission_add_success'));
     }
 
+    /**
+     * Edit profile page
+     * @param Request $request
+     * @return mixed
+     */
     public function editProfile(Request $request)
     {
         $user_id = $request->get('user_id');
@@ -269,6 +274,11 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.user_profile_edit_success'));
     }
 
+    /**
+     * Edit own profile
+     * @param Request $request
+     * @return mixed
+     */
     public function editOwnProfile(Request $request)
     {
         $logged_user = $this->auth->getLoggedUser();
@@ -404,6 +414,30 @@ class UserController extends Controller
             ->withMessage(Config::get('acl_messages.flash.success.avatar_edit_success'));
     }
 
+
+    public function changeSelfAvatar(Request $request)
+    {
+        $user_id = $request->get('user_id');
+        $profile_id = $request->get('user_profile_id');
+
+        // validate input
+        $validator = new UserProfileAvatarValidator();
+        if (!$validator->validate($request->all())) {
+            return Redirect::route('users.selfprofile.edit')
+                ->withInput()->withErrors($validator->getErrors());
+        }
+
+        // change picture
+        try {
+            $this->profile_repository->updateAvatar($profile_id);
+        } catch (NotFoundException $e) {
+            return Redirect::route('users.selfprofile.edit')->withInput()
+                ->withErrors(new MessageBag(['avatar' => Config::get('acl_messages.flash.error.')]));
+        }
+
+        return Redirect::route('users.selfprofile.edit')
+            ->withMessage(Config::get('acl_messages.flash.success.avatar_edit_success'));
+    }
     public function refreshCaptcha()
     {
         return View::make('package-acl::client.auth.captcha-image')

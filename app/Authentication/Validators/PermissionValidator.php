@@ -6,9 +6,8 @@ use Foostart\Acl\Library\Validators\AbstractValidator;
 class PermissionValidator extends AbstractValidator
 {
     protected static $rules = array(
-        "description" => ["required", "max:255"],
+        "name" => ["required", "max:255"],
         "permission" => ["required", "max:255"],
-        'url' => ["required", "max:255"],
     );
 
     public function __construct()

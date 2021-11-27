@@ -13,7 +13,7 @@
 </div>
 @if(! $user->exists)
     <div class="form-group">
-        <span class="text-danger"><h5>You need to create the user first.</span>
+        <span class="text-danger"><h5>You need to create the user first.</h5></span>
     </div>
 @endif
 {!! Form::close() !!}
@@ -26,7 +26,7 @@
             <div class="input-group">
                 <span class="input-group-addon form-button button-del-perm" name="{!! $permission->permission !!}"><span
                         class="glyphicon glyphicon-minus-sign add-input"></span></span>
-                {!! Form::text('permission_desc', $permission->description, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+                {!! Form::text('permission_desc', $permission->name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
                 {!! Form::hidden('permissions', $permission->permission) !!}
                 {!! Form::hidden('id', $user->id) !!}
                 {{-- add permission operation --}}

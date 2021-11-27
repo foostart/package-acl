@@ -83,7 +83,7 @@ return [
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
         'recovery-password' => 'Recovery password',
-        'login' => 'Login to Package Acl',
+        'login' => '',
         'title-register-complelete' => 'Registration completed',
         'title-password-recovery' => 'Password recovery',
         'title-signup-email' => 'Registration request received',
@@ -138,7 +138,7 @@ return [
         'group' => 'Group search',
         'btn-reset' => 'Reset',
         'btn-submit' => 'Search',
-        'btn-advance' => 'Search advance',
+        'btn-advance' => 'Advanced search',
     ],
 
 
@@ -166,7 +166,7 @@ return [
         'login-data' => 'Login data',
         'password' => 'Password',
         'change-password' => 'Change password',
-        'confirm_password' => 'Confirm password',
+        'confirm_password' => 'Xác nhận lại mật khẩu',
         'confirm-change-password' => 'Confirm change password',
         'banned' => 'Banned',
         'user-profile' => 'User profile',

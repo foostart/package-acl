@@ -53,11 +53,31 @@ class EloquentUserProfileRepository extends EloquentBaseRepository implements Us
         ]);
     }
 
+    /**
+     * Create user profile
+     * @param $user
+     * @return mixed|void
+     */
     public function attachEmptyProfile($user)
     {
+        // Check existing user
         if ($this->hasAlreadyAnUserProfile($user)) return;
+        $user_profile = [];
+        // User id
+        if (!empty($user->id)) {
+            $user_profile['user_id'] = $user->id;
+        }
+        // First name
+        if (!empty($user->first_name)) {
+            $user_profile['first_name'] = $user->first_name;
+        }
+        // Last name
+        if (!empty($user->last_name)) {
+            $user_profile['last_name'] = $user->last_name;
+        }
 
-        return $this->create(["user_id" => $user->id]);
+        // Create user profile
+        return $this->create($user_profile);
     }
 
     /**

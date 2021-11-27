@@ -9,13 +9,13 @@
                class="btn btn-default search-reset">{!! trans($plang_admin.'.buttons.reset') !!}</a>
             {!! Form::submit(trans($plang_admin.'.buttons.submit'), ["class" => "btn btn-info", "id" => "search-submit"]) !!}
         </div>
-        <!-- name text field -->
-        <div class="form-group">
-            {!! Form::label('description',trans($plang_admin.'.labels.permission-name')) !!}
-            {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'permission name']) !!}
-        </div>
-        <span class="text-danger">{!! $errors->first('description') !!}</span>
 
+        <!-- KEYWORD -->
+        @include('package-category::admin.partials.input_text', [
+            'name' => 'keyword',
+            'label' => trans($plang_admin.'.form.keyword'),
+            'value' => @$params['keyword'],
+        ])
         <!-- category_id text field -->
         <div class="form-group">
             {!! Form::label('category_id',trans($plang_admin.'.labels.category')) !!}

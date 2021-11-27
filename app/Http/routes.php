@@ -13,7 +13,7 @@ use Illuminate\Session\TokenMismatchException;
  * User login and logout
  */
 Route::group(['middleware' => ['web']], function () {
-    //Login by Facebook, Google
+    // by Facebook, Google
     Route::get('login/google', [
         'as' => 'user.login.google',
         'uses' => 'Foostart\Acl\Authentication\Controllers\LoginController@redirectToProvider',
@@ -182,6 +182,10 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/admin/users/profile/avatar', [
             'as' => 'users.profile.changeavatar',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@changeAvatar'
+        ]);
+        Route::post('/admin/users/profile/selfavatar', [
+            'as' => 'users.profile.changeselfavatar',
+            'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@changeSelfAvatar'
         ]);
         Route::get('/admin/users/profile/self', [
             'as' => 'users.selfprofile.edit',

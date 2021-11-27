@@ -20,7 +20,7 @@ View::composer(['package-acl::admin.dashboard.*'], function ($view) use ($plang_
 
     $view->with('sidebar_items', [
         trans($plang_admin . '.menu.dashboard') => [
-            'url' => URL::route('dashboard.default'),
+            'url' => URL::route('admin.home'),
             'icon' => '<i class="fa fa-tachometer"></i>'
         ]
     ]);
@@ -31,6 +31,7 @@ View::composer(['package-acl::admin.dashboard.*'], function ($view) use ($plang_
  */
 View::composer([
     'package-acl::admin.user.edit',
+    'package-acl::admin.user.upload',
     'package-acl::admin.user.groups',
     'package-acl::admin.user.list',
     'package-acl::admin.user.profile',
@@ -45,12 +46,16 @@ View::composer([
     // Sidebar items
     $view->with('sidebar_items', [
         trans($plang_admin . '.sidebars.users-list') => [
-            'url' => URL::route('users.list'),
+            'url' => URL::route('users.list', ['on' => 'user']),
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.add-user') => [
             'url' => URL::route('users.edit'),
             'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
+        ],
+        trans($plang_admin . '.sidebars.upload-user') => [
+            'url' => URL::route('pexcel.edit'),
+            'icon' => '<i class="fa fa-upload" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.user-department') => [
             'url' => URL::route('categories.list', ['_key=' . $key_department, '_callback='. base64_encode(URL::route('users.list'))]),

@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             @if(! $use_gravatar)
-                                @include('package-acl::admin.user.partials.avatar_upload')
+                                @include('package-acl::admin.user.partials.selfavatar_upload')
                             @else
                                 @include('package-acl::admin.user.partials.show_gravatar')
                             @endif
@@ -49,12 +49,7 @@
                                         {!! Form::label('password_confirmation',trans($plang_admin.'.labels.confirm-password').':') !!}
                                         {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                                     </div>
-                                    <!-- code text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('code',trans($plang_admin.'.labels.code').':') !!}
-                                        {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('code') !!}</span>
+
                                     <!-- first_name text field -->
                                     <div class="form-group">
                                         {!! Form::label('first_name',trans($plang_admin.'.labels.first_name').':') !!}
@@ -73,38 +68,27 @@
                                         {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                                     </div>
                                     <span class="text-danger">{!! $errors->first('phone') !!}</span>
-                                    <!-- state text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('state',trans($plang_admin.'.labels.state').':') !!}
-                                        {!! Form::text('state', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('state') !!}</span>
+
                                 </div>
                                 <div class="col-md-6 col-xs-12">
-
-                                    <!-- var text field -->
+                                    <!-- address text field -->
                                     <div class="form-group">
-                                        {!! Form::label('var',trans($plang_admin.'.labels.vat').':') !!}
-                                        {!! Form::text('var', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                                        {!! Form::label('address',trans($plang_admin.'.labels.address').':') !!}
+                                        {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                                     </div>
-                                    <span class="text-danger">{!! $errors->first('vat') !!}</span>
+                                    <span class="text-danger">{!! $errors->first('address') !!}</span>
                                     <!-- city text field -->
                                     <div class="form-group">
                                         {!! Form::label('city',trans($plang_admin.'.labels.city').':') !!}
                                         {!! Form::text('city', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                                     </div>
                                     <span class="text-danger">{!! $errors->first('city') !!}</span>
-                                    <!-- country text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('country',trans($plang_admin.'.labels.country').':') !!}
-                                        {!! Form::text('country', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('country') !!}</span>
+
                                     <!-- sex text field -->
                                     <div class="form-group">
                                         {!! Form::label('sex',trans($plang_admin.'.labels.sex').':') !!}
                                         <?php $sex_values = trans('acl-admin.sex'); ?>
-                                        {!! Form::select('sex', $sex_values, '', ["class" => "form-control"]) !!}
+                                        {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                                     </div>
                                     <span class="text-danger">{!! $errors->first('sex') !!}</span>
 
@@ -115,12 +99,7 @@
                                     </div>
                                     <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 
-                                    <!-- address text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('address',trans($plang_admin.'.labels.address').':') !!}
-                                        {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('address') !!}</span>
+
                                     {{-- custom profile fields --}}
                                     @foreach($custom_profile->getAllTypesWithValues() as $profile_data)
                                         <div class="form-group">

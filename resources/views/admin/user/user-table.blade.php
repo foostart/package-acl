@@ -5,9 +5,9 @@
         'email' => '30%',
         'first_name' => '15%',
         'last_name' => '15%',
-        'active' => '7%',
+        'active' => '10%',
         'status' => '5%',
-        'last_login' => '16%',
+        'last_login' => '13%',
     ];
 ?>
 <div class="panel panel-info">

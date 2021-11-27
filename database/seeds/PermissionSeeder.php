@@ -21,38 +21,29 @@ class PermissionSeeder extends Seeder
         $permission_repository->truncate();
 
         $permission1 = [
-            "description" => "superadmin",
+            "name" => "superadmin",
             "permission" => "_superadmin",
-            "url" => '',
-            "overview" => '',
         ];
         $permission_repository->create($permission1);
         $permission2 = [
-            "description" => "user editor",
+            "name" => "user editor",
             "permission" => "_user-editor",
-            "url" => '',
-            "overview" => '',
         ];
         $permission_repository->create($permission2);
         $permission3 = [
-            "description" => "group editor",
+            "name" => "group editor",
             "permission" => "_group-editor",
-            "url" => '',
-            "overview" => '',
+
         ];
         $permission_repository->create($permission3);
         $permission4 = [
-            "description" => "permission editor",
+            "name" => "permission editor",
             "permission" => "_permission-editor",
-            "url" => '',
-            "overview" => '',
         ];
         $permission_repository->create($permission4);
         $permission5 = [
-            "description" => "profile type editor",
+            "name" => "profile type editor",
             "permission" => "_profile-editor",
-            "url" => '',
-            "overview" => '',
         ];
         $permission_repository->create($permission5);
 
@@ -71,10 +62,8 @@ class PermissionSeeder extends Seeder
             $group_repository = App::make('group_repository');
             for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {
                 $permission = [
-                    "description" => "Permission test ".$i,
+                    "name" => "Permission test ".$i,
                     "permission" => "permission_test_".$i,
-                    "url" => '',
-                    "overview" => '',
                 ];
                 $permission_repository->create($permission);
             }

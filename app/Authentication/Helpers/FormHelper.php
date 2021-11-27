@@ -39,7 +39,7 @@ class FormHelper
 
     public function getSelectValuesPermission()
     {
-        return $this->getSelectValues("repository_permission", 'permission', 'description');
+        return $this->getSelectValues("repository_permission", 'permission', 'name');
     }
 
     public function getSelectValuesGroups()

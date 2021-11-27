@@ -43,6 +43,7 @@ $withs = [
             <!-- ID -->
             <?php $name = 'id' ?>
             <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.labels.'.$name) !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                         <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
@@ -92,9 +93,7 @@ $withs = [
         </tr>
         </thead>
         <tbody>
-        <?php
-        $counter = $permissions->perPage() * ($permissions->currentPage() - 1) + 1;
-        ?>
+        <?php $counter = $permissions->perPage() * ($permissions->currentPage() - 1) + 1;  ?>
         @foreach($permissions as $permission)
             <tr>
                 <td>
@@ -110,7 +109,7 @@ $withs = [
                     </a>
                 </td>
                 <td>{!! $permission->permission !!}</td>
-                <td>{!! $permission->description !!}</td>
+                <td>{!! $permission->name !!}</td>
                 <td class="text-center">
                     {!! $permission->deleted_at ? '<i class="fa fa-circle-o red" title="In trash"></i>' :
                                             '<i class="fa fa-circle green" title="Available"></i>' !!}

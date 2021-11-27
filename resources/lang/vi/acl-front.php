@@ -82,6 +82,17 @@ return [
 
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
+        'recovery-password' => 'Recovery password',
+        'login' => 'Internship',
+        'title-register-complelete' => 'Registration completed',
+        'title-password-recovery' => 'Password recovery',
+        'title-signup-email' => 'Registration request received',
+        'title-signup-success' => 'Registration completed',
+
+        'signup' => 'Signup',
+        'change-password' => 'Chanage password',
+        'change-password-success-title' => 'Change password success title',
+        'home-page' => 'Login page',
     ],
 
 
@@ -127,7 +138,7 @@ return [
         'group' => 'Group search',
         'btn-reset' => 'Reset',
         'btn-submit' => 'Search',
-        'btn-advance' => 'Search advance',
+        'btn-advance' => 'Advanced search',
     ],
 
 
@@ -141,13 +152,13 @@ return [
      */
     'labels' => [
         'email' => 'Email',
-        'first_name' => 'First name',
-        'last_name' => 'Last name',
+        'first_name' => 'Họ lót',
+        'last_name' => 'Tên',
         'full_name' => 'Full name',
         'active' => 'Active',
         'last_login' => 'Last login',
         'sorting' => 'Sorting',
-        'sex' => 'Sex',
+        'sex' => 'Giới tính',
         'category' => 'Category',
         'code' => 'User code',
         'group' => 'Group',
@@ -155,24 +166,24 @@ return [
         'login-data' => 'Login data',
         'password' => 'Password',
         'change-password' => 'Change password',
-        'confirm-password' => 'Confirm password',
+        'confirm_password' => 'Xác nhận lại mật khẩu',
         'confirm-change-password' => 'Confirm change password',
         'banned' => 'Banned',
         'user-profile' => 'User profile',
-        'new-password' => 'New password',
+        'new-password' => 'Mật khẩu mới',
         'user-data' => 'User data',
         'edit-user' => 'Edit user',
         'phone' => 'Phone',
         'state' => 'State',
         'vat' => 'Vat',
-        'city' => 'City',
+        'city' => 'Thành phố',
         'country' => 'Country',
         'level' => 'Level',
-        'address' => 'Address',
+        'address' => 'Địa chỉ',
         'custom-fields' => 'Custom fields',
-        'change-avt' => 'Change avatar',
-        'update-avt' => 'Update avatar',
-        'avatar' => 'Avatar',
+        'change-avt' => 'Cập nhật ảnh đại diện',
+        'update-avt' => 'Cập nhật',
+        'avatar' => 'Ảnh đại diện',
         'description' => 'Description',
         'link-url' => 'Link URL',
         'overview' => 'Overview',
@@ -182,6 +193,9 @@ return [
         'config' => 'Configurations',
         'filename' => 'File name',
         'order' => '#',
+        'recovery-email' => 'Recovery email',
+        'captcha' => 'Captcha',
+        'new_password' => 'Mật khẩu mới',
     ],
 
 
@@ -196,6 +210,19 @@ return [
         'user-delete' => 'Are you sure to delete this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
+        'change-password-success' => "Your password has been reset successfully.",
+        'try-again' => 'Please try again',
+        'token-valid' => 'Oops, something went wrong: the token is invalid',
+        'email-valid' => 'Oops, something went wrong: the email is invalid',
+        'register-success' => 'Congratulations, you successfully registered to',
+        'following-link' => ' Your email has been confirmed. Now you can login to the website using the',
+        'reminder-heading' => 'Request received',
+        'reminder-sent' => 'We sent you the information to recover your password. Please check your inbox.',
+        'signup-email-heading' => 'Request received',
+        'signup-email-info' => 'You account has been created. However, before you can use it you need to confirm your email address.<br/>
+            We sent you a confirmation email, please check your inbox.',
+        'signup-success-heading' => 'Congratulations, you successfully registered to',
+        'signup-success-info' => 'Your user has been registered succesfully. Now you can login to the website using the ',
     ],
 
 
@@ -335,6 +362,9 @@ return [
         'add' => 'Add',
         'save' => 'Save',
         'delete' => 'Delete',
+        'recover' => 'Recover',
+        'register' => 'Register',
+        'change_password' => 'Change password',
     ],
 
 
@@ -346,7 +376,11 @@ return [
     |
     */
     'error' => [
-        'login-failed' => 'The username or password entered is incorrect. Please try again',
+        'login-error-failed' => 'The username or password entered is incorrect. Please try again',
+        'login-error-required-field' => 'Login error required field',
+        'login-error-not-active' => 'Login error not active',
+        'login-error-required-password' => 'Login error required password',
+        'login-error-many-attempts' => 'Login error many attempts',
     ],
 
 ];

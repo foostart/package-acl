@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\App;
 class UserSeeder extends Seeder
 {
     protected $admin_email = "admin@admin.com";
-    protected $admin_password = "password";
+    protected $admin_password = "admin";
+    protected $admin_user_name = "admin";
 
     public function run()
     {
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
 
         $user_data = [
             "email" => $this->admin_email,
+            "user_name" => $this->admin_user_name,
             "password" => $this->admin_password,
             "activated" => 1
         ];

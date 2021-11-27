@@ -21,10 +21,10 @@ class PermissionRepositorySearchFilter
     private $groups_table_name = "groups";
     private $profile_table_name = "user_profile";
 
-    private $valid_ordering_fields = ['description', 'permission', 'url', 'id'];
+    private $valid_ordering_fields = ['permission', 'name',  'id'];
 
     //Check filter name is valid
-    private $valid_fields_filter = ['description', 'permission', 'url', 'category_id', 'id'];
+    private $valid_fields_filter = ['name', 'permission', 'category_id', 'id', 'keyword'];
 
     public function __construct($per_page = 5)
     {
@@ -87,6 +87,11 @@ class PermissionRepositorySearchFilter
                                 $q = $q->where($this->permissions_table_name . '.description', 'LIKE', "%{$value}%");
                             }
                             break;
+                        case 'name':
+                            if (!empty($value)) {
+                                $q = $q->where($this->permissions_table_name . '.name', 'LIKE', "%{$value}%");
+                            }
+                            break;
                         case 'category_id':
                             if (!empty($value)) {
                                 $q = $q->where($this->permissions_table_name . '.category_id', '=', "$value");
@@ -97,17 +102,12 @@ class PermissionRepositorySearchFilter
                                 $q = $q->where($this->permissions_table_name . '.permission', 'LIKE', "%{$value}%");
                             }
                             break;
-                        case 'url':
-                            if (!empty($value)) {
-                                $q = $q->where($this->permissions_table_name . '.permission', 'LIKE', "%{$value}%");
-                            }
-                            break;
                         case 'keyword':
                             if (!empty($value)) {
                                 $q = $q->where(function ($q) use ($value) {
-                                    $q->where($this->permissions_table_name . '.description', 'LIKE', "%{$value}%")
+                                    $q->where($this->permissions_table_name . '.name', 'LIKE', "%{$value}%")
                                         ->orWhere($this->permissions_table_name . '.permission', 'LIKE', "%{$value}%")
-                                        ->orWhere($this->permissions_table_name . '.url', 'LIKE', "%{$value}%");
+                                        ->orWhere($this->permissions_table_name . '.description', 'LIKE', "%{$value}%");
                                 });
                             }
                             break;

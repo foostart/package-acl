@@ -30,29 +30,16 @@ class PermissionController extends Controller
         $this->v = $v;
         $this->f = new FormModel($this->v, $this->r);
 
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_1['label'] = 'Admin';
-        $this->breadcrumb_2['label'] = 'Permissions';
     }
 
     public function getList(Request $request)
     {
-        /**
-         * Breadcrumb
-         */
-        $this->breadcrumb_3 = NULL;
-
         $objs = $this->r->all($request->all());
 
         // display view
         $this->data_view = array_merge($this->data_view, array(
             "permissions" => $objs,
             "request" => $request,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
         ));
         return View::make('package-acl::admin.permission.list')->with($this->data_view);
     }
@@ -73,9 +60,7 @@ class PermissionController extends Controller
         // display view
         $this->data_view = array_merge($this->data_view, array(
             "permission" => $obj,
-            'breadcrumb_1' => $this->breadcrumb_1,
-            'breadcrumb_2' => $this->breadcrumb_2,
-            'breadcrumb_3' => $this->breadcrumb_3,
+            'request' => $request
         ));
         return View::make('package-acl::admin.permission.edit')->with($this->data_view);
     }

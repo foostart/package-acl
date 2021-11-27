@@ -25,7 +25,7 @@
             <div class="input-group">
                 <span class="input-group-addon form-button button-del-perm" name="{!! $permission->permission !!}"><span
                         class="glyphicon glyphicon-minus-sign add-input"></span></span>
-                {!! Form::text('permission_desc', $permission->description, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+                {!! Form::text('permission_desc', $permission->name, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
                 {!! Form::hidden('permissions', $permission->permission) !!}
                 {!! Form::hidden('id', $group->id) !!}
                 {{-- add permission operation --}}

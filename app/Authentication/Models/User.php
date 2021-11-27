@@ -14,6 +14,7 @@ class User extends CartaUser
 
     protected $fillable = [
         "email",
+        "user_name",
         "password",
         "permissions",
         "activated",

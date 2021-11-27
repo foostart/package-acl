@@ -53,7 +53,10 @@ View::composer(['package-acl::admin.group.list'], function ($view) use ($plang_a
 /**
  * Permission table
  */
-View::composer(['package-acl::admin.permission.list'], function ($view) use ($plang_admin, $plang_front) {
+View::composer([
+        'package-acl::admin.permission.list',
+        'package-acl::admin.permission.edit',
+    ], function ($view) use ($plang_admin, $plang_front) {
 
     //List of sorting
     $orders = [

@@ -21,11 +21,14 @@ class CreatePermissionTable extends FoostartMigration
         Schema::create($this->table, function (Blueprint $table) {
 
             $table->increments('id');
-            $table->string('overview', 500);
-            $table->text('description');
-            $table->string('url', 255);
-            $table->string('permission');
+
+            // Relation
+            $table->integer('category_id')->nullable()->comment('Category ID');
+
+            $table->string('name')->comment('Permission name');
+            $table->string('permission')->comment('Permission slug');
             $table->boolean('protected')->default(0);
+            $table->text('description')->nullable()->comment('Permission description');
 
             // Set common columns
             $this->setCommonColumns($table);
