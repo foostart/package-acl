@@ -202,3 +202,7 @@ div.paginator {
 .my-acl-form .input-group-addon i {
     width: 15px;
 }
+
+.btn-delete-top {
+    min-height: 50px;
+}
