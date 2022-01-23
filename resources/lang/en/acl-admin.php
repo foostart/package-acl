@@ -32,6 +32,8 @@ return [
         'pattern' => 'Pattern',
         'pexcel' => 'Pexcel',
         'company' => 'Company',
+        'posts' => 'Posts',
+        'dashboard' => 'Dashboard',
     ],
 
     /***********************************************************************
