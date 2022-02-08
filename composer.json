@@ -18,7 +18,7 @@
     ],
     "license": "MIT",
     "require": {
-        "laravelcollective/html": "6.2.1",
+        "foostart/package-collectivehtml": "*",
         "intervention/image": "2.*",
         "foostart/package-category": "*",
         "foostart/package-sentry": "*",
