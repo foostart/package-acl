@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
      */
     private function createSampleData() {
 
-        $isCreateSampleData =  env('DB_SAMPLE_TEST', FoostartConstants::IS_CREATE_SAMPLE_DATA);
+        $isCreateSampleData =  env('DB_SAMPLE_TEST');
         if ($isCreateSampleData == FoostartConstants::IS_CREATE_SAMPLE_DATA) {
 
             $user_repository = App::make('user_repository');

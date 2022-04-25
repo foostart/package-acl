@@ -24,6 +24,7 @@ class CreateUserProfileTable extends FoostartMigration
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
             $table->string('phone', 20)->nullable();
+            $table->string('device_token', 500)->nullable();
             $table->integer('category_id')->nullable();
             $table->integer('level_id')->nullable();
             $table->binary('avatar')->nullable();

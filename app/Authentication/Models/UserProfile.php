@@ -27,6 +27,7 @@ class UserProfile extends BaseModel
         'sex',
         'category_id',
         'level_id',
+        'device_token',
     ];
     protected $context_key;
 

@@ -115,6 +115,13 @@
                                         {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
                                     </div>
                                     <span class="text-danger">{!! $errors->first('sex') !!}</span>
+                                    <!-- device_token text field -->
+                                    <div class="form-group">
+                                        {!! Form::label('device_token',trans($plang_admin.'.labels.device_token').':') !!}
+                                        {!! Form::text('device_token', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                                    </div>
+                                    <span class="text-danger">{!! $errors->first('device_token') !!}</span>
+
                                     <!-- level text field -->
                                     <div class="form-group">
 

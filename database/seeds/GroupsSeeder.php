@@ -50,7 +50,7 @@ class GroupsSeeder extends Seeder
      * Create sample data for testing
      */
     private function createSampleData() {
-       $isCreateSampleData =  env('DB_SAMPLE_TEST', FoostartConstants::IS_CREATE_SAMPLE_DATA);
+       $isCreateSampleData =  env('DB_SAMPLE_TEST');
        if ($isCreateSampleData == FoostartConstants::IS_CREATE_SAMPLE_DATA) {
            $group_repository = App::make('group_repository');
             for($i = 0; $i < FoostartConstants::SAMPLE_DATA_SIZE; $i++) {

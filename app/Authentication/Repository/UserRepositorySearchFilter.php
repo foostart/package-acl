@@ -25,6 +25,7 @@ class UserRepositorySearchFilter
     private $valid_fields_filter = [
         'keyword',
         'level_id',
+        'device_token',
         'email',
         'user_name',
         'full_name',
@@ -148,6 +149,11 @@ class UserRepositorySearchFilter
                         case 'level_id':
                             if (!empty($value)) {
                                 $q = $q->where($this->profile_table_name . '.level_id', $input_filter['level_id']);
+                            }
+                            break;
+                        case 'device_token':
+                            if (!empty($value)) {
+                                $q = $q->where($this->profile_table_name . '.device_token', $input_filter['device_token']);
                             }
                             break;
                         case 'sex':
