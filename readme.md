@@ -4,6 +4,9 @@ git remote set-url origin git@github.com-foostart:foostart/package-acl.git
 * Verson: 8.x
 * Support: Laravel 8x
 * Contact _**foostart.com@gmail.com**_ to support other versions
+* References: 
+- https://cartalyst.com
+- https://sentry.io
 
 ## Requirements
 

@@ -18,10 +18,11 @@
     ],
     "license": "MIT",
     "require": {
-        "laravelcollective/html": "6.2.1",
+        "foostart/package-collectivehtml": "*",
         "intervention/image": "2.*",
         "foostart/package-category": "*",
         "foostart/package-sentry": "*",
+        "foostart/package-pexcel": "*",
         "gregwar/captcha": "1.1.9"
     },
     "require-dev": {
