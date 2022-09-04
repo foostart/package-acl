@@ -1,6 +1,7 @@
 @font-face {
-    font-family: bariolThin;
-    src: url('/packages/foostart/fonts/Bariol_Thin.otf');
+    /*font-family: bariolThin;*/
+    font-family: Arial;
+    /*src: url('/packages/foostart/fonts/Bariol_Thin.otf');*/
 }
 
 @font-face {

@@ -211,6 +211,7 @@ return [
      */
     'labels' => [
         'email' => 'Email',
+        'device_token' => 'Device token',
         'start_date' => 'Start date',
         'end_date' => 'End date',
         'first_name' => 'First name',
