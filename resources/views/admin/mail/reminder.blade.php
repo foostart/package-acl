@@ -6,10 +6,11 @@
     {!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
 </head>
 <body>
-<h2>Password recovery for {!! Config::get('acl_base.app_name') !!}</h2>
+<h2>{!! Config::get('acl_base.app_name') !!}</h2>
 <div>
-    We received a request to change your password, if you authorize it {!! $body !!}<br/>
-    Otherwise ignore this email.
+    Nếu bạn đã gửi yêu cầu khôi phục mật khẩu từ Hệ thống quản lý thực tập của Khoa CNTT Trường Cao đẳng Công nghệ Thủ Đức,
+    {!! $body !!} để khôi phục mật khẩu.<br/>
+    Nếu bạn không gửi yêu cầu, có thể bỏ qua email này.
 </div>
 </body>
 </html>

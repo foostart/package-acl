@@ -50,7 +50,7 @@ View::composer([
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.add-user') => [
-            'url' => URL::route('users.edit'),
+            'url' => URL::route('users.editGet'),
             'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.upload-user') => [
@@ -66,7 +66,7 @@ View::composer([
             'icon' => '<i class="fa fa-bars" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.user-lang') => [
-            'url' => URL::route('users.lang', []),
+            'url' => URL::route('users.langGet', []),
             'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
         ],
     ]);
@@ -81,7 +81,7 @@ View::composer(['package-acl::admin.group.*'], function ($view) use ($plang_admi
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.add-group') => [
-            'url' => URL::route('groups.edit'),
+            'url' => URL::route('groups.editGet'),
             'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
         ]
     ]);
@@ -98,7 +98,7 @@ View::composer(['package-acl::admin.permission.*'], function ($view) use ($plang
             'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.add-permission') => [
-            'url' => URL::route('permissions.edit'),
+            'url' => URL::route('permissions.editGet'),
             'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.category') => [

@@ -21,7 +21,7 @@
                     @endforeach
                 @endif
                 <div class="my-acl-form panel-body">
-                    {!! Form::open(array('url' => URL::route("user.login"), 'method' => 'post') ) !!}
+                    {!! Form::open(array('url' => URL::route("user.loginPost"), 'method' => 'post') ) !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <!--email-->
@@ -30,7 +30,7 @@
                                         'placeholder' => trans($plang_front.'.labels.email'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                         'required' => true,
-                                        'errors' => $errors                                        
+                                        'errors' => $errors
                                     ])
 
                         </div>

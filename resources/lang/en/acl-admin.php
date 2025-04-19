@@ -10,6 +10,7 @@ return [
      */
     'breadcrumbs' => [
         'admin' => 'Admin',
+        'branch' => 'Branch',
         'diary' => 'Diary',
         'edit_company' => 'Edit company',
         'internship' => 'Internship',
@@ -34,6 +35,8 @@ return [
         'company' => 'Company',
         'posts' => 'Posts',
         'dashboard' => 'Dashboard',
+        'styles' => 'Styles',
+        'slideshows' => 'Slideshows',
     ],
 
     /***********************************************************************
@@ -45,6 +48,7 @@ return [
      */
     'menu' => [
         'dashboard' => 'Dashboard',
+        'branch' => 'Branch',
         'internship' => 'Internship',
         'course' => 'Course',
         'users' => 'Users',
@@ -58,6 +62,7 @@ return [
         'contexts' => 'Contexts',
         'pexcel' => 'Pexcels',
         'company' => 'Company',
+        'slideshow' => 'Slideshow',
     ],
 
 
@@ -258,6 +263,7 @@ return [
         'id' => 'ID',
         'keyword' => 'Keyword',
         'counter' => '#',
+        'suspended' => 'Suspended',
     ],
 
 
@@ -273,6 +279,7 @@ return [
         'user-restore' => 'Are you sure to restore this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
+        'captcha-error' => 'The captcha is not valid, please try again.'
     ],
 
 

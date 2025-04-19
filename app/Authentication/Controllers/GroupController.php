@@ -85,9 +85,9 @@ class GroupController extends Controller
         } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
-            return Redirect::route("groups.edit", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
+            return Redirect::route("groups.editGet", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
         }
-        return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
+        return Redirect::route('groups.editGet', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
     }
 
     /**
@@ -120,7 +120,7 @@ class GroupController extends Controller
             $errors = $this->f->getErrors();
             return Redirect::route('groups.list')->withErrors($errors);
         }
-        return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
+        return Redirect::route('groups.editGet', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_edit_success'));
     }
 
     public function editPermission(Request $request)
@@ -136,6 +136,6 @@ class GroupController extends Controller
         } catch (JacopoExceptionsInterface $e) {
             return Redirect::route("users.groups.edit")->withInput()->withErrors(new MessageBag(["permissions" => Config::get('acl_messages.flash.error.group_permission_not_found')]));
         }
-        return Redirect::route('groups.edit', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_permission_edit_success'));
+        return Redirect::route('groups.editGet', ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.group_permission_edit_success'));
     }
 }

@@ -28,7 +28,7 @@ Route::group(['middleware' => ['web']], function () {
         "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getAdminLogin'
     ]);
     Route::get('/login', [
-        "as" => "user.login",
+        "as" => "user.loginGet",
         "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@getClientLogin'
     ]);
     Route::get('/user/logout', [
@@ -41,7 +41,7 @@ Route::group(['middleware' => ['web']], function () {
     ]);
     Route::post('/login', [
         "uses" => 'Foostart\Acl\Authentication\Controllers\AuthController@postClientLogin',
-        "as" => "user.login"
+        "as" => "user.loginPost"
     ]);
 
     /**
@@ -135,11 +135,11 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@getList'
         ]);
         Route::get('/admin/users/edit', [
-            'as' => 'users.edit',
+            'as' => 'users.editGet',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editUser'
         ]);
         Route::post('/admin/users/edit', [
-            'as' => 'users.edit',
+            'as' => 'users.editPost',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@postEditUser'
         ]);
         Route::get('/admin/users/delete', [
@@ -168,7 +168,7 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@editProfile'
         ]);
         Route::post('/admin/users/profile/edit', [
-            'as' => 'users.profile.edit',
+            'as' => 'users.profile.editPost',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@postEditProfile'
         ]);
         Route::post('/admin/users/profile/addField', [
@@ -193,12 +193,12 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         Route::get('/admin/users/lang', [
-            'as' => 'users.lang',
+            'as' => 'users.langGet',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@lang'
         ]);
 
         Route::post('/admin/users/lang', [
-            'as' => 'users.lang',
+            'as' => 'users.langPost',
             'uses' => 'Foostart\Acl\Authentication\Controllers\UserController@lang'
         ]);
 
@@ -210,11 +210,11 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@getList'
         ]);
         Route::get('/admin/groups/edit', [
-            'as' => 'groups.edit',
+            'as' => 'groups.editGet',
             'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@editGroup'
         ]);
         Route::post('/admin/groups/edit', [
-            'as' => 'groups.edit',
+            'as' => 'groups.editPost',
             'uses' => 'Foostart\Acl\Authentication\Controllers\GroupController@postEditGroup'
         ]);
         Route::get('/admin/groups/delete', [
@@ -238,11 +238,11 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@getList'
         ]);
         Route::get('/admin/permissions/edit', [
-            'as' => 'permissions.edit',
+            'as' => 'permissions.editGet',
             'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@editPermission'
         ]);
         Route::post('/admin/permissions/edit', [
-            'as' => 'permissions.edit',
+            'as' => 'permissions.editPost',
             'uses' => 'Foostart\Acl\Authentication\Controllers\PermissionController@postEditPermission'
         ]);
         Route::get('/admin/permissions/delete', [

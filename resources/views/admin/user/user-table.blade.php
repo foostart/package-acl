@@ -177,7 +177,7 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <a href="{!! URL::route('users.edit', ['id' => $user->id]) !!}">
+                                        <a href="{!! URL::route('users.editGet', ['id' => $user->id]) !!}">
                                             {!! $user->id !!}
                                         </a>
                                     </td>

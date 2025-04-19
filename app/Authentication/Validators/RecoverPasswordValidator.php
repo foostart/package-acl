@@ -17,6 +17,7 @@ class RecoverPasswordValidator extends AbstractValidator
     public function __construct()
     {
         $enable_captcha = Config::get('acl_base.captcha_signup');
+        static::$messages['mail_recover'] =  trans('acl-front.messages.email-not-found');
         if ($enable_captcha) {
             $this->addCaptchaRule();
         }

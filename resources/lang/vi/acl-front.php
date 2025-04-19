@@ -82,10 +82,10 @@ return [
 
         'title-config' => 'Current configurations',
         'title-lang' => 'Manage languages',
-        'recovery-password' => 'Recovery password',
-        'login' => 'ACL',
+        'recovery-password' => 'Khôi phục mật khẩu',
+        'login' => 'Internship',
         'title-register-complelete' => 'Registration completed',
-        'title-password-recovery' => 'Password recovery',
+        'title-password-recovery' => 'Khôi phục mật khẩu',
         'title-signup-email' => 'Registration request received',
         'title-signup-success' => 'Registration completed',
 
@@ -193,7 +193,7 @@ return [
         'config' => 'Configurations',
         'filename' => 'File name',
         'order' => '#',
-        'recovery-email' => 'Recovery email',
+        'recovery-email' => 'Nhập email cần khôi phục mật khẩu',
         'captcha' => 'Captcha',
         'new_password' => 'Mật khẩu mới',
     ],
@@ -207,6 +207,7 @@ return [
      */
     'messages' => [
         'message-last-login' => 'not logged yet.',
+        'email-not-found' => 'Không tìm thấy email, vui lòng kiểm tra lại email khôi phục',
         'user-delete' => 'Are you sure to delete this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
@@ -216,8 +217,8 @@ return [
         'email-valid' => 'Oops, something went wrong: the email is invalid',
         'register-success' => 'Congratulations, you successfully registered to',
         'following-link' => ' Your email has been confirmed. Now you can login to the website using the',
-        'reminder-heading' => 'Request received',
-        'reminder-sent' => 'We sent you the information to recover your password. Please check your inbox.',
+        'reminder-heading' => 'Khôi phục mật khẩu',
+        'reminder-sent' => 'Hệ thống quản lý thực tập đã gửi thông tin khôi phục mật khẩu đến email đã đăng ký, vui lòng kiểm tra email và thực hiện.',
         'signup-email-heading' => 'Request received',
         'signup-email-info' => 'You account has been created. However, before you can use it you need to confirm your email address.<br/>
             We sent you a confirmation email, please check your inbox.',
@@ -362,7 +363,7 @@ return [
         'add' => 'Add',
         'save' => 'Save',
         'delete' => 'Delete',
-        'recover' => 'Recover',
+        'recover' => 'Khôi phục',
         'register' => 'Register',
         'change_password' => 'Change password',
     ],

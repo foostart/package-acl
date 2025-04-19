@@ -74,10 +74,10 @@ class PermissionController extends Controller
         } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
-            return Redirect::route("permissions.edit", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
+            return Redirect::route("permissions.editGet", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
         }
 
-        return Redirect::route("permissions.edit", ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.permission_permission_edit_success'));
+        return Redirect::route("permissions.editGet", ["id" => $obj->id])->withMessage(Config::get('acl_messages.flash.success.permission_permission_edit_success'));
     }
 
     /**

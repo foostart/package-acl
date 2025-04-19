@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'title' => [
+        'app-name' => 'H? th?ng qu?n lý th?c t?p'
+    ],
+
     "email" => [
         /*
         |--------------------------------------------------------------------------
@@ -22,7 +26,7 @@ return [
         /*
          * User password recovery
          */
-        "user_password_recovery_subject" => "Password recovery request",
+        "user_password_recovery_subject" => "[H? th?ng qu?n lý th?c t?p] G?i yêu c?u khôi ph?c m?t kh?u",
     ],
 
     /*
@@ -81,6 +85,6 @@ return [
     |
     */
     "links" => [
-        "change_password" => "Click here to change your password."
+        "change_password" => "Click vào dây"
     ]
 ];

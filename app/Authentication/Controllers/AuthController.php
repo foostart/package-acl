@@ -29,7 +29,7 @@ class AuthController extends Controller
      */
     public function getClientLogin(Request $request)
     {
-        //User loged
+        //User logged
         if ($this->authenticator->check()) {
             return Redirect::to(Config::get('acl_base.user_login_redirect_url'));
         }
@@ -110,7 +110,7 @@ class AuthController extends Controller
                 $errors = $this->authenticator->getErrors();
             }
 
-            return redirect()->route("user.login")->withInput()->withErrors($errors);
+            return redirect()->route("user.loginGet")->withInput()->withErrors($errors);
         }
 
         return Redirect::to(Config::get('acl_base.user_login_redirect_url'));
@@ -143,7 +143,8 @@ class AuthController extends Controller
 
             $captcha = App::make('captcha_validator');
             $data_view = array_merge($data_view, array(
-                'captcha' => $captcha
+                'captcha' => $captcha,
+                'email' => $request->get('email')
             ));
 
             return view('package-acl::client.auth.reminder', $data_view);
@@ -162,14 +163,12 @@ class AuthController extends Controller
 
         $validator_recovery = new RecoverPasswordValidator();
         $params = $request->all();
-
+        $email = $request->get('email');
         if (!$validator_recovery->validate($params)) {
             $errors = $validator_recovery->getErrors();
-            return redirect()->route("user.recovery-password")->withErrors($errors);
+            return redirect()->route("user.recovery-password", ['email' => $email])->withErrors($errors);
 
         } else {
-            $email = $request->get('email');
-
             try {
                 $this->reminder->send($email);
                 return redirect()->route("user.reminder-success");

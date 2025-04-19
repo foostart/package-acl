@@ -111,7 +111,7 @@ $withs = [
                     </span>
                 </td>
                 <td>
-                    <a href="{!! URL::route('groups.edit', ['id' => $group->id, '_token' => csrf_token()]) !!}">
+                    <a href="{!! URL::route('groups.editGet', ['id' => $group->id, '_token' => csrf_token()]) !!}">
                         {!! $group->id !!}
                     </a>
 

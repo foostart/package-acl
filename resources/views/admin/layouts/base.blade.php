@@ -17,6 +17,8 @@
 {!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
 {!! HTML::style('packages/foostart/css/package-category.css') !!}
 
+{!! HTML::script('packages/foostart/js/vendor/jquery-2.2.4.min.js') !!}
+{!! HTML::script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') !!}
 @yield('head_css')
 {{-- End head css --}}
 
@@ -38,9 +40,6 @@
 
 {{-- Start footer scripts --}}
 @yield('before_footer_scripts')
-
-{!! HTML::script('packages/foostart/js/vendor/jquery-2.2.4.min.js') !!}
-{!! HTML::script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') !!}
 
 @yield('footer_scripts')
 {{-- End footer scripts --}}

@@ -29,7 +29,7 @@
                 <div class="panel-body">
                     <div class="col-md-6 col-xs-6">
                         <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
-                    {!! Form::model($user, [ 'url' => URL::route('users.edit')] )  !!}
+                    {!! Form::model($user, [ 'url' => URL::route('users.editPost')] )  !!}
                     {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                     {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
                     {!! Form::hidden('id') !!}
@@ -77,6 +77,14 @@
                                     {!! Form::select('banned', ["1" => "Yes", "0" => "No"], (isset($user->banned) && $user->banned) ? $user->banned : "0", ["class"=> "form-control"] ) !!}
                                 </div>
                             </div>
+                            @if(isset($user->suspended) && $user->suspended)
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label("suspended",trans($plang_admin.'.labels.suspended').':') !!}
+                                        {!! Form::checkbox('suspended',trans($plang_admin.'.labels.suspended') , (isset($user->suspended) && $user->suspended) ? true : false) !!}
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         <!-- End status -->
 

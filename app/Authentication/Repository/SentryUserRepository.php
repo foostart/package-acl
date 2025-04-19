@@ -196,7 +196,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
     }
 
     /**
-     *
+     * Check user leader
      */
     public function isLeader()
     {

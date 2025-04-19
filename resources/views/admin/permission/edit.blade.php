@@ -26,7 +26,7 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    {!! Form::model($permission, [ 'url' => [URL::route('permissions.edit'), $permission->id], 'method' => 'post'] )  !!}
+                    {!! Form::model($permission, [ 'url' => [URL::route('permissions.editPost'), $permission->id], 'method' => 'post'] )  !!}
                     {!! Form::hidden('id') !!}
                     <div clas="row">
                         <div class="col-md-12">

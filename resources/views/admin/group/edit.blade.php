@@ -27,7 +27,7 @@
                         <div class="col-md-4 col-xs-6">
                             {{-- group base form --}}
                             <h4>{!! trans($plang_admin.'.labels.general-data') !!}</h4>
-                            {!! Form::model($group, [ 'url' => [URL::route('groups.edit'), $group->id], 'method' => 'post'] ) !!}
+                            {!! Form::model($group, [ 'url' => [URL::route('groups.editPost'), $group->id], 'method' => 'post'] ) !!}
                         <!-- name text field -->
                             <div class="form-group">
                                 {!! Form::label('name',trans($plang_admin.'.labels.group-name').':*') !!}

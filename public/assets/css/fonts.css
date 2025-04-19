@@ -1,7 +1,6 @@
 @font-face {
-    /*font-family: bariolThin;*/
-    font-family: Arial;
-    /*src: url('/packages/foostart/fonts/Bariol_Thin.otf');*/
+    font-family: bariolThin;
+    src: url('/packages/foostart/fonts/Bariol_Thin.otf');
 }
 
 @font-face {
@@ -15,7 +14,7 @@
 }
 
 .bariol-thin {
-    font-family: bariolThin
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 .bariol-bold {

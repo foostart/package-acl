@@ -6,7 +6,7 @@
  */
 abstract class CaptchaValidator implements CaptchaValidatorInterface
 {
-    protected $error_message = "The captcha is not valid, please try again.";
+    protected $error_message;
 
     public function validateCaptcha($attribute, $value)
     {
@@ -19,6 +19,14 @@ abstract class CaptchaValidator implements CaptchaValidatorInterface
     public function getErrorMessage()
     {
         return $this->error_message;
+    }
+
+    public function setErrorMessage($message = '') {
+        $this->error_message =  trans('acl-admin.messages.captcha-error');
+        if (!empty($message)) {
+            $this->error_message = $message;
+        }
+
     }
 
     abstract public function getValue();

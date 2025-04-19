@@ -28,7 +28,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="{!! URL::route('users.edit',['id' => $user_profile->user_id]) !!}"
+                            <a href="{!! URL::route('users.editGet',['id' => $user_profile->user_id]) !!}"
                                class="btn btn-info pull-right"><i
                                     class="fa fa-pencil-square-o"></i> {!! trans($plang_admin.'.labels.edit-user') !!}
                             </a>

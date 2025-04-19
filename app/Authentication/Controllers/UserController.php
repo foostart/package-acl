@@ -6,6 +6,9 @@
  * @author Foostart foostart.com@gmail.com
  */
 
+use Cartalyst\Sentry\Hashing\NativeHasher;
+use Cartalyst\Sentry\Throttling\Eloquent\Provider as ThrottleProvider;
+use Cartalyst\Sentry\Users\Eloquent\Provider as UserProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Foostart\Acl\Authentication\Exceptions\PermissionException;
@@ -111,7 +114,7 @@ class UserController extends Controller
     }
 
     /**
-     *
+     * Submit user profile form
      * @param Request $request
      * @return mixed
      */
@@ -123,16 +126,24 @@ class UserController extends Controller
         try {
             $user = $this->f->process($request->all());
             $this->profile_repository->attachEmptyProfile($user);
+            // Reset suspended
+            $isResetSuspened = $request->get('suspended', null) ? false : true;
+            if ($isResetSuspened) {
+                $userProvider = new UserProvider(new NativeHasher);
+                $throttleProvider = new ThrottleProvider($userProvider);
+                $throttle = $throttleProvider->findByUserId($user->id);
+                $throttle->unsuspend();
+            }
         } catch (JacopoExceptionsInterface $e) {
             DbHelper::rollback();
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
-            return Redirect::route("users.edit", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
+            return Redirect::route("users.editGet", $id ? ["id" => $id] : [])->withInput()->withErrors($errors);
         }
 
         DbHelper::commit();
 
-        return Redirect::route('users.edit', ["id" => $user->id])
+        return Redirect::route('users.editGet', ["id" => $user->id])
             ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
@@ -168,7 +179,7 @@ class UserController extends Controller
             $errors = $this->f->getErrors();
             return Redirect::route('users.list')->withErrors($errors);
         }
-        return Redirect::route('users.edit', ["id" => $user->id])
+        return Redirect::route('users.editGet', ["id" => $user->id])
             ->withMessage(Config::get('acl_messages.flash.success.user_edit_success'));
     }
 
@@ -180,10 +191,10 @@ class UserController extends Controller
         try {
             $this->user_repository->addGroup($user_id, $group_id);
         } catch (JacopoExceptionsInterface $e) {
-            return Redirect::route('users.edit', ["id" => $user_id])
+            return Redirect::route('users.editGet', ["id" => $user_id])
                 ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
         }
-        return Redirect::route('users.edit', ["id" => $user_id])
+        return Redirect::route('users.editGet', ["id" => $user_id])
             ->withMessage(Config::get('acl_messages.flash.success.user_group_add_success'));
     }
 
@@ -200,10 +211,10 @@ class UserController extends Controller
         try {
             $this->user_repository->removeGroup($user_id, $group_id);
         } catch (JacopoExceptionsInterface $e) {
-            return Redirect::route('users.edit', ["id" => $user_id])
+            return Redirect::route('users.editGet', ["id" => $user_id])
                 ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
         }
-        return Redirect::route('users.edit', ["id" => $user_id])
+        return Redirect::route('users.editGet', ["id" => $user_id])
             ->withMessage(Config::get('acl_messages.flash.success.user_group_delete_success'));
     }
 
@@ -218,10 +229,10 @@ class UserController extends Controller
         try {
             $obj = $this->user_repository->update($id, $input);
         } catch (JacopoExceptionsInterface $e) {
-            return Redirect::route("users.edit")->withInput()
+            return Redirect::route("users.editGet")->withInput()
                 ->withErrors(new MessageBag(["permissions" => Config::get('acl_messages.flash.error.user_permission_not_found')]));
         }
-        return Redirect::route('users.edit', ["id" => $obj->id])
+        return Redirect::route('users.editGet', ["id" => $obj->id])
             ->withMessage(Config::get('acl_messages.flash.success.user_permission_add_success'));
     }
 

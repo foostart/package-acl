@@ -20,7 +20,7 @@ class SwiftMailer implements MailerInterface
     {
         try {
             App::make('mailer')->send($template, ["body" => $body], function ($message) use ($to, $subject) {
-                $message->to($to)->subject($subject)->from('ptnhuan@gmail.com', 'Package Acl');
+                $message->to($to)->subject($subject)->from('ptnhuan@gmail.com', 'H? th?ng qu?n lı th?c t?p');
             });
         } catch (Swift_TransportException $e) {
             Log::error('Cannot send the email:' . $e->getMessage());

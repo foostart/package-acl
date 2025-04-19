@@ -1,9 +1,9 @@
 <!--
-| @TITLE
+| TITLE
 | Recovery password
 |
 |-------------------------------------------------------------------------------
-| @REQUIRED
+| REQUIRED
 |
 |
 |÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷
@@ -27,14 +27,6 @@
                     </h3>
                 </div>
 
-                @if($errors && ! $errors->isEmpty() )
-                    @foreach($errors->all() as $error)
-
-                        <div class="alert alert-danger">{{$error}}</div>
-
-                    @endforeach
-                @endif
-
                 <div class="my-acl-form panel-body">
 
                     {!! Form::open(array('url' => URL::route("user.reminder"), 'method' => 'post') ) !!}
@@ -45,10 +37,10 @@
                             <!--email-->
                             @include('package-category::front.partials.input_text', [
                                         'name' => 'email',
+                                        'value' => $email,
                                         'placeholder' => trans($plang_front.'.labels.recovery-email'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                         'required' => true,
-                                        'errors' => $errors
                                     ])
                         </div>
                     </div>
@@ -62,7 +54,6 @@
                                     'placeholder' => trans($plang_front.'.labels.captcha'),
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
                                     'required' => true,
-                                    'errors' => $errors,
                                     'password' => true
                                 ])
                             </div>
@@ -88,7 +79,7 @@
                     {!! Form::close() !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            <a href="{!! URL::route('user.login') !!}">
+                            <a href="{!! URL::route('user.loginGet') !!}">
                                 <i class="fa fa-arrow-left"></i>
                                 {!! trans($plang_front.'.pages.login') !!}
                             </a>

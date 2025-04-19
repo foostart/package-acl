@@ -74,7 +74,7 @@ return [
             "name" => "acl-admin.menu.permissions",
             "route" => "permissions",
             "link" => '/admin/permissions',
-            "permissions" => [$admin, "_permission-editor"]
+            "permissions" => [$admin]
         ],
 
         //Contexts
@@ -100,12 +100,63 @@ return [
             "permissions" => [$admin, "_permission-editor"]
         ],
 
+        //Crawler site
+        [
+            "name" => "acl-admin.menu.sites",
+            "route" => "crawler.site",
+            "link" => '/admin/crawler/site',
+            "permissions" => [$admin]
+        ],
+
+        //Crawler work
+        [
+            "name" => "acl-admin.menu.crawler_works_jobs",
+            "route" => "crawler.work.job",
+            "link" => '/admin/crawler/work/job',
+            "permissions" => [$admin]
+        ],
+
         //Pexcel
         [
             "name" => "acl-admin.menu.pexcel",
             "route" => "pexcel",
             "link" => '/admin/pexcel',
-            "permissions" => [$admin, "_permission-editor"]
+            "permissions" => [$admin]
+        ],
+        // Company
+        [
+            "name" => "acl-admin.menu.company",
+            "route" => "company",
+            "link" => '/admin/company',
+            "permissions" => [$admin]
+        ],
+        // Course
+        [
+            "name" => "acl-admin.menu.course",
+            "route" => "course",
+            "link" => '/admin/courses',
+            "permissions" => [$admin]
+        ],
+        // Courses by teacher
+        [
+            "name" => "acl-admin.menu.course",
+            "route" => "teacher.course",
+            "link" => '/admin/courses/list',
+            "permissions" => [$admin, "_teacher"]
+        ],
+        // Internship
+        [
+            "name" => "acl-admin.menu.internship",
+            "route" => "internship",
+            "link" => '/admin/internship',
+            "permissions" => []
+        ],
+        // Forums
+        [
+            "name" => "acl-admin.menu.forum",
+            "route" => "forums",
+            "link" => '/admin/forums',
+            "permissions" => []
         ],
     ]
 ];

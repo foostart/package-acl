@@ -36,6 +36,7 @@ return [
         'pattern' => 'Pattern',
         'pexcel' => 'Pexcel',
         'company' => 'Company',
+        'forums' => 'Hỏi - đáp',
     ],
 
     /***********************************************************************
@@ -60,6 +61,7 @@ return [
         'contexts' => 'Contexts',
         'pexcel' => 'Pexcels',
         'company' => 'Company',
+        'forum' => 'Q&A',
     ],
 
 
@@ -279,6 +281,7 @@ return [
         'user-restore' => 'Are you sure to restore this item?',
         'permission-not-found' => 'No permissions found.',
         'empty-data' => 'Empty data',
+        'captcha-error' => 'Captcha không đúng, vui lòng kiểm tra lại'
     ],
 
 
