@@ -7,12 +7,12 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Illuminate\Support\MessageBag;
-use Foostart\Acl\Authentication\Exceptions\AuthenticationErrorException;
-use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
-use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
 use App;
 use Event;
+use Illuminate\Support\MessageBag;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
+use Foostart\Acl\Authentication\Exceptions\AuthenticationErrorException;
 
 class SentryAuthenticator implements AuthenticateInterface
 {
