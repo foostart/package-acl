@@ -5,10 +5,10 @@
  * @author Foostart foostart.com@gmail.com
  */
 
+use Session, App;
 use Illuminate\Support\Facades\Config;
 use Foostart\Acl\Authentication\Interfaces\AuthenticationHelperInterface;
 use Foostart\Acl\Authentication\Interfaces\PermissionProfileHelperInterface;
-use Session, App;
 
 class SentryAuthenticationHelper implements AuthenticationHelperInterface, PermissionProfileHelperInterface
 {

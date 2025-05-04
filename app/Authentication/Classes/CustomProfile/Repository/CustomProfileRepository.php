@@ -1,9 +1,9 @@
 <?php namespace Foostart\Acl\Authentication\Classes\CustomProfile\Repository;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Foostart\Acl\Authentication\Models\ProfileField;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Authentication\Models\ProfileFieldType;
 
 /**

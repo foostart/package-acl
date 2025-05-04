@@ -1,8 +1,8 @@
 <?php namespace Foostart\Acl\Library;
 
 use Illuminate\Support\ServiceProvider;
-use Foostart\Acl\Library\Email\SwiftMailer;
 use Foostart\Acl\Library\Form\FormModel;
+use Foostart\Acl\Library\Email\SwiftMailer;
 
 class LibraryServiceProvider extends ServiceProvider
 {

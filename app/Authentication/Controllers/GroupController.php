@@ -6,15 +6,15 @@
  */
 
 use Illuminate\Http\Request;
+use View, Redirect, App, Config;
 use Illuminate\Support\MessageBag;
-use Foostart\Acl\Authentication\Presenters\GroupPresenter;
 use Foostart\Acl\Library\Form\FormModel;
-use Foostart\Acl\Authentication\Helpers\FormHelper;
 use Foostart\Acl\Authentication\Models\Group;
-use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Helpers\FormHelper;
+use Foostart\Acl\Authentication\Presenters\GroupPresenter;
 use Foostart\Acl\Authentication\Validators\GroupValidator;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
-use View, Redirect, App, Config;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 
 class GroupController extends Controller
 {

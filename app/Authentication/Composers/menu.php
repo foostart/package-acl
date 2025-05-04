@@ -1,7 +1,7 @@
 <?php
 
-use Foostart\Acl\Authentication\Classes\Menu\SentryMenuFactory;
 use Foostart\Category\Helpers\FoostartCategory;
+use Foostart\Acl\Authentication\Classes\Menu\SentryMenuFactory;
 
 $plang_admin = 'acl-admin';
 $plang_front = 'acl-front';

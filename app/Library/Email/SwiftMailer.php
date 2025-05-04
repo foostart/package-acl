@@ -6,10 +6,10 @@
  * @author Foostart foostart.com@gmail.com
  */
 
+use Swift_TransportException;
+use Swift_RfcComplianceException;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
-use Swift_RfcComplianceException;
-use Swift_TransportException;
 
 class SwiftMailer implements MailerInterface
 {
@@ -20,7 +20,7 @@ class SwiftMailer implements MailerInterface
     {
         try {
             App::make('mailer')->send($template, ["body" => $body], function ($message) use ($to, $subject) {
-                $message->to($to)->subject($subject)->from('ptnhuan@gmail.com', 'H? th?ng qu?n lı th?c t?p');
+                $message->to($to)->subject($subject)->from('tailieuweb.com@gmail.com', 'Account management');
             });
         } catch (Swift_TransportException $e) {
             Log::error('Cannot send the email:' . $e->getMessage());

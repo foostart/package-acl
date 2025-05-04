@@ -6,11 +6,11 @@
  */
 
 use Illuminate\Http\Request;
+use View, Redirect, App, Config;
 use Foostart\Acl\Library\Form\FormModel;
 use Foostart\Acl\Authentication\Models\Permission;
-use Foostart\Acl\Authentication\Validators\PermissionValidator;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
-use View, Redirect, App, Config;
+use Foostart\Acl\Authentication\Validators\PermissionValidator;
 
 class PermissionController extends Controller
 {

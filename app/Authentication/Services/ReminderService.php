@@ -1,13 +1,13 @@
 <?php namespace Foostart\Acl\Authentication\Services;
 
-use Illuminate\Support\MessageBag;
 use App;
 use Config;
+use Illuminate\Support\MessageBag;
+use Foostart\Acl\Library\Email\MailerInterface;
 use Foostart\Acl\Library\Exceptions\MailException;
-use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 use Foostart\Acl\Library\Exceptions\InvalidException;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
-use Foostart\Acl\Library\Email\MailerInterface;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 use Foostart\Acl\Authentication\Interfaces\AuthenticatorInterface;
 
 /**

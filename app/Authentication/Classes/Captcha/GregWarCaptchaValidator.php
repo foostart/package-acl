@@ -1,7 +1,7 @@
 <?php namespace Foostart\Acl\Authentication\Classes\Captcha;
 
-use Gregwar\Captcha\CaptchaBuilder;
 use Session;
+use Gregwar\Captcha\CaptchaBuilder;
 
 /**
  * Class GregWarCaptchaValidator

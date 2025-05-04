@@ -1,7 +1,7 @@
 <?php namespace Foostart\Acl\Authentication\Presenters;
 
-use Foostart\Acl\Library\Presenters\AbstractPresenter;
 use Config;
+use Foostart\Acl\Library\Presenters\AbstractPresenter;
 
 /**
  * Class UserProfilePresenter

@@ -5,8 +5,8 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Foostart\Acl\Authentication\Presenters\Traits\PermissionTrait;
 use Foostart\Acl\Library\Presenters\AbstractPresenter;
+use Foostart\Acl\Authentication\Presenters\Traits\PermissionTrait;
 
 class GroupPresenter extends AbstractPresenter
 {

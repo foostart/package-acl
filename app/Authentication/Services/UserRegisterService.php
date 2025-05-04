@@ -1,17 +1,17 @@
 <?php namespace Foostart\Acl\Authentication\Services;
 
-use Config;
 use DB;
 use Event;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\MessageBag;
-use Foostart\Acl\Authentication\Exceptions\TokenMismatchException;
-use Foostart\Acl\Authentication\Exceptions\UserExistsException;
-use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
-use Foostart\Acl\Authentication\Helpers\DbHelper;
-use Foostart\Acl\Authentication\Validators\UserSignupValidator;
-use Foostart\Acl\Library\Exceptions\ValidationException;
+use Config;
 use Illuminate\Support\Arr;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\App;
+use Foostart\Acl\Authentication\Helpers\DbHelper;
+use Foostart\Acl\Library\Exceptions\ValidationException;
+use Foostart\Acl\Authentication\Exceptions\UserExistsException;
+use Foostart\Acl\Authentication\Validators\UserSignupValidator;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Exceptions\TokenMismatchException;
 
 /**
  * Class UserRegisterService

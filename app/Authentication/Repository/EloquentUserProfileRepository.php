@@ -1,14 +1,14 @@
 <?php namespace Foostart\Acl\Authentication\Repository;
 
+use Foostart\Acl\Authentication\Models\User;
+use Foostart\Acl\Authentication\Models\UserProfile;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Foostart\Acl\Library\Repository\EloquentBaseRepository;
 use Foostart\Acl\Authentication\Classes\Images\ImageHelperTrait;
 use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 use Foostart\Acl\Authentication\Exceptions\ProfileNotFoundException;
-use Foostart\Acl\Authentication\Models\User;
-use Foostart\Acl\Authentication\Models\UserProfile;
-use Foostart\Acl\Authentication\Repository\Interfaces\UserProfileRepositoryInterface;
-use Foostart\Acl\Library\Repository\EloquentBaseRepository;
 use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
+use Foostart\Acl\Authentication\Repository\Interfaces\UserProfileRepositoryInterface;
 
 /**
  * Class EloquentUserProfileRepository

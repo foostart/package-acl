@@ -9,21 +9,20 @@ namespace Foostart\Acl\Authentication\Repository;
  */
 
 use App;
-use Cartalyst\Sentry\Users\UserExistsException as CartaUserExists;
-use Cartalyst\Sentry\Users\UserNotFoundException;
-use DateTime;
 use Event;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use DateTime;
 use Illuminate\Support\Facades\Config;
-use Foostart\Acl\Authentication\Exceptions\UserExistsException;
-use Foostart\Acl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
-use Foostart\Acl\Authentication\Models\Group;
-use Foostart\Acl\Authentication\Models\User;
-use Foostart\Acl\Authentication\Repository\Interfaces\UserRepositoryInterface;
-use Foostart\Acl\Library\Repository\EloquentBaseRepository;
-
 use Foostart\Category\Models\Category;
+use Foostart\Acl\Authentication\Models\User;
+use Foostart\Acl\Authentication\Models\Group;
+use Cartalyst\Sentry\Users\UserNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Foostart\Acl\Library\Repository\EloquentBaseRepository;
+use Foostart\Acl\Authentication\Exceptions\UserExistsException;
+use Cartalyst\Sentry\Users\UserExistsException as CartaUserExists;
 use Foostart\Acl\Authentication\Repository\EloquentUserProfileRepository;
+use Foostart\Acl\Authentication\Repository\Interfaces\UserRepositoryInterface;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
 
 class SentryUserRepository extends EloquentBaseRepository implements UserRepositoryInterface
 {

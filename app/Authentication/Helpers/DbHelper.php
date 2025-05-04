@@ -1,8 +1,8 @@
 <?php namespace Foostart\Acl\Authentication\Helpers;
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 use PDO;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 class DbHelper
 {

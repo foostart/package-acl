@@ -1,7 +1,7 @@
 <?php namespace Foostart\Acl\Library\Validators;
 
-use Validator as V;
 use Event;
+use Validator as V;
 
 abstract class AbstractValidator implements ValidatorInterface
 {

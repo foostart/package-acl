@@ -6,29 +6,29 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Cartalyst\Sentry\Hashing\NativeHasher;
-use Cartalyst\Sentry\Throttling\Eloquent\Provider as ThrottleProvider;
-use Cartalyst\Sentry\Users\Eloquent\Provider as UserProvider;
 use Illuminate\Http\Request;
+use View, Redirect, App, Config;
 use Illuminate\Support\MessageBag;
-use Foostart\Acl\Authentication\Exceptions\PermissionException;
-use Foostart\Acl\Authentication\Exceptions\ProfileNotFoundException;
+use Foostart\Acl\Library\Form\FormModel;
+use Cartalyst\Sentry\Hashing\NativeHasher;
+use Foostart\Acl\Authentication\Models\User;
 use Foostart\Acl\Authentication\Helpers\DbHelper;
 use Foostart\Acl\Authentication\Models\UserProfile;
-use Foostart\Acl\Authentication\Presenters\UserPresenter;
-use Foostart\Acl\Authentication\Services\UserProfileService;
-use Foostart\Acl\Authentication\Validators\UserProfileAvatarValidator;
-use Foostart\Acl\Library\Exceptions\NotFoundException;
-use Foostart\Acl\Authentication\Models\User;
 use Foostart\Acl\Authentication\Helpers\FormHelper;
-use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
-use Foostart\Acl\Authentication\Validators\UserValidator;
-use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
-use Foostart\Acl\Authentication\Validators\UserProfileValidator;
-use View, Redirect, App, Config;
-use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Foostart\Acl\Library\Form\FormModel;
+use Foostart\Acl\Authentication\Presenters\UserPresenter;
+use Foostart\Acl\Authentication\Validators\UserValidator;
+use Foostart\Acl\Authentication\Services\UserProfileService;
+use Cartalyst\Sentry\Users\Eloquent\Provider as UserProvider;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Validators\UserProfileValidator;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
+use Foostart\Acl\Authentication\Interfaces\AuthenticateInterface;
+use Foostart\Acl\Authentication\Exceptions\ProfileNotFoundException;
+use Cartalyst\Sentry\Throttling\Eloquent\Provider as ThrottleProvider;
+use Foostart\Acl\Authentication\Validators\UserProfileAvatarValidator;
 
 class UserController extends Controller
 {

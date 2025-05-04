@@ -5,12 +5,12 @@
  * @author Foostart foostart.com@gmail.com
  */
 
+use App, Event;
+use Foostart\Acl\Authentication\Models\Group;
+use Cartalyst\Sentry\Groups\GroupNotFoundException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
-use Foostart\Acl\Authentication\Models\Group;
 use Foostart\Acl\Authentication\Exceptions\UserNotFoundException as NotFoundException;
-use App, Event;
-use Cartalyst\Sentry\Groups\GroupNotFoundException;
 
 class SentryGroupRepository implements BaseRepositoryInterface
 {

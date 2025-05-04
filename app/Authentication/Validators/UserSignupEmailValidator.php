@@ -5,10 +5,10 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Illuminate\Support\Facades\Request;
-use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
-use Foostart\Acl\Library\Validators\AbstractValidator;
 use App, Session, Config;
+use Illuminate\Support\Facades\Request;
+use Foostart\Acl\Library\Validators\AbstractValidator;
+use Foostart\Acl\Authentication\Exceptions\UserNotFoundException;
 
 class UserSignupEmailValidator extends AbstractValidator
 {

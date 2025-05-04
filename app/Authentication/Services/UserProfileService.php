@@ -7,14 +7,14 @@
  */
 
 use App;
+use Illuminate\Support\Arr;
 use Illuminate\Support\MessageBag;
-use Foostart\Acl\Authentication\Exceptions\PermissionException;
-use Foostart\Acl\Authentication\Validators\UserProfileUserValidator;
-use Foostart\Acl\Authentication\Validators\UserProfileValidator;
+use Foostart\Acl\Library\Form\FormModel;
 use Foostart\Acl\Library\Exceptions\InvalidException;
 use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
-use Foostart\Acl\Library\Form\FormModel;
-use Illuminate\Support\Arr;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
+use Foostart\Acl\Authentication\Validators\UserProfileValidator;
+use Foostart\Acl\Authentication\Validators\UserProfileUserValidator;
 
 class UserProfileService
 {

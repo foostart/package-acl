@@ -5,10 +5,10 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Foostart\Acl\Authentication\Exceptions\PermissionException;
+use Event, App;
 use Foostart\Acl\Authentication\Models\Permission;
 use Foostart\Acl\Library\Repository\EloquentBaseRepository;
-use Event, App;
+use Foostart\Acl\Authentication\Exceptions\PermissionException;
 
 class EloquentPermissionRepository extends EloquentBaseRepository
 {

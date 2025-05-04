@@ -5,9 +5,9 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Foostart\Acl\Authentication\Helpers\SentryAuthenticationHelper;
-use Foostart\Acl\Authentication\Interfaces\MenuInterface;
 use App;
+use Foostart\Acl\Authentication\Interfaces\MenuInterface;
+use Foostart\Acl\Authentication\Helpers\SentryAuthenticationHelper;
 
 class SentryMenuItem implements MenuInterface
 {

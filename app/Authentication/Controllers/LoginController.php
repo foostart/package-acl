@@ -1,9 +1,8 @@
 <?php namespace Foostart\Acl\Authentication\Controllers;
 
 use Socialite;
-use Illuminate\Http\Request;
-
 use App, Redirect;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {

@@ -5,9 +5,9 @@
  * @author foostart foostart@gmail.com
  */
 
-use Cartalyst\Sentry\Users\Eloquent\User as CartaUser;
 use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\LoginRequiredException;
+use Cartalyst\Sentry\Users\Eloquent\User as CartaUser;
 
 class User extends CartaUser
 {

@@ -6,8 +6,8 @@
  */
 
 use Config, Route, App;
-use Foostart\Acl\Authentication\Interfaces\AuthenticationRoutesInterface;
 use Foostart\Acl\Library\Views\Helper as ViewHelper;
+use Foostart\Acl\Authentication\Interfaces\AuthenticationRoutesInterface;
 
 class FileRouteHelper implements AuthenticationRoutesInterface
 {

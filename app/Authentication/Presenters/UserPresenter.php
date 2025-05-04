@@ -5,12 +5,12 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Cartalyst\Sentry\Groups\Eloquent\Provider as GroupProvider;
 use Cartalyst\Sentry\Hashing\NativeHasher;
-use Cartalyst\Sentry\Throttling\Eloquent\Provider as ThrottleProvider;
-use Cartalyst\Sentry\Users\Eloquent\Provider as UserProvider;
-use Foostart\Acl\Authentication\Presenters\Traits\PermissionTrait;
 use Foostart\Acl\Library\Presenters\AbstractPresenter;
+use Cartalyst\Sentry\Users\Eloquent\Provider as UserProvider;
+use Cartalyst\Sentry\Groups\Eloquent\Provider as GroupProvider;
+use Foostart\Acl\Authentication\Presenters\Traits\PermissionTrait;
+use Cartalyst\Sentry\Throttling\Eloquent\Provider as ThrottleProvider;
 
 class UserPresenter extends AbstractPresenter
 {

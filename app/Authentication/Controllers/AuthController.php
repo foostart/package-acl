@@ -2,11 +2,10 @@
 
 use Illuminate\Http\Request;
 use Sentry, View, Redirect, App, Config;
-use Foostart\Acl\Authentication\Validators\ReminderValidator;
-use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 use Foostart\Acl\Library\Exceptions\ValidationException;
 use Foostart\Acl\Authentication\Services\ReminderService;
-
+use Foostart\Acl\Authentication\Validators\ReminderValidator;
+use Foostart\Acl\Library\Exceptions\JacopoExceptionsInterface;
 use Foostart\Acl\Authentication\Validators\RecoverPasswordValidator;
 
 class AuthController extends Controller

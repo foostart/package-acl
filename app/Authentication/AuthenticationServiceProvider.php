@@ -3,22 +3,22 @@
 namespace Foostart\Acl\Authentication;
 
 use App;
+use Config;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use Config;
-use Foostart\Acl\Authentication\Classes\Captcha\GregWarCaptchaValidator;
-use Foostart\Acl\Authentication\Classes\CustomProfile\Repository\CustomProfileRepository;
 use Foostart\Acl\Authentication\Commands\InstallCommand;
 use Foostart\Acl\Authentication\Helpers\FileRouteHelper;
-use Foostart\Acl\Authentication\Middleware\Config as ConfigMiddleware;
 use Foostart\Acl\Authentication\Classes\SentryAuthenticator;
+use Foostart\Acl\Authentication\Services\UserRegisterService;
+use Foostart\Acl\Authentication\Repository\SentryUserRepository;
+use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
 use Foostart\Acl\Authentication\Helpers\SentryAuthenticationHelper;
+use Foostart\Acl\Authentication\Middleware\Config as ConfigMiddleware;
+use Foostart\Acl\Authentication\Classes\Captcha\GregWarCaptchaValidator;
 use Foostart\Acl\Authentication\Repository\EloquentPermissionRepository;
 use Foostart\Acl\Authentication\Repository\EloquentUserProfileRepository;
-use Foostart\Acl\Authentication\Repository\SentryGroupRepository;
-use Foostart\Acl\Authentication\Repository\SentryUserRepository;
-use Foostart\Acl\Authentication\Services\UserRegisterService;
-use Illuminate\Pagination\Paginator;
+use Foostart\Acl\Authentication\Classes\CustomProfile\Repository\CustomProfileRepository;
 
 class AuthenticationServiceProvider extends ServiceProvider
 {

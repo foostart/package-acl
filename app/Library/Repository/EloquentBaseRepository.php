@@ -5,11 +5,11 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Foostart\Acl\Library\Exceptions\NotFoundException;
-use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 use Event;
 use Illuminate\Support\Facades\Schema;
+use Foostart\Acl\Library\Exceptions\NotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Foostart\Acl\Library\Repository\Interfaces\BaseRepositoryInterface;
 
 class EloquentBaseRepository implements BaseRepositoryInterface
 {

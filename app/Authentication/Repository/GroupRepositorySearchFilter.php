@@ -6,8 +6,8 @@
  * @author Foostart foostart.com@gmail.com
  */
 
-use App;
 use DB;
+use App;
 use Illuminate\Pagination\Paginator;
 
 class GroupRepositorySearchFilter
