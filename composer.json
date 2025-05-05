@@ -1,6 +1,6 @@
 {
     "name": "foostart/package-acl",
-    "description": "Laravel authentication and ACL package with a cool admin panel. Laravel 7x",
+    "description": "Laravel authentication and ACL package with a cool admin panel. Laravel 12.x",
     "keywords": [
         "acl",
         "authentication",
