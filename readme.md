@@ -20,7 +20,7 @@ git remote set-url origin git@github.com-foostart:foostart/package-acl.git
 
 ## Step 1: Regist package to Laravel
 
-Now open the file **config/app.php** and add to the **providers** option the following line:
+Now open the file **bootstrap/providers.php** and add to the **providers** option the following line:
 
 1. Foostart\Acl\Authentication\AuthenticationServiceProvider::class,
 1. Foostart\Category\CategoryServiceProvider::class,

@@ -19,19 +19,19 @@
                     @endforeach
                 @endif
                 <div class="my-acl-form panel-body">
-                    {!! Form::open(array('url' => URL::route("user.login.process"), 'method' => 'post') ) !!}
+                    {{ html()->form('POST',  URL::route("user.login.process")->open() }}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    {!! Form::email('email', '', [
-                                        'id' => 'email',
-                                        'class' => 'form-control',
-                                        'placeholder' => trans($plang_front.'.labels.email'),
-                                        'required',
-                                        'autocomplete' => 'off'
-                                    ]) !!}
+                                    {!! $html->email('email')
+                                        ->id('email')
+                                        ->class('form-control')
+                                        ->placeholder(trans($plang_front.'.labels.email'))
+                                        ->attribute('required')
+                                        ->attribute('autocomplete', 'off') !!}
+
                                 </div>
                             </div>
                         </div>
@@ -41,22 +41,20 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    {!! Form::password('password', [
-                                        'id' => 'password',
-                                        'class' => 'form-control',
-                                        'placeholder' => trans($plang_front.'.labels.password'),
-                                        'required',
-                                        'autocomplete' => 'off'
-                                        ])
+                                    {!!
+                                        $html->password('password')
+                                            ->class('form-control')
+                                            ->placeholder(trans($plang_front.'.labels.password'))
+                                            ->required();
                                     !!}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {!! Form::label('remember','Remember me') !!}
-                    {!! Form::checkbox('remember') !!}
+                    {!! $html->label('Remember me')->for('remember') !!}
+                    {!! $html->checkbox('remember') !!}
                     <input type="submit" value="Login" class="btn btn-info btn-block">
-                    {!! Form::close() !!}
+                    {{ html()->form()->close() }}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
                             {!! link_to_route('user.reminder.process','Forgot password?') !!}
