@@ -1,8 +1,8 @@
 # Foostart: Package ACL
 git remote set-url origin git@github.com-foostart:foostart/package-acl.git
 * Access control list
-* Verson: 8.x
-* Support: Laravel 8x
+* Verson: 12.x
+* Support: Laravel 12.x
 * Contact _**foostart.com@gmail.com**_ to support other versions
 * References: 
 - https://cartalyst.com
@@ -11,8 +11,8 @@ git remote set-url origin git@github.com-foostart:foostart/package-acl.git
 ## Requirements
 
 * Config database with *.env* file
-* Laravel 8.x
-* PHP 8.0
+* Laravel 12.x
+* PHP 8.3
 
 ## Requirements
 
