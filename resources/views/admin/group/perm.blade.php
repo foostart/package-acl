@@ -1,41 +1,21 @@
-@extends('package-acl::admin.layouts.base-2cols')
-
-@section('title')
-    {!! trans($plang_admin.'.pages.group-list') !!}
-@stop
-
-@section('content')
-
-    <div class="row">
-        <div class="col-md-9">
-            {{-- Print messages --}}
-            <?php $message = Session::get('message'); ?>
-            @if( isset($message) )
-                <div class="alert alert-success">{!! $message !!}</div>
-            @endif
-            {{-- Print errors --}}
-            @if($errors && ! $errors->isEmpty() )
-                @foreach($errors->all() as $error)
-                    <div class="alert alert-danger">{!! $error !!}</div>
-                @endforeach
-            @endif
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title bariol-thin"><i class="fa fa-group"></i> {!! $request->all() ? 'Search results:' : 'Groups' !!}</h3>
-                </div>
-                <div class="panel-body">
-                    {{ html()->form('GET', route('groups.edit.permission'))
-                        ->class('form-add-perm') }}
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon form-button button-add-perm"><span class="glyphicon glyphicon-plus-sign add-input"></span></span>
-                                {{ html()->select('permissions', $permission_values, '')->class('form-control permission-select') }}
-                            </div>
-                            <span class="text-danger">{{ $errors->first('permissions') }}</span>
-                            {{ html()->hidden('id', $group->id) }}
-                            {{ html()->hidden('operation', 1) }}
-                        </div>
-                    {{ html()->form()->close() }}
+{!! Form::open(["route" => "groups.edit.permission","role"=>"form", 'class' => 'form-add-perm']) !!}
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon form-button button-add-perm"><span
+                class="glyphicon glyphicon-plus-sign add-input"></span></span>
+        {!! Form::select('permissions', $permission_values, '', ["class"=>"form-control permission-select"]) !!}
+    </div>
+    <span class="text-danger">{!! $errors->first('permissions') !!}</span>
+    {!! Form::hidden('id', $group->id) !!}
+    {{-- add permission operation --}}
+    {!! Form::hidden('operation', 1) !!}
+</div>
+<div class="form-group">
+    @if(! $group->exists)
+        <span class="text-danger"><h5>You need to create a group first.</h5></span>
+    @endif
+</div>
+{!! Form::close() !!}
 
                     @if( $presenter->permissions )
                         @foreach($presenter->permissions_obj as $permission)

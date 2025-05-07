@@ -65,6 +65,75 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-    {{ html()->label(trans($plang_admin.'.labels.active').':')->for('activated') }}
-    {{ html()->select('activated', ["1" => "Yes", "0" => "No"], isset($user->activated) && $user->activated ? $user->activated : "0")->class('form-control') }}
+                                    {!! html()->label(trans($plang_admin.'.labels.active') . ':', 'activated') !!}
+				    {!! html()->select('activated', ['1' => 'Yes', '0' => 'No'], (isset($user->activated) && $user->activated) ? $user->activated : '0')->class('form-control') !!}
 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! html()->label(trans($plang_admin.'.labels.banned') . ':', 'banned') !!}
+					{!! html()->select('banned', ['1' => 'Yes', '0' => 'No'], (isset($user->banned) && $user->banned) ? $user->banned : '0')->class('form-control') !!}
+
+                                </div>
+                            </div>
+                            @if(isset($user->suspended) && $user->suspended)
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! html()->label(trans($plang_admin.'.labels.suspended') . ':', 'suspended') !!}
+					{!! html()->checkbox('suspended', (isset($user->suspended) && $user->suspended) ? true : false, trans($plang_admin.'.labels.suspended')) !!}
+
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                        <!-- End status -->
+
+                        <!--BUTTONS-->
+                        <div class='btn-form'>
+                            <a href="{!! URL::route('users.profile.editGet',['user_id' => $user->id]) !!}"
+                               class="btn btn-primary pull-right margin-left-5" {!! ! isset($user->id) ? 'disabled="disabled"' : '' !!}>
+                                <i class="fa fa-user"></i> Edit profile</a>
+
+                            @if($user->deleted_at)
+                                <a href="{!! URL::route('users.restore',['id' => $user->id, '_token' => csrf_token()]) !!}"
+                                   class="btn btn-success pull-right margin-left-5 restore">
+                                    {!! trans($plang_admin.'.buttons.restore') !!}
+                                </a>
+                            @else
+                                <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}"
+                                   class="btn btn-warning pull-right margin-left-5 delete">
+                                    {!! trans($plang_admin.'.buttons.delete') !!}
+                                </a>
+                            @endif
+			{!! html()->submit(trans($plang_admin.'.buttons.save'))->class('btn btn-info pull-right') !!}
+                        </div>
+			{!! html()->form()->close() !!}
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+                        <h4><i class="fa fa-users"></i> {!! trans($plang_admin.'.labels.group').':' !!} </h4>
+                        @include('package-acl::admin.user.groups')
+
+
+                        <h4><i class="fa fa-lock"></i> {!! trans($plang_admin.'.labels.permission-name').':' !!}</h4>
+
+                        @include('package-acl::admin.user.perm')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@stop
+
+@section('footer_scripts')
+    <script>
+        $(".delete").click(function () {
+            return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
+        });
+        $(".restore").click(function () {
+            return confirm("{!! trans($plang_admin.'.messages.user-restore') !!}");
+        });
+    </script>
+@stop

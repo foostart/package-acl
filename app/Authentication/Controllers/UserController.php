@@ -374,11 +374,11 @@ class UserController extends Controller
         try {
             $this->custom_profile_repository->addNewType($description);
         } catch (PermissionException $e) {
-            return Redirect::route('users.profile.edit', ["user_id" => $user_id])
+            return Redirect::route('users.profile.editGet', ["user_id" => $user_id])
                 ->withErrors(new MessageBag(["model" => $e->getMessage()]));
         }
 
-        return Redirect::route('users.profile.edit', ["user_id" => $user_id])
+        return Redirect::route('users.profile.editGet', ["user_id" => $user_id])
             ->with('message', Config::get('acl_messages.flash.success.custom_field_added'));
     }
 
@@ -390,14 +390,14 @@ class UserController extends Controller
         try {
             $this->custom_profile_repository->deleteType($id);
         } catch (ModelNotFoundException $e) {
-            return Redirect::route('users.profile.edit', ["user_id" => $user_id])
+            return Redirect::route('users.profile.editGet', ["user_id" => $user_id])
                 ->withErrors(new MessageBag(["model" => Config::get('acl_messages.flash.error.custom_field_not_found')]));
         } catch (PermissionException $e) {
-            return Redirect::route('users.profile.edit', ["user_id" => $user_id])
+            return Redirect::route('users.profile.editGet', ["user_id" => $user_id])
                 ->withErrors(new MessageBag(["model" => $e->getMessage()]));
         }
 
-        return Redirect::route('users.profile.edit', ["user_id" => $user_id])
+        return Redirect::route('users.profile.editGet', ["user_id" => $user_id])
             ->with('message', Config::get('acl_messages.flash.success.custom_field_removed'));
     }
 
@@ -409,7 +409,7 @@ class UserController extends Controller
         // validate input
         $validator = new UserProfileAvatarValidator();
         if (!$validator->validate($request->all())) {
-            return Redirect::route('users.profile.edit', ['user_id' => $user_id])
+            return Redirect::route('users.profile.editGet', ['user_id' => $user_id])
                 ->withInput()->withErrors($validator->getErrors());
         }
 
@@ -417,11 +417,11 @@ class UserController extends Controller
         try {
             $this->profile_repository->updateAvatar($profile_id);
         } catch (NotFoundException $e) {
-            return Redirect::route('users.profile.edit', ['user_id' => $user_id])->withInput()
+            return Redirect::route('users.profile.editGet', ['user_id' => $user_id])->withInput()
                 ->withErrors(new MessageBag(['avatar' => Config::get('acl_messages.flash.error.')]));
         }
 
-        return Redirect::route('users.profile.edit', ['user_id' => $user_id])
+        return Redirect::route('users.profile.editGet', ['user_id' => $user_id])
             ->withMessage(Config::get('acl_messages.flash.success.avatar_edit_success'));
     }
 

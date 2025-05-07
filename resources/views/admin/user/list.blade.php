@@ -8,14 +8,15 @@
     <div class="row">
         <div class="col-md-9">
             {{-- print messages --}}
-            @if(Session::has('message'))
-                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            <?php $message = Session::get('message'); ?>
+            @if( isset($message) )
+                <div class="alert alert-success">{!! $message !!}</div>
             @endif
 
             {{-- print errors --}}
-            @if($errors && $errors->any())
+            @if($errors && ! $errors->isEmpty() )
                 @foreach($errors->all() as $error)
-                    <div class="alert alert-danger">{{ $error }}</div>
+                    <div class="alert alert-danger">{!! $error !!}</div>
                 @endforeach
             @endif
 
