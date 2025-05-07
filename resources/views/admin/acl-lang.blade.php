@@ -1,5 +1,6 @@
 @extends('package-acl::admin.layouts.base-2cols')
 <?php $plang_admin = $plang_admin . '' ?>
+
 @section('title')
     {{ trans($plang_admin.'.pages.title-lang') }}
 @stop
@@ -33,7 +34,7 @@
                     @if( isset($message) )
                         <div class="panel-info alert alert-success flash-message">{!! $message !!}</div>
                     @endif
-                <!--/MESSAGE-->
+                	<!--/MESSAGE-->
 
                     <!--ERRORS-->
                     @if($errors && ! $errors->isEmpty() )
@@ -41,20 +42,18 @@
 
                             <div class="alert alert-danger flash-message">{!! $error !!}</div>
 
-                    @endforeach
-                @endif
-                <!--/ERRORS-->
+                    	@endforeach
+                	@endif
+                	<!--/ERRORS-->
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['users.langPost'], 'method' => 'post'])  !!}
+                        {{ html()->form('POST', route('users.langPost')) }}
 
                         <div class='btn-form'>
-
                             <!-- SAVE BUTTON -->
-                        {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
-                        <!-- /SAVE BUTTON -->
-
+                            {{ html()->submit(trans($plang_admin.'.buttons.save'))->class('btn btn-info pull-right') }}
+                            <!-- /SAVE BUTTON -->
                         </div>
 
                         <!--TAB MENU-->
@@ -78,14 +77,13 @@
 
                             @foreach($lang_contents as $key => $content)
                                 <div id="{{$key}}" class="tab-pane fade {!! ($key==$lang)?'in active':'' !!}">
-                                    {!! Form::textarea($key, $content, ['class' => 'form-control textarea-margin', 'size' => '30x50']) !!}
+                                    {{ html()->textarea($key, $content)->class('form-control textarea-margin')->attribute('size', '30x50') }}
                                 </div>
                             @endforeach
 
                         </div>
 
-
-                        {!! Form::close() !!}
+                        {{ html()->form()->close() }}
                     </div>
                     <!--/BODY-->
 

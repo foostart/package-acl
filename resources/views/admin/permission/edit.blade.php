@@ -8,9 +8,11 @@
 
     <div class="row">
         <div class="col-md-9">
-            {{-- model general errors from the form --}}
+
             @if($errors->has('model') )
-                <div class="alert alert-danger">{{$errors->first('model')}}</div>
+                <div class="alert alert-danger">
+                    {{$errors->first('model')}}
+                </div>
             @endif
 
             {{-- successful message --}}
@@ -26,37 +28,55 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    {!! Form::model($permission, [ 'url' => [URL::route('permissions.editPost'), $permission->id], 'method' => 'post'] )  !!}
-                    {!! Form::hidden('id') !!}
+
+                    {{ html()->model($permission)
+                        ->route('permissions.editPost', $permission->id)
+                        ->method('post') }}
+                    {!! $html->hidden('id') !!}
                     <div clas="row">
                         <div class="col-md-12">
                             <a href="{!! URL::route('permissions.delete',['id' => $permission->id, '_token' => csrf_token()]) !!}"
                                class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
-                            {!! Form::submit('Save', array("class"=>"btn btn-info pull-right ")) !!}
+                            {!! $html->submit('Save')->class('btn btn-info pull-right') !!}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-xs-6">
                             <!-- NAME TEXT FIELD -->
                             <div class="form-group">
-                                {!! Form::label('name',trans($plang_admin.'.labels.permission_name').':*') !!}
-                                {!! Form::text('name', @$permission->name, ['class' => 'form-control', 'placeholder' => 'Permission name', 'id' => 'slugme']) !!}
+                                {!! $html->label(trans($plang_admin.'.labels.permission_name') . ':*')->for('name') !!}
+                                {!! $html->text('name')
+                                    ->value(old('name', @$permission->name))
+                                    ->class('form-control')
+                                    ->placeholder('Permission name')
+                                    ->id('slugme') !!}
+
                             </div>
                             <span class="text-danger">{!! $errors->first('name') !!}</span>
                         </div>
                         <div class="col-md-4 col-xs-6">
                             <!-- PERMISSION TEXT FIELD -->
                             <div class="form-group">
-                                {!! Form::label('permission',trans($plang_admin.'.labels.permission-name').':*') !!}
-                                {!! Form::text('permission', @$permission->permission, ['class' => 'form-control', 'placeholder' => 'Permission slug', 'id' => 'slug']) !!}
+                                {!! $html->label(trans($plang_admin.'.labels.permission-name') . ':*')->for('permission') !!}
+
+                                {!! $html->text('permission')
+                                    ->value(old('permission', @$permission->permission))
+                                    ->class('form-control')
+                                    ->placeholder('Permission slug')
+                                    ->id('slug') !!}
                             </div>
                             <span class="text-danger">{!! $errors->first('permission') !!}</span>
                         </div>
                         <div class="col-md-4 col-xs-6">
                             <!-- category_id TEXT FIELD -->
                             <div class="form-group">
-                                {!! Form::label('category_id',trans($plang_admin.'.labels.category').':') !!}
-                                {!! Form::select('category_id', $pluck_select_category, @$permission->category_id, ["class" => "form-control"]) !!}
+                                {!! $html->label(trans($plang_admin.'.labels.category') . ':')->for('category_id') !!}
+
+                                {!! $html->select('category_id')
+                                    ->options($pluck_select_category)
+                                    ->selected(old('category_id', @$permission->category_id))
+                                    ->class('form-control') !!}
+
                             </div>
                             <span class="text-danger">{!! $errors->first('category_id') !!}</span>
                         </div>
@@ -76,7 +96,7 @@
                             <!--/PERMISSION DESCRIPTION-->
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div>
@@ -87,7 +107,7 @@
 @stop
 
 @section('footer_scripts')
-    {!! HTML::script('packages/foostart/js/vendor/slugit.js') !!}
+    {{ html()->script('packages/foostart/js/vendor/slugit.js') }}
     <script>
         $(".delete").click(function () {
             return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");

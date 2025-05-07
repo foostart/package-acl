@@ -29,7 +29,7 @@
 
                 <div class="my-acl-form panel-body">
 
-                    {!! Form::open(array('url' => URL::route("user.reminder"), 'method' => 'post') ) !!}
+                    {{ html()->form('POST', route('user.reminder'))->open() }}
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -76,7 +76,8 @@
                     <input type="submit" value="{!! trans($plang_front.'.buttons.recover') !!}"
                            class="btn btn-info btn-block">
 
-                    {!! Form::close() !!}
+                    {{ html()->form()->close() }}
+
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
                             <a href="{!! URL::route('user.loginGet') !!}">

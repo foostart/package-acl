@@ -10,22 +10,22 @@
     <meta name="author" content="">
 
 
-{!! HTML::style('packages/foostart/css/bootstrap-3.3.7.min.css') !!}
-{!! HTML::style('packages/foostart/css/style.css') !!}
-{!! HTML::style('packages/foostart/css/baselayout.css') !!}
-{!! HTML::style('packages/foostart/css/fonts.css') !!}
-{!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
-{!! HTML::style('packages/foostart/css/package-category.css') !!}
+    {{ html()->style('packages/foostart/css/bootstrap-3.3.7.min.css') }}
+    {{ html()->style('packages/foostart/css/style.css') }}
+    {{ html()->style('packages/foostart/css/baselayout.css') }}
+    {{ html()->style('packages/foostart/css/fonts.css') }}
+    {{ html()->style('packages/foostart/css/font-awesome-4.7.0.min.css') }}
+    {{ html()->style('packages/foostart/css/package-category.css') }}
 
-{!! HTML::script('packages/foostart/js/vendor/jquery-2.2.4.min.js') !!}
-{!! HTML::script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') !!}
+    {{ html()->script('packages/foostart/js/vendor/jquery-2.2.4.min.js') }}
+    {{ html()->script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') }}
 @yield('head_css')
 {{-- End head css --}}
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    {!! HTML::script('packages/foostart/js/vendor/lt-IE-9/html5shiv-3.7.0') !!}
-        {!! HTML::script('packages/foostart/js/vendor/lt-IE-9/respond-1.3.0.min') !!}
+    {{ html()->script('packages/foostart/js/vendor/lt-IE-9/html5shiv-3.7.0') }}
+	{{ html()->script('packages/foostart/js/vendor/lt-IE-9/respond-1.3.0.min') }}
     <![endif]-->
 </head>
 

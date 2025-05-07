@@ -14,7 +14,10 @@
                 @if(isset($menu_items))
                     @foreach($menu_items as $item)
                         <li class="{!! Foostart\Acl\Library\Views\Helper::get_active_route_name($item->getRoute()) !!}">
-                            <a href="{!! $item->getLink() !!}">{!!$item->getName()!!}</a></li>
+                            <a href="{!! $item->getLink() !!}">
+                                {!!$item->getName()!!}
+                            </a>
+                        </li>
                     @endforeach
                 @endif
             </ul>
@@ -27,12 +30,17 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{!! URL::route('users.selfprofile.edit') !!}"><i class="fa fa-user"></i> Your
-                                profile</a>
+                            <a href="{!! URL::route('users.selfprofile.edit') !!}">
+                                <i class="fa fa-user"></i>
+                                Your profile
+                            </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{!! URL::route('user.logout') !!}"><i class="fa fa-sign-out"></i> Logout</a>
+                            <a href="{!! URL::route('user.logout') !!}">
+                                <i class="fa fa-sign-out"></i>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </li>

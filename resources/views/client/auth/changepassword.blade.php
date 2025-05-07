@@ -17,23 +17,30 @@
                     @endforeach
                 @endif
                 <div class="panel-body">
-                    {!! Form::open(array('url' => URL::route("user.reminder.process"), 'method' => 'post') ) !!}
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('password', trans($plang_front.'.labels.new-password')) !!}
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => trans($plang_front.'.labels.new-password'), 'required', 'autocomplete' => 'off']) !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="submit" value="{!! trans($plang_front.'.buttons.change_password') !!}"
-                           class="btn btn-info btn-block">
-                    {!! Form::hidden('email',$email) !!}
-                    {!! Form::hidden('token',$token) !!}
-                    {!! Form::close() !!}
+                
+                    {{ html()->form('POST', route('user.reminder.process'))->open() }}
+                    
+	                    <div class="row">
+	                        <div class="col-xs-12 col-sm-12 col-md-12">
+	                            <div class="form-group">
+	                                {!! $html->label(trans($plang_front.'.labels.new-password'))->for('password') !!}
+	                                <div class="input-group">
+	                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+	                                    {!! $html->password('password')
+	                                        ->id('password')
+	                                        ->class('form-control')
+	                                        ->placeholder(trans($plang_front.'.labels.new-password'))
+	                                        ->required()
+	                                        ->autocomplete('off') !!}
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    {{ html()->submit(trans($plang_front.'.buttons.change_password'))->class('btn btn-info btn-block') }}
+
+                        {!! $html->hidden('email')->value($email) !!}
+                        {!! $html->hidden('token')->value($token) !!}
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div>

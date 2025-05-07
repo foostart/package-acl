@@ -1,173 +1,128 @@
-@extends('package-acl::admin.layouts.base-2cols')
+{{-- Form mở --}}
+{{ html()->modelForm($user_profile, 'POST', route('users.profile.edit'))->open() }}
 
-@section('title')
-    {!! trans($plang_admin.'.pages.user-edit-profile') !!}
-@stop
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        {{-- Password --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.new-password'))->for('password') }}
+            {{ html()->password('password')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('password') }}</span>
+        </div>
 
-@section('content')
+        {{-- Password Confirmation --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.confirm-password'))->for('password_confirmation') }}
+            {{ html()->password('password_confirmation')->class('form-control') }}
+        </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            {{-- success message --}}
-            <?php $message = Session::get('message'); ?>
-            @if( isset($message) )
-                <div class="alert alert-success">{!! $message !!}</div>
-            @endif
-            @if( $errors->has('model') )
-                <div class="alert alert-danger">{!! $errors->first('model') !!}</div>
-            @endif
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="panel-title bariol-thin"><i
-                                    class="fa fa-user"></i> {!! trans($plang_admin.'.labels.user-profile') !!}</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="{!! URL::route('users.editGet',['id' => $user_profile->user_id]) !!}"
-                               class="btn btn-info pull-right"><i
-                                    class="fa fa-pencil-square-o"></i> {!! trans($plang_admin.'.labels.edit-user') !!}
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12">
-                            @if(! $use_gravatar)
-                                @include('package-acl::admin.user.partials.avatar_upload')
-                            @else
-                                @include('package-acl::admin.user.partials.show_gravatar')
-                            @endif
-                            <h4><i class="fa fa-cubes"></i>{!! trans($plang_admin.'.labels.user-data').':' !!}</h4>
-                            {!! Form::model($user_profile,['route'=>'users.profile.edit', 'method' => 'post']) !!}
+        {{-- Code --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.code'))->for('code') }}
+            {{ html()->text('code')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('code') }}</span>
+        </div>
 
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                    <!-- password text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('password',trans($plang_admin.'.labels.new-password').':') !!}
-                                        {!! Form::password('password', ['class' => 'form-control']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('password') !!}</span>
-                                    <!-- password_confirmation text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('password_confirmation',trans($plang_admin.'.labels.confirm-password').':') !!}
-                                        {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-                                    </div>
-                                    <!-- code text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('code',trans($plang_admin.'.labels.code').':') !!}
-                                        {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('code') !!}</span>
-                                    <!-- first_name text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('first_name',trans($plang_admin.'.labels.first_name').':') !!}
-                                        {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('first_name') !!}</span>
-                                    <!-- last_name text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('last_name',trans($plang_admin.'.labels.last_name').':') !!}
-                                        {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('last_name') !!}</span>
-                                    <!-- phone text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('phone',trans($plang_admin.'.labels.phone').':') !!}
-                                        {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('phone') !!}</span>
-                                    <!-- state text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('state',trans($plang_admin.'.labels.state').':') !!}
-                                        {!! Form::text('state', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('state') !!}</span>
-                                </div>
-                                <div class="col-md-6 col-xs-12">
+        {{-- First name --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.first_name'))->for('first_name') }}
+            {{ html()->text('first_name')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('first_name') }}</span>
+        </div>
 
-                                    <!-- var text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('var',trans($plang_admin.'.labels.vat').':') !!}
-                                        {!! Form::text('var', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('vat') !!}</span>
-                                    <!-- city text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('city',trans($plang_admin.'.labels.city').':') !!}
-                                        {!! Form::text('city', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('city') !!}</span>
-                                    <!-- country text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('country',trans($plang_admin.'.labels.country').':') !!}
-                                        {!! Form::text('country', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('country') !!}</span>
-                                    <!-- sex text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('sex',trans($plang_admin.'.labels.sex').':') !!}
-                                        <?php $sex_values = trans($plang_admin . '.sex'); ?>
-                                        {!! Form::select('sex', $sex_values, null, ["class" => "form-control"]) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('sex') !!}</span>
-                                    <!-- device_token text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('device_token',trans($plang_admin.'.labels.device_token').':') !!}
-                                        {!! Form::text('device_token', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('device_token') !!}</span>
+        {{-- Last name --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.last_name'))->for('last_name') }}
+            {{ html()->text('last_name')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('last_name') }}</span>
+        </div>
 
-                                    <!-- level text field -->
-                                    <div class="form-group">
+        {{-- Phone --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.phone'))->for('phone') }}
+            {{ html()->text('phone')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('phone') }}</span>
+        </div>
 
-                                        {!! Form::label('level_id',trans($plang_admin.'.labels.level').':') !!}
-                                        {!! Form::select('level_id', $pluck_select_category_level, null, ["class" => "form-control"]) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('level_id') !!}</span>
-                                    <!-- category_id text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('category_id',trans($plang_admin.'.labels.category').':') !!}
-                                        {!! Form::select('category_id', $pluck_select_category_department, null, ["class" => "form-control"]) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('category_id') !!}</span>
-
-                                    <!-- address text field -->
-                                    <div class="form-group">
-                                        {!! Form::label('address',trans($plang_admin.'.labels.address').':') !!}
-                                        {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => '']) !!}
-                                    </div>
-                                    <span class="text-danger">{!! $errors->first('address') !!}</span>
-                                    {{-- custom profile fields --}}
-                                    @foreach($custom_profile->getAllTypesWithValues() as $profile_data)
-                                        <div class="form-group">
-                                            {!! Form::label($profile_data->description) !!}
-                                            {!! Form::text("custom_profile_{$profile_data->id}", $profile_data->value, ["class" => "form-control"]) !!}
-                                            {{-- delete field --}}
-                                        </div>
-                                    @endforeach
-
-                                    {!! Form::hidden('user_id', $user_profile->user_id) !!}
-                                    {!! Form::hidden('id', $user_profile->id) !!}
-                                    {!! Form::submit('Save',['class' =>'btn btn-info pull-right margin-bottom-30']) !!}
-                                    {!! Form::close() !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12">
-                            @if($can_add_fields)
-                                @include('package-acl::admin.user.custom-profile')
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+        {{-- State --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.state'))->for('state') }}
+            {{ html()->text('state')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('state') }}</span>
         </div>
     </div>
-@stop
+
+    <div class="col-md-6 col-xs-12">
+        {{-- VAT --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.vat'))->for('var') }}
+            {{ html()->text('var')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('vat') }}</span>
+        </div>
+
+        {{-- City --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.city'))->for('city') }}
+            {{ html()->text('city')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('city') }}</span>
+        </div>
+
+        {{-- Country --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.country'))->for('country') }}
+            {{ html()->text('country')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('country') }}</span>
+        </div>
+
+        {{-- Sex --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.sex'))->for('sex') }}
+            {{ html()->select('sex', trans($plang_admin.'.sex'))->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('sex') }}</span>
+        </div>
+
+        {{-- Device Token --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.device_token'))->for('device_token') }}
+            {{ html()->text('device_token')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('device_token') }}</span>
+        </div>
+
+        {{-- Level --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.level'))->for('level_id') }}
+            {{ html()->select('level_id', $pluck_select_category_level)->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('level_id') }}</span>
+        </div>
+
+        {{-- Category --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.category'))->for('category_id') }}
+            {{ html()->select('category_id', $pluck_select_category_department)->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('category_id') }}</span>
+        </div>
+
+        {{-- Address --}}
+        <div class="form-group">
+            {{ html()->label(trans($plang_admin.'.labels.address'))->for('address') }}
+            {{ html()->text('address')->class('form-control') }}
+            <span class="text-danger">{{ $errors->first('address') }}</span>
+        </div>
+
+        {{-- Custom Profile Fields --}}
+        @foreach($custom_profile->getAllTypesWithValues() as $profile_data)
+            <div class="form-group">
+                {{ html()->label($profile_data->description) }}
+                {{ html()->text("custom_profile_{$profile_data->id}", $profile_data->value)->class('form-control') }}
+            </div>
+        @endforeach
+
+        {{-- Hidden fields + Submit --}}
+        {{ html()->hidden('user_id', $user_profile->user_id) }}
+        {{ html()->hidden('id', $user_profile->id) }}
+        {{ html()->submit('Save')->class('btn btn-info pull-right margin-bottom-30') }}
+    </div>
+</div>
+
+{{-- Form đóng --}}
+{{ html()->form()->close() }}

@@ -1,14 +1,14 @@
 <?php
-    $withs = [
-        'counter' => '5%',
-        'id' => '7%',
-        'email' => '30%',
-        'first_name' => '15%',
-        'last_name' => '15%',
-        'active' => '10%',
-        'status' => '5%',
-        'last_login' => '13%',
-    ];
+$withs = [
+    'counter' => '5%',
+    'id' => '7%',
+    'email' => '30%',
+    'first_name' => '15%',
+    'last_name' => '15%',
+    'active' => '10%',
+    'status' => '5%',
+    'last_login' => '13%',
+];
 ?>
 <div class="panel panel-info">
     <!--HEADING-->
@@ -36,16 +36,17 @@
                                 @endif
                             </div>
 
-                            {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
-                                                                                                "class"=>"btn btn-warning delete btn-delete-all",
-                                                                                                "title"=> trans($plang_admin.'.hint.delete-in-trash'),
-                                                                                                'name'=>'del-trash'))
-                            !!}
-                            {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
-                                                                                        "class"=>"btn btn-danger delete btn-delete-all",
-                                                                                        "title"=> trans($plang_admin.'.hint.delete-forever'),
-                                                                                        'name'=>'del-forever'))
-                            !!}
+                            {{ html()->submit(trans($plang_admin.'.buttons.delete-in-trash'))
+                                 ->class('btn btn-warning delete btn-delete-all')
+                                 ->title(trans($plang_admin.'.hint.delete-in-trash'))
+                                 ->name('del-trash')
+                             }}
+
+                            {{ html()->submit(trans($plang_admin.'.buttons.delete-forever'))
+                                ->class('btn btn-danger delete btn-delete-all')
+                                ->title(trans($plang_admin.'.hint.delete-forever'))
+                                ->name('del-forever')
+                            }}
 
 
                         </div>
@@ -57,7 +58,7 @@
                             <thead>
                             <tr>
                                 <!-- COUNTER -->
-                                <?php $name = 'counter' ?>
+                                    <?php $name = 'counter' ?>
                                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <span class="del-checkbox pull-right">
@@ -67,7 +68,7 @@
                                 </th>
 
                                 <!-- ID -->
-                                <?php $name = 'id' ?>
+                                    <?php $name = 'id' ?>
                                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
@@ -82,7 +83,7 @@
                                 </th>
 
                                 <!-- EMAIL -->
-                                <?php $name = 'email' ?>
+                                    <?php $name = 'email' ?>
                                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
@@ -97,7 +98,7 @@
                                 </th>
 
                                 <!-- FIRST NAME -->
-                                <?php $name = 'first_name' ?>
+                                    <?php $name = 'first_name' ?>
                                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-first-name' data-order='asc'>
@@ -112,7 +113,7 @@
                                 </th>
 
                                 <!-- LAST NAME -->
-                                <?php $name = 'last_name' ?>
+                                    <?php $name = 'last_name' ?>
                                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-name' data-order='asc'>
@@ -127,7 +128,7 @@
                                 </th>
 
                                 <!-- ACTIVE -->
-                                <?php $name = 'active' ?>
+                                    <?php $name = 'active' ?>
                                 <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-active' data-order='asc'>
@@ -142,13 +143,13 @@
                                 </th>
 
                                 <!--STATUS-->
-                                <?php $name = 'status' ?>
+                                    <?php $name = 'status' ?>
                                 <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.columns.status') !!}
                                 </th>
 
                                 <!-- LAST LOGIN -->
-                                <?php $name = 'last_login' ?>
+                                    <?php $name = 'last_login' ?>
                                 <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
                                     {!! trans($plang_admin.'.labels.'.$name) !!}
                                     <a href='{!! $sorting["url"][$name] !!}' class='tb-last-login' data-order='asc'>
@@ -166,11 +167,11 @@
 
                             <!--DATA-->
                             <tbody>
-                            <?php $order = $users->perPage() * ($users->currentPage() - 1) + 1; ?>
+                                <?php $order = $users->perPage() * ($users->currentPage() - 1) + 1; ?>
                             @foreach($users as $user)
                                 <tr>
                                     <td>
-                                        <?php echo $order; $order++ ?>
+                                            <?php echo $order; $order++ ?>
                                         <span class='box-item pull-right'>
                                             <input type="checkbox" id="<?php echo $user->id ?>" name="ids[]" value="{!! $user->id !!}">
                                             <label for="box-item"></label>
@@ -211,5 +212,5 @@
 </div>
 @section('footer_scripts')
     @parent
-    {!! HTML::script('packages/foostart/js/form-table.js')  !!}
+    {{ html()->script('packages/foostart/js/form-table.js') }}
 @stop

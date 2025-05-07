@@ -29,36 +29,34 @@
                 <div class="panel-body">
                     <div class="col-md-6 col-xs-6">
                         <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
-                    {!! Form::model($user, [ 'url' => URL::route('users.editPost')] )  !!}
-                    {{-- Field hidden to fix chrome and safari autocomplete bug --}}
-                    {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
-                    {!! Form::hidden('id') !!}
-                    {!! Form::hidden('form_name','user') !!}
+                        {{ html()->form('POST', route('users.editPost'))->model($user)->open() }}
+                        {{-- Field hidden to fix chrome and safari autocomplete bug --}}
+                        {{ html()->password('__to_hide_password_autocomplete')->class('hidden') }}
+                        {{ html()->hidden('id') }}
+                        {{ html()->hidden('form_name', 'user') }}
 
-                    <!-- email text field -->
+                        <!-- email text field -->
                         <div class="form-group">
-                            {!! Form::label('email',trans($plang_admin.'.labels.email').':*') !!}
-                            {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'user email', 'autocomplete' => 'off']) !!}
+                            {{ html()->label(trans($plang_admin.'.labels.email').':*')->for('email') }}
+                            {{ html()->text('email')->class('form-control')->placeholder('user email')->autocomplete('off') }}
                         </div>
-                        <span class="text-danger">{!! $errors->first('email') !!}</span>
+                        <span class="text-danger">{{ $errors->first('email') }}</span>
 
                         <!-- Password -->
                         <div class="row">
                             <div class="col-md-6">
-                                <!-- password text field -->
                                 <div class="form-group">
-                                    {!! Form::label('password',isset($user->id) ? trans($plang_admin.'.labels.change-password').':' : trans($plang_admin.'.labels.password').':') !!}
-                                    {!! Form::password('password', ['class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => '']) !!}
+                                    {{ html()->label(isset($user->id) ? trans($plang_admin.'.labels.change-password').':' : trans($plang_admin.'.labels.password').':')->for('password') }}
+                                    {{ html()->password('password')->class('form-control')->autocomplete('off')->placeholder('') }}
                                 </div>
-                                <span class="text-danger">{!! $errors->first('password') !!}</span>
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                             <div class="col-md-6">
-                                <!-- password_confirmation text field -->
                                 <div class="form-group">
-                                    {!! Form::label('password_confirmation',isset($user->id) ? trans($plang_admin.'.labels.confirm-change-password').':' : trans($plang_admin.'.labels.confirm-password').':') !!}
-                                    {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => '','autocomplete' => 'off']) !!}
+                                    {{ html()->label(isset($user->id) ? trans($plang_admin.'.labels.confirm-change-password').':' : trans($plang_admin.'.labels.confirm-password').':')->for('password_confirmation') }}
+                                    {{ html()->password('password_confirmation')->class('form-control')->placeholder('')->autocomplete('off') }}
                                 </div>
-                                <span class="text-danger">{!! $errors->first('password_confirmation') !!}</span>
+                                <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                             </div>
                         </div>
                         <!-- End Password -->
@@ -67,71 +65,6 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::label("activated",trans($plang_admin.'.labels.active').':') !!}
-                                    {!! Form::select('activated', ["1" => "Yes", "0" => "No"], (isset($user->activated) && $user->activated) ? $user->activated : "0", ["class"=> "form-control"] ) !!}
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label("banned",trans($plang_admin.'.labels.banned').':') !!}
-                                    {!! Form::select('banned', ["1" => "Yes", "0" => "No"], (isset($user->banned) && $user->banned) ? $user->banned : "0", ["class"=> "form-control"] ) !!}
-                                </div>
-                            </div>
-                            @if(isset($user->suspended) && $user->suspended)
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {!! Form::label("suspended",trans($plang_admin.'.labels.suspended').':') !!}
-                                        {!! Form::checkbox('suspended',trans($plang_admin.'.labels.suspended') , (isset($user->suspended) && $user->suspended) ? true : false) !!}
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                        <!-- End status -->
+    {{ html()->label(trans($plang_admin.'.labels.active').':')->for('activated') }}
+    {{ html()->select('activated', ["1" => "Yes", "0" => "No"], isset($user->activated) && $user->activated ? $user->activated : "0")->class('form-control') }}
 
-                        <!--BUTTONS-->
-                        <div class='btn-form'>
-                            <a href="{!! URL::route('users.profile.edit',['user_id' => $user->id]) !!}"
-                               class="btn btn-primary pull-right margin-left-5" {!! ! isset($user->id) ? 'disabled="disabled"' : '' !!}>
-                                <i class="fa fa-user"></i> Edit profile</a>
-
-                            @if($user->deleted_at)
-                                <a href="{!! URL::route('users.restore',['id' => $user->id, '_token' => csrf_token()]) !!}"
-                                   class="btn btn-success pull-right margin-left-5 restore">
-                                    {!! trans($plang_admin.'.buttons.restore') !!}
-                                </a>
-                            @else
-                                <a href="{!! URL::route('users.delete',['id' => $user->id, '_token' => csrf_token()]) !!}"
-                                   class="btn btn-warning pull-right margin-left-5 delete">
-                                    {!! trans($plang_admin.'.buttons.delete') !!}
-                                </a>
-                            @endif
-                            {!! Form::submit(trans($plang_admin.'.buttons.save'), array("class"=>"btn btn-info pull-right ")) !!}
-                        </div>
-                        {!! Form::close() !!}
-                    </div>
-
-                    <div class="col-md-6 col-xs-6">
-                        <h4><i class="fa fa-users"></i> {!! trans($plang_admin.'.labels.group').':' !!} </h4>
-                        @include('package-acl::admin.user.groups')
-
-
-                        <h4><i class="fa fa-lock"></i> {!! trans($plang_admin.'.labels.permission-name').':' !!}</h4>
-
-                        @include('package-acl::admin.user.perm')
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@stop
-
-@section('footer_scripts')
-    <script>
-        $(".delete").click(function () {
-            return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");
-        });
-        $(".restore").click(function () {
-            return confirm("{!! trans($plang_admin.'.messages.user-restore') !!}");
-        });
-    </script>
-@stop

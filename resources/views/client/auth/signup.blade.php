@@ -18,7 +18,7 @@
 @stop
 
 @section('head_css')
-    {!!  HTML::style('packages/foostart/css/strength.css')  !!}
+    {{ html()->style(asset('packages/foostart/css/strength.css')) }}
 @stop
 
 @section('content')
@@ -38,9 +38,8 @@
 
             <!--panel-body-->
                 <div class="my-acl-form panel-body">
-                {!! Form::open(["route" => 'user.signup.process', "method" => "POST", "id" => "user_signup"]) !!}
-                {{-- Field hidden to fix chrome and safari autocomplete bug --}}
-                {!! Form::password('__to_hide_password_autocomplete', ['class' => 'hidden']) !!}
+                    {{ html()->form('POST', route('user.signup.process'))->id('user_signup') }}
+                    {!! $html->password('__to_hide_password_autocomplete')->class('hidden') !!}
 
                 <!--user name-->
                     <div class="row">
@@ -137,9 +136,9 @@
 
                         @endif
                     </div>
-                    <input type="submit" value="{!! trans($plang_front.'.buttons.register') !!}"
-                           class="btn btn-info btn-block">
-                    {!! Form::close() !!}
+                    {{ html()->submit(trans($plang_front.'.buttons.register'))->class('btn btn-info btn-block') }}
+
+                    {{ html()->form()->close() }}
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
@@ -157,13 +156,9 @@
             </div>
         </div>
     </div>
-
 @stop
 
 @section('footer_scripts')
-
-    {!! HTML::script('packages/foostart/js/vendor/password_strength/strength.js') !!}
-
+    {{ html()->script('packages/foostart/js/vendor/password_strength/strength.js') }}
     @parent;
-
 @stop

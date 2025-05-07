@@ -17,16 +17,17 @@ $withs = [
             @endif
         </div>
 
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
-                                                                            "class"=>"btn btn-warning delete btn-delete-all",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-in-trash'),
-                                                                            'name'=>'del-trash'))
-        !!}
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
-                                                                    "class"=>"btn btn-danger delete btn-delete-all",
-                                                                    "title"=> trans($plang_admin.'.hint.delete-forever'),
-                                                                    'name'=>'del-forever'))
-        !!}
+        {{ html()->submit(trans($plang_admin.'.buttons.delete-in-trash'))
+            ->class('btn btn-warning delete btn-delete-all')
+            ->title(trans($plang_admin.'.hint.delete-in-trash'))
+            ->name('del-trash')
+        }}
+
+        {{ html()->submit(trans($plang_admin.'.buttons.delete-forever'))
+            ->class('btn btn-danger delete btn-delete-all')
+            ->title(trans($plang_admin.'.hint.delete-forever'))
+            ->name('del-forever')
+        }}
     </div>
     <table class="table table-hover">
         <thead>
@@ -126,5 +127,5 @@ $withs = [
 @endif
 @section('footer_scripts')
     @parent
-    {!! HTML::script('packages/foostart/js/form-table.js')  !!}
+    {{ html()->script('packages/foostart/js/form-table.js') }}
 @stop

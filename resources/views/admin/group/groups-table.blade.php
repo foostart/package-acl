@@ -18,92 +18,91 @@ $withs = [
             @endif
         </div>
 
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-in-trash'), array(
-                                                                            "class"=>"btn btn-warning delete btn-delete-all",
-                                                                            "title"=> trans($plang_admin.'.hint.delete-in-trash'),
-                                                                            'name'=>'del-trash'))
-        !!}
-        {!! Form::submit(trans($plang_admin.'.buttons.delete-forever'), array(
-                                                                    "class"=>"btn btn-danger delete btn-delete-all",
-                                                                    "title"=> trans($plang_admin.'.hint.delete-forever'),
-                                                                    'name'=>'del-forever'))
-        !!}
+        {{ html()->submit(trans($plang_admin.'.buttons.delete-in-trash'))
+            ->class('btn btn-warning delete btn-delete-all')
+            ->title(trans($plang_admin.'.hint.delete-in-trash'))
+            ->name('del-trash') }}
+
+        {{ html()->submit(trans($plang_admin.'.buttons.delete-forever'))
+            ->class('btn btn-danger delete btn-delete-all')
+            ->title(trans($plang_admin.'.hint.delete-forever'))
+            ->name('del-forever') }}
     </div>
 
     <table class="table table-hover">
         <thead>
-            <tr>
+        <tr>
 
-                <!-- COUNTER -->
+            <!-- COUNTER -->
                 <?php $name = 'counter' ?>
-                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.labels.'.$name) !!}
-                    <span class="del-checkbox pull-right">
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.labels.'.$name) !!}
+                <span class="del-checkbox pull-right">
                         <input type="checkbox" id="selecctall"/>
                     </span>
-                </th>
+            </th>
 
-                <!-- ID -->
+            <!-- ID -->
                 <?php $name = 'id' ?>
-                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.labels.'.$name) !!}
-                    <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
-                        @if($sorting['items'][$name] == 'asc')
-                            <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-                        @elseif($sorting['items'][$name] == 'desc')
-                            <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
-                        @else
-                            <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-                        @endif
-                    </a>
-                </th>
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.labels.'.$name) !!}
+                <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                        <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                        <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+                    @else
+                        <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                    @endif
+                </a>
+            </th>
 
-                <!-- Group -->
+            <!-- Group -->
                 <?php $name = 'name' ?>
-                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.tables.group-'.$name) !!}
-                    <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
-                        @if($sorting['items'][$name] == 'asc')
-                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-                        @elseif($sorting['items'][$name] == 'desc')
-                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-                        @else
-                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                        @endif
-                    </a>
-                </th>
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.tables.group-'.$name) !!}
+                <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                        <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                        <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                    @else
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    @endif
+                </a>
+            </th>
 
-                <!--Group permissions-->
+            <!--Group permissions-->
                 <?php $name = 'permissions' ?>
-                <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.tables.group-'.$name) !!}
-                    <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
-                        @if($sorting['items'][$name] == 'asc')
-                            <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-                        @elseif($sorting['items'][$name] == 'desc')
-                            <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-                        @else
-                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                        @endif
-                    </a>
-                </th>
+            <th class="hidden-xs" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.tables.group-'.$name) !!}
+                <a href='{!! $sorting["url"][$name] !!}' class='tb-email' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                        <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                        <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                    @else
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    @endif
+                </a>
+            </th>
 
-                <!--STATUS-->
+            <!--STATUS-->
                 <?php $name = 'status' ?>
-                <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>
-                    {!! trans($plang_admin.'.columns.status') !!}
-                </th>
-            </tr>
+            <th class="hidden-xs text-center" style='width:{{ $withs[$name] }}'>
+                {!! trans($plang_admin.'.columns.status') !!}
+            </th>
+        </tr>
         </thead>
 
         <tbody>
 
-        <?php $counter = $groups->perPage() * ($groups->currentPage() - 1) + 1; ?>
+            <?php $counter = $groups->perPage() * ($groups->currentPage() - 1) + 1; ?>
         @foreach($groups as $group)
 
             <tr>
                 <td>
-                    <?php echo $counter; $counter++ ?>
+                        <?php echo $counter; $counter++ ?>
                     <span class='box-item pull-right'>
                         <input type="checkbox" id="<?php echo $group->id ?>" name="ids[]"
                                value="{!! $group->id !!}">
@@ -138,5 +137,5 @@ $withs = [
 @endif
 @section('footer_scripts')
     @parent
-    {!! HTML::script('packages/foostart/js/form-table.js')  !!}
+    {{ html()->script('packages/foostart/js/form-table.js') }}
 @stop

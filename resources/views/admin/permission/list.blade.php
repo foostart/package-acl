@@ -25,10 +25,12 @@
                     </div>
                     <div class="panel-body">
                         <!--BODY-->
-                        {!! Form::open(['route'=>['permissions.delete'], 'method' => 'get', 'class'=>'form-responsive'])  !!}
-                            @include('package-acl::admin.permission.permission-table')
-                            {!! csrf_field(); !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('GET', route('permissions.delete'))->class('form-responsive') }}
+
+
+                        @include('package-acl::admin.permission.permission-table')
+                            {!! csrf_field() !!}
+                        {{ html()->form()->close() }}
                     </div>
                 </div>
             </div>

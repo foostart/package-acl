@@ -9,10 +9,11 @@
     <meta name="author" content="">
 
 
-{!! HTML::style('packages/foostart/css/bootstrap-3.3.7.min.css') !!}
-{!! HTML::style('packages/foostart/css/style.css') !!}
-{!! HTML::style('packages/foostart/css/font-awesome-4.7.0.min.css') !!}
-{!! HTML::style('packages/foostart/css/fonts.css') !!}
+    {{ html()->style('packages/foostart/css/bootstrap-3.3.7.min.css') }}
+    {{ html()->style('packages/foostart/css/style.css') }}
+    {{ html()->style('packages/foostart/css/font-awesome-4.7.0.min.css') }}
+    {{ html()->style('packages/foostart/css/fonts.css') }}
+
 
 @yield('head_css')
 {{-- End head css --}}
@@ -31,7 +32,7 @@
 </div>
 
 {{-- Start footer scripts --}}
-{!! HTML::script('packages/foostart/js/vendor/jquery-1.10.2.min.js') !!}
-{!! HTML::script('packages/foostart/js/vendor/bootstrap.min.js') !!}
+{{ html()->script('packages/foostart/js/vendor/jquery-1.10.2.min.js') }}
+{{ html()->script('packages/foostart/js/vendor/bootstrap.min.js') }}
 </body>
 </html>
