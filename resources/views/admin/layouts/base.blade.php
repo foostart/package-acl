@@ -9,23 +9,25 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/bootstrap-3.3.7.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/baselayout.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/font-awesome-4.7.0.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/package-category.css') }}">
 
-    {{ html()->style('packages/foostart/css/bootstrap-3.3.7.min.css') }}
-    {{ html()->style('packages/foostart/css/style.css') }}
-    {{ html()->style('packages/foostart/css/baselayout.css') }}
-    {{ html()->style('packages/foostart/css/fonts.css') }}
-    {{ html()->style('packages/foostart/css/font-awesome-4.7.0.min.css') }}
-    {{ html()->style('packages/foostart/css/package-category.css') }}
+    <script src="{{ asset('packages/foostart/js/vendor/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') }}"></script>
 
-    {{ html()->script('packages/foostart/js/vendor/jquery-2.2.4.min.js') }}
-    {{ html()->script('packages/foostart/js/vendor/bootstrap-3.3.7.min.js') }}
-@yield('head_css')
+
+
+    @yield('head_css')
 {{-- End head css --}}
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    {{ html()->script('packages/foostart/js/vendor/lt-IE-9/html5shiv-3.7.0') }}
-	{{ html()->script('packages/foostart/js/vendor/lt-IE-9/respond-1.3.0.min') }}
+    <script src="{{ asset('packages/foostart/js/vendor/lt-IE-9/html5shiv-3.7.0.js') }}"></script>
+    <script src="{{ asset('packages/foostart/js/vendor/lt-IE-9/respond-1.3.0.min.js') }}"></script>
     <![endif]-->
 </head>
 

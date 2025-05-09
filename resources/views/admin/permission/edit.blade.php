@@ -32,20 +32,20 @@
                     {{ html()->model($permission)
                         ->route('permissions.editPost', $permission->id)
                         ->method('post') }}
-                    {!! $html->hidden('id') !!}
+                    {!! html()->hidden('id') !!}
                     <div clas="row">
                         <div class="col-md-12">
                             <a href="{!! URL::route('permissions.delete',['id' => $permission->id, '_token' => csrf_token()]) !!}"
                                class="btn btn-danger pull-right margin-left-5 delete">Delete</a>
-                            {!! $html->submit('Save')->class('btn btn-info pull-right') !!}
+                            {!! html->submit('Save')->class('btn btn-info pull-right') !!}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-xs-6">
                             <!-- NAME TEXT FIELD -->
                             <div class="form-group">
-                                {!! $html->label(trans($plang_admin.'.labels.permission_name') . ':*')->for('name') !!}
-                                {!! $html->text('name')
+                                {!! html()->label(trans($plang_admin.'.labels.permission_name') . ':*')->for('name') !!}
+                                {!! html()->text('name')
                                     ->value(old('name', @$permission->name))
                                     ->class('form-control')
                                     ->placeholder('Permission name')
@@ -57,9 +57,9 @@
                         <div class="col-md-4 col-xs-6">
                             <!-- PERMISSION TEXT FIELD -->
                             <div class="form-group">
-                                {!! $html->label(trans($plang_admin.'.labels.permission-name') . ':*')->for('permission') !!}
+                                {!! html()->label(trans($plang_admin.'.labels.permission-name') . ':*')->for('permission') !!}
 
-                                {!! $html->text('permission')
+                                {!! html()->text('permission')
                                     ->value(old('permission', @$permission->permission))
                                     ->class('form-control')
                                     ->placeholder('Permission slug')
@@ -70,9 +70,9 @@
                         <div class="col-md-4 col-xs-6">
                             <!-- category_id TEXT FIELD -->
                             <div class="form-group">
-                                {!! $html->label(trans($plang_admin.'.labels.category') . ':')->for('category_id') !!}
+                                {!! html()->label(trans($plang_admin.'.labels.category') . ':')->for('category_id') !!}
 
-                                {!! $html->select('category_id')
+                                {!! html()->select('category_id')
                                     ->options($pluck_select_category)
                                     ->selected(old('category_id', @$permission->category_id))
                                     ->class('form-control') !!}
@@ -107,7 +107,7 @@
 @stop
 
 @section('footer_scripts')
-    {{ html()->script('packages/foostart/js/vendor/slugit.js') }}
+    <script src="{{ asset('packages/foostart/js/vendor/slugit.js') }}"></script>
     <script>
         $(".delete").click(function () {
             return confirm("{!! trans($plang_admin.'.messages.user-delete') !!}");

@@ -23,10 +23,10 @@
 	                    <div class="row">
 	                        <div class="col-xs-12 col-sm-12 col-md-12">
 	                            <div class="form-group">
-	                                {!! $html->label(trans($plang_front.'.labels.new-password'))->for('password') !!}
+	                                {!! html()->label(trans($plang_front.'.labels.new-password'))->for('password') !!}
 	                                <div class="input-group">
 	                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-	                                    {!! $html->password('password')
+	                                    {!! html()->password('password')
 	                                        ->id('password')
 	                                        ->class('form-control')
 	                                        ->placeholder(trans($plang_front.'.labels.new-password'))
@@ -38,8 +38,8 @@
 	                    </div>
 	                    {{ html()->submit(trans($plang_front.'.buttons.change_password'))->class('btn btn-info btn-block') }}
 
-                        {!! $html->hidden('email')->value($email) !!}
-                        {!! $html->hidden('token')->value($token) !!}
+                        {!! html()->hidden('email')->value($email) !!}
+                        {!! html()->hidden('token')->value($token) !!}
                     {{ html()->form()->close() }}
                 </div>
             </div>

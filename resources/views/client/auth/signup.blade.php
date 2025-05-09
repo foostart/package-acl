@@ -18,7 +18,7 @@
 @stop
 
 @section('head_css')
-    {{ html()->style(asset('packages/foostart/css/strength.css')) }}
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/strength.css') }}">
 @stop
 
 @section('content')
@@ -39,7 +39,7 @@
             <!--panel-body-->
                 <div class="my-acl-form panel-body">
                     {{ html()->form('POST', route('user.signup.process'))->id('user_signup') }}
-                    {!! $html->password('__to_hide_password_autocomplete')->class('hidden') !!}
+                    {!! html()->password('__to_hide_password_autocomplete')->class('hidden') !!}
 
                 <!--user name-->
                     <div class="row">
@@ -142,12 +142,8 @@
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            {!! link_to_route('user.loginGet', trans($plang_front.'.pages.login')) !!}
+                            <a href="{{ route('user.loginGet') }}">{{ trans($plang_front.'.pages.login') }}</a>
                         </div>
-
-                    <!--                        <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-                            {!! link_to_route('user.login.google', trans($plang_front.'.login-by-google')) !!}
-                        </div>-->
                     </div>
 
                 </div>
@@ -159,6 +155,6 @@
 @stop
 
 @section('footer_scripts')
-    {{ html()->script('packages/foostart/js/vendor/password_strength/strength.js') }}
+    <script src="{{ asset('packages/foostart/js/vendor/password_strength/strength.js') }}"></script>
     @parent;
 @stop

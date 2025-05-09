@@ -12,7 +12,7 @@
             </h1>
             <p class="lead">
                 {!! trans($plang_front.'.messages.signup-success-info') !!}
-                {!! link_to('/login','Following link') !!}
+                <a href="{{ url('/login') }}">Following link</a>
             </p>
         </div>
     </div>

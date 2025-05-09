@@ -2,8 +2,8 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    {{ html()->style('packages/foostart/css/mail-base.css') }}
-    {{ html()->style('packages/foostart/css/font-awesome-4.7.0.min.css') }}
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/mail-base.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/font-awesome-4.7.0.min.css') }}">
 </head>
 <body>
 <h2>{!! Config::get('acl_base.app_name') !!}</h2>

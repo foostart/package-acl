@@ -1,1 +1,1 @@
-{{ html()->script(asset('packages/foostart/js/vendor/jquery-2.2.4.min.js')) }}
+<script src="{{ asset('packages/foostart/js/vendor/jquery-2.2.4.min.js') }}"></script>

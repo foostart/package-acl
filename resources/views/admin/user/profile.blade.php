@@ -165,7 +165,7 @@
     </div>
 </div>
 
-{{-- Form đóng --}}
+
 {{ html()->form()->close() }}
 </div>
                     </div>

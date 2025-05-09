@@ -40,14 +40,11 @@
                     @elseif($group->exists)
                         <span class="text-warning"><h5>There is no permission associated to the group.</h5></span>
                     @endif
-                </div>
-            </div>
-        </div>
-    </div>
 
-@stop
+
 
 @section('footer_scripts')
+    @parent
     <script>
         $(".button-add-perm").click(function () {
             <?php if($group->exists): ?>

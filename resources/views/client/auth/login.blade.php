@@ -78,14 +78,14 @@
                         @endif
                     </div>
 
-                        {!! $html->label('Ghi nhớ đăng nhập')->for('remember') !!}
-                        {!! $html->checkbox('remember') !!}
+                        {!! html()->label('Ghi nhớ đăng nhập')->for('remember') !!}
+                        {!! html()->checkbox('remember') !!}
                     <input type="submit" value="Login" class="btn btn-info btn-block">
                     {{ html()->form()->close() }}
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">
-				 {!! link_to_route('user.recovery-password','Quên mật khẩu?') !!}
+                            <a href="{{ route('user.recovery-password') }}">Quên mật khẩu?</a>
                         </div>
                     </div>
                 </div>

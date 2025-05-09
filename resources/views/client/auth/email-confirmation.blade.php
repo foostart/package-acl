@@ -23,7 +23,7 @@
                 </h1>
                 <p class="lead">
                     {!! trans($plang_front.'.messages.following-link') !!}
-                    {!! link_to('/login','Following link') !!}
+                    <a href="{{ url('/login') }}">Following link</a>
                 </p>
             @endif
         </div>

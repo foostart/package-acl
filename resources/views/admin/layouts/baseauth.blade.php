@@ -8,20 +8,18 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-
-    {{ html()->style('packages/foostart/css/bootstrap-3.3.7.min.css') }}
-    {{ html()->style('packages/foostart/css/style.css') }}
-    {{ html()->style('packages/foostart/css/font-awesome-4.7.0.min.css') }}
-    {{ html()->style('packages/foostart/css/fonts.css') }}
-
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/bootstrap-3.3.7.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/font-awesome-4.7.0.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/foostart/css/fonts.css') }}">
 
 @yield('head_css')
 {{-- End head css --}}
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="{{ asset('packages/foostart/js/vendor/html5shiv.js') }}"></script>
+    <script src="{{ asset('packages/foostart/js/vendor/respond.min.js') }}"></script>
     <![endif]-->
 </head>
 
@@ -32,7 +30,7 @@
 </div>
 
 {{-- Start footer scripts --}}
-{{ html()->script('packages/foostart/js/vendor/jquery-1.10.2.min.js') }}
-{{ html()->script('packages/foostart/js/vendor/bootstrap.min.js') }}
+<script src="{{ asset('packages/foostart/js/vendor/jquery-1.10.2.min.js') }}"></script>
+<script src="{{ asset('packages/foostart/js/vendor/bootstrap.min.js') }}"></script>
 </body>
 </html>
