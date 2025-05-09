@@ -15,8 +15,12 @@
 	        {{ html()->hidden('user_id', $user_profile->user_id) }}
 	        {{ html()->hidden('user_profile_id', $user_profile->id) }}
 	        <div class="form-group">
-	            {{ html()->submit(trans($plang_admin.'.buttons.update-avatar'))->class('btn btn-info') }}
-	        </div>
+                @include('package-category::admin.partials.btn_submit', [
+                     'label' => trans($plang_admin.'.buttons.update-avatar'),
+                     'class' => 'btn btn-info'
+                 ])
+
+            </div>
         {{ html()->form()->close() }}
     </div>
 </div>

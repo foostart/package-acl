@@ -26,7 +26,7 @@ View::composer(['package-acl::admin.user.list'], function ($view) use ($plang_ad
         'first_name' => trans($plang_admin . '.labels.first_name'),
         'last_name' => trans($plang_admin . '.labels.last_name'),
         'active' => trans($plang_admin . '.labels.active'),
-        'last_login' => trans($plang_admin . '.labels.last_login')
+        'last_login' => trans($plang_admin . '.labels.last_login'),
     ];
     $sortTable = new SortTable($orders);
 

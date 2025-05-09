@@ -1,5 +1,5 @@
 {{-- add permission --}}
-{{ html()->form('POST', route('users.edit.permission'))->class('form-add-perm')->role('form')->open() }}
+{{ html()->form('POST', route('users.edit.permission'))->class('form-add-perm')->open() }}
 <div class="form-group">
     <div class="input-group">
         <span class="input-group-addon form-button button-add-perm">
@@ -21,13 +21,13 @@
 {{-- remove permission --}}
 @if($presenter->permissions)
     @foreach($presenter->permissions_obj as $permission)
-        {{ html()->form('POST', route('users.edit.permission'))->name($permission->permission)->role('form')->open() }}
+        {{ html()->form('POST', route('users.edit.permission'))->name($permission->permission)->open() }}
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon form-button button-del-perm" name="{{ $permission->permission }}">
                     <span class="glyphicon glyphicon-minus-sign add-input"></span>
                 </span>
-                {{ html()->text('permission_desc', $permission->name)->class('form-control')->readonly() }}
+                {{ html()->text('permission_desc', $permission->name)->class('form-control') }}
                 {{ html()->hidden('permissions', $permission->permission) }}
                 {{ html()->hidden('id', $user->id) }}
                 {{ html()->hidden('operation', 0) }}

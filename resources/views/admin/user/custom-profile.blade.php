@@ -19,7 +19,7 @@
         <div class="input-group">
         <span class="input-group-addon form-button button-del-profile-field" name="{{ $profile_data->id }}"><span
                     class="glyphicon glyphicon-minus-sign add-input"></span></span>
-            {{ html()->text('profile_description', $profile_data->description)->class('form-control')->readonly() }}
+            {{ html()->text('profile_description', $profile_data->description)->class('form-control') }}
             {{ html()->hidden('id', $profile_data->id) }}
             {{ html()->hidden('user_id', $user_profile->user_id) }}
         </div>

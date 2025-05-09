@@ -52,7 +52,11 @@
 
                         <div class='btn-form'>
                             <!-- SAVE BUTTON -->
-                            {{ html()->submit(trans($plang_admin.'.buttons.save'))->class('btn btn-info pull-right') }}
+                            @include('package-category::admin.partials.btn_submit', [
+                                'label' => trans($plang_admin.'.buttons.save'),
+                                'class' => 'btn btn-info pull-right'
+                            ])
+
                             <!-- /SAVE BUTTON -->
                         </div>
 

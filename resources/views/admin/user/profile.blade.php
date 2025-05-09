@@ -70,7 +70,7 @@
         <div class="form-group">
             {{ html()->label(trans($plang_admin.'.labels.first_name'))->for('first_name') }}
             {{ html()->text('first_name')->class('form-control') }}
-        </div>       
+        </div>
        <span class="text-danger">{{ $errors->first('first_name') }}</span>
         {{-- Last name --}}
         <div class="form-group">
@@ -90,7 +90,7 @@
             {{ html()->label(trans($plang_admin.'.labels.state'))->for('state') }}
             {{ html()->text('state')->class('form-control') }}
         </div>
-	
+
     </div>
 
     <div class="col-md-6 col-xs-12">
@@ -161,7 +161,11 @@
         {{-- Hidden fields + Submit --}}
         {{ html()->hidden('user_id', $user_profile->user_id) }}
         {{ html()->hidden('id', $user_profile->id) }}
-        {{ html()->submit('Save')->class('btn btn-info pull-right margin-bottom-30') }}
+        @include('package-category::admin.partials.btn_submit', [
+            'label' => 'Save',
+            'class' => 'btn btn-info pull-right margin-bottom-30',
+        ])
+
     </div>
 </div>
 

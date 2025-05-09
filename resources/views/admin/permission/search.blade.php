@@ -8,10 +8,12 @@
             <a href="{{ route('permissions.list') }}" class="btn btn-default search-reset">
                 {!! trans($plang_admin.'.buttons.reset') !!}
             </a>
-            {{ html()->submit(trans($plang_admin.'.buttons.submit'))
-                ->class('btn btn-info')
-                ->id('search-submit')
-            }}
+            @include('package-category::admin.partials.btn_submit', [
+                'label' => trans($plang_admin.'.buttons.submit'),
+                'class' => 'btn btn-info',
+                'id' => 'search-submit'
+            ])
+
         </div>
 
         <!-- KEYWORD -->

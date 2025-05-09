@@ -11,7 +11,11 @@
         {!! html()->form('GET', route('users.list'))->open() !!}
         <div class="form-group">
             <a href="{{ route('users.list') }}" class="btn btn-default search-reset">{{ trans($plang_admin.'.buttons.reset') }}</a>
-            {!! html()->submit(trans($plang_admin.'.search.btn-submit'))->class('btn btn-info')->id('search-submit') !!}
+            @include('package-category::admin.partials.btn_submit', [
+                'label' => trans($plang_admin.'.search.btn-submit'),
+                'class' => 'btn btn-info',
+            ])
+
         </div>
 
         <!-- KEYWORD -->

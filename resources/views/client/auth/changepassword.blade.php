@@ -17,9 +17,9 @@
                     @endforeach
                 @endif
                 <div class="panel-body">
-                
+
                     {{ html()->form('POST', route('user.reminder.process'))->open() }}
-                    
+
 	                    <div class="row">
 	                        <div class="col-xs-12 col-sm-12 col-md-12">
 	                            <div class="form-group">
@@ -36,9 +36,13 @@
 	                            </div>
 	                        </div>
 	                    </div>
-	                    {{ html()->submit(trans($plang_front.'.buttons.change_password'))->class('btn btn-info btn-block') }}
+                    @include('package-category::admin.partials.btn_submit', [
+                        'label' => trans($plang_front.'.buttons.change_password'),
+                        'class' => 'btn btn-info btn-block'
+                        ])
 
-                        {!! html()->hidden('email')->value($email) !!}
+
+                    {!! html()->hidden('email')->value($email) !!}
                         {!! html()->hidden('token')->value($token) !!}
                     {{ html()->form()->close() }}
                 </div>

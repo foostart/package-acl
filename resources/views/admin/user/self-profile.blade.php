@@ -112,7 +112,11 @@
 
                                     {!! html()->hidden('user_id', $user_profile->user_id) !!}
                                     {!! html()->hidden('id', $user_profile->id) !!}
-                                    {!! html()->submit('Save')->class('btn btn-info pull-right margin-bottom-30') !!}
+                                    @include('package-category::admin.partials.btn_submit', [
+                                        'label' => 'Save',
+                                        'class' => 'btn btn-info pull-right margin-bottom-30'
+                                    ])
+
                                     {!! html()->closeModelForm() !!}
                                 </div>
                             </div>

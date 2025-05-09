@@ -47,7 +47,11 @@
                                         {!! trans($plang_admin.'.buttons.delete') !!}
                                     </a>
                                 @endif
-                                {{ html()->submit(trans($plang_admin.'.buttons.save'))->class('btn btn-info pull-right') }}
+                            @include('package-category::admin.partials.btn_submit', [
+                            'label' => trans($plang_admin.'.buttons.save'),
+                            'class' => 'btn btn-info pull-right'
+                            ])
+
                             {{ html()->form()->close() }}
                         </div>
                         <div class="col-md-4 col-xs-6"></div>

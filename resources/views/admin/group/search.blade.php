@@ -6,9 +6,12 @@
         {{ html()->form('GET', route('groups.list')) }}
             <div class="form-group">
                 <a href="{{ route('groups.list') }}" class="btn btn-default search-reset">{!! trans($plang_admin.'.buttons.reset') !!}</a>
-                {{ html()->submit(trans($plang_admin.'.buttons.submit'))
-                    ->class('btn btn-info')
-                    ->id('search-submit') }}
+                @include('package-category::admin.partials.btn_submit', [
+                    'label' => trans($plang_admin.'.buttons.submit'),
+                    'class' => 'btn btn-info',
+                    'id' => 'search-submit'
+                ])
+
             </div>
             <!-- KEYWORD -->
             @include('package-category::admin.partials.input_text', [

@@ -54,7 +54,7 @@ View::composer([
             'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.upload-user') => [
-            'url' => URL::route('pexcel.edit'),
+            'url' => URL::route('pexcel.editGet'),
             'icon' => '<i class="fa fa-upload" aria-hidden="true"></i>'
         ],
         trans($plang_admin . '.sidebars.user-department') => [

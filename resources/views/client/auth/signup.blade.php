@@ -136,7 +136,11 @@
 
                         @endif
                     </div>
-                    {{ html()->submit(trans($plang_front.'.buttons.register'))->class('btn btn-info btn-block') }}
+                    @include('package-category::admin.partials.btn_submit', [
+                        'label' => trans($plang_front.'.buttons.register'),
+                        'class' => 'btn btn-info btn-block'
+                    ])
+
 
                     {{ html()->form()->close() }}
 

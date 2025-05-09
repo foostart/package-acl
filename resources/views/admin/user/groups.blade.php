@@ -1,5 +1,5 @@
 {{-- add group --}}
-{{ html()->form('POST', route('users.groups.add'))->class('form-add-group')->role('form')->open() }}
+{{ html()->form('POST', route('users.groups.add'))->class('form-add-group')->open() }}
 <div class="form-group">
     <div class="input-group">
             <span class="input-group-addon form-button button-add-group">
@@ -23,7 +23,7 @@
 {{-- delete group --}}
 @if (! $user->groups->isEmpty())
     @foreach ($user->groups as $group)
-        {{ html()->form('POST', route('users.groups.delete'))->name('group-' . $group->id)->role('form')->open() }}
+        {{ html()->form('POST', route('users.groups.delete'))->name('group-' . $group->id)->open() }}
         <div class="form-group">
             <div class="input-group">
                     <span class="input-group-addon form-button button-del-group" name="group-{{ $group->id }}">

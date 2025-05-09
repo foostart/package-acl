@@ -29,16 +29,22 @@
                 <div class="panel-body">
                     <div class="col-md-6 col-xs-6">
                         <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
-                        {{ html()->form('POST', route('users.editPost'))->model($user)->open() }}
+                        {{ html()->form('POST', route('users.editPost'))->open() }}
+
                         {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                         {{ html()->password('__to_hide_password_autocomplete')->class('hidden') }}
-                        {{ html()->hidden('id') }}
+                        {{ html()->hidden('id', @$user->id) }}
                         {{ html()->hidden('form_name', 'user') }}
 
                         <!-- email text field -->
                         <div class="form-group">
-                            {{ html()->label(trans($plang_admin.'.labels.email').':*')->for('email') }}
-                            {{ html()->text('email')->class('form-control')->placeholder('user email')->autocomplete('off') }}
+                            @include('package-category::admin.partials.input_text', [
+                                'name' => 'email',
+                                'label' => trans($plang_admin.'.labels.email').':*',
+                                'value' => @$user->email,
+                                'errors' => $errors,
+                                'placeholder' => 'user email'
+                            ])
                         </div>
                         <span class="text-danger">{{ $errors->first('email') }}</span>
 
@@ -106,7 +112,11 @@
                                     {!! trans($plang_admin.'.buttons.delete') !!}
                                 </a>
                             @endif
-			{!! html()->submit(trans($plang_admin.'.buttons.save'))->class('btn btn-info pull-right') !!}
+                            @include('package-category::admin.partials.btn_submit', [
+                                'label' => trans($plang_admin.'.buttons.save'),
+                                'class' => 'btn btn-info pull-right'
+                            ])
+
                         </div>
 			{!! html()->form()->close() !!}
 

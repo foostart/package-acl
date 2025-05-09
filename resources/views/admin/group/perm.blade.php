@@ -28,7 +28,7 @@
                                             <span class="input-group-addon form-button button-del-perm" name="{{ $permission->permission }}"><span class="glyphicon glyphicon-minus-sign add-input"></span></span>
                                             {{ html()->text('permission_desc', $permission->name)
                                                 ->class('form-control')
-                                                ->readonly() }}
+                                                 }}
                                             {{ html()->hidden('permissions', $permission->permission) }}
                                             {{ html()->hidden('id', $group->id) }}
                                             {{ html()->hidden('operation', 0) }}
