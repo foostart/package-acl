@@ -18,9 +18,14 @@
                 @endif
                 <div class="panel-body">
 
-                    {{ html()->form('POST', route('user.reminder.process'))->open() }}
+                    <!-- FORM OPEN -->
+                    @include('package-category::admin.partials.form_open', [
+                        'method' => 'POST',
+                        'action' => route('user.reminder.process')
+                    ])
 
-	                    <div class="row">
+
+                    <div class="row">
 	                        <div class="col-xs-12 col-sm-12 col-md-12">
 	                            <div class="form-group">
 	                                {!! html()->label(trans($plang_front.'.labels.new-password'))->for('password') !!}
@@ -42,9 +47,22 @@
                         ])
 
 
-                    {!! html()->hidden('email')->value($email) !!}
-                        {!! html()->hidden('token')->value($token) !!}
-                    {{ html()->form()->close() }}
+                    @include('package-category::admin.partials.input_text', [
+                         'hidden' => true,
+                         'name'   => 'email',
+                         'id'     => 'email',
+                         'value'  => $email
+                     ])
+
+                    @include('package-category::admin.partials.input_text', [
+                        'hidden' => true,
+                        'name'   => 'token',
+                        'id'     => 'token',
+                        'value'  => $token
+                    ])
+
+                    <!-- FORM CLOSE -->
+                    @include('package-category::admin.partials.form_close')
                 </div>
             </div>
         </div>

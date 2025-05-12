@@ -3,8 +3,12 @@
         <h3 class="panel-title bariol-thin"><i class="fa fa-search"></i> Group search</h3>
     </div>
     <div class="panel-body">
-        {{ html()->form('GET', route('groups.list')) }}
-            <div class="form-group">
+        <!-- FORM OPEN -->
+        @include('package-category::admin.partials.form_open', [
+            'method' => 'GET',
+            'action' => route('groups.list'),
+        ])
+        <div class="form-group">
                 <a href="{{ route('groups.list') }}" class="btn btn-default search-reset">{!! trans($plang_admin.'.buttons.reset') !!}</a>
                 @include('package-category::admin.partials.btn_submit', [
                     'label' => trans($plang_admin.'.buttons.submit'),
@@ -24,6 +28,7 @@
 
             <!-- SORTING -->
             @include('package-category::admin.partials.sorting')
-        {{ html()->form()->close() }}
+        <!-- FORM CLOSE -->
+        @include('package-category::admin.partials.form_close')
     </div>
 </div>

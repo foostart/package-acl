@@ -3,7 +3,11 @@
         <h3 class="panel-title bariol-thin"><i class="fa fa-search"></i> Permission search</h3>
     </div>
     <div class="panel-body">
-        {{ html()->form('GET', route('permissions.list')) }}
+        <!-- FORM OPEN -->
+        @include('package-category::admin.partials.form_open', [
+            'method' => 'GET',
+            'action' => route('permissions.list'),
+        ])
         <div class="form-group">
             <a href="{{ route('permissions.list') }}" class="btn btn-default search-reset">
                 {!! trans($plang_admin.'.buttons.reset') !!}
@@ -31,6 +35,7 @@
         <span class="text-danger">{{ $errors->first('category_id') }}</span>
 
         @include('package-category::admin.partials.sorting')
-        {{ html()->form()->close() }}
+        <!-- FORM CLOSE -->
+        @include('package-category::admin.partials.form_close')
     </div>
 </div>

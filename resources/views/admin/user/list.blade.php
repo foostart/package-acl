@@ -21,10 +21,17 @@
             @endif
 
             {{-- BODY --}}
-            {{ html()->form('GET', route('users.delete'))->class('form-responsive')->open() }}
-                @include('package-acl::admin.user.user-table')
+            <!-- FORM OPEN -->
+            @include('package-category::admin.partials.form_open', [
+                'method' => 'GET',
+                'action' => route('users.delete'),
+                'class' => 'form-responsive',
+            ])
+
+            @include('package-acl::admin.user.user-table')
                 {{ csrf_field() }}
-            {{ html()->form()->close() }}
+            <!-- FORM CLOSE -->
+            @include('package-category::admin.partials.form_close')
         </div>
 
         <div class="col-md-3">

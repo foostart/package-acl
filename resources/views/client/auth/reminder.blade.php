@@ -29,7 +29,12 @@
 
                 <div class="my-acl-form panel-body">
 
-                    {{ html()->form('POST', route('user.reminder'))->open() }}
+                    <!-- FORM OPEN -->
+                    @include('package-category::admin.partials.form_open', [
+                        'method' => 'POST',
+                        'action' => route('user.reminder')
+                    ])
+
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -76,7 +81,8 @@
                     <input type="submit" value="{!! trans($plang_front.'.buttons.recover') !!}"
                            class="btn btn-info btn-block">
 
-                    {{ html()->form()->close() }}
+                    <!-- FORM CLOSE -->
+                    @include('package-category::admin.partials.form_close')
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">

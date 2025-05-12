@@ -1,40 +1,85 @@
 {{-- add group --}}
-{{ html()->form('POST', route('users.groups.add'))->class('form-add-group')->open() }}
+<!-- FORM OPEN -->
+@include('package-category::admin.partials.form_open', [
+    'method' => 'POST',
+    'action' => route('users.groups.add'),
+    'class' => 'form-add-group',
+])
+
 <div class="form-group">
     <div class="input-group">
             <span class="input-group-addon form-button button-add-group">
                 <span class="glyphicon glyphicon-plus-sign add-input"></span>
             </span>
         {{ html()->select('group_id', $group_values)->class('form-control') }}
-        {{ html()->hidden('id', $user->id) }}
+        @include('package-category::admin.partials.input_text', [
+            'hidden' => true,
+            'name'   => 'id',
+            'id'     => 'id',
+            'value'  => $user->id
+        ])
+
     </div>
     <span class="text-danger">{{ $errors->first('name') }}</span>
 </div>
 
-{{ html()->hidden('id', $user->id) }}
+@include('package-category::admin.partials.input_text', [
+    'hidden' => true,
+    'name'   => 'id',
+    'id'     => 'id',
+    'value'  => $user->id
+])
+
 
 @if (! $user->exists)
     <div class="form-group">
         <span class="text-danger"><h5>You need to create the user first.</h5></span>
     </div>
 @endif
-{{ html()->form()->close() }}
+<!-- FORM CLOSE -->
+@include('package-category::admin.partials.form_close')
 
 {{-- delete group --}}
 @if (! $user->groups->isEmpty())
     @foreach ($user->groups as $group)
-        {{ html()->form('POST', route('users.groups.delete'))->name('group-' . $group->id)->open() }}
+        <!-- FORM OPEN -->
+        @include('package-category::admin.partials.form_open', [
+            'method' => 'POST',
+            'action' => route('users.groups.delete'),
+            'name' => 'group-' . $group->id,
+        ])
+
         <div class="form-group">
             <div class="input-group">
                     <span class="input-group-addon form-button button-del-group" name="group-{{ $group->id }}">
                         <span class="glyphicon glyphicon-minus-sign add-input"></span>
                     </span>
-                {{ html()->text('group_name', $group->name)->class('form-control')->attribute('readonly', true) }}
-                {{ html()->hidden('id', $user->id) }}
-                {{ html()->hidden('group_id', $group->id) }}
+                @include('package-category::admin.partials.input_text', [
+                    'name'      => 'group_name',
+                    'id'        => 'group_name',
+                    'value'     => $group->name,
+                    'class'     => 'form-control',
+                    'readonly'  => true
+                ])
+
+                @include('package-category::admin.partials.input_text', [
+                    'hidden' => true,
+                    'name'   => 'id',
+                    'id'     => 'id',
+                    'value'  => $user->id
+                ])
+
+                @include('package-category::admin.partials.input_text', [
+                    'hidden' => true,
+                    'name'   => 'group_id',
+                    'id'     => 'group_id',
+                    'value'  => $group->id
+                ])
+
             </div>
         </div>
-        {{ html()->form()->close() }}
+        <!-- FORM CLOSE -->
+        @include('package-category::admin.partials.form_close')
     @endforeach
 @elseif ($user->exists)
     <span class="text-warning"><h5>There are no groups associated with the user.</h5></span>

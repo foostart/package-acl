@@ -29,16 +29,34 @@
                         <div class="col-md-4 col-xs-6">
                             {{-- group base form --}}
                             <h4>{!! trans($plang_admin.'.labels.general-data') !!}</h4>
-                            {{ html()->form('POST', route('groups.editPost', ['group' => $group->id]))->open() }}
-                                <!-- name text field -->
+                            <!-- FORM OPEN -->
+                            @include('package-category::admin.partials.form_open', [
+                                'method' => 'POST',
+                                'action' => route('groups.editPost', ['group' => $group->id]),
+                            ])
+
+                            <!-- name text field -->
                                 <div class="form-group">
-                                    {{ html()->label(trans($plang_admin.'.labels.group-name').':*')->for('name') }}
-                                    {{ html()->text('name')->class('form-control')->placeholder('group name')->value($group->name) }}
+                                    @include('package-category::admin.partials.input_text', [
+                                        'label'      => trans($plang_admin.'.labels.group-name') . ':*',
+                                        'name'       => 'name',
+                                        'id'         => 'name',
+                                        'value'      => $group->name,
+                                        'class'      => 'form-control',
+                                        'placeholder'=> 'group name'
+                                    ])
+
                                 </div>
                                 <span class="text-danger">{!! $errors->first('name') !!}</span>
-                                {{ html()->hidden('id')->value($group->id) }}
+                            @include('package-category::admin.partials.input_text', [
+                                'hidden' => true,
+                                'name'   => 'id',
+                                'id'     => 'id',
+                                'value'  => $group->id
+                                ])
 
-                                @if($group->deleted_at)
+
+                        @if($group->deleted_at)
                                     <a href="{{ route('groups.restore', ['id' => $group->id, '_token' => csrf_token()]) }}" class="btn btn-success pull-right margin-left-5 restore">
                                         {!! trans($plang_admin.'.buttons.restore') !!}
                                     </a>
@@ -52,7 +70,8 @@
                             'class' => 'btn btn-info pull-right'
                             ])
 
-                            {{ html()->form()->close() }}
+                            <!-- FORM CLOSE -->
+                            @include('package-category::admin.partials.form_close')
                         </div>
                         <div class="col-md-4 col-xs-6"></div>
                         <div class="col-md-4 col-xs-6">

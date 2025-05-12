@@ -29,10 +29,16 @@
                 </div>
                 <div class="panel-body">
 
-                    {{ html()->model($permission)
-                        ->route('permissions.editPost', $permission->id)
-                        ->method('post') }}
-                    {!! html()->hidden('id') !!}
+                    <!-- FORM OPEN -->
+                    @include('package-category::admin.partials.form_open', [
+                        'method' => 'POST',
+                        'action' => route('permissions.editPost', $permission->id)
+                    ])
+                    @include('package-category::admin.partials.input_text', [
+                        'hidden' => true,
+                        'name'   => 'id',
+                        'id'     => 'id',
+                    ])
                     <div clas="row">
                         <div class="col-md-12">
                             <a href="{!! URL::route('permissions.delete',['id' => $permission->id, '_token' => csrf_token()]) !!}"
@@ -44,12 +50,15 @@
                         <div class="col-md-4 col-xs-6">
                             <!-- NAME TEXT FIELD -->
                             <div class="form-group">
-                                {!! html()->label(trans($plang_admin.'.labels.permission_name') . ':*')->for('name') !!}
-                                {!! html()->text('name')
-                                    ->value(old('name', @$permission->name))
-                                    ->class('form-control')
-                                    ->placeholder('Permission name')
-                                    ->id('slugme') !!}
+                                @include('package-category::admin.partials.input_text', [
+                                    'label'      => trans($plang_admin.'.labels.permission_name') . ':*',
+                                    'name'       => 'name',
+                                    'id'         => 'slugme',
+                                    'value'      => old('name', @$permission->name),
+                                    'class'      => 'form-control',
+                                    'placeholder'=> 'Permission name'
+                                ])
+
 
                             </div>
                             <span class="text-danger">{!! $errors->first('name') !!}</span>
@@ -57,13 +66,15 @@
                         <div class="col-md-4 col-xs-6">
                             <!-- PERMISSION TEXT FIELD -->
                             <div class="form-group">
-                                {!! html()->label(trans($plang_admin.'.labels.permission-name') . ':*')->for('permission') !!}
+                                @include('package-category::admin.partials.input_text', [
+                                    'label'       => trans($plang_admin.'.labels.permission-name') . ':*',
+                                    'name'        => 'permission',
+                                    'id'          => 'slug',
+                                    'value'       => old('permission', @$permission->permission),
+                                    'class'       => 'form-control',
+                                    'placeholder' => 'Permission slug'
+                                ])
 
-                                {!! html()->text('permission')
-                                    ->value(old('permission', @$permission->permission))
-                                    ->class('form-control')
-                                    ->placeholder('Permission slug')
-                                    ->id('slug') !!}
                             </div>
                             <span class="text-danger">{!! $errors->first('permission') !!}</span>
                         </div>
@@ -96,7 +107,8 @@
                             <!--/PERMISSION DESCRIPTION-->
                         </div>
                     </div>
-                    {{ html()->form()->close() }}
+                    <!-- FORM CLOSE -->
+                    @include('package-category::admin.partials.form_close')
                 </div>
             </div>
         </div>

@@ -20,21 +20,48 @@
                     @if( $presenter->permissions )
                         @foreach($presenter->permissions_obj as $permission)
                             @if($permission)
-                                {{ html()->form('GET', route('groups.edit.permission'))
-                                    ->class('form-add-perm')
-                                    ->name($permission->permission) }}
+                                <!-- FORM OPEN -->
+                                @include('package-category::admin.partials.form_open', [
+                                    'method' => 'GET',
+                                    'action' => route('groups.edit.permission'),
+                                    'class'  => 'form-add-perm',
+                                    'name'   => $permission->permission,
+                                ])
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon form-button button-del-perm" name="{{ $permission->permission }}"><span class="glyphicon glyphicon-minus-sign add-input"></span></span>
-                                            {{ html()->text('permission_desc', $permission->name)
-                                                ->class('form-control')
-                                                 }}
-                                            {{ html()->hidden('permissions', $permission->permission) }}
-                                            {{ html()->hidden('id', $group->id) }}
-                                            {{ html()->hidden('operation', 0) }}
+                                            @include('package-category::admin.partials.input_text', [
+                                                'name'  => 'permission_desc',
+                                                'id'    => 'permission_desc',
+                                                'value' => $permission->name,
+                                                'class' => 'form-control'
+                                            ])
+
+                                            @include('package-category::admin.partials.input_text', [
+                                                'hidden' => true,
+                                                'name'   => 'permissions',
+                                                'id'     => 'permissions',
+                                                'value'  => $permission->permission
+                                            ])
+
+                                            @include('package-category::admin.partials.input_text', [
+                                                'hidden' => true,
+                                                'name'   => 'id',
+                                                'id'     => 'id',
+                                                'value'  => $group->id
+                                            ])
+
+                                            @include('package-category::admin.partials.input_text', [
+                                                'hidden' => true,
+                                                'name'   => 'operation',
+                                                'id'     => 'operation',
+                                                'value'  => 0
+                                            ])
+
                                         </div>
                                     </div>
-                                {{ html()->form()->close() }}
+                                <!-- FORM CLOSE -->
+                                @include('package-category::admin.partials.form_close')
                             @endif
                         @endforeach
                     @elseif($group->exists)

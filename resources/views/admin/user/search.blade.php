@@ -8,7 +8,12 @@
 
     <!-- BODY -->
     <div class="panel-body">
-        {!! html()->form('GET', route('users.list'))->open() !!}
+        <!-- FORM OPEN -->
+        @include('package-category::admin.partials.form_open', [
+            'method' => 'GET',
+            'action' => route('users.list')
+        ])
+
         <div class="form-group">
             <a href="{{ route('users.list') }}" class="btn btn-default search-reset">{{ trans($plang_admin.'.buttons.reset') }}</a>
             @include('package-category::admin.partials.btn_submit', [
@@ -114,7 +119,8 @@
             @include('package-category::admin.partials.sorting')
 
         </div>
-        {!! html()->form()->close() !!}
+        <!-- FORM CLOSE -->
+        @include('package-category::admin.partials.form_close')
     </div>
 </div>
 

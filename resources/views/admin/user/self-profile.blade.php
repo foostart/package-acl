@@ -34,7 +34,11 @@
                                 @include('package-acl::admin.user.partials.show_gravatar')
                             @endif
                             <h4><i class="fa fa-cubes"></i> {!! trans($plang_admin.'.labels.user-data').':' !!}</h4>
-                            {!! html()->modelForm($user_profile, 'POST', route('users.profile.edit'))->open() !!}
+                            <!-- FORM OPEN -->
+                            @include('package-category::admin.partials.form_open', [
+                                'method' => 'POST',
+                                'action' => route('users.profile.edit')
+                            ])
 
                             <div class="row">
                                 <div class="col-md-6 col-xs-12">
@@ -53,22 +57,34 @@
 
                                     <!-- First Name -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.first_name').':', 'first_name') !!}
-                                        {!! html()->text('first_name')->class('form-control')->value(old('first_name', $user_profile->first_name)) !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'label' => trans($plang_admin.'.labels.first_name').':',
+                                            'name'  => 'first_name',
+                                            'value' => old('first_name', $user_profile->first_name),
+                                            'class' => 'form-control'
+                                        ])
                                     </div>
                                     <span class="text-danger">{!! $errors->first('first_name') !!}</span>
 
                                     <!-- Last Name -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.last_name').':', 'last_name') !!}
-                                        {!! html()->text('last_name')->class('form-control')->value(old('last_name', $user_profile->last_name)) !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'label' => trans($plang_admin.'.labels.last_name').':',
+                                            'name'  => 'last_name',
+                                            'value' => old('last_name', $user_profile->last_name),
+                                            'class' => 'form-control'
+                                        ])
                                     </div>
                                     <span class="text-danger">{!! $errors->first('last_name') !!}</span>
 
                                     <!-- Phone -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.phone').':', 'phone') !!}
-                                        {!! html()->text('phone')->class('form-control')->value(old('phone', $user_profile->phone)) !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'label' => trans($plang_admin.'.labels.phone').':',
+                                            'name'  => 'phone',
+                                            'value' => old('phone', $user_profile->phone),
+                                            'class' => 'form-control'
+                                        ])
                                     </div>
                                     <span class="text-danger">{!! $errors->first('phone') !!}</span>
                                 </div>
@@ -76,15 +92,24 @@
                                 <div class="col-md-6 col-xs-12">
                                     <!-- Address -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.address').':', 'address') !!}
-                                        {!! html()->text('address')->class('form-control')->value(old('address', $user_profile->address)) !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'label' => trans($plang_admin.'.labels.address').':',
+                                            'name'  => 'address',
+                                            'value' => old('address', $user_profile->address),
+                                            'class' => 'form-control'
+                                        ])
+
                                     </div>
                                     <span class="text-danger">{!! $errors->first('address') !!}</span>
 
                                     <!-- City -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.city').':', 'city') !!}
-                                        {!! html()->text('city')->class('form-control')->value(old('city', $user_profile->city)) !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'label' => trans($plang_admin.'.labels.city').':',
+                                            'name'  => 'city',
+                                            'value' => old('city', $user_profile->city),
+                                            'class' => 'form-control'
+                                        ])
                                     </div>
                                     <span class="text-danger">{!! $errors->first('city') !!}</span>
 
@@ -105,19 +130,36 @@
                                     {{-- Custom profile fields --}}
                                     @foreach($custom_profile->getAllTypesWithValues() as $profile_data)
                                         <div class="form-group">
-                                            {!! html()->label($profile_data->description) !!}
-                                            {!! html()->text("custom_profile_{$profile_data->id}")->value($profile_data->value)->class('form-control') !!}
+                                            @include('package-category::admin.partials.input_text', [
+                                                'label' => $profile_data->description,
+                                                'name'  => "custom_profile_{$profile_data->id}",
+                                                'value' => $profile_data->value,
+                                                'class' => 'form-control'
+                                            ])
                                         </div>
                                     @endforeach
 
-                                    {!! html()->hidden('user_id', $user_profile->user_id) !!}
-                                    {!! html()->hidden('id', $user_profile->id) !!}
+                                    @include('package-category::admin.partials.input_text', [
+                                        'hidden' => true,
+                                        'name'   => 'user_id',
+                                        'id'     => 'user_id',
+                                        'value'  => $user_profile->user_id
+                                    ])
+
+                                    @include('package-category::admin.partials.input_text', [
+                                        'hidden' => true,
+                                        'name'   => 'id',
+                                        'id'     => 'id',
+                                        'value'  => $user_profile->id
+                                    ])
+
                                     @include('package-category::admin.partials.btn_submit', [
                                         'label' => 'Save',
                                         'class' => 'btn btn-info pull-right margin-bottom-30'
                                     ])
 
-                                    {!! html()->closeModelForm() !!}
+                                   <!-- FORM CLOSE -->
+                                    @include('package-category::admin.partials.form_close')
                                 </div>
                             </div>
                         </div>

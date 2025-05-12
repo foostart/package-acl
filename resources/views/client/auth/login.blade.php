@@ -21,7 +21,12 @@
                     @endforeach
                 @endif
                 <div class="my-acl-form panel-body">
-                    {{ html()->form('POST', route('user.loginPost'))->open() }}
+                    <!-- FORM OPEN -->
+                    @include('package-category::admin.partials.form_open', [
+                        'method' => 'POST',
+                        'action' => route('user.loginPost')
+                    ])
+
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <!--email-->
@@ -30,6 +35,7 @@
                                         'placeholder' => trans($plang_front.'.labels.email'),
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-envelope"></i></span>',
                                         'required' => true,
+                                        'class' => 'form-control',
                                         'errors' => $errors
                                     ])
 
@@ -41,7 +47,8 @@
                                         'icon' => '<span class="input-group-addon"><i class="fa fa-lock"></i></span>',
                                         'required' => true,
                                         'errors' => $errors,
-                                        'type' => 'password'
+                                        'type' => 'password',
+                                        'class' => 'form-control',
                                     ])
                         </div>
                     </div>
@@ -57,6 +64,7 @@
                                     'icon' => '<span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>',
                                     'required' => true,
                                     'errors' => $errors,
+                                    'class' => 'form-control',
                                     'password' => true
                                 ])
                             </div>
@@ -81,7 +89,8 @@
                         {!! html()->label('Ghi nhớ đăng nhập')->for('remember') !!}
                         {!! html()->checkbox('remember') !!}
                     <input type="submit" value="Login" class="btn btn-info btn-block">
-                    {{ html()->form()->close() }}
+                    <!-- FORM CLOSE -->
+                    @include('package-category::admin.partials.form_close')
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">

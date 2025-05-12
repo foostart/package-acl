@@ -25,12 +25,17 @@
                     </div>
                     <div class="panel-body">
                         <!--BODY-->
-                        {{ html()->form('GET', route('permissions.delete'))->class('form-responsive') }}
-
+                        <!-- FORM OPEN -->
+                        @include('package-category::admin.partials.form_open', [
+                            'method' => 'GET',
+                            'action' => route('permissions.delete'),
+                            'class' => 'form-responsive',
+                        ])
 
                         @include('package-acl::admin.permission.permission-table')
                             {!! csrf_field() !!}
-                        {{ html()->form()->close() }}
+                        <!-- FORM CLOSE -->
+                        @include('package-category::admin.partials.form_close')
                     </div>
                 </div>
             </div>

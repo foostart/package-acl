@@ -29,13 +29,27 @@
                 <div class="panel-body">
                     <div class="col-md-6 col-xs-6">
                         <h4>{!! trans($plang_admin.'.labels.user-profile') !!} </h4>
-                        {{ html()->form('POST', route('users.editPost'))->open() }}
+                        <!-- FORM OPEN -->
+                        @include('package-category::admin.partials.form_open', [
+                            'method' => 'POST',
+                            'action' => route('users.editPost'),
+                        ])
 
                         {{-- Field hidden to fix chrome and safari autocomplete bug --}}
                         {{ html()->password('__to_hide_password_autocomplete')->class('hidden') }}
-                        {{ html()->hidden('id', @$user->id) }}
-                        {{ html()->hidden('form_name', 'user') }}
+                        @include('package-category::admin.partials.input_text', [
+                            'hidden' => true,
+                            'name'   => 'id',
+                            'id'     => 'id',
+                            'value'  => @$user->id
+                        ])
 
+                        @include('package-category::admin.partials.input_text', [
+                            'hidden' => true,
+                            'name'   => 'form_name',
+                            'id'     => 'form_name',
+                            'value'  => 'user'
+                        ])
                         <!-- email text field -->
                         <div class="form-group">
                             @include('package-category::admin.partials.input_text', [
@@ -118,7 +132,8 @@
                             ])
 
                         </div>
-			{!! html()->form()->close() !!}
+			<!-- FORM CLOSE -->
+            @include('package-category::admin.partials.form_close')
 
                     </div>
 

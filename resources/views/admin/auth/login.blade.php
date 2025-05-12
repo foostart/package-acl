@@ -26,20 +26,27 @@
                 @endif
 
                 <div class="my-acl-form panel-body">
-                    {{ html()->form('POST', route('user.login.process'))->open() }}
-                        <div class="row">
+                    <!-- FORM OPEN -->
+                    @include('package-category::admin.partials.form_open', [
+                        'method' => 'POST',
+                        'action' => route('user.login.process'),
+                    ])
+
+                    <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="fa fa-envelope"></i>
                                         </span>
-                                        {{ html()->email('email')
-                                            ->id('email')
-                                            ->class('form-control')
-                                            ->placeholder(trans($plang_front.'.labels.email'))
-                                            ->attribute('required')
-                                            ->attribute('autocomplete', 'off') }}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'name' => 'email',
+                                            'id' => 'email',
+                                            'class' => 'form-control',
+                                            'placeholder' => trans($plang_front.'.labels.email'),
+                                            'required' => true,
+                                            'autocomplete' => 'off'
+                                        ])
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +72,8 @@
                         </div>
 
                         <input type="submit" value="Login" class="btn btn-info btn-block">
-                    {{ html()->form()->close() }}
+                    <!-- FORM CLOSE -->
+                    @include('package-category::admin.partials.form_close')
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">

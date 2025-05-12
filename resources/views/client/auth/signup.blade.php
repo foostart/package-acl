@@ -38,7 +38,13 @@
 
             <!--panel-body-->
                 <div class="my-acl-form panel-body">
-                    {{ html()->form('POST', route('user.signup.process'))->id('user_signup') }}
+                    <!-- FORM OPEN -->
+                    @include('package-category::admin.partials.form_open', [
+                        'method' => 'POST',
+                        'action' => route('user.signup.process'),
+                        'id' => 'user_signup'
+                    ])
+
                     {!! html()->password('__to_hide_password_autocomplete')->class('hidden') !!}
 
                 <!--user name-->
@@ -142,7 +148,8 @@
                     ])
 
 
-                    {{ html()->form()->close() }}
+                    <!-- FORM CLOSE -->
+                    @include('package-category::admin.partials.form_close')
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 margin-top-10">

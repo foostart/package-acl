@@ -42,10 +42,14 @@
                                 @include('package-acl::admin.user.partials.show_gravatar')
                             @endif
                             <h4><i class="fa fa-cubes"></i>{!! trans($plang_admin.'.labels.user-data').':' !!}</h4>
-				{!! html()->form('POST', route('users.profile.editPost'))->model($user_profile) !!}
+                                <!-- FORM OPEN -->
+                                @include('package-category::admin.partials.form_open', [
+                                    'method' => 'POST',
+                                    'action' => route('users.profile.editPost'),
+                                    'model' => $user_profile
+                                ])
 
-
-<div class="row">
+                                <div class="row">
     <div class="col-md-6 col-xs-12">
         {{-- Password --}}
         <div class="form-group">
@@ -62,33 +66,54 @@
 
         {{-- Code --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.code'))->for('code') }}
-            {{ html()->text('code')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.code'),
+                'name'  => 'code',
+                'id'    => 'code',
+                'class' => 'form-control'
+            ])
+
         </div>
             <span class="text-danger">{{ $errors->first('code') }}</span>
         {{-- First name --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.first_name'))->for('first_name') }}
-            {{ html()->text('first_name')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.first_name'),
+                'name'  => 'first_name',
+                'id'    => 'first_name',
+                'class' => 'form-control'
+            ])
         </div>
        <span class="text-danger">{{ $errors->first('first_name') }}</span>
         {{-- Last name --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.last_name'))->for('last_name') }}
-            {{ html()->text('last_name')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.last_name'),
+                'name'  => 'last_name',
+                'id'    => 'last_name',
+                'class' => 'form-control'
+            ])
         </div>
         <span class="text-danger">{{ $errors->first('last_name') }}</span>
         {{-- Phone --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.phone'))->for('phone') }}
-            {{ html()->text('phone')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.phone'),
+                'name'  => 'phone',
+                'id'    => 'phone',
+                'class' => 'form-control'
+            ])
         </div>
         <span class="text-danger">{{ $errors->first('phone') }}</span>
 
         {{-- State --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.state'))->for('state') }}
-            {{ html()->text('state')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.state'),
+                'name'  => 'state',
+                'id'    => 'state',
+                'class' => 'form-control'
+            ])
         </div>
 
     </div>
@@ -96,22 +121,35 @@
     <div class="col-md-6 col-xs-12">
         {{-- VAT --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.vat'))->for('var') }}
-            {{ html()->text('var')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.vat'),
+                'name'  => 'var',
+                'id'    => 'var',
+                'class' => 'form-control'
+            ])
+
             <span class="text-danger">{{ $errors->first('vat') }}</span>
         </div>
 
         {{-- City --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.city'))->for('city') }}
-            {{ html()->text('city')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.city'),
+                'name'  => 'city',
+                'id'    => 'city',
+                'class' => 'form-control'
+            ])
             <span class="text-danger">{{ $errors->first('city') }}</span>
         </div>
 
         {{-- Country --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.country'))->for('country') }}
-            {{ html()->text('country')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.country'),
+                'name'  => 'country',
+                'id'    => 'country',
+                'class' => 'form-control'
+            ])
             <span class="text-danger">{{ $errors->first('country') }}</span>
         </div>
 
@@ -124,8 +162,12 @@
 
         {{-- Device Token --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.device_token'))->for('device_token') }}
-            {{ html()->text('device_token')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.device_token'),
+                'name'  => 'device_token',
+                'id'    => 'device_token',
+                'class' => 'form-control'
+            ])
             <span class="text-danger">{{ $errors->first('device_token') }}</span>
         </div>
 
@@ -145,22 +187,42 @@
 
         {{-- Address --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.address'))->for('address') }}
-            {{ html()->text('address')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'label' => trans($plang_admin.'.labels.address'),
+                'name'  => 'address',
+                'id'    => 'address',
+                'class' => 'form-control'
+            ])
             <span class="text-danger">{{ $errors->first('address') }}</span>
         </div>
 
         {{-- Custom Profile Fields --}}
         @foreach($custom_profile->getAllTypesWithValues() as $profile_data)
             <div class="form-group">
-                {{ html()->label($profile_data->description) }}
-                {{ html()->text("custom_profile_{$profile_data->id}", $profile_data->value)->class('form-control') }}
+                @include('package-category::admin.partials.input_text', [
+                    'label' => $profile_data->description,
+                    'name'  => "custom_profile_{$profile_data->id}",
+                    'value' => $profile_data->value,
+                    'class' => 'form-control'
+                ])
             </div>
         @endforeach
 
         {{-- Hidden fields + Submit --}}
-        {{ html()->hidden('user_id', $user_profile->user_id) }}
-        {{ html()->hidden('id', $user_profile->id) }}
+        @include('package-category::admin.partials.input_text', [
+             'hidden' => true,
+             'name'   => 'user_id',
+             'id'     => 'user_id',
+             'value'  => $user_profile->user_id
+         ])
+
+        @include('package-category::admin.partials.input_text', [
+            'hidden' => true,
+            'name'   => 'id',
+            'id'     => 'id',
+            'value'  => $user_profile->id
+        ])
+
         @include('package-category::admin.partials.btn_submit', [
             'label' => 'Save',
             'class' => 'btn btn-info pull-right margin-bottom-30',
@@ -170,7 +232,8 @@
 </div>
 
 
-{{ html()->form()->close() }}
+<!-- FORM CLOSE -->
+@include('package-category::admin.partials.form_close')
 </div>
                     </div>
                     <div class="row">
