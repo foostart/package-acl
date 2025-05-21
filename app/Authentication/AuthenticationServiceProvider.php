@@ -34,12 +34,10 @@ class AuthenticationServiceProvider extends ServiceProvider
         \Foostart\Category\CategoryServiceProvider::class,
         \Cartalyst\Sentry\SentryServiceProvider::class,
         \Intervention\Image\ImageServiceProvider::class,
-        \Spatie\Html\HtmlServiceProvider::class
     ];
     protected $aliases = [
         "Sentry" => \Cartalyst\Sentry\Facades\Laravel\Sentry::class,
         "Image" => \Intervention\Image\Facades\Image::class,
-        'Html' => Spatie\Html\Facades\Html::class,
     ];
 
     /**
