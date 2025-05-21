@@ -18,11 +18,10 @@
     ],
     "license": "MIT",
     "require": {
-        "spatie/laravel-html": "3.12.0",
         "intervention/image": "2.*",
-        "foostart/package-category": "^12.0",
-        "foostart/package-sentry": "^12.0",
-        "foostart/package-pexcel": "^12.0",
+        "foostart/package-category": "^12",
+        "foostart/package-sentry": "^12",
+        "foostart/package-pexcel": "^12",
         "gregwar/captcha": "1.1.9"
     },
     "require-dev": {
