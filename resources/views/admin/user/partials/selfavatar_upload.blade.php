@@ -13,9 +13,16 @@
             'files' => true
         ])
 
-        {{ html()->label($user_profile->avatar ? trans($plang_admin.'.labels.update-avt') . ':' : trans($plang_admin.'.labels.change-avt') . ':')->for('avatar') }}
+
+        @include('package-category::admin.partials.label', [
+                'name' => 'avatar',
+                'label' => $user_profile->avatar ? trans($plang_admin.'.labels.update-avt') . ':' : trans($plang_admin.'.labels.change-avt')
+            ])
         <div class="form-group">
-            {{ html()->file('avatar')->class('form-control') }}
+            @include('package-category::admin.partials.input_image', [
+                  'name' => 'avatar',
+                  'class' => 'form-control'
+              ])
             <span class="text-danger">{{ $errors->first('avatar') }}</span>
         </div>
         @include('package-category::admin.partials.input_text', [

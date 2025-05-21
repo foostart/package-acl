@@ -70,8 +70,10 @@
                         </div>
 
                         <div class="form-group">
-                            {{ html()->label('Remember me')->for('remember') }}
-                            {{ html()->checkbox('remember') }}
+                            @include('package-category::admin.partials.checkbox', [
+                                'name' => 'remember',
+                                'label' => trans($plang_admin.'.labels.remember_me')
+                            ])
                         </div>
 
                         <input type="submit" value="Login" class="btn btn-info btn-block">

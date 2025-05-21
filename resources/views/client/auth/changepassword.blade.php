@@ -28,7 +28,10 @@
                     <div class="row">
 	                        <div class="col-xs-12 col-sm-12 col-md-12">
 	                            <div class="form-group">
-	                                {!! html()->label(trans($plang_front.'.labels.new-password'))->for('password') !!}
+                                    @include('package-category::admin.partials.label', [
+                                        'name' => 'password',
+                                        'label' => $trans($plang_front.'.labels.new-password')
+                                    ])
 	                                <div class="input-group">
 	                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                         @include('package-category::admin.partials.input_text', [

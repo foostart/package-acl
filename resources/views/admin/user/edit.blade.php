@@ -62,10 +62,10 @@
                                 'label' => trans($plang_admin.'.labels.email').':*',
                                 'value' => @$user->email,
                                 'errors' => $errors,
-                                'placeholder' => 'user email'
+                                'class' => 'form-control',
+                                'placeholder' => trans($plang_admin.'.labels.email')
                             ])
                         </div>
-                        <span class="text-danger">{{ $errors->first('email') }}</span>
 
                         <!-- Password -->
                         <div class="row">
@@ -79,13 +79,12 @@
                                         'class' => 'form-control',
                                         'autocomplete' => 'off',
                                         'placeholder' => '',
-                                        'type' => 'password',
-                                        'hidden' => true
+                                        'type' => 'password'
                                     ])
 
                                 </div>
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     @include('package-category::admin.partials.input_text', [
@@ -97,7 +96,6 @@
                                         'placeholder' => '',
                                         'autocomplete' => 'off',
                                         'type' => 'password',
-                                        'hidden' => true
                                     ])
 
                                 </div>
@@ -121,7 +119,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! html()->label(trans($plang_admin.'.labels.banned') . ':', 'banned') !!}
                                     @include('package-category::admin.partials.select_single', [
                                         'name' => 'banned',
                                         'label' => trans($plang_admin.'.labels.banned'),
@@ -134,9 +131,11 @@
                             @if(isset($user->suspended) && $user->suspended)
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.suspended') . ':', 'suspended') !!}
-					{!! html()->checkbox('suspended', (isset($user->suspended) && $user->suspended) ? true : false, trans($plang_admin.'.labels.suspended')) !!}
-
+                                        @include('package-category::admin.partials.checkbox', [
+                                            'name' => 'suspended',
+                                            'label' => trans($plang_admin.'.labels.suspended'),
+                                            'value' => (isset($user->suspended) && $user->suspended) ? true : false
+                                        ])
                                     </div>
                                 </div>
                             @endif

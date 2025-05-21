@@ -86,8 +86,10 @@
                         @endif
                     </div>
 
-                        {!! html()->label('Ghi nhớ đăng nhập')->for('remember') !!}
-                        {!! html()->checkbox('remember') !!}
+                    @include('package-category::admin.partials.checkbox', [
+                        'name' => 'remember',
+                        'label' => trans($plang_admin.'.labels.remember_me')
+                    ])
                     <input type="submit" value="Login" class="btn btn-info btn-block">
                     <!-- FORM CLOSE -->
                     @include('package-category::admin.partials.form_close')
