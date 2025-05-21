@@ -53,15 +53,27 @@
     <div class="col-md-6 col-xs-12">
         {{-- Password --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.new-password'))->for('password') }}
-            {{ html()->password('password')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+                'name' => 'password',
+                'label' => trans($plang_admin.'.labels.new-password'),
+                'class' => 'form-control',
+                'type' => 'password',
+                'hidden' => true,
+            ])
+
         </div>
        <span class="text-danger">{{ $errors->first('password') }}</span>
 
         {{-- Password Confirmation --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.confirm-password'))->for('password_confirmation') }}
-            {{ html()->password('password_confirmation')->class('form-control') }}
+            @include('package-category::admin.partials.input_text', [
+    'name' => 'password_confirmation',
+    'label' => trans($plang_admin.'.labels.confirm-password'),
+    'class' => 'form-control',
+    'type' => 'password',
+    'hidden' => true
+])
+
         </div>
 
         {{-- Code --}}
@@ -155,8 +167,13 @@
 
         {{-- Sex --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.sex'))->for('sex') }}
-            {{ html()->select('sex', trans($plang_admin.'.sex'))->class('form-control') }}
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'sex',
+                'label' => trans($plang_admin.'.labels.sex'),
+                'value' => null,
+                'items' => trans($plang_admin . '.sex'),
+                'class' => 'form-control',
+            ])
             <span class="text-danger">{{ $errors->first('sex') }}</span>
         </div>
 
@@ -173,15 +190,25 @@
 
         {{-- Level --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.level'))->for('level_id') }}
-            {{ html()->select('level_id', $pluck_select_category_level)->class('form-control') }}
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'level_id',
+                'label' => trans($plang_admin.'.labels.level'),
+                'value' => null,
+                'items' => $pluck_select_category_level,
+                'class' => 'form-control',
+            ])
             <span class="text-danger">{{ $errors->first('level_id') }}</span>
         </div>
 
         {{-- Category --}}
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.category'))->for('category_id') }}
-            {{ html()->select('category_id', $pluck_select_category_department)->class('form-control') }}
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'category_id',
+                'label' => trans($plang_admin.'.labels.category'),
+                'value' => null,
+                'items' => $pluck_select_category_department,
+                'class' => 'form-control',
+            ])
             <span class="text-danger">{{ $errors->first('category_id') }}</span>
         </div>
 

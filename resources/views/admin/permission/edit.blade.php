@@ -81,12 +81,13 @@
                         <div class="col-md-4 col-xs-6">
                             <!-- category_id TEXT FIELD -->
                             <div class="form-group">
-                                {!! html()->label(trans($plang_admin.'.labels.category') . ':')->for('category_id') !!}
-
-                                {!! html()->select('category_id')
-                                    ->options($pluck_select_category)
-                                    ->selected(old('category_id', @$permission->category_id))
-                                    ->class('form-control') !!}
+                                @include('package-category::admin.partials.select_single', [
+                                    'name' => 'category_id',
+                                    'label' => trans($plang_admin.'.labels.category'),
+                                    'value' => @$permission->category_id,
+                                    'items' => $pluck_select_category,
+                                    'class' => 'form-control',
+                                ])
 
                             </div>
                             <span class="text-danger">{!! $errors->first('category_id') !!}</span>

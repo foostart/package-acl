@@ -11,7 +11,13 @@
         <span class="input-group-addon form-button button-add-perm">
             <span class="glyphicon glyphicon-plus-sign add-input"></span>
         </span>
-        {{ html()->select('permissions', $permission_values, null)->class('form-control permission-select') }}
+        @include('package-category::admin.partials.select_single', [
+            'name' => 'permissions',
+            'value' => null,
+            'items' => $permission_values,
+            'class' => 'form-control permission-select',
+        ])
+
     </div>
     <span class="text-danger">{{ $errors->first('permissions') }}</span>
     @include('package-category::admin.partials.input_text', [

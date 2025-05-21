@@ -31,12 +31,16 @@
 	                                {!! html()->label(trans($plang_front.'.labels.new-password'))->for('password') !!}
 	                                <div class="input-group">
 	                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-	                                    {!! html()->password('password')
-	                                        ->id('password')
-	                                        ->class('form-control')
-	                                        ->placeholder(trans($plang_front.'.labels.new-password'))
-	                                        ->required()
-	                                        ->autocomplete('off') !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'name' => 'password',
+                                            'id' => 'password',
+                                            'class' => 'form-control',
+                                            'placeholder' => trans($plang_front.'.labels.new-password'),
+                                            'required' => true,
+                                            'autocomplete' => 'off',
+                                            'hidden' => 'true',
+                                            'type' => 'password',
+                                        ])
 	                                </div>
 	                            </div>
 	                        </div>

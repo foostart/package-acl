@@ -57,10 +57,13 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                        {{ html()->password('password')
-                                            ->class('form-control')
-                                            ->placeholder(trans($plang_front.'.labels.password'))
-                                            ->required() }}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'name' => 'password',
+                                            'class' => 'form-control',
+                                            'placeholder' => trans($plang_front.'.labels.password'),
+                                            'required' => true,
+                                            'type' => 'password',
+                                        ])
                                     </div>
                                 </div>
                             </div>

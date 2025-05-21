@@ -45,9 +45,15 @@
                         'id' => 'user_signup'
                     ])
 
-                    {!! html()->password('__to_hide_password_autocomplete')->class('hidden') !!}
+                    @include('package-category::admin.partials.input_text', [
+                        'name' => '__to_hide_password_autocomplete',
+                        'hidden' => true,
+                        'class' => 'hidden',
+                        'type' => 'password'
+                    ])
 
-                <!--user name-->
+
+                    <!--user name-->
                     <div class="row">
 
                         <!--first name-->

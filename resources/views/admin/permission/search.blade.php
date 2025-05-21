@@ -29,8 +29,13 @@
 
         <!-- category_id text field -->
         <div class="form-group">
-            {{ html()->label(trans($plang_admin.'.labels.category'))->for('category_id') }}
-            {{ html()->select('category_id', $pluck_select_category)->class('form-control') }}
+            @include('package-category::admin.partials.select_single', [
+                'name' => 'category_id',
+                'label' => trans($plang_admin.'.labels.category'),
+                'value' => null,
+                'items' => $pluck_select_category,
+                'class' => 'form-control',
+            ])
         </div>
         <span class="text-danger">{{ $errors->first('category_id') }}</span>
 

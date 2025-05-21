@@ -44,15 +44,27 @@
                                 <div class="col-md-6 col-xs-12">
                                     <!-- Password -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.new-password').':', 'password') !!}
-                                        {!! html()->password('password')->class('form-control') !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'name' => 'password',
+                                            'label' => trans($plang_admin.'.labels.new-password') . ':',
+                                            'class' => 'form-control',
+                                            'type' => 'password',
+                                            'hidden' => true
+                                        ])
+
                                     </div>
                                     <span class="text-danger">{!! $errors->first('password') !!}</span>
 
                                     <!-- Password Confirmation -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.confirm-password').':', 'password_confirmation') !!}
-                                        {!! html()->password('password_confirmation')->class('form-control') !!}
+                                        @include('package-category::admin.partials.input_text', [
+                                            'name' => 'password_confirmation',
+                                            'label' => trans($plang_admin.'.labels.confirm-password') . ':',
+                                            'class' => 'form-control',
+                                            'type' => 'password',
+                                            'hidden' => true
+                                        ])
+
                                     </div>
 
                                     <!-- First Name -->
@@ -115,15 +127,28 @@
 
                                     <!-- Sex -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.sex').':', 'sex') !!}
-                                        {!! html()->select('sex', trans('acl-admin.sex'), old('sex', $user_profile->sex))->class('form-control') !!}
+
+                                        @include('package-category::admin.partials.select_single', [
+                                            'name' => 'sex',
+                                            'label' => trans($plang_admin.'.labels.sex'),
+                                            'value' =>$user_profile->sex,
+                                            'items' => trans('acl-admin.sex'),
+                                            'class' => 'form-control',
+                                        ])
+
                                     </div>
                                     <span class="text-danger">{!! $errors->first('sex') !!}</span>
 
                                     <!-- Category -->
                                     <div class="form-group">
-                                        {!! html()->label(trans($plang_admin.'.labels.category').':', 'category_id') !!}
-                                        {!! html()->select('category_id', $pluck_select_category_department, old('category_id', $user_profile->category_id))->class('form-control') !!}
+                                        @include('package-category::admin.partials.select_single', [
+                                            'name' => 'category_id',
+                                            'label' => trans($plang_admin.'.labels.category'),
+                                            'value' => $user_profile->category_id,
+                                            'items' => $pluck_select_category_department,
+                                            'class' => 'form-control',
+                                        ])
+
                                     </div>
                                     <span class="text-danger">{!! $errors->first('category_id') !!}</span>
 

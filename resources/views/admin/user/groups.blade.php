@@ -11,7 +11,13 @@
             <span class="input-group-addon form-button button-add-group">
                 <span class="glyphicon glyphicon-plus-sign add-input"></span>
             </span>
-        {{ html()->select('group_id', $group_values)->class('form-control') }}
+                @include('package-category::admin.partials.select_single', [
+                    'name' => 'group_id',
+                    'value' => null,
+                    'items' => $group_values,
+                    'class' => 'form-control',
+                ])
+
         @include('package-category::admin.partials.input_text', [
             'hidden' => true,
             'name'   => 'id',

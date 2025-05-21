@@ -36,7 +36,12 @@
                         ])
 
                         {{-- Field hidden to fix chrome and safari autocomplete bug --}}
-                        {{ html()->password('__to_hide_password_autocomplete')->class('hidden') }}
+                        @include('package-category::admin.partials.input_text', [
+                            'name' => '__to_hide_password_autocomplete',
+                            'hidden' => true,
+                            'class' => 'hidden',
+                            'type' => 'password',
+                        ])
                         @include('package-category::admin.partials.input_text', [
                             'hidden' => true,
                             'name'   => 'id',
@@ -66,15 +71,35 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {{ html()->label(isset($user->id) ? trans($plang_admin.'.labels.change-password').':' : trans($plang_admin.'.labels.password').':')->for('password') }}
-                                    {{ html()->password('password')->class('form-control')->autocomplete('off')->placeholder('') }}
+                                    @include('package-category::admin.partials.input_text', [
+                                        'name' => 'password',
+                                        'label' => isset($user->id)
+                                            ? trans($plang_admin.'.labels.change-password') . ':'
+                                            : trans($plang_admin.'.labels.password') . ':',
+                                        'class' => 'form-control',
+                                        'autocomplete' => 'off',
+                                        'placeholder' => '',
+                                        'type' => 'password',
+                                        'hidden' => true
+                                    ])
+
                                 </div>
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {{ html()->label(isset($user->id) ? trans($plang_admin.'.labels.confirm-change-password').':' : trans($plang_admin.'.labels.confirm-password').':')->for('password_confirmation') }}
-                                    {{ html()->password('password_confirmation')->class('form-control')->placeholder('')->autocomplete('off') }}
+                                    @include('package-category::admin.partials.input_text', [
+                                        'name' => 'password_confirmation',
+                                        'label' => isset($user->id)
+                                            ? trans($plang_admin.'.labels.confirm-change-password') . ':'
+                                            : trans($plang_admin.'.labels.confirm-password') . ':',
+                                        'class' => 'form-control',
+                                        'placeholder' => '',
+                                        'autocomplete' => 'off',
+                                        'type' => 'password',
+                                        'hidden' => true
+                                    ])
+
                                 </div>
                                 <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                             </div>
@@ -85,16 +110,25 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! html()->label(trans($plang_admin.'.labels.active') . ':', 'activated') !!}
-				    {!! html()->select('activated', ['1' => 'Yes', '0' => 'No'], (isset($user->activated) && $user->activated) ? $user->activated : '0')->class('form-control') !!}
-
+                                    @include('package-category::admin.partials.select_single', [
+                                        'name' => 'activated',
+                                        'label' => trans($plang_admin.'.labels.active'),
+                                        'value' => (isset($user->activated) && $user->activated) ? $user->activated : '0',
+                                        'items' => ['1' => 'Yes', '0' => 'No'],
+                                        'class' => 'form-control',
+                                    ])
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! html()->label(trans($plang_admin.'.labels.banned') . ':', 'banned') !!}
-					{!! html()->select('banned', ['1' => 'Yes', '0' => 'No'], (isset($user->banned) && $user->banned) ? $user->banned : '0')->class('form-control') !!}
-
+                                    @include('package-category::admin.partials.select_single', [
+                                        'name' => 'banned',
+                                        'label' => trans($plang_admin.'.labels.banned'),
+                                        'value' => (isset($user->banned) && $user->banned) ? $user->banned : '0',
+                                        'items' => ['1' => 'Yes', '0' => 'No'],
+                                        'class' => 'form-control',
+                                    ])
                                 </div>
                             </div>
                             @if(isset($user->suspended) && $user->suspended)
